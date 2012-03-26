@@ -430,6 +430,16 @@ hr.soften {
   color: #777;
 }
 
+/* Pontos */
+.pontos {
+  color: #555;
+}
+
+.follow_color{
+    color: #ddd;
+    
+}
+
 /* Variables section */
 #variables label {
   margin-bottom: 0;
