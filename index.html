@@ -13,7 +13,11 @@
         <link href="assets/css/docs.css" rel="stylesheet">
         <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
-
+        <!--css para a plot-->
+        <link class="include" rel="stylesheet" type="text/css" href="assets/css/jquery.jqplot.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/examples.min.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/syntaxhighlighter/styles/shCoreDefault.min.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/syntaxhighlighter/styles/shThemejqPlot.min.css" />
 
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
@@ -85,13 +89,21 @@
             <hr class="soften">
 
             <div class="marketing">
-              
+
                 <div class="row">
                     <div class="jumbotron masthead">
                         <img class="bs-icon" src="assets/img/glyphicons/glyphicons_042_group.png">
                         <h2>Get your best population</h2>
                         <p style="text-align: center;">
                             <a class="btn btn-primary btn-large">Execute</a> </p>
+
+                        <!--Div para a plot-->
+
+                        <div id="chart2" style="height:300px; width:500px;"></div>
+
+
+
+
                     </div>
                 </div><!--/row-->
 
@@ -175,17 +187,60 @@
         <script src="assets/js/bootstrap-typeahead.js"></script>
         <script src="assets/js/application.js"></script>
         <script src="http://cloudglare.com:90/socket.io/socket.io.js"></script>
-        <script>
+        <script  class="code" type="text/javascript">
             var socket = io.connect('cloudglare.com',{port:90});
             socket.on('news', function (data) {
-                jQuery.each(data, function(i, val) {
-  $(".jumbotron").append("<p>" + i + " = " + val + "</p>");
-});
-               // $(".jumbotron").append("<p> id = " + data.id + "</p><p> name = " + data.name + '</p>');
-                console.log(data);
-                //socket.emit('my other event', { my: 'asdas' });
+                $('#chart2').html("");
+                var ajaxDataRenderer = function(url, plot, options) {
+                    var ret = null;
+                    $.ajax({
+                        // have to use synchronous here, else the function 
+                        // will return before the data is fetched
+                        async: false,
+                        url: url,
+                        dataType:"json",
+                        success: function(data) {
+                            ret = data;
+  
+                        }
+                    });
+                    return ret;
+                };
+                // The url for our json data
+                var jsonurl = "./jsondata.txt";
+
+                // passing in the url string as the jqPlot data argument is a handy
+                // shortcut for our renderer.  You could also have used the
+                // "dataRendererOptions" option to pass in the url.
+                var plot2 = $.jqplot('chart2', jsonurl,{
+                    title: "Best population",
+                    dataRenderer: ajaxDataRenderer,
+                    dataRendererOptions: {
+                        unusedOptionalUrl: jsonurl
+                    }
+                });  
+
             });
         </script>
+
+        <!--scrypts para a plot-->
+        <!-- End example scripts -->
+
+        <!-- Don't touch this! -->
+
+
+        <script class="include" type="text/javascript" src="assets/js/jquery.jqplot.min.js"></script>
+        <script type="text/javascript" src="assets/css/syntaxhighlighter/scripts/shCore.min.js"></script>
+        <script type="text/javascript" src="assets/css/syntaxhighlighter/scripts/shBrushJScript.min.js"></script>
+        <script type="text/javascript" src="assets/css/syntaxhighlighter/scripts/shBrushXml.min.js"></script>
+        <!-- End Don't touch this! -->
+
+        <!-- Additional plugins go here -->
+
+        <script class="include" language="javascript" type="text/javascript" src="assets/js/plugins/jqplot.json2.min.js"></script>
+
+        <!-- End additional plugins -->
+        <!--END scrypts para a plot-->
 
     </body>
 </html>
