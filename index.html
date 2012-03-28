@@ -100,7 +100,7 @@
                             <div class="control-group">
                                 <label class="control-label" for="input01">Population</label>
                                 <div class="controls">
-                                    <input id="input01" class="input-xlarge" type="text">
+                                    <input id="input01" class="input-xlarge population" type="text">
 
                                 </div>
                             </div>
@@ -109,7 +109,16 @@
                             <div class="control-group">
                                 <label class="control-label" for="input01">Maximum Number of Convergence</label>
                                 <div class="controls">
-                                    <input id="input01" class="input-xlarge" type="text">
+                                    <input id="input01" class="input-xlarge maximum" type="text">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span11 offset1">                     
+                            <div class="control-group">
+                                <label class="control-label" for="input01">Mutation rate</label>
+                                <div class="controls">
+                                    <input id="input01" class="input-xlarge mutation" type="text">
 
                                 </div>
                             </div>
@@ -119,7 +128,7 @@
 
                     <div id="id_btexecute" class="span1"> 
 
-                        <a class="btn btn-large btn-primary">Execute</a>
+                        <a class="btn btn-large btn-primary bt_execute">Execute</a>
 
                     </div>
                     <!--Div para a plot-->
@@ -240,6 +249,13 @@
                     }
                 });  
 
+            });
+            $('.bt_execute').click(function(){
+                var population = $('.population').val();
+                var maximum = $('.maximum').val();
+                var mutation = $('.mutation').val();
+                var data=  { "population" : population, "maximum": maximum, "mutation":mutation }
+                socket.emit("start", data);
             });
         </script>
 
