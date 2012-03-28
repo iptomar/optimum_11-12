@@ -85,12 +85,11 @@
             <hr class="soften">
 
             <div class="marketing">
-                <h1>Designed for everyone, everywhere.</h1>
-                <p class="marketing-byline">Need reasons to love Bootstrap? Look no further.</p>
+              
                 <div class="row">
                     <div class="jumbotron masthead">
                         <img class="bs-icon" src="assets/img/glyphicons/glyphicons_042_group.png">
-                        <h2>Built for and by nerds</h2>
+                        <h2>Get your best population</h2>
                         <p style="text-align: center;">
                             <a class="btn btn-primary btn-large">Execute</a> </p>
                     </div>
@@ -179,7 +178,10 @@
         <script>
             var socket = io.connect('cloudglare.com',{port:90});
             socket.on('news', function (data) {
-                $(".jumbotron").append(data);
+                jQuery.each(data, function(i, val) {
+  $(".jumbotron").append("<p>" + i + " = " + val + "</p>");
+});
+               // $(".jumbotron").append("<p> id = " + data.id + "</p><p> name = " + data.name + '</p>');
                 console.log(data);
                 //socket.emit('my other event', { my: 'asdas' });
             });
