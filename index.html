@@ -77,7 +77,7 @@
             <!-- Masthead
             ================================================== -->
             <header class="jumbotron masthead">
-                <figure style="width:90%;margin-top:-15px;float:left;text-align: center;">
+                <figure style="width:90%;margin-top:45px;float:left;text-align: center;">
                     <img style="" src="assets/img/server.png" />
                 </figure>
                 <div class="inner">
@@ -91,20 +91,40 @@
             <div class="marketing">
 
                 <div class="row">
+
+
                     <div class="jumbotron masthead">
                         <img class="bs-icon" src="assets/img/glyphicons/glyphicons_042_group.png">
                         <h2>Get your best population</h2>
-                        <p style="text-align: center;">
-                            <a class="btn btn-primary btn-large">Execute</a> </p>
+                        <div class="span11 offset1">
+                            <div class="control-group">
+                                <label class="control-label" for="input01">Population</label>
+                                <div class="controls">
+                                    <input id="input01" class="input-xlarge" type="text">
 
-                        <!--Div para a plot-->
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="span11 offset1">                     
+                            <div class="control-group">
+                                <label class="control-label" for="input01">Maximum Number of Convergence</label>
+                                <div class="controls">
+                                    <input id="input01" class="input-xlarge" type="text">
 
-                        <div id="chart2" style="height:300px; width:500px;"></div>
-
-
-
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
+
+                    <div id="id_btexecute" class="span1"> 
+
+                        <a class="btn btn-large btn-primary">Execute</a>
+
+                    </div>
+                    <!--Div para a plot-->
+
+                    <div id="chart2" style="height:300px; width:500px;"></div>
                 </div><!--/row-->
 
             </div><!-- /.marketing -->
@@ -126,7 +146,7 @@
                 <div class="span2 offset4">
                     <h3>Follow us</h3>
                     <ul class="pontos">
-                        <li class="follow_color">Twitter</li>
+                        <li style="font-family: arial; font-size: 14px;">Twitter</li>
                         <li>Google +</li>
                         <li>Facebook</li>
                         <li>LinkedIn</li>
