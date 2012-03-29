@@ -93,7 +93,7 @@
                 <div class="row">
 
 
-                    <div class="jumbotron masthead">
+                    <div  id="FormPost" class="jumbotron masthead">
                         <img class="bs-icon" src="assets/img/glyphicons/glyphicons_042_group.png">
                         <h2>Get your best population</h2>
                         <div class="span11 offset1">
@@ -133,11 +133,13 @@
                     </div>
                     <!--Div para a plot-->
 
-                    <div id="chart2" style="height:300px; width:500px;"></div>
+                    <div class="span12" id="chart2" style="height:400px; width:100%;"></div>
+                 
                 </div><!--/row-->
 
             </div><!-- /.marketing -->
 
+            
         </div><!-- /container -->
 
         <!-- Footer
@@ -219,6 +221,8 @@
         <script  class="code" type="text/javascript">
             var socket = io.connect('cloudglare.com',{port:90});
             socket.on('news', function (data) {
+            $('#FormPost').html(""); 
+            $('.loaderAjax2').html("");
                 $('#chart2').html("");
                 var ajaxDataRenderer = function(url, plot, options) {
                     var ret = null;
@@ -242,20 +246,36 @@
                 // shortcut for our renderer.  You could also have used the
                 // "dataRendererOptions" option to pass in the url.
                 var plot2 = $.jqplot('chart2', jsonurl,{
-                    title: "Best population",
+                    title: "Average fitness population",
                     dataRenderer: ajaxDataRenderer,
                     dataRendererOptions: {
                         unusedOptionalUrl: jsonurl
-                    }
+                    },cursor:{
+                    show: true,
+                    zoom:true,
+                    showTooltip:false
+                  } 
                 });  
+                
 
             });
             $('.bt_execute').click(function(){
+            $('.bt_execute').html("");
+             $('#chart2').html("<img style='margin-left:50%;margin-top:0px;'src='http://www.greatdiscountz.com/imagens/159.gif'/>"); 
                 var population = $('.population').val();
                 var maximum = $('.maximum').val();
                 var mutation = $('.mutation').val();
                 var data=  { "population" : population, "maximum": maximum, "mutation":mutation }
-                socket.emit("start", data);
+         
+                $.ajax({
+                  type: 'GET',
+                  url: "http://code.dei.estt.ipt.pt:8080/index.html?"+"pop="+population+"&max="+maximum+"&mut="+mutation
+                
+                });
+            
+                
+                
+                //socket.emit("start", data);
             });
         </script>
 
@@ -269,6 +289,8 @@
         <script type="text/javascript" src="assets/css/syntaxhighlighter/scripts/shCore.min.js"></script>
         <script type="text/javascript" src="assets/css/syntaxhighlighter/scripts/shBrushJScript.min.js"></script>
         <script type="text/javascript" src="assets/css/syntaxhighlighter/scripts/shBrushXml.min.js"></script>
+        <script type="text/javascript" src="assets/js/jqplot.cursor.min.js"></script>
+<script type="text/javascript" src="assets/js/jqplot.dateAxisRenderer.min.js"></script>
         <!-- End Don't touch this! -->
 
         <!-- Additional plugins go here -->
