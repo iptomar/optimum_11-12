@@ -98,42 +98,16 @@
                         <h2>Get your best population</h2>
                         <div class="span11 offset1">
                             <div class="control-group">
-                                <label class="control-label" for="input01">Population</label>
+                                <label class="control-label" for="input01">Itera</label>
                                 <div class="controls">
                                     <input id="input01" class="input-xlarge population" type="text">
-
                                 </div>
                             </div>
-                        </div> 
-                        <div class="span11 offset1">                     
-                            <div class="control-group">
-                                <label class="control-label" for="input01">Maximum Number of Convergence</label>
-                                <div class="controls">
-                                    <input id="input01" class="input-xlarge maximum" type="text">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="span11 offset1">                     
-                            <div class="control-group">
-                                <label class="control-label" for="input01">Mutation rate</label>
-                                <div class="controls">
-                                    <input id="input01" class="input-xlarge mutation" type="text">
-
-                                </div>
-                            </div>
-                        </div>
-
+                        </div>     
                     </div>
 
-                    <div id="id_btexecute" class="span1"> 
-
-                        <a class="btn btn-large btn-primary bt_execute">Execute</a>
-
-                    </div>
-
-                    <div style="margin-left:70px;" class="tabbable tabs-left">
-                        <ul class="nav nav-tabs">
+                    <div style="margin-left:130px;" class="tabbable tabs-left">
+                        <ul style="margin-top: 10px;" class="nav nav-tabs">
                             <li class="active">
                                 <a data-toggle="tab" href="#lA">K50</a>
                             </li>
@@ -165,12 +139,21 @@
                                 <p>26, 10, 13, 39, 34, 43, 52, 24, 27, 17, 35, 47, 18, 25, 8, 35, 36, 36, 21, 16, 27, 26, 34, 15, 12, 35, 40, 47, 14, 55, 28, 40, 51, 51, 8, 41, 28, 20, 11, 42, 11, 23, 49, 13, 54, 49, 40, 18, 45, 13, 28, 12, 51, 4, 15, 48, 33, 43, 32, 39, 36, 7, 44, 11, 45, 36, 27, 52, 33, 11, 27, 6, 22, 52, 36, 7, 45, 13, 17, 52, 19, 47, 15, 38, 35, 23, 16, 15, 30, 42, 34, 34, 39, 21, 18, 37, 41, 13, 48, 36</p>
                             </div>
                             <div id="lC" class="tab-pane">
-                                <p>Submit file</p>
+                                <label class="control-label" for="fileInput">File input</label>
+                                    <div class="controls">
+                                        <input id="fileInput" class="input-file" type="file">
+                                    </div>
                             </div>
                             
                         </div>
                     </div>
 
+                     <div id="id_btexecute" class="span1"> 
+
+                        <a class="btn btn-large btn-primary bt_execute">Execute</a>
+
+                    </div>
+                    
                     <!--Div para a plot-->
 
                     <div class="span12" id="chart2" style="height:400px; width:100%;"></div>
