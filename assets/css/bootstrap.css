@@ -13,7 +13,7 @@ details,
 figcaption,
 figure,
 footer,
-header,
+header,tab-content
 hgroup,
 nav,
 section {
@@ -2690,7 +2690,7 @@ input[type="submit"].btn.btn-mini {
 }
 .tab-content {
     display: table;
-    width: 100%;
+    width: 80%;
 }
 .tabs-below .nav-tabs,
 .tabs-right .nav-tabs,
