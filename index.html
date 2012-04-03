@@ -167,13 +167,12 @@
                             <div id="lC" class="tab-pane">
                                 <p>Submit file</p>
                             </div>
-                            
+
                         </div>
                     </div>
 
                     <!--Div para a plot-->
-
-                    <div class="span12" id="chart2" style="height:400px; width:100%;"></div>
+                    <div class="span12" id="chart_div" style="height:400px; width:100%;"></div>
 
                 </div><!--/row-->
 
@@ -258,9 +257,77 @@
         <script src="assets/js/bootstrap-typeahead.js"></script>
         <script src="assets/js/application.js"></script>
         <script src="http://cloudglare.com:90/socket.io/socket.io.js"></script>
-        <script  class="code" type="text/javascript">
+        <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+            google.load('visualization', '1', {packages: ['corechart']});
+        </script>
+
+        <script class="code" type="text/javascript">
             var socket = io.connect('cloudglare.com',{port:90});
-            socket.on('news', function (data) {
+            
+            $(document).ready(function(){
+                var teste = new Array();
+                var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+                var data = new google.visualization.DataTable();
+                var itera = 0;
+                var showitera = 0;
+                var totalitera = 0;
+                var options = {
+                    title: 'Company Performance',      
+                    width: 800,
+                    height: 340,
+                    animation:{
+                        duration: 1000,
+                        easing: 'out'
+                    },
+                    vAxis: {minValue:0, maxValue:10}
+                };
+                function drawChart(){
+                  
+                }
+                
+                data.addColumn('string', 'Iter');
+                data.addColumn('number', 'Res');
+                    
+                chart.draw(data, options); 
+             
+                var intervalo = window.setInterval(function() {
+                      if(itera > 0){
+                        data.addRows([
+                            [""+(showitera+0), parseFloat(teste[showitera+0])],
+                            [""+(showitera+1), parseFloat(teste[showitera+1])],
+                            [""+(showitera+2), parseFloat(teste[showitera+2])],
+                            [""+(showitera+3), parseFloat(teste[showitera+3])],
+                            [""+(showitera+4), parseFloat(teste[showitera+4])]
+                        ]);
+                        showitera = showitera + 5;
+                        chart.draw(data,options);
+                        if(totalitera != 0 && showitera >= totalitera){
+                        window.clearInterval(intervalo);
+                    }
+                    }
+                    
+                    
+                }, 1500);
+                
+                
+                socket.on('newtry', function (dados) {
+                    // console.log(dados);
+                    teste[itera] = dados;
+                    itera = itera + 1;
+                    
+                });
+                socket.on('total', function (dados) {
+                    // console.log(dados);
+                   totalitera = dados;
+                    
+                });
+            });
+           
+           
+        
+            
+            /* socket.on('news', function (data) {
                 $('#FormPost').html(""); 
                 $('.loaderAjax2').html("");
                 $('#chart2').html("");
@@ -298,7 +365,11 @@
                 });  
                 
 
-            });
+            });*/
+
+            
+           
+            
             $('.bt_execute').click(function(){
                 $('.btn btn-large btn-primary bt_execute').html("");
                 $('#chart2').html("<img style='margin-left:50%;margin-top:0px;'src='http://www.greatdiscountz.com/imagens/159.gif'/>"); 
