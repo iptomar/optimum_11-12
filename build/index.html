@@ -26,13 +26,14 @@
 
         <!-- Le fav and touch icons -->
         <link rel="shortcut icon" href="assets/ico/favicon.ico">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/logo_inspiration_114.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/logo_inspiration_72.png">
-        <link rel="apple-touch-icon-precomposed" href="assets/ico/logo_inspiration_57.png">
-
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
     </head>
 
     <body data-spy="scroll" data-target=".subnav" data-offset="50">
+
+
 
         <!-- Navbar
           ================================================== -->
@@ -141,9 +142,16 @@
                                 <label class="control-label" for="fileInput">File input</label>
                                     <div class="controls">
                                     
-                                     <!--id  tem o caminho do ficheiro no servidor , primeiro tenho que passar para o servidor-->
+                                     <!--id  tem o caminho do ficheiro no servidor , primeiro tenho que passar para o servidor
                                         
-                                        <input id="fileInput" class="input-file" type="file">
+                                        <input id="fileInput" class="input-file" type="file">-->
+										
+										<form enctype="multipart/form-data" action="uploadFile.php" method="post">
+										<input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+										Send this file: <input name="userfile" type="file" />
+										<input type="submit" value="Send File" />
+										</form>
+										
                                     </div>
                             </div>
 
