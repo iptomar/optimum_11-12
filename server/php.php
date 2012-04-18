@@ -114,7 +114,7 @@ class qqFileUploader {
     /**
      * Returns array('success'=>true) or array('error'=>'error message')
      */
-    function handleUpload($uploadDirectory, $replaceOldFile = FALSE) {
+    function handleUpload($uploadDirectory, $replaceOldFile = TRUE) {
         if (!is_writable($uploadDirectory)) {
             return array('error' => "Server error. Upload directory isn't writable.");
         }
@@ -161,7 +161,7 @@ class qqFileUploader {
 }
 
 // list of valid extensions, ex. array("jpeg", "xml", "bmp")
-$allowedExtensions = array();
+$allowedExtensions = array("txt");
 // max file size in bytes
 $sizeLimit = 10 * 1024 * 1024;
 
