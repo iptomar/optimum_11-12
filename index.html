@@ -140,12 +140,12 @@
                                 <p>26, 10, 13, 39, 34, 43, 52, 24, 27, 17, 35, 47, 18, 25, 8, 35, 36, 36, 21, 16, 27, 26, 34, 15, 12, 35, 40, 47, 14, 55, 28, 40, 51, 51, 8, 41, 28, 20, 11, 42, 11, 23, 49, 13, 54, 49, 40, 18, 45, 13, 28, 12, 51, 4, 15, 48, 33, 43, 32, 39, 36, 7, 44, 11, 45, 36, 27, 52, 33, 11, 27, 6, 22, 52, 36, 7, 45, 13, 17, 52, 19, 47, 15, 38, 35, 23, 16, 15, 30, 42, 34, 34, 39, 21, 18, 37, 41, 13, 48, 36</p>
                             </div>
                             <div id="lC" class="tab-pane">
-                                <label class="control-label" for="fileInput">File input</label>
+                                <label class="control-label" for="fileInput"> File input</label>
                                 <!--   <div class="controls">-->
 
                                 <!--id  tem o caminho do ficheiro no servidor , primeiro tenho que passar para o servidor-->
 
-                                <div id="file-uploader-demo1">		
+                                <div id="fileUploader">		
                                     <noscript>			
                                     <p>Please enable JavaScript to use file uploader.</p>
                                     <!-- or put a simple form for upload here -->
@@ -156,8 +156,9 @@
                                 <script>        
                                     function createUploader(){            
                                         var uploader = new qq.FileUploader({
-                                            element: document.getElementById('file-uploader-demo1'),
+                                            element: document.getElementById('fileUploader'),
                                             action: 'server/php.php'
+                                            
                                         });           
                                     }
         
