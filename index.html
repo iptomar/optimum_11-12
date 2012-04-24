@@ -139,15 +139,15 @@
                                 <label class="control-label" style="font-size: 18px; font-weight:bold;">Selection</label>
                                 <div class="controls">
                                     <label class="radio">
-                                        <input data-val=1 id="Roleta" type="radio" checked="" value="option1" name="optionsSelection">
+                                        <input data-val=1 data-class="selection" id="Roleta" type="radio" checked="" value="option1" name="optionsSelection">
                                         Roleta
                                     </label>
                                     <label class="radio">
-                                        <input data-val=2 id="SUS" type="radio" value="option2" name="optionsSelection">
+                                        <input data-val=1 data-class="selection" id="SUS" type="radio" value="option2" name="optionsSelection">
                                         SUS
                                     </label>
                                     <label class="radio">
-                                        <input data-val=1 id="Tour" type="radio" value="option3" name="optionsSelection">
+                                        <input data-val=2 data-class="selection" id="Tour" type="radio" value="option3" name="optionsSelection">
                                         Tournament
                                     </label>
                                 </div>
@@ -159,7 +159,7 @@
                                 <label class="control-label" style="font-size: 18px; font-weight:bold;">Mutation</label>
                                 <div class="controls">
                                     <label class="radio">
-                                        <input id="Flipbit" type="radio" checked="" value="option1" name="optionsMutation">
+                                        <input id="Flipbit" data-val=1 data-class="mutation" type="radio" checked="" value="option1" name="optionsMutation">
                                         Flipbit
                                     </label>
                                 </div>
@@ -171,11 +171,11 @@
                                 <label class="control-label" style="font-size: 18px; font-weight:bold;">Combination</label>
                                 <div class="controls">
                                     <label class="radio">
-                                        <input id="Crossover" type="radio" checked="" value="option1" name="optionsCombination">
+                                        <input id="Crossover" data-val=0 data-class="combination" type="radio" checked="" value="option1" name="optionsCombination">
                                         Crossover
                                     </label>
                                     <label class="radio">
-                                        <input id="UnitanCrossover" type="radio" value="option2" name="optionsCombination">
+                                        <input id="UnitanCrossover" data-val=0 data-class="combination" type="radio" value="option2" name="optionsCombination">
                                         Unitan Crossover
                                     </label>
                                 </div>
@@ -187,22 +187,22 @@
                                 <label class="control-label" style="font-size: 18px; font-weight:bold;">Replacement</label>
                                 <div class="controls">
                                     <label class="radio">
-                                        <input id="Tournament" type="radio" checked="" value="option1" name="optionsReplacement">
+                                        <input id="Tournament" data-val=2 data-class="replacement" type="radio" checked="" value="option1" name="optionsReplacement">
                                         Tournament
                                     </label>
                                     <label class="radio">
-                                        <input id="Truncation" type="radio" value="option2" name="optionsReplacement">
+                                        <input id="Truncation" data-val=1 data-class="replacement" type="radio" value="option2" name="optionsReplacement">
                                         Truncation
                                     </label>
                                 </div>
                             </div>
                         </div>
-                        <div class="span12">
-                            <div class="span3 selection"></div>
-                            <div class="span3 mutation"></div>
-                            <div class="span3 combination"></div>
-                            <div class="span3 replacement"></div>
-                        </div>
+                        <span class="span12"></span>
+                        <div class="span3 selection" style="height:100px;">&nbsp;</div>
+                            <div class="span3 mutation" style="height:100px;">&nbsp;</div>
+                            <div class="span3 combination" style="height:100px;">&nbsp;</div>
+                            <div class="span3 replacement" style="height:100px;">&nbsp;</div>
+                        
                     </div>
                     <div class="span12">
 
@@ -453,8 +453,24 @@
 
             });*/
 
+            $('input:radio:checked') // Find all the input elements under those.
+            .each(function(i) {
+                var n = $(this).attr('data-val');
+                var class_n = $(this).attr('data-class');
+                if(n != 0)$("."+class_n).html("");
+                for(var a = 0;a < n; a++){
+                    $("."+class_n).append('<input type="text" name="val'+a+'"/>');
+                }
+            });
             
-           
+            $('input:radio').click(function(){
+                 var n = $(this).attr('data-val');
+                var class_n = $(this).attr('data-class');
+                if(n != 0)$("."+class_n).html("");
+                for(var a = 0;a < n; a++){
+                    $("."+class_n).append('<input type="text" name="val'+a+'"/>');
+                }
+            });
             
             $('.bt_execute').click(function(){
                 $('.btn btn-large btn-primary bt_execute').html("");
