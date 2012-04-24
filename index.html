@@ -114,9 +114,9 @@
                                     <div class="control-group">
                                         <label class="control-label" for="inputRest">Penalty</label>
                                         <div class="controls">
-                                             <input id="inputPenalty" class="input-xlarge" type="text">
+                                            <input id="inputPenalty" class="input-xlarge" type="text">
                                         </div>
-                                       
+
                                     </div>
                                 </fieldset>
                             </form> 
@@ -132,23 +132,23 @@
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="inputBest">Best</label>
-                                            <div class="controls">
-                                                <input id="inputBest" class="input-xlarge" type="text">
-                                            </div>
+                                        <div class="controls">
+                                            <input id="inputBest" class="input-xlarge" type="text">
+                                        </div>
                                     </div>
-                                    
-                                     <div class="control-group">
+
+                                    <div class="control-group">
                                         <label class="control-label" for="inputRest2">Mode</label>
                                         <div class="controls">
-                                             <select id="mode">
-                                            <option value="1">Penalty</option>
-                                            <option value="2">Pseudo-random</option>
-                                            <option value="3">Random</option>
+                                            <select id="mode">
+                                                <option value="1">Penalty</option>
+                                                <option value="2">Pseudo-random</option>
+                                                <option value="3">Random</option>
                                             </select>
                                         </div>
-                                       
+
                                     </div>
-                                    
+
                                 </fieldset>
                             </form>
                         </div>
@@ -186,7 +186,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
 
                         <div class="span3">
                             <div class="control-group">
@@ -203,7 +203,7 @@
                                 </div>
                             </div>
                         </div>
-                       
+
                         <div class="span3">
                             <div class="control-group">
                                 <label class="control-label" style="font-size: 18px; font-weight:bold;">Replacement</label>
@@ -246,11 +246,11 @@
                                 <li data-name="knapSack">
                                     <a data-toggle="tab" href="#lD">knapSack</a>
                                 </li>
-                              
+
                             </ul>
                             <div class="tab-content">
-                                 <div id="lA" class="tab-pane active" >
-                                  OneMax
+                                <div id="lA" class="tab-pane active" >
+                                    OneMax
                                 </div>
                                 <div id="lB" class="tab-pane" >
                                     <h2>K50</h2>
@@ -498,7 +498,7 @@
                     });
                     return params;
                 };
-                 // get params from replacement
+                // get params from replacement
                 function getReplacement(){
                     var params = [];
                     var counter = 0;
@@ -543,7 +543,7 @@
                             break;
                         case 'OneMax':
                             finalArray = "0";
-                        break;
+                            break;
                     }
                    
                     
@@ -574,8 +574,13 @@
                         lenght: finalArray.length,
                         data: finalArray 
                     }
-                    alert(JSON.stringify(problem).replace(/"/g, ''));
-                    //socket.emit("start", data);
+                    var dados = JSON.stringify(problem).replace(/"/g, '');
+                    $.ajax({
+                        type: 'GET',
+                                   url: "socket.php?"+"teste="+dados
+                            });
+                    
+                    
                 });
                 
             
