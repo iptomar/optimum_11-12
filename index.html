@@ -43,6 +43,7 @@
                     $('#textLogin').html("");
                     var nome = readCookie('nome').split(" ");
                     $('#textLogin').append("Olá "+nome[0]);
+                    $('#LiLogin a').attr("href","myarea.html");
                     $('#loginButton').css("background-image", "url('assets/img/myArea_03_03.png')");
                 }
             });
@@ -321,15 +322,17 @@
 
                         </div>
                     </div>
-                    <div class="span12" >
+                    <div style="margin-top:30px;" class="span6" >
                         <h2 style="padding-top: 7px;"><span class="titleRequest">Best and Avarage</span></h2>
+                        <div  id="chart_div"></div>
                     </div>
-                    <div class="span12" id="chart_div" style="height:400px; width:100%;"></div>
+                   
 
-                    <div class="span12" >
-                        <h2 style="padding-top: 7px;"><span class="titleRequest">Num of Best and Deviation</span></h2>
+                    <div style="margin-top:30px;" class="span6" >
+                        <h2  style="padding-top: 7px;"><span class="titleRequest">Num of Best and Deviation</span></h2>
+                        <div  id="chart_div_numbest"></div>
                     </div>
-                    <div class="span12" id="chart_div_numbest" style="height:400px; width:100%;"></div>
+                    
 
                     <div class="span12" >
                         <h2 style="padding-top: 7px;"><span class="titleRequest">String</span></h2>
@@ -412,10 +415,10 @@
                     <h3>Best value</h3>
                 </div>
                 <div class="modal-body">
-                    ?
+                    It's necessary execute your solution.
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" id="close" name="close" style="margin-left: 2%" class="btn btn-success">Close</button> 
+                    <button type="button" id="close" name="close" style="margin-left: 2%" class="btn btn-success">Close</button> 
                 </div>  
             </div>
         </form>
@@ -522,7 +525,7 @@
                 var totalitera = 0;
                 var options = {
                     title: 'Params',      
-                    width: 800,
+                    width: 630,
                     height: 340,
                     animation:{
                         duration: 1000,
@@ -546,7 +549,7 @@
                 var totaliteraNumBest  = 0;
                 var optionsNumBest  = {
                     title: 'NumBest',      
-                    width: 800,
+                    width: 630,
                     height: 340,
                     animation:{
                         duration: 1000,
@@ -618,6 +621,7 @@
                         createCookie('idClient',dados[0].idClient,1);
                         var nome = readCookie('nome').split(" ");
                         $('#textLogin').append("Olá "+nome[0]);
+                        $('#LiLogin a').attr("href","myarea.html");
                         $('#loginButton').css("background-image", "url('assets/img/myArea_03_03.png')");
                         $('#myModalLoginUser').modal('hide');
                         // Botao Logout
@@ -671,11 +675,9 @@
                 // Botao que mostra o modal Login
                 $("#menu_buttons_Login").click(
                 function () {
-                    //if(readCookie('name')!=null){   
-                    //window.location = 'myarea.html';
-                    //}else{
-                    $('#myModalLoginUser').modal('show');
-                    //}
+                    if(readCookie('nome')==null){   
+                        $('#myModalLoginUser').modal('show');
+                    }
                 });
                 
                           
@@ -864,21 +866,18 @@
                     }
                     
                     //get param from div
-                    if(readCookie('id_client')!=null){
-                        createCookie('id_client',(randomCliente),1);
+                    if(readCookie('idClient')!=null){                  
                         createCookie('id_problem',(randomProblem),1);
-                    }else{
-                        eraseCookie('id_client');
+                    }else{           
                         eraseCookie('id_problem');
-                        createCookie('id_client',(randomCliente),1);
                         createCookie('id_problem',(randomProblem),1);
                     }
                     // create json array
                     var problem = []
                     problem = {
                         type: typeArray,
-                        id: (randomCliente),
-                        client: (randomProblem),
+                        id: (randomProblem),
+                        client: readCookie('idClient'),
                         selection: getSelection(),
                         mutation: getMutation(),
                         recombination: getCombination(),
@@ -894,6 +893,7 @@
                         data: finalArray 
                     }
                     var dados = JSON.stringify(problem).replace(/"/g, '');
+                    socket.emit("start", dados);
                     $.ajax({
                         type: 'GET',
                                    url: "socket.php?"+"teste="+dados
