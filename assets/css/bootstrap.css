@@ -3997,3 +3997,21 @@ to {
     margin-left: 50%;
     float:none;
 }
+
+.loginButton{
+    position: fixed;
+    left:0px;
+    margin-top: 35px;
+    width:33px;
+    height:110px;
+    color:white;
+    font-family: "SegoeWP";
+    font-weight:lighter;
+    margin-top:155px;
+    opacity: 1;
+}
+
+.loginButton:hover{
+    opacity: 0.8;
+    cursor:pointer;
+}
