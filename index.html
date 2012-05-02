@@ -30,10 +30,27 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/logo_inspiration_72.png">
         <link rel="apple-touch-icon-precomposed" href="assets/ico/logo_inspiration_57.png">
 
+        <script src="assets/js/cookies.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script class="code" type="text/javascript">
+            $(document).ready(function(){
+                //Verifica se tem login ou não para mostrar botao correspondnt
+                if(readCookie('nome')!=null){
+                    $('#LiRegist').html("");
+                    $('#LiRegist').append("<a href='#Logoutuser' id='LogoutUser' ><i style='margin-top: 4px;'   class='icon-off'></i> Logout</a>");
+                    $('.logo_image').css("margin-right", "120px");
+                    $('#textLogin').html("");
+                    var nome = readCookie('nome').split(" ");
+                    $('#textLogin').append("Olá "+nome[0]);
+                    $('#loginButton').css("background-image", "url('assets/img/myArea_03_03.png')");
+                }
+            });
+        </script>
     </head>
 
     <body data-spy="scroll" data-target=".subnav" data-offset="50">
-
+        <a id="loginButton" class="loginButton" href="myarea.html">&nbsp;</a>
         <!-- Navbar
           ================================================== -->
         <div class="navbar navbar-fixed-top">
@@ -44,12 +61,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <img style="float:left; margin:5px;margin-right:280px;" class="logo_image" src="assets/img/logo_inspiration.png">
+                    <img style="float:left; margin:5px; margin-left:0px;margin-right:170px;" class="logo_image" src="assets/img/logo_inspiration.png">
                     <div class="nav-collapse">
                         <ul class="nav nav-pills" style="margin-top:15px;">
                             <li class="active">
                                 <a href="./index.html"><i style="margin-top: 3px;" class="icon-home icon-white"></i> Home</a>
-
                             </li>
                             <li>
                                 <a href="./how_works.html"><i style="margin-top: 4px;" class="icon-star"></i> How works</a>
@@ -63,9 +79,14 @@
                             <li>
                                 <a href="./contacts.html"><i style="margin-top: 4px;" class="icon-eye-open"></i> Contacts</a>
                             </li>
-                            <li>
-                                <a href="./login.html"><i style="margin-top: 4px;" class="icon-user"></i> Login</a>
+
+                            <li id="LiLogin">
+                                <a href="#login"  id="menu_buttons_Login"><i style="margin-top: 4px;" class="icon-user"></i> <span id="textLogin">Login</span></a>
                             </li>
+                            <li id="LiRegist">
+                                <a href="#regist" id="menu_buttons_regist" ><i style="margin-top: 4px;"   class="icon-plus"></i> Regist</a>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -99,37 +120,37 @@
                         <div class="span5">
                             <form class="form-horizontal">
                                 <fieldset>
-                                  
-                                        <div class="control-group">
-                                            <label class="control-label" for="inputItera">Itera</label>
-                                            <div class="controls">
-                                                <input id="inputItera" value="1000" class="input-xlarge" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="control-group">
-                                            <label class="control-label" for="inputPop" >Pop</label>
-                                            <div class="controls">
-                                                <input id="inputPop" value="100" class="input-xlarge" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="control-group">
-                                            <label class="control-label" for="inputPop" >weight</label>
-                                            <div class="controls">
-                                                <input id="inputweight" value="50" class="input-xlarge" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="control-group">
-                                            <label class="control-label" for="inputRest">Penalty</label>
-                                            <div class="controls">
-                                               <select id="inputPenalty">
-                                                    <option value="1">Linear</option>
-                                                    <option value="2">Quadratic</option>
-                                                    <option value="3">Cubic</option>
-                                                </select>
-                                            </div>
 
+                                    <div class="control-group">
+                                        <label class="control-label" for="inputItera">Itera</label>
+                                        <div class="controls">
+                                            <input id="inputItera" value="1000" class="input-xlarge" type="text">
                                         </div>
-                              
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="inputPop" >Pop</label>
+                                        <div class="controls">
+                                            <input id="inputPop" value="100" class="input-xlarge" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="inputPop" >weight</label>
+                                        <div class="controls">
+                                            <input id="inputweight" value="50" class="input-xlarge" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="inputRest">Penalty</label>
+                                        <div class="controls">
+                                            <select id="inputPenalty">
+                                                <option value="1">Linear</option>
+                                                <option value="2">Quadratic</option>
+                                                <option value="3">Cubic</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
                                 </fieldset>
                             </form> 
                         </div>
@@ -151,7 +172,7 @@
                                     <div class="control-group">
                                         <label class="control-label" for="inputPop" ></label>
                                         <div class="controls">
-                                            
+
                                         </div>
                                     </div>
 
@@ -247,7 +268,6 @@
 
 
 
-
                     <div class="span12">
 
                         <div style="margin-left:130px;" class="tabbable tabs-left">
@@ -302,20 +322,20 @@
                         </div>
                     </div>
                     <div class="span12" >
-                                <h2 style="padding-top: 7px;"><span class="titleRequest">Best and Avarage</span></h2>
-                            </div>
+                        <h2 style="padding-top: 7px;"><span class="titleRequest">Best and Avarage</span></h2>
+                    </div>
                     <div class="span12" id="chart_div" style="height:400px; width:100%;"></div>
-                    
-                     <div class="span12" >
-                                <h2 style="padding-top: 7px;"><span class="titleRequest">Num of Best and Deviation</span></h2>
-                            </div>
+
+                    <div class="span12" >
+                        <h2 style="padding-top: 7px;"><span class="titleRequest">Num of Best and Deviation</span></h2>
+                    </div>
                     <div class="span12" id="chart_div_numbest" style="height:400px; width:100%;"></div>
-                    
-                     <div class="span12" >
-                                <h2 style="padding-top: 7px;"><span class="titleRequest">String</span></h2>
-                            </div>
+
+                    <div class="span12" >
+                        <h2 style="padding-top: 7px;"><span class="titleRequest">String</span></h2>
+                    </div>
                     <div class="span2 offset4" id="ResultEndString">
-                        
+
                         <button type="submit" id="resultEnd" name="resultEnd" style="margin-left: 2%" class="btn btn-success">See best value</button> 
                     </div>
 
@@ -325,20 +345,82 @@
 
 
         </div><!-- /container -->
+
+        <!-- Modal de registo -->
+        <form id="FormNewAccount" name="FormNewAccount" method="post" action="">
+            <div  class="modal hide fade" id="myModal">             
+                <div class="modal-header">
+                    <a href="" id="close" class="close" data-dismiss="modal">&times;</a>
+                    <h3>Regist your account</h3>
+                </div>
+                <div class="modal-body">
+                    <p style="margin-top: 10px">
+                        <span style="margin-left: 100px;" class="help-inline"><b>Name:</b></span>
+                        <input type="text" name="name" id="name" class="span3" placeholder="Insert your name">
+                    </p>
+                    <p>
+                        <span style="margin-left: 102px;" class="help-inline"><b>Email: </b></span>
+                        <input type="text" name="email" id="email" class="span3" placeholder="Insert your email">
+                    </p>
+                    <p>
+                        <span style="margin-left: 72px;" class="help-inline"><b>Password: </b></span>
+                        <input type="password" name="pass1" id="pass1" class="span3" placeholder="Insert your password">
+                    </p>
+                    <p>
+                        <span style="margin-left: 25px;" class="help-inline"><b>Retype password: </b></span>
+                        <input type="password" name="pass2" id="pass2" class="span3" placeholder="Retype your password">
+                    </p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" id="newAccount" style="margin-left: 15%" class="btn btn-primary">Create new account</button>
+                </div>  
+            </div>
+        </form>
+
+        <!-- Modal de login -->
+
+        <form id="FormLoginUser" name="FormLoginUser" method="post">
+            <div  class="modal hide fade" id="myModalLoginUser">             
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h3>Sign up</h3>
+                </div>
+                <div class="modal-body">
+                    <p style="margin-top: 30px">
+                        <span style="margin-left: 75px;" class="help-inline"><b>Email: </b></span>
+                        <input type="text" id="email2"  class="span3" placeholder="Insert your email">
+                    </p>
+                    <p>
+                        <span style="margin-left: 45px;" class="help-inline"><b>Password: </b></span>
+                        <input type="password"  id="pass12"  class="span3" placeholder="Insert your password">
+                    </p>
+                    <p style="margin-left: 120px"><a href="#">Forgot your password?</a></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="newAccount" name="newAccount" style="margin-left: 15%" class="btn btn-primary">Create new account</button>
+                    <button type="submit" id="sigin" name="sigin" style="margin-left: 2%" class="btn btn-success">Sign in</button> 
+                </div>  
+            </div>
+        </form>
+
+
+        <!-- Modal que mostra o resultado final -->
         <form id="FormLogin" name="FormLogin" method="post">
-                    <div  class="modal hide fade" id="myModalLogin">             
-                        <div class="modal-header">
-                            <a href="#" class="close" data-dismiss="modal">&times;</a>
-                            <h3>Best value</h3>
-                        </div>
-                        <div class="modal-body">
-                           ?
-                        </div>
-                        <div class="modal-footer">
-                           <button type="submit" id="close" name="close" style="margin-left: 2%" class="btn btn-success">Close</button> 
-                        </div>  
-                    </div>
-                </form>
+            <div  class="modal hide fade" id="myModalLogin">             
+                <div class="modal-header">
+                    <h3>Best value</h3>
+                </div>
+                <div class="modal-body">
+                    ?
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="close" name="close" style="margin-left: 2%" class="btn btn-success">Close</button> 
+                </div>  
+            </div>
+        </form>
+
+        <a class="close" data-dismiss="alert" href="#">&times;</a>
         <!-- Footer
          ================================================== -->
         <footer class="footer" style="background-color: #252525; ">
@@ -400,7 +482,7 @@
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
         <script src="assets/js/google-code-prettify/prettify.js"></script>
         <script src="assets/js/bootstrap-transition.js"></script>
         <script src="assets/js/bootstrap-alert.js"></script>
@@ -417,16 +499,20 @@
         <script src="assets/js/application.js"></script>
         <script src="http://cloudglare.com:90/socket.io/socket.io.js"></script>
         <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-        <script src="assets/js/cookies.js"></script>
+
+        <script src="assets/js/jqueryvalidate.js"></script>
+
         <script type="text/javascript">
             google.load('visualization', '1', {packages: ['corechart']});
         </script>
 
         <script class="code" type="text/javascript">
+           
+            
+            //criação de ligação node JS
             var socket = io.connect('cloudglare.com',{port:90});
             
-            $(document).ready(function(){
-                
+            $(document).ready(function(){  
                 //First Graph
                 var teste = new Array();
                 var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
@@ -452,7 +538,6 @@
                 chart.draw(data, options); 
                 
                 //SecoundGraph
-                
                 var testeNumBest = new Array();
                 var chartNumBest = new google.visualization.LineChart(document.getElementById('chart_div_numbest'));
                 var iteraNumBest = 0;
@@ -473,44 +558,203 @@
                 dataNumBest.addColumn('number','Deviation');
                 dataNumBest.addColumn('number','Num of Best');
                 dataNumBest.addRows([["0",0,0]]);
-                
                 chartNumBest.draw(dataNumBest, optionsNumBest); 
                 
+                /************************************************* *
+                 * Eventos definidos para ligação de node js       *
+                 ************************************************* */       
+                
+                // Evento que mostra em tempo real os dados vindos da powercomputing
                 socket.on('run', function (dados) {
                     if(readCookie('id_problem')==dados[0].idProblem){
                         data.addRows([[(dados[0].itera+1)+"",dados[0].globalAvarage,dados[0].globalBest]]);
-                        dataNumBest.addRows([[(dados[0].itera+1)+"",dados[0].globalDeviation,dados[0].globalNumBest]]  
-                    );
-                    chart.draw(data,options);
-                    chartNumBest.draw(dataNumBest, optionsNumBest); 
+                        dataNumBest.addRows([[(dados[0].itera+1)+"",dados[0].globalDeviation,dados[0].globalNumBest]]);
+                        chart.draw(data,options);
+                        chartNumBest.draw(dataNumBest, optionsNumBest); 
                     }else{
                       
                     }
                     
                 });
-            $("#resultEnd").click(function(){
-                $('#myModalLogin').modal('show');
-             
-            });
-            
-             $("#close").click(function(){
-                $('#myModalLogin').modal('hide');
-            });
-                 
+                
+                // Evento que mostra a string final do powercomputing
                 socket.on('end', function (dadosEND) {
-                    if(readCookie('id_problem')==dadosEND.idProblem){
-                      $('#ResultEndString').html("");
-                      $('#myModalLogin').modal('show');
-                      $('.modal-body').html("");
-                      $('.modal-body').append("<p>Max Best: "+dadosEND.dados[0].max_best+"</p><p>Atribute: "+dadosEND.dados[0].attribute +" </p>");                        
+                    if(readCookie('id_problem')==dadosEND.idProblem){//Fechar Modal que mostra o resultado final            
+                        $('#ResultEndString').html("");
+                        $('#myModalLogin').modal('show');
+                        $('.modal-body').html("");
+                        $('.modal-body').append("<p>Max Best: "+dadosEND.dados[0].max_best+"</p><p>Atribute: "+dadosEND.dados[0].attribute +" </p>");                        
+
                     }else{
                       
                     }
                     
                 });
-                 
+                
+                // Evento que mostra o resultado do registo
+                socket.on('registResult', function (dados) {
+                    if(dados == 'ok'){
+                        $('.modal-body').html("");
+                        $('.modal-body').append("<table><tr><td rowspan='3'><img style='margin-right: 20px;margin-left:25px' src='assets/img/1335984882_success.png'></td></tr><tr><td>Confime o seu registo através do link enviado para o seu email.</td></tr><tr><td>Caso não encontre a mensagem, verifique a sua caixa de spam.</td></tr>");
+                        $('.modal-footer').html("");
+                        $('.modal-footer').append("<button type='submit' id='closeModalRegist' name='close' style='margin-left: 2%' class='btn btn-success'>Close</button>");
+                        //$('#myModalLogin').modal('hide');
+                        $("#closeModalRegist").click(function(){
+                            $('#myModal').modal('hide');
+                        });
+                    }else {
+                        //$('#myModalLogin').modal('hide');  
+                    }  
+                });
+                
+                // Evento que mostra o resultado do login
+                socket.on('loginResult', function (dados) {
+                    if(dados!='error'){
+                        $('#LiRegist').html("");
+                        $('#LiRegist').append("<a href='#Logoutuser' id='LogoutUser' ><i style='margin-top: 4px;'   class='icon-off'></i> Logout</a>");
+                        $('.logo_image').css("margin-right", "120px");
+                        $('#textLogin').html("");
+                        createCookie('nome',dados[0].nome,1);
+                        createCookie('idClient',dados[0].idClient,1);
+                        var nome = readCookie('nome').split(" ");
+                        $('#textLogin').append("Olá "+nome[0]);
+                        $('#loginButton').css("background-image", "url('assets/img/myArea_03_03.png')");
+                        $('#myModalLoginUser').modal('hide');
+                        // Botao Logout
+                        $("#LogoutUser").click(
+                        function () { 
+                            eraseCookie('nome');
+                            eraseCookie('idClient');
+                            $('#LiRegist').html("");
+                            $('#LiRegist').append("<a href='#regist' id='menu_buttons_regist' ><i style='margin-top: 4px;'   class='icon-plus'></i> Regist</a>");
+                            $('#LiLogin').html("");
+                            $('#LiLogin').append("<a href='#login'  id='menu_buttons_Login'><i style='margin-top: 4px;' class='icon-user'></i> <span id='textLogin'>Login</span></a>");
+                            $('#loginButton').css("visibility","hidden");
+                            window.location="/";
+                        });  
+                    }
+                    else
+                    {
+                        alert('Verify your data');
+                    }
+                });
+                
+                
+                var pathname = window.location.pathname;
+
+                //alert(pathname);
+                var string =pathname; 
+                //alert(string.substring(2, 5));
+                
+                /************************************************* *
+                 * Modal's existentes no index                     *
+                 ************************************************* */        
+                
+                //Modal que mostra o resultado final
+                $("#resultEnd").click(function(){
+                    $('#myModalLogin').modal('show');
+                });
+                
+                //Fechar todos os modals
+                $("#close").click(function(){
+                    $('#myModalLoginUser').modal('hide');
+                    $('#myModal').modal('hide');
+                    $('#myModalLogin').modal('hide');
+                });
                 
                
+                // Botao que mostra o modal Regist
+                $("#menu_buttons_regist").click(function(){
+                    $('#myModal').modal('show'); 
+                });
+    
+                // Botao que mostra o modal Login
+                $("#menu_buttons_Login").click(
+                function () {
+                    //if(readCookie('name')!=null){   
+                    //window.location = 'myarea.html';
+                    //}else{
+                    $('#myModalLoginUser').modal('show');
+                    //}
+                });
+                
+                          
+                /************************************************* *
+                 * Funções despoletadas pelo user                  *
+                 ************************************************* */  
+                //Botão que emite novo registo de utilizador.
+                
+                $("#newAccount").click(function(){
+                    $("#FormNewAccount").validate({
+                        rules: {
+                            name: "required", 
+                            email: "required",
+                            pass1: { required: true }, 
+                            pass2: { required: true,equalTo: "#pass1"},
+                            email: {
+                                required: true,
+                                email: true
+                            }
+                        },
+                        messages: {
+                            name: "",
+                            pass1: {
+                                required: "",
+                                minlength: "A password tem de ter mais de 5 caracteres"
+                            },
+                            pass2: {
+                                required: "",
+                                minlength: "A password tem de ter mais de 5 caracteres.",
+                                equalTo: "As passwords não coincidem."
+                            },
+                            email: ""       
+                        },
+                        submitHandler: function(form) {
+                                     var data =  { "name" : $('#name').val(), "email": $('#email').val(), "pass": $('#pass1').val()};
+                                                socket.emit("registAccount", data);
+                        }    
+                    });           
+                });
+
+                
+                // Botao que submet Login
+                $("#sigin").click(
+                function () { 
+                    $("#FormLoginUser").validate({
+                        rules: {
+                            email: "",
+                            pass1: { required: true }
+                        },
+                        messages: {
+                            email: "",
+                            pass1: {
+                                required: "",
+                                minlength: "A password tem de ter mais de 5 caracteres"
+                            }              
+                        },
+                        submitHandler: function(FormLoginUser) {
+                            var data =  { "email" : $('#email2').val(), "password": $('#pass12').val()};
+                            socket.emit("LoginAccount", data);
+                        }    
+                    });                                   
+                });
+                // Botao Logout
+                $("#LogoutUser").click(
+                function () { 
+                    eraseCookie('nome');
+                    eraseCookie('idClient');
+                    $('#LiRegist').html("");
+                    $('#LiRegist').append("<a href='#regist' id='menu_buttons_regist' ><i style='margin-top: 4px;'   class='icon-plus'></i> Regist</a>");
+                    $('#LiLogin').html("");
+                    $('#LiLogin').append("<a href='#login'  id='menu_buttons_Login'><i style='margin-top: 4px;' class='icon-user'></i> <span id='textLogin'>Login</span></a>");
+                    $('#loginButton').css("visibility","hidden");
+                    window.location="/";
+                });        
+                /************************************************* *
+                 * Origem dos dados do problema a resolver         *
+                 * botão que emite o pedido a power computing      *
+                 ************************************************* */  
+          
                 // input from client
                 $('input:radio:checked') // Find all the input elements under those.
                 .each(function(i) {
@@ -588,8 +832,7 @@
                 };
                 
                 $('.bt_execute').click(function(){     
-                    //create random id             
-                   
+                    //create random id                  
                     var newDate = new Date;
                     var randomCliente = Math.round((newDate.getTime())/10000);
                 
@@ -619,6 +862,7 @@
                             finalArray = "0";
                             break;
                     }
+                    
                     //get param from div
                     if(readCookie('id_client')!=null){
                         createCookie('id_client',(randomCliente),1);
@@ -668,17 +912,15 @@
         <!-- Don't touch this! -->
 
 
-        <script class="include" type="text/javascript" src="assets/js/jquery.jqplot.min.js"></script>
+
         <script type="text/javascript" src="assets/css/syntaxhighlighter/scripts/shCore.min.js"></script>
         <script type="text/javascript" src="assets/css/syntaxhighlighter/scripts/shBrushJScript.min.js"></script>
         <script type="text/javascript" src="assets/css/syntaxhighlighter/scripts/shBrushXml.min.js"></script>
-        <script type="text/javascript" src="assets/js/jqplot.cursor.min.js"></script>
-        <script type="text/javascript" src="assets/js/jqplot.dateAxisRenderer.min.js"></script>
+
         <!-- End Don't touch this! -->
 
         <!-- Additional plugins go here -->
 
-        <script class="include" language="javascript" type="text/javascript" src="assets/js/plugins/jqplot.json2.min.js"></script>
 
         <!-- End additional plugins -->
         <!--END scrypts para a plot-->
