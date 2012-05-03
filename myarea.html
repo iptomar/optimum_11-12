@@ -13,11 +13,7 @@
         <link href="assets/css/docs.css" rel="stylesheet">
         <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
-        <!--css para a plot-->
-        <link class="include" rel="stylesheet" type="text/css" href="assets/css/jquery.jqplot.min.css" />
-        <link rel="stylesheet" type="text/css" href="assets/css/examples.min.css" />
-        <link type="text/css" rel="stylesheet" href="assets/css/syntaxhighlighter/styles/shCoreDefault.min.css" />
-        <link type="text/css" rel="stylesheet" href="assets/css/syntaxhighlighter/styles/shThemejqPlot.min.css" />
+
 
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
@@ -29,11 +25,27 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/logo_inspiration_114.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/logo_inspiration_72.png">
         <link rel="apple-touch-icon-precomposed" href="assets/ico/logo_inspiration_57.png">
+        <script src="assets/js/cookies.js"></script>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script class="code" type="text/javascript">
+            $(document).ready(function(){
+                //Verifica se tem login ou não para mostrar botao correspondnt
+                if(readCookie('nome')!=null){
+                    $('#LiRegist').html("");
+                    $('#LiRegist').append("<a href='#Logoutuser' id='LogoutUser' ><i style='margin-top: 4px;'   class='icon-off'></i> Logout</a>");
+                    $('.logo_image').css("margin-right", "120px");
+                    $('#textLogin').html("");
+                    var nome = readCookie('nome').split(" ");
+                    $('#textLogin').append("Olá "+nome[0]);
+                    $('#loginButton').css("background-image", "url('assets/img/myArea_03_03.png')");
+                }
+            });
+        </script>
     </head>
 
     <body data-spy="scroll" data-target=".subnav" data-offset="50">
-
+        <a id="loginButton" class="loginButton" href="myarea.html">&nbsp;</a>
         <!-- Navbar
           ================================================== -->
         <div class="navbar navbar-fixed-top">
@@ -44,15 +56,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <img style="float:left; margin:5px;margin-right:280px;" class="logo_image" src="assets/img/logo_inspiration.png">
+                    <img style="float:left; margin:5px; margin-left:0px;margin-right:170px;" class="logo_image" src="assets/img/logo_inspiration.png">
                     <div class="nav-collapse">
                         <ul class="nav nav-pills" style="margin-top:15px;">
                             <li>
                                 <a href="./index.html"><i style="margin-top: 3px;" class="icon-home"></i> Home</a>
-
                             </li>
-                            <li class="active">
-                                <a href="./how_works.html"><i style="margin-top: 4px;" class="icon-star icon-white"></i> How works</a>
+                            <li>
+                                <a href="./how_works.html"><i style="margin-top: 4px;" class="icon-star"></i> How works</a>
                             </li>
                             <li>
                                 <a href="./implementation.html"><i style="margin-top: 4px;" class="icon-cog"></i> Implementation</a>
@@ -63,9 +74,14 @@
                             <li>
                                 <a href="./contacts.html"><i style="margin-top: 4px;" class="icon-eye-open"></i> Contacts</a>
                             </li>
-                            <li>
-                                <a href="./login.html"><i style="margin-top: 4px;" class="icon-user"></i> Login</a>
+
+                            <li class="active" id="LiLogin">
+                                <a href="#login"  id="menu_buttons_Login"><i style="margin-top: 4px;" class="icon-user icon-white"></i> <span id="textLogin">Login</span></a>
                             </li>
+                            <li id="LiRegist">
+                                <a href="#regist" id="menu_buttons_regist" ><i style="margin-top: 4px;"   class="icon-plus"></i> Regist</a>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -77,18 +93,18 @@
             <!-- Masthead
             ================================================== -->
             <header class="jumbotron masthead" style="margin-bottom: 20px;">
-                <div class="row" style="margin-top:40px;">
-                <div class="span1 offset2" >
-                    <figure style="margin-left:70px;margin-top:45px;float:left;text-align: center;"> 
-                        <img style="" src="assets/img/myarea.png" />
-                    </figure>
-                </div>
-                <div class="span6" style="margin-left:70px;margin-top:50px;">
-                    <div class="inner">
-                        <h1>my area</h1>
-
+                <div class="row" style="margin-top:-60px;">
+                    <div class="span1 offset2" >
+                        <figure style="margin-left:70px;margin-top:45px;float:left;text-align: center;"> 
+                            <img style="" src="assets/img/myarea.png" />
+                        </figure>
                     </div>
-                </div>
+                    <div class="span6" style="margin-left:70px;margin-top:50px;">
+                        <div class="inner">
+                            <h1>my area</h1>
+
+                        </div>
+                    </div>
                 </div>
 
             </header>
@@ -104,24 +120,56 @@
                         <img class="bs-icon" src="assets/img/glyphicons/glyphicons_042_group.png">
                         <h2 class="nome"></h2>
 
-                        <p style="text-align:left; color: black; font-size: 16px; font-weight: bold;">
-                            LifeInspiration:
-                        </p>
+                        <div style="margin-top:80px;" class="tabbable tabs-left">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a data-toggle="tab" href="#lA">account settings</a>
+                                </li>
+                                <li >
+                                    <a data-toggle="tab" href="#lB">your problems</a>
+                                </li>
 
-                        <p style="padding-left: 10px; text-align:left; color: black; font-size: 14px;">
-                            ... Texto ...
 
-                        </p>    
-
-
-                        <div class="span11 offset1">
-                            <div class="control-group">
-                                <label class="control-label" for="input01">Yours</label>
-                                <div class="controls">
-                                    <input id="input01" class="input-xlarge population" type="text">
+                            </ul>
+                            <div class="tab-content">
+                                <div id="lA" class="tab-pane active" >
+                                    <h2 style="margin-left:30px;margin-bottom: 20px;">Change your personal information</h2>
+                                    <form>
+                                        <p style="font-size:14px;margin-top: 10px;text-align: left;">
+                                            <span style="margin-left: 100px;" class="help-inline"><b>Name:</b></span>
+                                            <input type="text" name="name" id="name" class="span3" placeholder="Insert your name">
+                                        </p>
+                                        <p style="font-size:14px;text-align: left;">
+                                            <span style="margin-left: 102px;" class="help-inline"><b>Email: </b></span>
+                                            <input type="text" name="email" id="email" class="span3" placeholder="Insert your email">
+                                        </p>
+                                        <p style="font-size:14px;text-align: left;">
+                                            <span style="margin-left: 42px;" class="help-inline"><b>New Password: </b></span>
+                                            <input type="password" name="pass1" id="pass1" class="span3" placeholder="Insert your password">
+                                        </p>
+                                        <p style="font-size:14px;text-align: left;">
+                                            <span style="margin-left: 25px;" class="help-inline"><b>Retype Password: </b></span>
+                                            <input type="password" name="pass2" id="pass2" class="span3" placeholder="Retype your password">
+                                        </p>
+                                    </form>
                                 </div>
+                                <div id="lB" class="tab-pane ">
+                                    <h2 style="margin-left:30px;margin-bottom: 20px;">Your Problem history</h2>
+                                    <div id="problems" class="span4">
+                                        
+                                    </div>
+                                    <div id="resultados" class="span8">
+                                        
+                                    </div>
+                                </div>
+
+
                             </div>
-                        </div>     
+                        </div>
+
+
+
+
                     </div>
 
 
@@ -198,7 +246,6 @@
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script src="assets/js/google-code-prettify/prettify.js"></script>
         <script src="assets/js/bootstrap-transition.js"></script>
         <script src="assets/js/bootstrap-alert.js"></script>
@@ -213,7 +260,6 @@
         <script src="assets/js/bootstrap-carousel.js"></script>
         <script src="assets/js/bootstrap-typeahead.js"></script>
         <script src="assets/js/application.js"></script>
-        <script src="assets/js/cookies.js"></script>
         <script src="http://cloudglare.com:90/socket.io/socket.io.js"></script>
         <script type="text/javascript" src="http://www.google.com/jsapi"></script>
         <script type="text/javascript">
@@ -222,131 +268,39 @@
 
         <script class="code" type="text/javascript">
             var socket = io.connect('cloudglare.com',{port:90});
+            var data = {"idClient":readCookie('idClient')}
+            socket.emit("getUserData",data);
             
-            $(document).ready(function(){
-                $('.nome').html("welcome, " + readCookie('nome'));
-                var teste = new Array();
-                var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-                var data = new google.visualization.DataTable();
-                var itera = 0;
-                var showitera = 0;
-                var totalitera = 0;
-                var options = {
-                    title: 'Company Performance',      
-                    width: 800,
-                    height: 340,
-                    animation:{
-                        duration: 1000,
-                        easing: 'out'
-                    },
-                    vAxis: {minValue:0, maxValue:10}
-                };
-                function drawChart(){
-                  
-                }
-                
-                data.addColumn('string', 'Iter');
-                data.addColumn('number', 'Res');
-                    
-                chart.draw(data, options); 
-             
-                var intervalo = window.setInterval(function() {
-                    if(itera > 0){
-                        data.addRows([
-                            [""+(showitera+0), parseFloat(teste[showitera+0])],
-                            [""+(showitera+1), parseFloat(teste[showitera+1])],
-                            [""+(showitera+2), parseFloat(teste[showitera+2])],
-                            [""+(showitera+3), parseFloat(teste[showitera+3])],
-                            [""+(showitera+4), parseFloat(teste[showitera+4])]
-                        ]);
-                        showitera = showitera + 5;
-                        chart.draw(data,options);
-                        if(totalitera != 0 && showitera >= totalitera){
-                            window.clearInterval(intervalo);
-                        }
-                    }
-                    
-                    
-                }, 1500);
-                
-                
-                socket.on('newtry', function (dados) {
-                    // console.log(dados);
-                    teste[itera] = dados;
-                    itera = itera + 1;
-                    
-                });
-                socket.on('total', function (dados) {
-                    // console.log(dados);
-                    totalitera = dados;
-                    
+            
+            socket.on('getUserDataResult', function (dados) {
+                $('#name').val(dados[0].nome);
+                $('#email').val(dados[0].email);
+                $('#pass1').val("");
+                $('#pass2').val("");
+            });
+            var data = {"idClient":readCookie('idClient')}
+            socket.emit("getUserProblems",data);
+            
+            socket.on('getUserProblemsResult', function (data) {
+               
+                $.each(data, function(i, item) {
+                    $("#problems").append("<div data-id='"+data[i].idProblem +"' class='box_group'><figure class='box_image'><img src='assets/img/box.png' /></figure><p class='box_name' style='font-size:13px;text-align:left;line-height:20px;'><b>ID Problema</b>: "+data[i].idProblem+"</p><p class='box_schudule' style='font-size:13px;text-align:left;line-height:20px;'><b>Data e Hora</b>: "+ data[i].time +"</p></div>");
                 });
             });
-           
+            
+         
+                
+         
+            $(document).ready(function(){  
+                $(".nome").html("welcome, "+ readCookie('nome'));
+            });
            
         
-            
-            /* socket.on('news', function (data) {
-                $('#FormPost').html(""); 
-                $('.loaderAjax2').html("");
-                $('#chart2').html("");
-                var ajaxDataRenderer = function(url, plot, options) {
-                    var ret = null;
-                    $.ajax({
-                        // have to use synchronous here, else the function 
-                        // will return before the data is fetched
-                        async: false,
-                        url: url,
-                        dataType:"json",
-                        success: function(data) {
-                            ret = data;
-  
-                        }
-                    });
-                    return ret;
-                };
-                // The url for our json data
-                var jsonurl = "./jsondata.txt";
-
-                // passing in the url string as the jqPlot data argument is a handy
-                // shortcut for our renderer.  You could also have used the
-                // "dataRendererOptions" option to pass in the url.
-                var plot2 = $.jqplot('chart2', jsonurl,{
-                    title: "Average fitness population",
-                    dataRenderer: ajaxDataRenderer,
-                    dataRendererOptions: {
-                        unusedOptionalUrl: jsonurl
-                    },cursor:{
-                        show: true,
-                        zoom:true,
-                        showTooltip:false
-                    } 
-                });  
-                
-
-            });*/
-
+           
             
            
             
-            $('.bt_execute').click(function(){
-                $('.btn btn-large btn-primary bt_execute').html("");
-                $('#chart2').html("<img style='margin-left:50%;margin-top:0px;'src='http://www.greatdiscountz.com/imagens/159.gif'/>"); 
-                var population = $('.population').val();
-                var maximum = $('.maximum').val();
-                var mutation = $('.mutation').val();
-                var data=  { "population" : population, "maximum": maximum, "mutation":mutation }
-         
-                $.ajax({
-                    type: 'GET',
-                    url: "http://code.dei.estt.ipt.pt:8080/index.html?"+"pop="+population+"&max="+maximum+"&mut="+mutation
-                
-                });
             
-                
-                
-                //socket.emit("start", data);
-            });
         </script>
 
         <!--scrypts para a plot-->
@@ -355,17 +309,13 @@
         <!-- Don't touch this! -->
 
 
-        <script class="include" type="text/javascript" src="assets/js/jquery.jqplot.min.js"></script>
+
         <script type="text/javascript" src="assets/css/syntaxhighlighter/scripts/shCore.min.js"></script>
         <script type="text/javascript" src="assets/css/syntaxhighlighter/scripts/shBrushJScript.min.js"></script>
         <script type="text/javascript" src="assets/css/syntaxhighlighter/scripts/shBrushXml.min.js"></script>
-        <script type="text/javascript" src="assets/js/jqplot.cursor.min.js"></script>
-        <script type="text/javascript" src="assets/js/jqplot.dateAxisRenderer.min.js"></script>
         <!-- End Don't touch this! -->
 
         <!-- Additional plugins go here -->
-
-        <script class="include" language="javascript" type="text/javascript" src="assets/js/plugins/jqplot.json2.min.js"></script>
 
         <!-- End additional plugins -->
         <!--END scrypts para a plot-->

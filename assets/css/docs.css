@@ -846,3 +846,35 @@ form.well {
     }
 
 }
+.box_image{
+    float:left;
+    margin:0;
+    padding:0;
+}
+.box_name{
+        float: left;
+    font-size: 16px;
+margin-left:10px;
+width:200px;
+}
+.box_group{
+    width:300px;
+    float:left; 
+}
+.box_group:hover{
+    cursor:pointer;
+}
+.box_address{
+    width:200px;
+       float: left;
+       margin-top:-6px;
+       margin-left:10px;
+    font-size: 13px;
+}
+.box_schudule{
+    width:200px;
+    float: left;
+    margin-left:10px;
+    margin-top:-10px;
+    font-size: 11px;
+}
