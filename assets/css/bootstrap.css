@@ -4015,3 +4015,14 @@ to {
     opacity: 0.8;
     cursor:pointer;
 }
+
+.AllResults{
+    height: 5px;
+    display: none;
+}
+
+.geralInput{margin-top: 20px;}
+
+#closeResultFinal:hover{cursor: pointer}
+
+#closeVerifyModal:hover{cursor: pointer}

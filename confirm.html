@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Life Inspiration</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Le styles -->
+        <link href="assets/css/bootstrap.css" rel="stylesheet">
+        <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="assets/css/docs.css" rel="stylesheet">
+        <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+        <!--css para a plot-->
+        <link class="include" rel="stylesheet" type="text/css" href="assets/css/jquery.jqplot.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/examples.min.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/syntaxhighlighter/styles/shCoreDefault.min.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/syntaxhighlighter/styles/shThemejqPlot.min.css" />
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <!-- Le fav and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/logo_inspiration_114.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/logo_inspiration_72.png">
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/logo_inspiration_57.png">
+
+        <script src="assets/js/cookies.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+
+    </head>
+
+    <body data-spy="scroll" data-target=".subnav" data-offset="50">
+        <a id="loginButton" class="loginButton" href="myarea.html">&nbsp;</a>
+        <!-- Navbar
+          ================================================== -->
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <img style="float:left; margin:5px; margin-left:0px;margin-right:170px;" class="logo_image" src="assets/img/logo_inspiration.png">
+                    <div class="nav-collapse">
+                        <ul class="nav nav-pills" style="margin-top:15px;">
+                            <li class="active">
+                                <a href="./index.html"><i style="margin-top: 3px;" class="icon-home icon-white"></i> Home</a>
+                            </li>
+                            <li>
+                                <a href="./how_works.html"><i style="margin-top: 4px;" class="icon-star"></i> How works</a>
+                            </li>
+                            <li>
+                                <a href="./implementation.html"><i style="margin-top: 4px;" class="icon-cog"></i> Implementation</a>
+                            </li>
+                            <li>
+                                <a href="./feedback.html"><i style="margin-top: 4px;" class="icon-tags"></i> Feedback</a>
+                            </li>
+                            <li>
+                                <a href="./contacts.html"><i style="margin-top: 4px;" class="icon-eye-open"></i> Contacts</a>
+                            </li>
+
+                            <li id="LiLogin">
+                                <a href="#login"  id="menu_buttons_Login"><i style="margin-top: 4px;" class="icon-user"></i> <span id="textLogin">Login</span></a>
+                            </li>
+                            <li id="LiRegist">
+                                <a href="#regist" id="menu_buttons_regist" ><i style="margin-top: 4px;"   class="icon-plus"></i> Regist</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <!-- Masthead
+            ================================================== -->
+            <header class="jumbotron masthead">
+                <figure style="width:90%;margin-top:45px;float:left;text-align: center;">
+                    <img style="" src="assets/img/server.png" />
+                </figure>
+                <div class="inner">
+                    <h1>confirmation account</h1>
+
+            </header>
+
+
+            <div class="marketing">
+
+                <div class="row">
+
+                </div><!--/row-->
+
+            </div><!-- /.marketing -->
+
+            <!-- Modal que mostra o resultado final -->
+            <div  class="modal hide fade" id="myModalConfirmAccount">             
+                <div class="modal-header">
+                    <h3>Your account has been confirmed</h3>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <tr>
+                            <td rowspan='3'>
+                                <img style='margin-right: 20px;margin-left:25px' src='assets/img/1335984882_success.png'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Thanks for your confirmation.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Now will be redirect to our home page.</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                </div> 
+           </div>  
+
+    </div><!-- /container -->
+    <!-- Footer
+     ================================================== -->
+    <footer class="footer" style="background-color: #252525; ">
+        <div class="container">
+            <div style="padding-left: 0%;" class="row">
+                <div class="span5">
+                    <h3>LifeInspiration</h3>
+                    <p style="padding-left: 10px; color: white;">
+
+                        Life Inspiration help our clients to resolve hard engineer problems with 
+                        big compute processing.
+                    </p>
+                </div>
+                <div class="span2 offset4">
+                    <h3>Follow us</h3>
+                    <ul class="the-icons">
+                        <li><img style="margin-left: 10px; margin-top: -5px;" src="assets/img/twitter_icon.png" />  Twitter</li>
+                        <li><img style="margin-left: 10px; margin-top: -5px;" src="assets/img/google_icon.png" />  Google +</li>
+                        <li><img style="margin-left: 10px; margin-top: -5px;" src="assets/img/face_icon.png" />  Facebook</li>
+                        <li><img style="margin-left: 10px; margin-top: -5px;" src="assets/img/linked_icon.png" />  LinkedIn</li>
+                    </ul>
+                </div>
+            </div> 
+            <div style="margin-bottom: 5px;" class="row">
+                <div class="span12">
+                    <h3>Teams</h3>
+                </div>
+            </div>
+
+            <div style="padding-left: 0%;" class="row">
+                <div class="span3">
+                    <img style="margin-right:5px;" src="assets/img/pw.png">Optimum Computing
+                </div>
+                <div class="span3">
+                    <img style="margin-right:5px;" src="assets/img/pw.png">Inovative Mind
+                </div>
+                <div class="span3">
+                    <img style="margin-right:5px;" src="assets/img/pw.png">Genetic Lab
+                </div>
+                <div class="span3">
+                    <img style="margin-right:5px;" src="assets/img/pw.png">Power Computing
+                </div>
+            </div>
+
+            <div style="padding-left: 0%; margin-bottom: -25px;margin-top: 25px;" class="row">			
+                <div class="span3">
+                    <p style="font-size: 11px;">© Life Inspiration - 2012 All Rights Reserved.</p>
+                </div>
+                <div style="text-align: right;" class="span3 offset5">
+                    <p style="font-size: 11px;">IPT - Projecto de Sistemas de Informação</p>
+                </div>
+            </div>
+        </div>          
+    </footer>
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script src="assets/js/bootstrap-transition.js"></script>
+    <script src="assets/js/bootstrap-alert.js"></script>
+    <script src="assets/js/bootstrap-modal.js"></script>
+    <script src="assets/js/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/bootstrap-tab.js"></script>
+    <script src="assets/js/bootstrap-tooltip.js"></script>
+    <script src="assets/js/bootstrap-popover.js"></script>
+    <script src="assets/js/bootstrap-button.js"></script>
+    <script src="assets/js/bootstrap-collapse.js"></script>
+    <script src="assets/js/bootstrap-carousel.js"></script>
+    <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/application.js"></script>
+    <script src="http://cloudglare.com:90/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
+    <script src="assets/js/jqueryvalidate.js"></script>
+
+    <script type="text/javascript">
+        google.load('visualization', '1', {packages: ['corechart']});
+    </script>
+
+    <script class="code" type="text/javascript">
+            //criação de ligação node JS
+            var socket = io.connect('cloudglare.com',{port:90});
+            
+            $(document).ready(function(){  
+                //Get data from url, for can make confirmation of new account
+                var urlParams = {};
+                (function () {
+                    var e,
+                    a = /\+/g,  // Regex for replacing addition symbol with a space
+                    r = /([^&=]+)=?([^&]*)/g,
+                    d = function (s) { return decodeURIComponent(s.replace(a, " ")); },
+                    q = window.location.search.substring(1);
+
+                    while (e = r.exec(q))
+                        urlParams[d(e[1])] = d(e[2]);
+                })();
+
+
+                /************************************************* *
+                 * Eventos que recebe confirmação de registo       *
+                 ************************************************* */
+                var dadosConf = []
+                dadosConf = {
+                    email: urlParams["email"],
+                    id_confirmacao: (urlParams["id_confirmacao"])
+                };
+                
+                socket.emit("confirmAccount", dadosConf);
+                
+
+                // Evento que mostra em tempo real os dados vindos da powercomputing
+                socket.on('resultConfirmAccount', function (dados) {
+                    if(dados != 'error'){
+                        createCookie('nome',dados[0].nome,1);
+                        createCookie('idClient',dados[0].idClient,1);
+                        $('#myModalConfirmAccount').modal('show');
+                        setTimeout("location.href='/'", 600);
+                        $('#myModalConfirmAccount').modal('hide');
+                    }else{
+                      
+                    }   
+                });
+                
+            });
+    </script>
+    <!--scrypts para a plot-->
+    <!-- End example scripts -->
+
+    <!-- Don't touch this! -->
+    <script type="text/javascript" src="assets/css/syntaxhighlighter/scripts/shCore.min.js"></script>
+    <script type="text/javascript" src="assets/css/syntaxhighlighter/scripts/shBrushJScript.min.js"></script>
+    <script type="text/javascript" src="assets/css/syntaxhighlighter/scripts/shBrushXml.min.js"></script>
+
+    <!-- End Don't touch this! -->
+
+    <!-- Additional plugins go here -->
+
+
+    <!-- End additional plugins -->
+    <!--END scrypts para a plot-->
+
+</body>
+</html>
