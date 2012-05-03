@@ -131,7 +131,7 @@
 
 
                             </ul>
-                            <div class="tab-content">
+                            <div class="tab-content" style="width:85%;">
                                 <div id="lA" class="tab-pane active" >
                                     <h2 style="margin-left:30px;margin-bottom: 20px;">Change your personal information</h2>
                                     <form>
@@ -155,11 +155,35 @@
                                 </div>
                                 <div id="lB" class="tab-pane ">
                                     <h2 style="margin-left:30px;margin-bottom: 20px;">Your Problem history</h2>
-                                    <div id="problems" class="span4">
-                                        
+                                    <div id="problems" class="span3">
+
                                     </div>
-                                    <div id="resultados" class="span8">
-                                        
+                                    <div id="resultados" class="span7">
+                                        <img class="bs-icon" src="assets/img/glyphicons/glyphicons_042_group.png">
+                                        <h2 id="titleFirst">Get your best population</h2>
+                                        <div class="geralInput"></div>
+                                        <div class="AllResults" style="display: inline">
+                                            <div style="margin-left: 0px;margin-top:30px" class="span12">
+                                                <img class="bs-icon" src="assets/img/glyphicons/glyphicons_079_podium.png">
+                                                <h2 id="titleSecound">Getting data solution</h2>
+                                            </div>
+                                            <div style="margin-top:30px;" class="span6" >
+                                                <h2 style="padding-top: 7px;"><span class="titleRequest">Best and Avarage</span></h2>
+                                                <div  id="chart_div"></div>
+                                            </div>
+                                            <div style="margin-top:30px;" class="span6" >
+                                                <h2  style="padding-top: 7px;"><span class="titleRequest">Num of Best and Deviation</span></h2>
+                                                <div  id="chart_div_numbest"></div>
+                                            </div>
+
+                                            <div class="span12" >
+                                                <h2 style="padding-top: 7px;"><span class="titleRequest">String</span></h2>
+                                            </div>
+                                            <div class="span2 offset1" style="margin-bottom: 20px;" id="ResultEndString">
+
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -270,7 +294,8 @@
             var socket = io.connect('cloudglare.com',{port:90});
             var data = {"idClient":readCookie('idClient')}
             socket.emit("getUserData",data);
-            
+             var allPenaltys =["null","Linear","Quadratic","Cubic"];
+                var allMode =["null","Penalty","Pseudo-Random","Random"];
             
             socket.on('getUserDataResult', function (dados) {
                 $('#name').val(dados[0].nome);
@@ -280,19 +305,103 @@
             });
             var data = {"idClient":readCookie('idClient')}
             socket.emit("getUserProblems",data);
-            
+            var selectedProblem;
             socket.on('getUserProblemsResult', function (data) {
-               
                 $.each(data, function(i, item) {
                     $("#problems").append("<div data-id='"+data[i].idProblem +"' class='box_group'><figure class='box_image'><img src='assets/img/box.png' /></figure><p class='box_name' style='font-size:13px;text-align:left;line-height:20px;'><b>ID Problema</b>: "+data[i].idProblem+"</p><p class='box_schudule' style='font-size:13px;text-align:left;line-height:20px;'><b>Data e Hora</b>: "+ data[i].time +"</p></div>");
                 });
+                $('.box_group').click(function(){
+                    
+                    selectedProblem = $(this).attr('data-id');
+                    var data = {'idClient': readCookie('idClient'), 'idProblem':selectedProblem};
+                    socket.emit('getProblemInfo',data);
+                    socket.emit('getCharts',data);
+                    socket.emit('getString',data);
+                });
             });
             
+            socket.on('getProblemInfoResult', function (data) {
+                var problem = data[0];
+                $(".geralInput").html("");
+                $(".geralInput").hide().append("<div class='span2'>ID Problem: "+problem['idProblem']+"</div><div class='span2'>Problem type: "+problem['type']+"</div><div class='span2'>Iterations: "+problem['iterations']+"</div><div class='span2'>Population: "+problem['pop']+"</div><div class='span2'>weight: "+problem['weight']+"</div><div class='span2'>Alello: "+problem['alello']+"</div><div class='span2'>Best: "+problem['best']+"</div><div class='span2'>Penalty type: "+allPenaltys[problem['penalty']]+"</div><div class='span2'>Penalty type: "+allMode[problem['mode']]+"</div>").fadeIn('slow');
+                $(".geralInput").hide().append("<div class='span2'>Selection: "+problem['selection']+"</div><div class='span2'>Mutation: "+problem['mutation']+"</div><div class='span2'>Recombination: "+problem['recombination']+"</div><div class='span2'>Replacement: "+problem['replacement']+"</div>");
+            });
          
-                
          
             $(document).ready(function(){  
                 $(".nome").html("welcome, "+ readCookie('nome'));
+                
+                //First Graph
+                var teste = new Array();
+                var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+                var itera = 0;
+                var data = new google.visualization.DataTable();
+                var showitera = 0;
+                var totalitera = 0;
+                var options = {
+                    title: 'Params',      
+                    width: 630,
+                    height: 340,
+                    animation:{
+                        duration: 1000,
+                        easing: 'out'
+                    }
+               
+                };
+                data.addColumn('string','Iter');
+                data.addColumn('number','Avarage');
+                data.addColumn('number','Best');
+                
+                data.addRows([["1",0,0]]);
+                chart.draw(data, options); 
+                
+                //SecoundGraph
+                var testeNumBest = new Array();
+                var chartNumBest = new google.visualization.LineChart(document.getElementById('chart_div_numbest'));
+                var iteraNumBest = 0;
+                var dataNumBest = new google.visualization.DataTable();
+                var showiteraNumBest  = 0;
+                var totaliteraNumBest  = 0;
+                var optionsNumBest  = {
+                    title: 'NumBest',      
+                    width: 630,
+                    height: 340,
+                    animation:{
+                        duration: 1000,
+                        easing: 'out'
+                    }
+               
+                };
+                dataNumBest.addColumn('string','Iter');
+                dataNumBest.addColumn('number','Deviation');
+                dataNumBest.addColumn('number','Num of Best');
+                dataNumBest.addRows([["1",0,0]]);
+                chartNumBest.draw(dataNumBest, optionsNumBest); 
+                       
+                socket.on('loadCharts', function (dados) {
+                    $.each(dados, function(i, item) {
+                        if(selectedProblem==dados[i].idProblem){
+                            data.addRows([[(dados[i].itera+1)+"",dados[i].globalAvarage,dados[i].globalBest]]);
+                            dataNumBest.addRows([[(dados[i].itera+1)+"",dados[i].globalDeviation,dados[i].globalNumBest]]);
+                            chart.draw(data,options);
+                            chartNumBest.draw(dataNumBest, optionsNumBest); 
+                        }else{
+                      
+                        }
+                    });
+                    
+                    
+                });
+                
+                
+                socket.on('loadString', function (dadosEND) {
+                    if(selectedProblem==dadosEND.idProblem){//Fechar Modal que mostra o resultado final            
+                        $('#ResultEndString').html("");
+                        $('#ResultEndString').append("<p style='font-size:13px;'>Max Best: "+dadosEND.dados[0].max_best+"</p><p style='font-size:13px;'>Atribute: "+dadosEND.dados[0].attribute +" </p>");                        
+                    }
+                });
+                
+                
             });
            
         
