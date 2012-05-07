@@ -126,7 +126,10 @@
                                     <a data-toggle="tab" href="#lA">account settings</a>
                                 </li>
                                 <li >
-                                    <a data-toggle="tab" href="#lB">your problems</a>
+                                    <a data-toggle="tab" href="#lB">contacts</a>
+                                </li>
+                                <li >
+                                    <a data-toggle="tab" href="#lC">your problems</a>
                                 </li>
 
 
@@ -151,9 +154,50 @@
                                             <span style="margin-left: 25px;" class="help-inline"><b>Retype Password: </b></span>
                                             <input type="password" name="pass2" id="pass2" class="span3" placeholder="Retype your password">
                                         </p>
+
                                     </form>
                                 </div>
-                                <div id="lB" class="tab-pane ">
+                                <div id="lB" class="tab-pane active" >
+                                    <h2 style="margin-left:30px;margin-bottom: 20px;">Contacts</h2>
+                                    <form class="span6">
+
+
+                                        <p style="font-size:14px;margin-top: 10px;text-align: left;">
+                                            <span style="margin-left: 100px;" class="help-inline"><b>Address:</b></span>
+                                            <input type="text" name="address1" id="address1" class="span3" placeholder="Insert your address 1">
+                                        </p> 
+                                        <p style="font-size:14px;margin-top: 10px;text-align: left;">
+                                            <span style="margin-left: 100px;" class="help-inline"><b>Address:</b></span>
+                                            <input type="text" name="address2" id="address2" class="span3" placeholder="Insert your address 2">
+                                        </p>
+                                        <p style="font-size:14px;margin-top: 10px;text-align: left;">
+                                            <span style="margin-left: 82px;" class="help-inline"><b>Phone One:</b></span>
+                                            <input type="text" name="phone1" id="phone1" class="span3" placeholder="Insert your phone one">
+                                        </p>
+                                        <p style="font-size:14px;text-align: left;">
+                                            <span style="margin-left: 83px;" class="help-inline"><b>Phone Two: </b></span>
+                                            <input type="text" name="phone2" id="phone2" class="span3" placeholder="Insert your phone two">
+                                        </p>
+                                        <p style="font-size:14px;text-align: left;">
+                                            <span style="margin-left: 98px;" class="help-inline"><b>Website: </b></span>
+                                            <input type="text" name="website" id="website" class="span3" placeholder="Insert your website">
+                                        </p>         
+                                    </form>
+                                    
+                                    <form class="span3">
+
+                                        <p style="font-size:14px;margin-top: 10px;text-align: left;">
+                                            <span style="margin-left: -69px;" class="help-inline"><b>City:</b></span>
+                                            <input type="text" name="city" id="city" class="span2" placeholder="Insert your city">
+                                        </p>
+                                        <p style="font-size:14px;margin-top: 10px;text-align: left;">
+                                            <span style="margin-left: -100px;" class="help-inline"><b>Zip Code:</b></span>
+                                            <input type="text" name="zipcode" id="zipcode" class="span2" placeholder="Insert your zip code">
+                                        </p>
+
+                                    </form>
+                                </div>
+                                <div id="lC" class="tab-pane ">
                                     <h2 style="margin-left:30px;margin-bottom: 20px;">Your Problem history</h2>
                                     <div id="problems" class="span3">
 
@@ -294,8 +338,8 @@
             var socket = io.connect('cloudglare.com',{port:90});
             var data = {"idClient":readCookie('idClient')}
             socket.emit("getUserData",data);
-             var allPenaltys =["null","Linear","Quadratic","Cubic"];
-                var allMode =["null","Penalty","Pseudo-Random","Random"];
+            var allPenaltys =["null","Linear","Quadratic","Cubic"];
+            var allMode =["null","Penalty","Pseudo-Random","Random"];
             
             socket.on('getUserDataResult', function (dados) {
                 $('#name').val(dados[0].nome);
