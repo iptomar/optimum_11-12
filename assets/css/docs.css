@@ -878,3 +878,60 @@ width:200px;
     margin-top:-10px;
     font-size: 11px;
 }
+.nav-list > li > a{
+    cursor:pointer;
+}
+.algorithm_info p{
+    font-size: 13px;
+    line-height: 18px;
+    font-family: "Helvetica";
+    text-align: left;
+    font-weight: normal;
+    margin: 0px;
+    padding: 0px;
+}
+.mutation_info p{
+    font-size: 13px;
+    line-height: 18px;
+    font-family: "Helvetica";
+    text-align: left;
+    font-weight: normal;
+    margin: 0px;
+    padding: 0px;
+}
+.operator_info p{
+    font-size: 13px;
+    line-height: 18px;
+    font-family: "Helvetica";
+    text-align: left;
+    font-weight: normal;
+    margin: 0px;
+    padding: 0px;
+}
+.recombination_info p{
+    font-size: 13px;
+    line-height: 18px;
+    font-family: "Helvetica";
+    text-align: left;
+    font-weight: normal;
+    margin: 0px;
+    padding: 0px;
+}
+.replacement_info p{
+    font-size: 13px;
+    line-height: 18px;
+    font-family: "Helvetica";
+    text-align: left;
+    font-weight: normal;
+    margin: 0px;
+    padding: 0px;
+}
+.selection_info p{
+    font-size: 13px;
+    line-height: 18px;
+    font-family: "Helvetica";
+    text-align: left;
+    font-weight: normal;
+    margin: 0px;
+    padding: 0px;
+}

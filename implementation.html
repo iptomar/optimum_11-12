@@ -31,6 +31,28 @@
                 width: 100%;
             }
         </style>
+        <script src="assets/js/cookies.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script class="code" type="text/javascript">
+            $(document).ready(function(){
+                
+                //Verifica se tem login ou não para mostrar botao correspondnt
+                if(readCookie('nome')!=null){
+                    $('#LiRegist').html("");
+                    $('#LiRegist').append("<a href='#Logoutuser' id='LogoutUser' ><i style='margin-top: 4px;'   class='icon-off'></i> Logout</a>");
+                    $('.logo_image').css("margin-right", "120px");
+                    $('#textLogin').html("");
+                    var nome = readCookie('nome').split(" ");
+                    $('#textLogin').append("Olá "+nome[0]);
+                    $('#LiLogin a').attr("href","myarea.html");
+                    $('#loginButton').css("background-image", "url('assets/img/myArea_03_03.png')");
+                }else{
+                  
+                    
+                }
+            });
+        </script>
     </head>
 
     <body data-spy="scroll" data-target=".subnav" data-offset="50">
@@ -45,12 +67,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <img style="float:left; margin:5px;margin-right:280px;" class="logo_image" src="assets/img/logo_inspiration.png">
+                    <img style="float:left; margin:5px; margin-left:0px;margin-right:170px;" class="logo_image" src="assets/img/logo_inspiration.png">
                     <div class="nav-collapse">
                         <ul class="nav nav-pills" style="margin-top:15px;">
                             <li>
                                 <a href="./index.html"><i style="margin-top: 3px;" class="icon-home"></i> Home</a>
-
                             </li>
                             <li>
                                 <a href="./how_works.html"><i style="margin-top: 4px;" class="icon-star"></i> How works</a>
@@ -64,9 +85,14 @@
                             <li>
                                 <a href="./contacts.html"><i style="margin-top: 4px;" class="icon-eye-open"></i> Contacts</a>
                             </li>
-                            <li>
-                                <a href="./login.html"><i style="margin-top: 4px;" class="icon-user"></i> Login</a>
+
+                            <li id="LiLogin">
+                                <a href="#login"  id="menu_buttons_Login"><i style="margin-top: 4px;" class="icon-user"></i> <span id="textLogin">Login</span></a>
                             </li>
+                            <li id="LiRegist">
+                                <a href="#regist" id="menu_buttons_regist" ><i style="margin-top: 4px;"   class="icon-plus"></i> Regist</a>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -77,13 +103,20 @@
 
             <!-- Masthead
             ================================================== -->
-            <header class="jumbotron masthead">
-                <figure style="width:90%;margin-top:45px;float:left;text-align: center;">
-                    <img style="" src="assets/img/server.png" />
-                </figure>
-                <div class="inner">
-                    <h1>Implementation</h1>
-                    <p>Life Inspiration helps our clients solving complex engineering problems with <br/> smart processing time</p>
+            <header class="jumbotron masthead" style="margin-bottom: 20px;">
+                <div class="row" style="margin-top:-60px;">
+                    <div class="span1 offset1" >
+                        <figure style="margin-left:10px;margin-top:45px;float:left;text-align: center;"> 
+                            <img style="" src="assets/img/myarea.png" />
+                        </figure>
+                    </div>
+                    <div class="span6" style="margin-left:130px;margin-top:50px;">
+                        <div class="inner">
+                            <h1>Implementation</h1>
+
+                        </div>
+                    </div>
+                </div>
 
             </header>
 
@@ -98,25 +131,244 @@
                         <img class="bs-icon" src="assets/img/glyphicons/glyphicons_042_group.png">
                         <h2>Implementation</h2>
 
-                        <p style="text-align:left; color: black; font-size: 16px; font-weight: bold;">
-                            LifeInspiration:
-                        </p>
 
-                        <div id="map_canvas"></div>
 
-                        <button class="pedirinfo">pedido</button>
+                        <!--<div id="map_canvas"></div>-->
 
-                        <div class="span11 offset1">
-                            <div class="control-group">
-                                <label class="control-label" for="input01">Yours</label>
-                                <div class="controls">
-                                    <input id="input01" class="input-xlarge population" type="text">
+
+
+
+
+                        <div style="margin-top:80px; margin-left: 50px;" class="tabbable tabs-left">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a data-toggle="tab" href="#lA">Algoritmos</a>
+                                </li>
+                                <li >
+                                    <a data-toggle="tab" href="#lB">Mutation</a>
+                                </li>
+                                <li >
+                                    <a data-toggle="tab" href="#lC">Operators</a>
+                                </li>
+                                <li >
+                                    <a data-toggle="tab" href="#lD">Recombination</a>
+                                </li>
+                                <li >
+                                    <a data-toggle="tab" href="#lE">Replacement</a>
+                                </li>
+                                <li >
+                                    <a data-toggle="tab" href="#lF">Selection</a>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content" style="width:85%;padding-left: 25px;">
+                                <div id="lA" class="tab-pane active" >
+                                    <div class="row">
+                                        <div class="well span3" style="padding: 8px;">
+                                            <ul class="nav nav-list algorithm_list">
+                                                <li class="nav-header">
+                                                    Algorithm List
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="span6">
+                                            <div class="well span6 algorithm_info_container" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Algorithm Information
+                                                    </li>
+                                                    <div class="algorithm_info"></div>
+                                                </ul>
+                                            </div>
+
+
+                                            <div class="well span6" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Algorithm Parameters
+                                                    </li>
+                                                    <li>
+                                                        <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="algorithm_params"/>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                <div id="lB" class="tab-pane" >
+                                    <div class="row">
+                                        <div class="well span3" style="padding: 8px;">
+                                            <ul class="nav nav-list mutation_list">
+                                                <li class="nav-header">
+                                                    Mutation List
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="span6">
+                                            <div class="well span6 mutation_info_container" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Mutation Information
+                                                    </li>
+                                                    <div class="mutation_info"></div>
+                                                </ul>
+                                            </div>
+
+                                            <div class="well span6" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Mutation Parameters
+                                                    </li>
+                                                    <li>
+                                                        <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="mutation_params"/>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="lC" class="tab-pane ">
+                                    <div class="row">
+                                        <div class="well span3" style="padding: 8px;">
+                                            <ul class="nav nav-list operators_list">
+                                                <li class="nav-header">
+                                                    Operators List
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="span6">
+                                            <div class="well span6 operators_info_container" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Operator Information
+                                                    </li>
+                                                    <div class="operator_info"></div>
+                                                </ul>
+                                            </div>
+
+                                            <div class="well span6" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Operator Parameters
+                                                    </li>
+                                                    <li>
+                                                        <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="operator_params"/>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="lD" class="tab-pane ">
+                                    <div class="row">
+                                        <div class="well span3" style="padding: 8px;">
+                                            <ul class="nav nav-list recombination_list">
+                                                <li class="nav-header">
+                                                    Recombination List
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="span6">
+                                            <div class="well span6 recombination_info_container" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Recombination Information
+                                                    </li>
+                                                    <div class="recombination_info"></div>
+                                                </ul>
+                                            </div>
+
+                                            <div class="well span6" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Recombination Parameters
+                                                    </li>
+                                                    <li>
+                                                        <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="recombination_params"/>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="lE" class="tab-pane ">
+                                    <div class="row">
+                                        <div class="well span3" style="padding: 8px;">
+                                            <ul class="nav nav-list replacement_list">
+                                                <li class="nav-header">
+                                                    Replacement List
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="span6">
+                                            <div class="well span6 replacement_info_container" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Replacement Information
+                                                    </li>
+                                                    <div class="replacement_info"></div>
+                                                </ul>
+                                            </div>
+
+                                            <div class="well span6" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Replacement Parameters
+                                                    </li>
+                                                    <li>
+                                                        <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="replacement_params"/>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+                                <div id="lF" class="tab-pane ">
+                                    <div class="row">
+                                        <div class="well span3" style="padding: 8px;">
+                                            <ul class="nav nav-list selection_list">
+                                                <li class="nav-header">
+                                                    Selection List
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="span6">
+                                            <div class="well span6 selection_info_container" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Selection Information
+                                                    </li>
+                                                    <div class="selection_info"></div>
+                                                </ul>
+                                            </div>
+
+                                            <div class="well span6" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Selection Parameters
+                                                    </li>
+                                                    <li>
+                                                        <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="selection_params"/>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                        </div>     
+                        </div>
+                        <div class="span12">
+                            <div class="span1" id="id_btexecute"> 
+                                <a class="btn btn-large btn-primary bt_execute">Execute</a>
+                                <div class="loaderAjax2"></div>
+                            </div>
+                        </div>
                     </div>
-
-
 
                     <!--Div para a plot-->
                     <!--<div class="span12" id="chart_div" style="height:400px; width:100%;"></div>-->
@@ -124,7 +376,64 @@
                 </div><!--/row-->
 
             </div><!-- /.marketing -->
+            <!-- Modal de registo -->
+            <form id="FormNewAccount" name="FormNewAccount" method="post" action="">
+                <div  class="modal hide fade" id="myModal">             
+                    <div class="modal-header">
+                        <a href="" id="close" class="close" data-dismiss="modal">&times;</a>
+                        <h3>Regist your account</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p style="margin-top: 10px">
+                            <span style="margin-left: 100px;" class="help-inline"><b>Name:</b></span>
+                            <input type="text" name="name" id="name" class="span3" placeholder="Insert your name">
+                        </p>
+                        <p>
+                            <span style="margin-left: 102px;" class="help-inline"><b>Email: </b></span>
+                            <input type="text" name="email" id="email" class="span3" placeholder="Insert your email">
+                        </p>
+                        <p>
+                            <span style="margin-left: 72px;" class="help-inline"><b>Password: </b></span>
+                            <input type="password" name="pass1" id="pass1" class="span3" placeholder="Insert your password">
+                        </p>
+                        <p>
+                            <span style="margin-left: 25px;" class="help-inline"><b>Retype password: </b></span>
+                            <input type="password" name="pass2" id="pass2" class="span3" placeholder="Retype your password">
+                        </p>
+                    </div>
 
+                    <div class="modal-footer">
+                        <button type="submit" id="newAccount" style="margin-left: 15%" class="btn btn-primary">Create new account</button>
+
+                    </div>  
+                </div>
+            </form>
+
+            <!-- Modal de login -->
+
+            <form id="FormLoginUser" name="FormLoginUser" method="post">
+                <div  class="modal hide fade" id="myModalLoginUser">             
+                    <div class="modal-header">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h3>Sign up</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p style="margin-top: 30px">
+                            <span style="margin-left: 75px;" class="help-inline"><b>Email: </b></span>
+                            <input type="text" id="email2"  class="span3" placeholder="Insert your email">
+                        </p>
+                        <p>
+                            <span style="margin-left: 45px;" class="help-inline"><b>Password: </b></span>
+                            <input type="password"  id="pass12"  class="span3" placeholder="Insert your password">
+                        </p>
+                        <p style="margin-left: 120px"><a href="#">Forgot your password?</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" id="newAccount" name="newAccount" style="margin-left: 15%" class="btn btn-primary">Create new account</button>
+                        <button type="submit" id="sigin" name="sigin" style="margin-left: 2%" class="btn btn-success">Sign in</button> 
+                    </div>  
+                </div>
+            </form>
 
         </div><!-- /container -->
 
@@ -190,8 +499,7 @@
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-        <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <!--<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>-->
         <script src="assets/js/google-code-prettify/prettify.js"></script>
         <script src="assets/js/bootstrap-transition.js"></script>
         <script src="assets/js/bootstrap-alert.js"></script>
@@ -205,8 +513,8 @@
         <script src="assets/js/bootstrap-collapse.js"></script>
         <script src="assets/js/bootstrap-carousel.js"></script>
         <script src="assets/js/bootstrap-typeahead.js"></script>
-        <script src="assets/js/jquery.ui.bmap.full.js"></script>
-        <script src="assets/js/jquery.ui.bmap.overlays.min.js"></script>
+        <!--<script src="assets/js/jquery.ui.bmap.full.js"></script>
+       <script src="assets/js/jquery.ui.bmap.overlays.min.js"></script>-->
         <script src="assets/js/application.js"></script>
         <script src="http://cloudglare.com:90/socket.io/socket.io.js"></script>
         <script type="text/javascript" src="http://www.google.com/jsapi"></script>
@@ -216,33 +524,176 @@
 
         <script class="code" type="text/javascript">
             var socket = io.connect('cloudglare.com',{port:90});
-            
+            var algorithms_info = new Array();
+            var mutation_info = new Array();
+            var operators_info = new Array();
+            var recombination_info = new Array();
+            var replacement_info = new Array();
+            var selection_info = new Array();
+            var selected_algorithm = "";
+            var selected_mutation = "";
+            var selected_operator = "";
+            var selected_recombination = "";
+            var selected_replacement = "";
+            var selected_selection ="";
             $(document).ready(function(){
-                $(".pedirinfo").click(function(){
+                $("#id_btexecute").click(function(){
+                    var algorithm_params = $('#algorithm_params').val();
+                    var mutation_params = $('#mutation_params').val();
+                    var operator_params = $('#operator_params').val();
+                    var recombination_params = $('#recombination_params').val();
+                    var replacement_params = $('#replacement_params').val();
+                    var selection_params = $('#selection_params').val();
+                    if(readCookie('idClient')!=null){                  
+                        createCookie('id_problem',(randomProblem),1);
+                    }else{           
+                        eraseCookie('id_problem');
+                        createCookie('id_problem',(randomProblem),1);
+                    }
+                    var newDate = new Date;
+                    var randomProblem = Math.round((newDate.getTime()+100)/10000);
+
+                    var data = {
+                        id: (randomProblem),
+                        client: readCookie('idClient'),
+                        algorithm: [selected_algorithm,algorithm_params],
+                        mutation: [selected_mutation,mutation_params],
+                        operator: [selected_operator,operator_params],
+                        recombination: [selected_recombination,recombination_params],
+                        replacement: [selected_replacement,replacement_params],
+                        selection: [selected_selection, selection_params]
+                    }
+                    
                     $.ajax({
                         type: 'GET',
-                        url: "socket.php?"+"teste=info"
+                                   url: "socket.php?"+"load="+JSON.stringify(data)
                     });
                 });
-                var polylinesCoords = ['20,-20', '-20,20'];
-                var polylinesCoords2 = ['-20,20','8,10']
-                $('#map_canvas').gmap({'credentials': "AvRFIWVYfuxh61kXl6M4fWm_1k3Ye3qpCmze9R9Qv_fn1mtJjcsmnB3Jb4KxO7wj", 'callback': function() {
-                        var self = this;
-                        
-                        self.addShape('Polyline', { 
-                            'paths': polylinesCoords, 
-                            'strokeColor': new Microsoft.Maps.Color(240, 180, 0, 130), 
-                            'strokeThickness': 5, 
-                            'strokeDashArray': '5 2' 
-                        });
-                        self.addShape('Polyline', { 
-                            'paths': polylinesCoords2, 
-                            'strokeColor': new Microsoft.Maps.Color(240, 180, 0, 130), 
-                            'strokeThickness': 5, 
-                            'strokeDashArray': '5 2' 
-                        });
-                    }});
+                $.ajax({
+                    type: 'GET',
+                    url: "socket.php?"+"teste=info"
+                });
+                socket.on('getInfo', function (data) {
+                    var all_info = JSON.parse(data);
+                    //read all algorithms types
+                    $.each(all_info.algorithms, function(i, item) {
+                        algorithms_info[all_info.algorithms[i][0]] = all_info.algorithms[i][1];
+                        if(i == 0){
+                            $('.algorithm_list').append("<li class='active'><a data-id='"+all_info.algorithms[i][0]+"'>"+all_info.algorithms[i][0]+"</a></li>");
+                            $('.algorithm_info').html("<div>"+algorithms_info[all_info.algorithms[i][0]]+"</div>");
+                            selected_algorithm = all_info.algorithms[i][0];
+                        }
+                        else{
+                            $('.algorithm_list').append("<li><a data-id='"+all_info.algorithms[i][0]+"'>"+all_info.algorithms[i][0]+"</a></li>");
+                        }
+                    });
+                    $('.algorithm_list li a').click(function(){
+                        $('.algorithm_info').html("<div style='font-size: 12px;'>"+algorithms_info[$(this).attr("data-id")]+"</div>");
+                        $('.algorithm_list li').removeClass('active');
+                        $(this).parent('li').addClass('active');
+                        selected_algorithm = $(this).attr("data-id");
+                    });
+                    
+                    //read all mutation types
+                    $.each(all_info.mutation, function(i, item) {
+                        mutation_info[all_info.mutation[i][0]] = all_info.mutation[i][1];
+                        if(i == 0){
+                            $('.mutation_list').append("<li class='active'><a data-id='"+all_info.mutation[i][0]+"'>"+all_info.mutation[i][0]+"</a></li>");
+                            $('.mutation_info').html("<div style='font-size: 12px;'>"+mutation_info[all_info.mutation[i][0]]+"</div>");
+                            selected_mutation = all_info.mutation[i][0];
+                        }
+                        else{
+                            $('.mutation_list').append("<li><a data-id='"+all_info.mutation[i][0]+"'>"+all_info.mutation[i][0]+"</a></li>");
+                        }
+                    });
+                    $('.mutation_list li a').click(function(){
+                        $('.mutation_info').html("<div style='font-size: 12px;'>"+mutation_info[$(this).attr("data-id")]+"</div>");
+                        $('.mutation_list li').removeClass('active');
+                        $(this).parent('li').addClass('active');
+                        selected_mutation = $(this).attr("data-id");
+                    });
+                    
+                    //read all operators types
+                    $.each(all_info.operators, function(i, item) {
+                        operators_info[all_info.operators[i][0]] = all_info.operators[i][1];
+                        if(i == 0){
+                            $('.operators_list').append("<li class='active'><a data-id='"+all_info.operators[i][0]+"'>"+all_info.operators[i][0]+"</a></li>");
+                            $('.operator_info').html("<div style='font-size: 12px;'>"+mutation_info[all_info.operators[i][0]]+"</div>");
+                            selected_operator = all_info.operators[i][0];
+                        }
+                        else{
+                            $('.operators_list').append("<li><a data-id='"+all_info.operators[i][0]+"'>"+all_info.operators[i][0]+"</a></li>");
+                        }
+                    });
+                    $('.operators_list li a').click(function(){
+                        $('.operator_info').html("<div style='font-size: 12px;'>"+operators_info[$(this).attr("data-id")]+"</div>");
+                        $('.operators_list li').removeClass('active');
+                        $(this).parent('li').addClass('active');
+                        selected_operator = $(this).attr("data-id");
+                    });
+                    
+                    //recombination types
+                    $.each(all_info.recombinations, function(i, item) {
+                        recombination_info[all_info.recombinations[i][0]] = all_info.recombinations[i][1];
+                        if(i == 0){
+                            $('.recombination_list').append("<li class='active'><a data-id='"+all_info.recombinations[i][0]+"'>"+all_info.recombinations[i][0]+"</a></li>");
+                            $('.recombination_info').html("<div style='font-size: 12px;'>"+recombination_info[all_info.recombinations[i][0]]+"</div>");
+                            selected_recombination = all_info.recombinations[i][0];
+                        }
+                        else{
+                            $('.recombination_list').append("<li><a data-id='"+all_info.recombinations[i][0]+"'>"+all_info.recombinations[i][0]+"</a></li>");
+                        }
+                    });
+                    $('.recombination_list li a').click(function(){
+                        $('.recombination_info').html("<div style='font-size: 12px;'>"+recombination_info[$(this).attr("data-id")]+"</div>");
+                        $('.recombination_list li').removeClass('active');
+                        $(this).parent('li').addClass('active');
+                        selected_recombination = $(this).attr("data-id");
+                    });
+                    
+                    //replacements types
+                    $.each(all_info.replacements, function(i, item) {
+                        replacement_info[all_info.replacements[i][0]] = all_info.replacements[i][1];
+                        if(i == 0){
+                            $('.replacement_list').append("<li class='active'><a data-id='"+all_info.replacements[i][0]+"'>"+all_info.replacements[i][0]+"</a></li>");
+                            $('.replacement_info').html("<div style='font-size: 12px;'>"+replacement_info[all_info.replacements[i][0]]+"</div>");
+                            selected_replacement= all_info.replacements[i][0];
+                        }
+                        else{
+                            $('.replacement_list').append("<li><a data-id='"+all_info.replacements[i][0]+"'>"+all_info.replacements[i][0]+"</a></li>");
+                        }
+                    });
+                    $('.replacement_list li a').click(function(){
+                        $('.replacement_info').html("<div style='font-size: 12px;'>"+replacement_info[$(this).attr("data-id")]+"</div>");
+                        $('.replacement_list li').removeClass('active');
+                        $(this).parent('li').addClass('active');
+                        selected_replacement = $(this).attr("data-id");
+                    });
+                    //selections types
+                    $.each(all_info.selections, function(i, item) {
+                        selection_info[all_info.selections[i][0]] = all_info.selections[i][1];
+                        if(i == 0){
+                            $('.selection_list').append("<li class='active'><a data-id='"+all_info.selections[i][0]+"'>"+all_info.selections[i][0]+"</a></li>");
+                            $('.selection_info').html("<div style='font-size: 12px;'>"+selection_info[all_info.selections[i][0]]+"</div>");
+                            selected_selection= all_info.selections[i][0];
+                        }
+                        else{
+                            $('.selection_list').append("<li><a data-id='"+all_info.selections[i][0]+"'>"+all_info.selections[i][0]+"</a></li>");
+                        }
+                    });
+                    $('.selection_list li a').click(function(){
+                        $('.selection_info').html("<div style='font-size: 12px;'>"+selection_info[$(this).attr("data-id")]+"</div>");
+                        $('.selection_list li').removeClass('active');
+                        $(this).parent('li').addClass('active');
+                        selected_selection = $(this).attr("data-id");
+                    });
+                    
+                });
+               
+            
             });
+            
+            
         </script>
 
         <!--scrypts para a plot-->

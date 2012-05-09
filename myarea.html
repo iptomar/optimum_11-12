@@ -125,11 +125,9 @@
                                 <li class="active">
                                     <a data-toggle="tab" href="#lA">account settings</a>
                                 </li>
+
                                 <li >
-                                    <a data-toggle="tab" href="#lB">contacts</a>
-                                </li>
-                                <li >
-                                    <a data-toggle="tab" href="#lC">your problems</a>
+                                    <a data-toggle="tab" href="#lB">your problems</a>
                                 </li>
 
 
@@ -137,67 +135,61 @@
                             <div class="tab-content" style="width:85%;">
                                 <div id="lA" class="tab-pane active" >
                                     <h2 style="margin-left:30px;margin-bottom: 20px;">Change your personal information</h2>
-                                    <form>
-                                        <p style="font-size:14px;margin-top: 10px;text-align: left;">
-                                            <span style="margin-left: 100px;" class="help-inline"><b>Name:</b></span>
-                                            <input type="text" name="name" id="name" class="span3" placeholder="Insert your name">
-                                        </p>
-                                        <p style="font-size:14px;text-align: left;">
-                                            <span style="margin-left: 102px;" class="help-inline"><b>Email: </b></span>
-                                            <input type="text" name="email" id="email" class="span3" placeholder="Insert your email">
-                                        </p>
-                                        <p style="font-size:14px;text-align: left;">
-                                            <span style="margin-left: 42px;" class="help-inline"><b>New Password: </b></span>
-                                            <input type="password" name="pass1" id="pass1" class="span3" placeholder="Insert your password">
-                                        </p>
-                                        <p style="font-size:14px;text-align: left;">
-                                            <span style="margin-left: 25px;" class="help-inline"><b>Retype Password: </b></span>
-                                            <input type="password" name="pass2" id="pass2" class="span3" placeholder="Retype your password">
-                                        </p>
 
+                                    <form class="row">
+                                        <div class="span5">
+                                            <p style="font-size:14px;margin-top: 10px;text-align: left;">
+                                                <span style="margin-left: 100px;" class="help-inline"><b>Name:</b></span>
+                                                <input type="text" name="name" id="name" class="span3" placeholder="Insert your name">
+                                            </p>
+                                            <p style="font-size:14px;text-align: left;">
+                                                <span style="margin-left: 102px;" class="help-inline"><b>Email: </b></span>
+                                                <input type="text" name="email" id="email" class="span3" placeholder="Insert your email">
+                                            </p>
+                                            <p style="font-size:14px;text-align: left;">
+                                                <span style="margin-left: 42px;" class="help-inline"><b>New Password: </b></span>
+                                                <input type="password" name="pass1" id="pass1" class="span3" placeholder="Insert your password">
+                                            </p>
+                                            <p style="font-size:14px;text-align: left;">
+                                                <span style="margin-left: 25px;" class="help-inline"><b>Retype Password: </b></span>
+                                                <input type="password" name="pass2" id="pass2" class="span3" placeholder="Retype your password">
+                                            </p>
+                                            <p style="font-size:14px;text-align: left;">
+                                                <span style="margin-left: 110px;" class="help-inline"><b>City:</b></span>
+                                                <input type="text" name="city" id="city" class="span3" placeholder="Insert your city">
+                                            </p>
+                                          
+                                        </div>
+                                        <div class="span5">
+                                            <p style="font-size:14px;margin-top: 10px;text-align: left;">
+                                                <span style="margin-left: 100px;" class="help-inline"><b>Address:</b></span>
+                                                <input type="text" name="address1" id="address" class="span3" placeholder="Insert your address">
+                                            </p> 
+                                              <p style="font-size:14px;text-align: left;">
+                                                <span style="margin-left: 94px;" class="help-inline"><b>Zip Code:</b></span>
+                                                <input type="text" name="zipcode" id="zipcode" class="span3" placeholder="Insert your zip code">
+                                            </p>
+                                            <p style="font-size:14px;margin-top: 10px;text-align: left;">
+                                                <span style="margin-left: 82px;" class="help-inline"><b>Phone One:</b></span>
+                                                <input type="text" name="phone1" id="phone1" class="span3" placeholder="Insert your phone one">
+                                            </p>
+                                            <p style="font-size:14px;text-align: left;">
+                                                <span style="margin-left: 83px;" class="help-inline"><b>Phone Two: </b></span>
+                                                <input type="text" name="phone2" id="phone2" class="span3" placeholder="Insert your phone two">
+                                            </p>
+                                            <p style="font-size:14px;text-align: left;">
+                                                <span style="margin-left: 102px;" class="help-inline"><b>Website: </b></span>
+                                                <input type="text" name="website" id="website" class="span3" placeholder="Insert your website">
+                                            </p>         
+
+                                        </div>
                                     </form>
+                                    <div class="row">
+                                        <button type="submit" id="newAccount" style="float:right;margin-right: 6%" class="btn btn-primary">Change your Information</button>
+                                    </div>
                                 </div>
-                                <div id="lB" class="tab-pane active" >
-                                    <h2 style="margin-left:30px;margin-bottom: 20px;">Contacts</h2>
-                                    <form class="span6">
 
-
-                                        <p style="font-size:14px;margin-top: 10px;text-align: left;">
-                                            <span style="margin-left: 100px;" class="help-inline"><b>Address:</b></span>
-                                            <input type="text" name="address1" id="address1" class="span3" placeholder="Insert your address 1">
-                                        </p> 
-                                        <p style="font-size:14px;margin-top: 10px;text-align: left;">
-                                            <span style="margin-left: 100px;" class="help-inline"><b>Address:</b></span>
-                                            <input type="text" name="address2" id="address2" class="span3" placeholder="Insert your address 2">
-                                        </p>
-                                        <p style="font-size:14px;margin-top: 10px;text-align: left;">
-                                            <span style="margin-left: 82px;" class="help-inline"><b>Phone One:</b></span>
-                                            <input type="text" name="phone1" id="phone1" class="span3" placeholder="Insert your phone one">
-                                        </p>
-                                        <p style="font-size:14px;text-align: left;">
-                                            <span style="margin-left: 83px;" class="help-inline"><b>Phone Two: </b></span>
-                                            <input type="text" name="phone2" id="phone2" class="span3" placeholder="Insert your phone two">
-                                        </p>
-                                        <p style="font-size:14px;text-align: left;">
-                                            <span style="margin-left: 98px;" class="help-inline"><b>Website: </b></span>
-                                            <input type="text" name="website" id="website" class="span3" placeholder="Insert your website">
-                                        </p>         
-                                    </form>
-                                    
-                                    <form class="span3">
-
-                                        <p style="font-size:14px;margin-top: 10px;text-align: left;">
-                                            <span style="margin-left: -69px;" class="help-inline"><b>City:</b></span>
-                                            <input type="text" name="city" id="city" class="span2" placeholder="Insert your city">
-                                        </p>
-                                        <p style="font-size:14px;margin-top: 10px;text-align: left;">
-                                            <span style="margin-left: -100px;" class="help-inline"><b>Zip Code:</b></span>
-                                            <input type="text" name="zipcode" id="zipcode" class="span2" placeholder="Insert your zip code">
-                                        </p>
-
-                                    </form>
-                                </div>
-                                <div id="lC" class="tab-pane ">
+                                <div id="lB" class="tab-pane ">
                                     <h2 style="margin-left:30px;margin-bottom: 20px;">Your Problem history</h2>
                                     <div id="problems" class="span3">
 
@@ -346,6 +338,7 @@
                 $('#email').val(dados[0].email);
                 $('#pass1').val("");
                 $('#pass2').val("");
+                $()
             });
             var data = {"idClient":readCookie('idClient')}
             socket.emit("getUserProblems",data);
