@@ -458,20 +458,20 @@
                 </div>
             </form>
             <!-- Solver info modal -->
-            
-              <div  class="modal hide fade" id="myModalSolver">             
-                    <div class="modal-header">
-                        <a href="" id="close" class="close" data-dismiss="modal">&times;</a>
-                        <h3>Solver Information</h3>
-                    </div>
-                    <div class="modal-body myModelSolver_body">
-                        
-                    </div>
 
-                    <div class="modal-footer">
-
-                    </div>  
+            <div  class="modal hide fade" id="myModalSolver">             
+                <div class="modal-header">
+                    <a href="" id="close" class="close" data-dismiss="modal">&times;</a>
+                    <h3>Solver Information</h3>
                 </div>
+                <div class="modal-body myModelSolver_body">
+
+                </div>
+
+                <div class="modal-footer">
+
+                </div>  
+            </div>
         </div><!-- /container -->
 
         <!-- Footer
@@ -625,6 +625,8 @@
                         type: 'GET',
                                    url: "socket.php?"+"teste=load-"+JSON.stringify(data)
                     });
+                    socket.emit("start",data);
+                    window.location = "results.html";
                 });
                 $.ajax({
                     type: 'GET',
