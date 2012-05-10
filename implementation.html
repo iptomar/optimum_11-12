@@ -588,15 +588,15 @@
                     var selection_params = $('#selection_params').val();
                     var value_params = $('#value_params').val();
                     var weight_params = $('#weight_params').val();
+                    var newDate = new Date;
+                    var randomProblem = Math.round((newDate.getTime()+100)/10000);
+                    var data;
                     if(readCookie('idClient')!=null){                  
                         createCookie('id_problem',(randomProblem),1);
                     }else{           
                         eraseCookie('id_problem');
                         createCookie('id_problem',(randomProblem),1);
                     }
-                    var newDate = new Date;
-                    var randomProblem = Math.round((newDate.getTime()+100)/10000);
-                    var data;
                     if(selected_algorithm == "genetics.algorithms.KnapSack"){
                         data = {
                             id: (randomProblem),
@@ -626,7 +626,13 @@
                                    url: "socket.php?"+"teste=load-"+JSON.stringify(data)
                     });
                     socket.emit("start",data);
-                    window.location = "results.html";
+                     
+                                 
+                                       setTimeout(function() {
+                                              window.location = "results.html";
+                                       }, 1000);
+                                  
+                    
                 });
                 $.ajax({
                     type: 'GET',
