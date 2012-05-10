@@ -66,6 +66,7 @@
                             <li class="active">
                                 <a href="./login.html"><i style="margin-top: 4px;" class="icon-user icon-white"></i> Login</a>
                             </li>
+
                         </ul>
                     </div>
                 </div>
@@ -81,53 +82,83 @@
                     <img style="" src="assets/img/server.png" />
                 </figure>
                 <div class="inner">
-                    <h1>Login</h1>
-                    <p>Life Inspiration helps our clients solving complex engineering problems with <br/> smart processing time</p>
 
+
+
+                    <div class="container" align="center">
+                        <div id="fb-root"></div>
+                        <script>
+                            // Load the SDK Asynchronously
+                            (function(d){
+                                var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                                if (d.getElementById(id)) {return;}
+                                js = d.createElement('script'); js.id = id; js.async = true;
+                                js.src = "//connect.facebook.net/en_US/all.js";
+                                ref.parentNode.insertBefore(js, ref);
+                            }(document));
+
+                            // Init the SDK upon load
+                            window.fbAsyncInit = function() {
+                                FB.init({
+                                    appId      : '109314285872146', // App ID
+                                    channelUrl : '//'+window.location.hostname+'/channel', // Path to your Channel File
+                                    status     : true, // check login status
+                                    cookie     : true, // enable cookies to allow the server to access the session
+                                    xfbml      : true  // parse XFBML
+                                });
+
+                                // listen for and handle auth.statusChange events
+                                FB.Event.subscribe('auth.statusChange', function(response) {
+                                    if (response.authResponse) {
+                                        // user has auth'd your app and is logged into Facebook
+                                        FB.api('/me', function(me){
+                                            if (me.name) {
+                                                document.getElementById('auth-displayname').innerHTML = me.name;
+               
+                                            }
+                                        })
+                                        document.getElementById('auth-loggedout').style.display = 'none';
+                                        document.getElementById('auth-loggedin').style.display = 'block';
+                                    } else {
+                                        // user has not auth'd your app, or is not logged into Facebook
+                                        document.getElementById('auth-loggedout').style.display = 'block';
+                                        document.getElementById('auth-loggedin').style.display = 'none';
+                                    }
+                                });
+
+                                // respond to clicks on the login and logout links
+                                document.getElementById('auth-loginlink').addEventListener('click', function(){
+                                    FB.login();
+                                });
+                                document.getElementById('auth-logoutlink').addEventListener('click', function(){
+                                    FB.logout();
+                                }); 
+                            } 
+                        </script>
+
+                        <div id="auth-status" align="center">
+                            <div id="auth-loggedout">
+                                <h1>Login</h1>
+                                <a href="#" class="btn btn-large btn-primary bt_execute" id="auth-loginlink">Login</a>
+
+                            </div>
+                            <div id="auth-loggedin" style="display:none">
+                                <h1>Login</h1>
+                                <span class="label label-success" id="auth-displayname" ></span>
+
+                                <a href="#" class="btn btn-medium btn-primary bt_execute" id="auth-logoutlink">logout</a>
+                            </div>
+                        </div>
+
+                    </div>
             </header>
 
-            <hr class="soften">
+            <!--          <hr class="soften">-->
 
             <div class="marketing">
 
-                <div class="row">
+                <div class="row" align="center">
 
-
-                    <div  id="FormPost" class="jumbotron masthead">
-                        <img class="bs-icon" src="assets/img/glyphicons/glyphicons_042_group.png">
-                        <h2>Login</h2>
-                        <br/>
-
-
-                        <form class="well form-inline">
-                            <input type="text" class="input-small" placeholder="Email">
-                            <input type="password" class="input-small" placeholder="Password">
-                            <label class="checkbox">
-                                <input type="checkbox"> Remember me
-                            </label>
-                            <button type="submit" class="btn">Sign in</button>
-                        </form>
-
-                        <div class="progress progress-striped
-                             active">
-                            <div class="bar"
-                                 style="width: 100%;"></div>
-                        </div>
-
-                        <p style="text-align:left; color: black; font-size: 16px; font-weight: bold;">
-                            LifeInspiration:
-                        </p>
-
-                        <p style="padding-left: 10px; text-align:left; color: black; font-size: 14px;">
-                            ... Texto ...
-                        </p>  
-
-                    </div>
-
-
-
-                    <!--Div para a plot-->
-                    <!--<div class="span12" id="chart_div" style="height:400px; width:100%;"></div>-->
 
                 </div><!--/row-->
 
@@ -180,7 +211,7 @@
                     </div>
                 </div>
 
-                <div style="padding-left: 0%; margin-bottom: -25px;margin-top: 25px;" class="row">			
+                <div style="padding-left: 0%; margin-bottom: -25px;margin-top: 25px;" class="row">          
                     <div class="span3">
                         <p style="font-size: 11px;">© Life Inspiration - 2012 All Rights Reserved.</p>
                     </div>
