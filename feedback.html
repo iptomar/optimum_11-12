@@ -30,10 +30,32 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/logo_inspiration_72.png">
         <link rel="apple-touch-icon-precomposed" href="assets/ico/logo_inspiration_57.png">
 
+        <script src="assets/js/cookies.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script class="code" type="text/javascript">
+            $(document).ready(function(){
+                
+                //Verifica se tem login ou não para mostrar botao correspondnt
+                if(readCookie('nome')!=null){
+                    $('#LiRegist').html("");
+                    $('#LiRegist').append("<a href='#Logoutuser' id='LogoutUser' ><i style='margin-top: 4px;'   class='icon-off'></i> Logout</a>");
+                    $('.logo_image').css("margin-right", "120px");
+                    $('#textLogin').html("");
+                    var nome = readCookie('nome').split(" ");
+                    $('#textLogin').append("Olá "+nome[0]);
+                    $('#LiLogin a').attr("href","myarea.html");
+                    $('#loginButton').css("background-image", "url('assets/img/myarea_1.png')");
+                }
+            });
+        </script>
     </head>
 
     <body data-spy="scroll" data-target=".subnav" data-offset="50">
-
+        <a id="loginButton" class="loginButton" href="myarea.html">&nbsp;</a>
+        <a id="serverStatus" class="serverStatus" href="#">
+            <img class="StatusImage" style="margin-top: 10px" src="assets/img/down.png">   
+        </a>
         <!-- Navbar
           ================================================== -->
         <div class="navbar navbar-fixed-top">
@@ -44,16 +66,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-
-
-
-
-                    <img style="float:left; margin:5px;margin-right:280px;" class="logo_image" src="assets/img/logo_inspiration.png">
+                    <img style="float:left; margin:5px; margin-left:0px;margin-right:170px;" class="logo_image" src="assets/img/logo_inspiration.png">
                     <div class="nav-collapse">
                         <ul class="nav nav-pills" style="margin-top:15px;">
-                            <li>
-                                <a href="./index.html"><i style="margin-top: 3px;" class="icon-home"></i> Home</a>
-
+                            <li class="active">
+                                <a href="./index.html"><i style="margin-top: 3px;" class="icon-home icon-white"></i> Home</a>
                             </li>
                             <li>
                                 <a href="./how_works.html"><i style="margin-top: 4px;" class="icon-star"></i> How works</a>
@@ -61,15 +78,20 @@
                             <li>
                                 <a href="./implementation.html"><i style="margin-top: 4px;" class="icon-cog"></i> Implementation</a>
                             </li>
-                            <li class="active">
+                            <li>
                                 <a href="./feedback.html"><i style="margin-top: 4px;" class="icon-tags"></i> Feedback</a>
                             </li>
                             <li>
                                 <a href="./contacts.html"><i style="margin-top: 4px;" class="icon-eye-open"></i> Contacts</a>
                             </li>
-                            <li >
-                                <a href="./login.html"><i style="margin-top: 4px;" class="icon-user icon-white"></i> Login</a>
+
+                            <li id="LiLogin">
+                                <a href="#login"  id="menu_buttons_Login"><i style="margin-top: 4px;" class="icon-user"></i> <span id="textLogin">Login</span></a>
                             </li>
+                            <li id="LiRegist">
+                                <a href="#regist" id="menu_buttons_regist" ><i style="margin-top: 4px;"   class="icon-plus"></i> Regist</a>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -85,7 +107,7 @@
                     <img style="" src="assets/img/server.png" />
                 </figure>
                 <div class="inner">
-                    <h1>Feedback</h1>
+                    <h1>give your feedback</h1>
 
             </header>
 
@@ -94,8 +116,6 @@
             <div class="marketing">
 
                 <div class="row" align="center">
-
-
 
 
 
@@ -132,7 +152,6 @@
                                 </script>
                                 <script>
 
-
                                     (function(d, s, id) {
                                         var js, fjs = d.getElementsByTagName(s)[0];
                                         if (d.getElementById(id)) return;
@@ -144,10 +163,6 @@
                                 <div class="fb-comments" data-href="http://www.cloudglare.com/paulo" data-num-posts="2" data-width="1100"  ></div> 
                             </div>
                             <div class="tab-pane" id="tab2">
-
-
-
-
 
                                 <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
                                 <script>
@@ -185,10 +200,6 @@
                     </div>
 
 
-
-                    <!--Div para a plot-->
-                    <!--<div class="span12" id="chart_div" style="height:400px; width:100%;"></div>-->
-
                 </div><!--/row-->
 
             </div><!-- /.marketing -->
@@ -196,7 +207,117 @@
 
         </div><!-- /container -->
 
-        <!-- Footer
+        
+        <!-- Modal de registo -->
+        <form id="FormNewAccount" name="FormNewAccount" method="post" action="">
+            <div  class="modal hide fade" id="myModal">             
+                <div class="modal-header">
+                    <a href="" id="close" class="close" data-dismiss="modal">&times;</a>
+                    <h3>Regist your account</h3>
+                </div>
+                <div class="modal-body">
+                    <p style="margin-top: 10px">
+                        <span style="margin-left: 100px;" class="help-inline"><b>Name:</b></span>
+                        <input type="text" name="name" id="name" class="span3" placeholder="Insert your name">
+                    </p>
+                    <p>
+                        <span style="margin-left: 102px;" class="help-inline"><b>Email: </b></span>
+                        <input type="text" name="email" id="email" class="span3" placeholder="Insert your email">
+                    </p>
+                    <p>
+                        <span style="margin-left: 72px;" class="help-inline"><b>Password: </b></span>
+                        <input type="password" name="pass1" id="pass1" class="span3" placeholder="Insert your password">
+                    </p>
+                    <p>
+                        <span style="margin-left: 25px;" class="help-inline"><b>Retype password: </b></span>
+                        <input type="password" name="pass2" id="pass2" class="span3" placeholder="Retype your password">
+                    </p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" id="newAccount" style="margin-left: 15%" class="btn btn-primary">Create new account</button>
+
+                </div>  
+            </div>
+        </form>
+
+        <!-- Modal de login -->
+
+        <form id="FormLoginUser" name="FormLoginUser" method="post">
+            <div  class="modal hide fade" id="myModalLoginUser">             
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h3>Sign up</h3>
+                </div>
+                <div class="modal-body">
+                    <p style="margin-top: 30px">
+                        <span style="margin-left: 75px;" class="help-inline"><b>Email: </b></span>
+                        <input type="text" id="email2"  class="span3" placeholder="Insert your email">
+                    </p>
+                    <p>
+                        <span style="margin-left: 45px;" class="help-inline"><b>Password: </b></span>
+                        <input type="password"  id="pass12"  class="span3" placeholder="Insert your password">
+                    </p>
+                    <p style="margin-left: 120px"><a href="#">Forgot your password?</a></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="newAccount" name="newAccount" style="margin-left: 15%" class="btn btn-primary">Create new account</button>
+                    <button type="submit" id="sigin" name="sigin" style="margin-left: 2%" class="btn btn-success">Sign in</button> 
+                </div>  
+            </div>
+        </form>
+
+
+        <!-- Modal que indica conta nao estava confirmada -->
+        <div  class="modal hide fade" id="myModalVerify">             
+            <div class="modal-header">
+                <h3>Please, verify your account</h3>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <td rowspan='3'>
+                            <img style='margin-right: 20px;margin-left:25px' src='assets/img/1336052983_warning_48.png'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Sorry, but you need verify your account.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>You need to check your email.</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <img  id="closeVerifyModal" name="closeVerifyModal" style="margin-left: 10px; margin-top: -5px;" src="assets/img/close-btt_02.png" />
+            </div> 
+        </div>
+
+        <!-- Modal que mostra o estado dos servers -->
+        <div  class="modal hide fade" id="myModalStatus">             
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h3>Servers status</h3>
+            </div>
+            <div class="modal-body">
+                <table class="ServerStatusTable">
+                    <tr>
+                        <td>
+                            <img class="StatusImage"  src="assets/img/down.png" style="margin-top: -4px">   
+                        </td>
+                        <td>
+                            <b>PowerComputing Master</b>
+                        </td>
+                    </tr>   
+                </table>
+            </div>
+            <div class="modal-footer">
+            </div> 
+        </div>
+        
+           <!-- Footer
          ================================================== -->
         <footer class="footer" style="background-color: #252525; ">
             <div class="container">
@@ -219,7 +340,7 @@
                         </ul>
                     </div>
                 </div> 
-                <div style="margin-bottom: 5px;  padding-left: 10%;" class="row">
+                <div style="margin-bottom: 5px;" class="row">
                     <div class="span12">
                         <h3>Teams</h3>
                     </div>
@@ -240,7 +361,7 @@
                     </div>
                 </div>
 
-                <div style="padding-left: 0%; margin-bottom: -25px;margin-top: 25px;" class="row">          
+                <div style="padding-left: 0%; margin-bottom: -25px;margin-top: 25px;" class="row">			
                     <div class="span3">
                         <p style="font-size: 11px;">© Life Inspiration - 2012 All Rights Reserved.</p>
                     </div>
@@ -250,6 +371,7 @@
                 </div>
             </div>          
         </footer>
+
 
 
 
@@ -273,138 +395,120 @@
         <script src="assets/js/bootstrap-carousel.js"></script>
         <script src="assets/js/bootstrap-typeahead.js"></script>
         <script src="assets/js/application.js"></script>
-        <!--        <script src="http://cloudglare.com:90/socket.io/socket.io.js"></script>-->
+         <script src="http://cloudglare.com:90/socket.io/socket.io.js"></script>
         <script type="text/javascript" src="http://www.google.com/jsapi"></script>
         <script type="text/javascript">
             google.load('visualization', '1', {packages: ['corechart']});
         </script>
 
         <script class="code" type="text/javascript">
-            var socket = io.connect('cloudglare.com',{port:90});
-            
+            var socket = io.connect('cloudglare.com',{port:90});  
             $(document).ready(function(){
-                var teste = new Array();
-                var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-                var data = new google.visualization.DataTable();
-                var itera = 0;
-                var showitera = 0;
-                var totalitera = 0;
-                var options = {
-                    title: 'Company Performance',      
-                    width: 800,
-                    height: 340,
-                    animation:{
-                        duration: 1000,
-                        easing: 'out'
-                    },
-                    vAxis: {minValue:0, maxValue:10}
-                };
-                function drawChart(){
-                  
-                }
-                
-                data.addColumn('string', 'Iter');
-                data.addColumn('number', 'Res');
-                    
-                chart.draw(data, options); 
-             
-                var intervalo = window.setInterval(function() {
-                    if(itera > 0){
-                        data.addRows([
-                            [""+(showitera+0), parseFloat(teste[showitera+0])],
-                            [""+(showitera+1), parseFloat(teste[showitera+1])],
-                            [""+(showitera+2), parseFloat(teste[showitera+2])],
-                            [""+(showitera+3), parseFloat(teste[showitera+3])],
-                            [""+(showitera+4), parseFloat(teste[showitera+4])]
-                        ]);
-                        showitera = showitera + 5;
-                        chart.draw(data,options);
-                        if(totalitera != 0 && showitera >= totalitera){
-                            window.clearInterval(intervalo);
-                        }
-                    }
-                    
-                    
-                }, 1500);
-                
-                
-                socket.on('newtry', function (dados) {
-                    // console.log(dados);
-                    teste[itera] = dados;
-                    itera = itera + 1;
-                    
-                });
-                socket.on('total', function (dados) {
-                    // console.log(dados);
-                    totalitera = dados;
-                    
-                });
-            });
-           
-           
-        
-            
-            /* socket.on('news', function (data) {
-                $('#FormPost').html(""); 
-                $('.loaderAjax2').html("");
-                $('#chart2').html("");
-                var ajaxDataRenderer = function(url, plot, options) {
-                    var ret = null;
-                    $.ajax({
-                        // have to use synchronous here, else the function 
-                        // will return before the data is fetched
-                        async: false,
-                        url: url,
-                        dataType:"json",
-                        success: function(data) {
-                            ret = data;
-  
-                        }
-                    });
-                    return ret;
-                };
-                // The url for our json data
-                var jsonurl = "./jsondata.txt";
+              
+               
+                /************************************************* *
+                 * Modal's existentes no index                     *
+                 ************************************************* */        
 
-                // passing in the url string as the jqPlot data argument is a handy
-                // shortcut for our renderer.  You could also have used the
-                // "dataRendererOptions" option to pass in the url.
-                var plot2 = $.jqplot('chart2', jsonurl,{
-                    title: "Average fitness population",
-                    dataRenderer: ajaxDataRenderer,
-                    dataRendererOptions: {
-                        unusedOptionalUrl: jsonurl
-                    },cursor:{
-                        show: true,
-                        zoom:true,
-                        showTooltip:false
-                    } 
+                //Fechar todos os modals
+                $("#close").click(function(){
+                    $('#myModalLoginUser').modal('hide');
+                    $('#myModal').modal('hide');
                 });  
-                
-
-            });*/
-
-            
-           
-            
-            $('.bt_execute').click(function(){
-                $('.btn btn-large btn-primary bt_execute').html("");
-                $('#chart2').html("<img style='margin-left:50%;margin-top:0px;'src='http://www.greatdiscountz.com/imagens/159.gif'/>"); 
-                var population = $('.population').val();
-                var maximum = $('.maximum').val();
-                var mutation = $('.mutation').val();
-                var data=  { "population" : population, "maximum": maximum, "mutation":mutation }
-         
-                $.ajax({
-                    type: 'GET',
-                    url: "http://code.dei.estt.ipt.pt:8080/index.html?"+"pop="+population+"&max="+maximum+"&mut="+mutation
-                
+               
+                // Botao que mostra o modal Regist
+                $("#menu_buttons_regist").click(function(){
+                    $('#myModal').modal('show'); 
                 });
-            
+    
+                // Botao que mostra o modal Login
+                $("#menu_buttons_Login").click(
+                function () {
+                    if(readCookie('nome')==null){   
+                        $('#myModalLoginUser').modal('show');
+                    }
+                });
                 
+                          
+                /************************************************* *
+                 * Funções despoletadas pelo user                  *
+                 ************************************************* */  
+                //Botão que emite novo registo de utilizador.
                 
-                //socket.emit("start", data);
+                $("#newAccount").click(function(){
+                    $("#FormNewAccount").validate({
+                        rules: {
+                            name: "required", 
+                            email: "required",
+                            pass1: { required: true }, 
+                            pass2: { required: true,equalTo: "#pass1"},
+                            email: {
+                                required: true,
+                                email: true
+                            }
+                        },
+                        messages: {
+                            name: "",
+                            pass1: {
+                                required: "",
+                                minlength: "A password tem de ter mais de 5 caracteres"
+                            },
+                            pass2: {
+                                required: "",
+                                minlength: "A password tem de ter mais de 5 caracteres.",
+                                equalTo: "As passwords não coincidem."
+                            },
+                            email: ""       
+                        },
+                        submitHandler: function(form) {
+                                     var data =  { "name" : $('#name').val(), "email": $('#email').val(), "pass": $('#pass1').val()};
+                                                socket.emit("registAccount", data);
+                        }    
+                    });           
+                });
+
+                
+                // Botao que submet Login
+                $("#sigin").click(
+                function () { 
+                    $("#FormLoginUser").validate({
+                        rules: {
+                            email: "",
+                            pass1: { required: true }
+                        },
+                        messages: {
+                            email: "",
+                            pass1: {
+                                required: "",
+                                minlength: "A password tem de ter mais de 5 caracteres"
+                            }              
+                        },
+                        submitHandler: function(FormLoginUser) {
+                            var data =  { "email" : $('#email2').val(), "password": $('#pass12').val()};
+                            socket.emit("LoginAccount", data);
+                        }    
+                    });                                   
+                });
+                // Botao Logout
+                $("#LogoutUser").click(
+                function () { 
+                    eraseCookie('nome');
+                    eraseCookie('idClient');
+                    $('#LiRegist').html("");
+                    $('#LiRegist').append("<a href='#regist' id='menu_buttons_regist' ><i style='margin-top: 4px;'   class='icon-plus'></i> Regist</a>");
+                    $('#LiLogin').html("");
+                    $('#LiLogin').append("<a href='#login'  id='menu_buttons_Login'><i style='margin-top: 4px;' class='icon-user'></i> <span id='textLogin'>Login</span></a>");
+                    $('#loginButton').css("visibility","hidden");
+                    window.location="/";
+                }); 
+
+                //modal que obriga a verificação d conta
+                $("#closeVerifyModal").click(function(){
+                    $('#myModalVerify').modal('hide');
+                });
+  
             });
+           
         </script>
 
         <!--scrypts para a plot-->

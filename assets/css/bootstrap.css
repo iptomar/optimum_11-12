@@ -4002,11 +4002,8 @@ to {
     position: fixed;
     left:0px;
     margin-top: 35px;
-    width:33px;
-    height:110px;
-    color:white;
-    font-family: "SegoeWP";
-    font-weight:lighter;
+    width:21px;
+    height:94px;
     margin-top:155px;
     opacity: 1;
 }
@@ -4015,14 +4012,42 @@ to {
     opacity: 0.8;
     cursor:pointer;
 }
-
-.AllResults{
-    height: 5px;
-    display: none;
+.serverStatus{
+    position: fixed;
+    left:0px;
+    background-image: url("../img/Status.png");
+    margin-top: 35px;
+    width:21px;
+    height:101px;
+    margin-top:280px;
 }
+
+.serverStatus:hover{
+    opacity: 0.8;
+    cursor:pointer;
+}
+
+.ServerStatusTable{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 60px;
+}
+
 
 .geralInput{margin-top: 20px;}
 
 #closeResultFinal:hover{cursor: pointer}
 
 #closeVerifyModal:hover{cursor: pointer}
+
+#formcontainer { float: left; }
+		#grapharea { position: relative; float: left; margin-left: 4em; }
+		#graphcontainer { position: relative; width: 262px; height: 425px; overflow: hidden; }
+		#graphbackground, #graphforeground { position: absolute; }
+		#graphbar { position: absolute; top: 420px; }
+		
+		.graphlabel { position: absolute; left: 270px; width: 100px; }
+		#p25 { top: 365px; }
+		#p50 { top: 215px; }
+		#p75 { top: 191px; }
+		#p100 { top: 40px; }
