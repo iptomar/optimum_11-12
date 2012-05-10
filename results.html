@@ -395,6 +395,7 @@
             
             $(document).ready(function(){
                  var dataInfoProblem = {idClient: readCookie('idClient'),idProblem: readCookie('id_problem') }
+                 alert(readCookie('id_problem'));
                  //Emit que permite devolver info do problema a resolver
                  socket.emit("getProblemInfo", dataInfoProblem);
 
