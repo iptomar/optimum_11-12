@@ -394,9 +394,9 @@
             var socket = io.connect('cloudglare.com',{port:90});
             
             $(document).ready(function(){
-                 
+                 var dataInfoProblem = {idClient: readCookie('idClient'),idProblem: readCookie('id_problem') }
                  //Emit que permite devolver info do problema a resolver
-                 socket.emit("getProblemInfo", readCookie('id_problem'));
+                 socket.emit("getProblemInfo", dataInfoProblem);
 
                 //First Graph
                 var teste = new Array();
