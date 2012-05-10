@@ -44,12 +44,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
+
+
+
+
                     <img style="float:left; margin:5px;margin-right:280px;" class="logo_image" src="assets/img/logo_inspiration.png">
                     <div class="nav-collapse">
                         <ul class="nav nav-pills" style="margin-top:15px;">
                             <li>
                                 <a href="./index.html"><i style="margin-top: 3px;" class="icon-home"></i> Home</a>
-                                
+
                             </li>
                             <li>
                                 <a href="./how_works.html"><i style="margin-top: 4px;" class="icon-star"></i> How works</a>
@@ -58,13 +62,13 @@
                                 <a href="./implementation.html"><i style="margin-top: 4px;" class="icon-cog"></i> Implementation</a>
                             </li>
                             <li class="active">
-                                <a href="./feedback.html"><i style="margin-top: 4px;" class="icon-tags icon-white"></i> Feedback</a>
+                                <a href="./feedback.html"><i style="margin-top: 4px;" class="icon-tags"></i> Feedback</a>
                             </li>
                             <li>
                                 <a href="./contacts.html"><i style="margin-top: 4px;" class="icon-eye-open"></i> Contacts</a>
                             </li>
-                            <li>
-                                <a href="./login.html"><i style="margin-top: 4px;" class="icon-user"></i> Login</a>
+                            <li >
+                                <a href="./login.html"><i style="margin-top: 4px;" class="icon-user icon-white"></i> Login</a>
                             </li>
                         </ul>
                     </div>
@@ -82,7 +86,6 @@
                 </figure>
                 <div class="inner">
                     <h1>Feedback</h1>
-                    <p>Life Inspiration helps our clients solving complex engineering problems with <br/> smart processing time</p>
 
             </header>
 
@@ -90,35 +93,99 @@
 
             <div class="marketing">
 
-                <div class="row">
+                <div class="row" align="center">
 
 
-                    <div  id="FormPost" class="jumbotron masthead">
-                        <img class="bs-icon" src="assets/img/glyphicons/glyphicons_042_group.png">
-                        <h2>Feedback</h2>
-                        
-                        <p style="text-align:left; color: black; font-size: 16px; font-weight: bold;">
-                        LifeInspiration:
-                        </p>
-                        
-                        <p style="padding-left: 10px; text-align:left; color: black; font-size: 14px;">
-                        ... Texto ...
-                            
-                        </p>    
-                        
-                        
-                        <div class="span11 offset1">
-                            <div class="control-group">
-                                <label class="control-label" for="input01">Yours</label>
-                                <div class="controls">
-                                    <input id="input01" class="input-xlarge population" type="text">
-                                </div>
+
+
+
+
+                    <div class="tabbable"> 
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab1" data-toggle="tab">Feeds on Facebook</a></li>
+                            <li><a href="#tab2" data-toggle="tab">Feeds on Twitter</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab1">
+                                <div id="fb-root"></div>
+                                <script>
+                                    window.fbAsyncInit = function() {
+                                        FB.init({
+                                            appId      : '109314285872146', // App ID
+                                            channelUrl : '//WWW.cloudglare.com/paulo', // Channel File
+                                            status     : true, // check login status
+                                            cookie     : true, // enable cookies to allow the server to access the session
+                                            xfbml      : true  // parse XFBML
+                                        });
+
+                                        // Additional initialization code here
+                                    };
+
+                                    // Load the SDK Asynchronously
+                                    (function(d){
+                                        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                                        if (d.getElementById(id)) {return;}
+                                        js = d.createElement('script'); js.id = id; js.async = true;
+                                        js.src = "//connect.facebook.net/en_US/all.js";
+                                        ref.parentNode.insertBefore(js, ref);
+                                    }(document));
+                                </script>
+                                <script>
+
+
+                                    (function(d, s, id) {
+                                        var js, fjs = d.getElementsByTagName(s)[0];
+                                        if (d.getElementById(id)) return;
+                                        js = d.createElement(s); js.id = id;
+                                        js.src = "//connect.facebook.net/pt_PT/all.js#xfbml=1";
+                                        fjs.parentNode.insertBefore(js, fjs);
+                                    }(document, 'script', 'facebook-jssdk'));</script>
+
+                                <div class="fb-comments" data-href="http://www.cloudglare.com/paulo" data-num-posts="2" data-width="1100"  ></div> 
                             </div>
-                        </div>     
+                            <div class="tab-pane" id="tab2">
+
+
+
+
+
+                                <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+                                <script>
+                                    new TWTR.Widget({
+                                        version: 2,
+                                        type: 'faves',
+                                        rpp: 10,
+                                        interval: 30000,
+                                        title: 'LifeInspiration',
+                                        subject: '',
+                                        width: 1100,
+                                        height: 300,
+                                        theme: {
+                                            shell: {
+                                                background: '#0e0f0e',
+                                                color: '#ffffff'
+                                            },
+                                            tweets: {
+                                                background: '#ffffff',
+                                                color: '#444444',
+                                                links: '#080808'
+                                            }
+                                        },
+                                        features: {
+                                            scrollbar: true,
+                                            loop: false,
+                                            live: true,
+                                            behavior: 'all'
+                                        }
+                                    }).render().setUser('LifeInspiratio2').start();
+                                </script>
+
+                            </div>
+                        </div>
                     </div>
 
-                     
-                    
+
+
                     <!--Div para a plot-->
                     <!--<div class="span12" id="chart_div" style="height:400px; width:100%;"></div>-->
 
@@ -173,7 +240,7 @@
                     </div>
                 </div>
 
-                <div style="padding-left: 0%; margin-bottom: -25px;margin-top: 25px;" class="row">			
+                <div style="padding-left: 0%; margin-bottom: -25px;margin-top: 25px;" class="row">          
                     <div class="span3">
                         <p style="font-size: 11px;">© Life Inspiration - 2012 All Rights Reserved.</p>
                     </div>
@@ -206,7 +273,7 @@
         <script src="assets/js/bootstrap-carousel.js"></script>
         <script src="assets/js/bootstrap-typeahead.js"></script>
         <script src="assets/js/application.js"></script>
-        <script src="http://cloudglare.com:90/socket.io/socket.io.js"></script>
+        <!--        <script src="http://cloudglare.com:90/socket.io/socket.io.js"></script>-->
         <script type="text/javascript" src="http://www.google.com/jsapi"></script>
         <script type="text/javascript">
             google.load('visualization', '1', {packages: ['corechart']});
@@ -242,7 +309,7 @@
                 chart.draw(data, options); 
              
                 var intervalo = window.setInterval(function() {
-                      if(itera > 0){
+                    if(itera > 0){
                         data.addRows([
                             [""+(showitera+0), parseFloat(teste[showitera+0])],
                             [""+(showitera+1), parseFloat(teste[showitera+1])],
@@ -253,8 +320,8 @@
                         showitera = showitera + 5;
                         chart.draw(data,options);
                         if(totalitera != 0 && showitera >= totalitera){
-                        window.clearInterval(intervalo);
-                    }
+                            window.clearInterval(intervalo);
+                        }
                     }
                     
                     
@@ -269,7 +336,7 @@
                 });
                 socket.on('total', function (dados) {
                     // console.log(dados);
-                   totalitera = dados;
+                    totalitera = dados;
                     
                 });
             });
