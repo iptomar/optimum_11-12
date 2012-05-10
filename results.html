@@ -395,7 +395,6 @@
             
             $(document).ready(function(){
                  var dataInfoProblem = {idClient: readCookie('idClient'),idProblem: readCookie('id_problem') }
-                 alert(readCookie('id_problem'));
                  //Emit que permite devolver info do problema a resolver
                  socket.emit("getProblemInfo", dataInfoProblem);
 
@@ -474,7 +473,7 @@
                 socket.on('getProblemInfoResult', function (dadosInfo) {
                         $('#resultOfInfo').html("");
                         $("#resultOfInfo").hide().append("").fadeIn('slow');
-                        $("#resultOfInfo").append("<p>ID Problem: " + dadosInfo[0].idProblem +"</p><p>Algorithm: " + dadosInfo[0].algorithm +"</p><p>Selection: " + dadosInfo[0].selection +"</p><p>Mutation: " + dadosInfo[0].mutation +"</p><p>Recombination: " + dadosInfo[0].recombination +"</p><p>Replacement: " + dadosInfo[0].Replacement +"</p><p>Date/Hour: " + dadosInfo[0].time +"</p>").fadeIn('slow');      
+                        $("#resultOfInfo").append("<p>ID Problem: " + dadosInfo[0].idProblem +"</p><p>Algorithm: " + dadosInfo[0].algorithm +"</p><p>Selection: " + dadosInfo[0].selection +"</p><p>Mutation: " + dadosInfo[0].mutation +"</p><p>Recombination: " + dadosInfo[0].recombination +"</p><p>Replacement: " + dadosInfo[0].replacement +"</p><p>Date/Hour: " + dadosInfo[0].time +"</p>").fadeIn('slow');      
                 });
                 
                 
