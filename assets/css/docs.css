@@ -935,3 +935,9 @@ width:200px;
     margin: 0px;
     padding: 0px;
 }
+.knap_values{
+    display:none;
+}
+.knap_weights{
+    display:none;
+}                            

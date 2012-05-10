@@ -130,15 +130,7 @@
                     <div  id="FormPost" class="jumbotron masthead">
                         <img class="bs-icon" src="assets/img/glyphicons/glyphicons_042_group.png">
                         <h2>Implementation</h2>
-
-
-
                         <!--<div id="map_canvas"></div>-->
-
-
-
-
-
                         <div style="margin-top:80px; margin-left: 50px;" class="tabbable tabs-left">
                             <ul class="nav nav-tabs">
                                 <li class="active">
@@ -147,31 +139,36 @@
                                 <li >
                                     <a data-toggle="tab" href="#lB">Mutation</a>
                                 </li>
-                                <li >
+                                <!--<li >
                                     <a data-toggle="tab" href="#lC">Operators</a>
+                                </li>-->
+                                <li >
+                                    <a data-toggle="tab" href="#lC">Recombination</a>
                                 </li>
                                 <li >
-                                    <a data-toggle="tab" href="#lD">Recombination</a>
+                                    <a data-toggle="tab" href="#lD">Replacement</a>
                                 </li>
                                 <li >
-                                    <a data-toggle="tab" href="#lE">Replacement</a>
-                                </li>
-                                <li >
-                                    <a data-toggle="tab" href="#lF">Selection</a>
+                                    <a data-toggle="tab" href="#lE">Selection</a>
                                 </li>
 
                             </ul>
                             <div class="tab-content" style="width:85%;padding-left: 25px;">
                                 <div id="lA" class="tab-pane active" >
                                     <div class="row">
-                                        <div class="well span3" style="padding: 8px;">
-                                            <ul class="nav nav-list algorithm_list">
-                                                <li class="nav-header">
-                                                    Algorithm List
-                                                </li>
-                                            </ul>
+                                        <div class="span3" style="margin-left:0px;">
+                                            <div class="well span3" style="padding: 8px;">
+                                                <ul class="nav nav-list algorithm_list">
+                                                    <li class="nav-header">
+                                                        Algorithm List
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+                                            <button type="submit" id="bt_solverinfo" style="margin-left: 15%" class="btn btn-primary">Get Solver Information</button>
                                         </div>
-                                        <div class="span6">
+
+                                        <div class="span6" style="margin-left:80px;">
                                             <div class="well span6 algorithm_info_container" style="padding: 8px;">
                                                 <ul class="nav nav-list">
                                                     <li class="nav-header">
@@ -189,6 +186,36 @@
                                                     </li>
                                                     <li>
                                                         <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="algorithm_params"/>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="well span6" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Solver Parameters
+                                                    </li>
+                                                    <li>
+                                                        <label class="span3" style="margin-left:0px;">Insert solver parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="algorithm_params_solver"/>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="well span6 knap_values" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        knapSack values
+                                                    </li>
+                                                    <li>
+                                                        <label class="span3" style="margin-left:0px;">Insert values for items: </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="value_params"/>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="well span6 knap_weights" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        knapSack weight
+                                                    </li>
+                                                    <li>
+                                                        <label class="span3" style="margin-left:0px;">Insert weights for items: </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="weight_params"/>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -227,7 +254,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="lC" class="tab-pane ">
+                                <!--<div id="lC" class="tab-pane ">
                                     <div class="row">
                                         <div class="well span3" style="padding: 8px;">
                                             <ul class="nav nav-list operators_list">
@@ -258,8 +285,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div id="lD" class="tab-pane ">
+                                </div>-->
+                                <div id="lC" class="tab-pane ">
                                     <div class="row">
                                         <div class="well span3" style="padding: 8px;">
                                             <ul class="nav nav-list recombination_list">
@@ -291,7 +318,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="lE" class="tab-pane ">
+                                <div id="lD" class="tab-pane ">
                                     <div class="row">
                                         <div class="well span3" style="padding: 8px;">
                                             <ul class="nav nav-list replacement_list">
@@ -322,12 +349,8 @@
                                             </div>
                                         </div>
                                     </div>
-
-
-
-
                                 </div>
-                                <div id="lF" class="tab-pane ">
+                                <div id="lE" class="tab-pane ">
                                     <div class="row">
                                         <div class="well span3" style="padding: 8px;">
                                             <ul class="nav nav-list selection_list">
@@ -434,7 +457,21 @@
                     </div>  
                 </div>
             </form>
+            <!-- Solver info modal -->
 
+            <div  class="modal hide fade" id="myModalSolver">             
+                <div class="modal-header">
+                    <a href="" id="close" class="close" data-dismiss="modal">&times;</a>
+                    <h3>Solver Information</h3>
+                </div>
+                <div class="modal-body myModelSolver_body">
+
+                </div>
+
+                <div class="modal-footer">
+
+                </div>  
+            </div>
         </div><!-- /container -->
 
         <!-- Footer
@@ -536,14 +573,21 @@
             var selected_recombination = "";
             var selected_replacement = "";
             var selected_selection ="";
+            var solver_info = "";
             $(document).ready(function(){
+                $("#bt_solverinfo").click(function(){
+                    $("#myModalSolver").modal('show');
+                });
                 $("#id_btexecute").click(function(){
                     var algorithm_params = $('#algorithm_params').val();
+                    var algorithm_params_solver = $('#algorithm_params_solver').val();
                     var mutation_params = $('#mutation_params').val();
                     var operator_params = $('#operator_params').val();
                     var recombination_params = $('#recombination_params').val();
                     var replacement_params = $('#replacement_params').val();
                     var selection_params = $('#selection_params').val();
+                    var value_params = $('#value_params').val();
+                    var weight_params = $('#weight_params').val();
                     if(readCookie('idClient')!=null){                  
                         createCookie('id_problem',(randomProblem),1);
                     }else{           
@@ -552,142 +596,176 @@
                     }
                     var newDate = new Date;
                     var randomProblem = Math.round((newDate.getTime()+100)/10000);
-
-                    var data = {
-                        id: (randomProblem),
-                        client: readCookie('idClient'),
-                        algorithm: [selected_algorithm,algorithm_params],
-                        mutation: [selected_mutation,mutation_params],
-                        operator: [selected_operator,operator_params],
-                        recombination: [selected_recombination,recombination_params],
-                        replacement: [selected_replacement,replacement_params],
-                        selection: [selected_selection, selection_params]
+                    var data;
+                    if(selected_algorithm == "genetics.algorithms.KnapSack"){
+                        data = {
+                            id: (randomProblem),
+                            client: readCookie('idClient'),
+                            algorithm: [selected_algorithm,algorithm_params,algorithm_params_solver,value_params,weight_params],
+                            mutation: [selected_mutation,mutation_params],
+                            operator: [selected_operator,"0"],
+                            recombination: [selected_recombination,recombination_params],
+                            replacement: [selected_replacement,replacement_params],
+                            selection: [selected_selection, selection_params]
+                        }
+                    }else{
+                        data = {
+                            id: (randomProblem),
+                            client: readCookie('idClient'),
+                            algorithm: [selected_algorithm,algorithm_params,algorithm_params_solver],
+                            mutation: [selected_mutation,mutation_params],
+                            operator: [selected_operator,"0"],
+                            recombination: [selected_recombination,recombination_params],
+                            replacement: [selected_replacement,replacement_params],
+                            selection: [selected_selection, selection_params]
+                        }
                     }
                     
                     $.ajax({
                         type: 'GET',
-                                   url: "socket.php?"+"load="+JSON.stringify(data)
+                                   url: "socket.php?"+"teste=load-"+JSON.stringify(data)
                     });
+                    socket.emit("start",data);
+                    window.location = "results.html";
                 });
                 $.ajax({
                     type: 'GET',
-                    url: "socket.php?"+"teste=info"
+                    url: "socket.php?"+"teste=info-" + readCookie('idClient')
                 });
                 socket.on('getInfo', function (data) {
                     var all_info = JSON.parse(data);
+                    solver_info = all_info.solver;
                     //read all algorithms types
-                    $.each(all_info.algorithms, function(i, item) {
-                        algorithms_info[all_info.algorithms[i][0]] = all_info.algorithms[i][1];
-                        if(i == 0){
-                            $('.algorithm_list').append("<li class='active'><a data-id='"+all_info.algorithms[i][0]+"'>"+all_info.algorithms[i][0]+"</a></li>");
-                            $('.algorithm_info').html("<div>"+algorithms_info[all_info.algorithms[i][0]]+"</div>");
-                            selected_algorithm = all_info.algorithms[i][0];
-                        }
-                        else{
-                            $('.algorithm_list').append("<li><a data-id='"+all_info.algorithms[i][0]+"'>"+all_info.algorithms[i][0]+"</a></li>");
-                        }
-                    });
-                    $('.algorithm_list li a').click(function(){
-                        $('.algorithm_info').html("<div style='font-size: 12px;'>"+algorithms_info[$(this).attr("data-id")]+"</div>");
-                        $('.algorithm_list li').removeClass('active');
-                        $(this).parent('li').addClass('active');
-                        selected_algorithm = $(this).attr("data-id");
-                    });
+                    if(all_info.idClient == readCookie('idClient')){
+                        $.each(all_info.algorithms, function(i, item) {
+                            algorithms_info[all_info.algorithms[i][0]] = all_info.algorithms[i][1];
+                            if(i == 0){
+                                $('.algorithm_list').append("<li class='active'><a data-id='"+all_info.algorithms[i][0]+"'>"+all_info.algorithms[i][0]+"</a></li>");
+                                $('.algorithm_info').html("<div>"+algorithms_info[all_info.algorithms[i][0]]+"</div>");
+                                $('.myModelSolver_body').html(solver_info);
+                                selected_algorithm = all_info.algorithms[i][0];
+                                if(selected_algorithm == "genetics.algorithms.KnapSack"){
+                                    $(".knap_values").show();
+                                    $(".knap_weights").show();
+                                }
+                                else{
+                                    $(".knap_values").hide();
+                                    $(".knap_weights").hide();
+                                }
+                            }
+                            else{
+                                $('.algorithm_list').append("<li><a data-id='"+all_info.algorithms[i][0]+"'>"+all_info.algorithms[i][0]+"</a></li>");
+                            }
+                        });
+                        $('.algorithm_list li a').click(function(){
+                            $('.algorithm_info').html("<div style='font-size: 12px;'>"+algorithms_info[$(this).attr("data-id")]+"</div>");
+                            $('.algorithm_list li').removeClass('active');
+                            $(this).parent('li').addClass('active');
+                            selected_algorithm = $(this).attr("data-id");
+                            if(selected_algorithm == "genetics.algorithms.KnapSack"){
+                                $(".knap_values").show();
+                                $(".knap_weights").show();
+                            }
+                            else{
+                                $(".knap_values").hide();
+                                $(".knap_weights").hide();
+                            }
+                        });
                     
-                    //read all mutation types
-                    $.each(all_info.mutation, function(i, item) {
-                        mutation_info[all_info.mutation[i][0]] = all_info.mutation[i][1];
-                        if(i == 0){
-                            $('.mutation_list').append("<li class='active'><a data-id='"+all_info.mutation[i][0]+"'>"+all_info.mutation[i][0]+"</a></li>");
-                            $('.mutation_info').html("<div style='font-size: 12px;'>"+mutation_info[all_info.mutation[i][0]]+"</div>");
-                            selected_mutation = all_info.mutation[i][0];
-                        }
-                        else{
-                            $('.mutation_list').append("<li><a data-id='"+all_info.mutation[i][0]+"'>"+all_info.mutation[i][0]+"</a></li>");
-                        }
-                    });
-                    $('.mutation_list li a').click(function(){
-                        $('.mutation_info').html("<div style='font-size: 12px;'>"+mutation_info[$(this).attr("data-id")]+"</div>");
-                        $('.mutation_list li').removeClass('active');
-                        $(this).parent('li').addClass('active');
-                        selected_mutation = $(this).attr("data-id");
-                    });
+                        //read all mutation types
+                        $.each(all_info.mutation, function(i, item) {
+                            mutation_info[all_info.mutation[i][0]] = all_info.mutation[i][1];
+                            if(i == 0){
+                                $('.mutation_list').append("<li class='active'><a data-id='"+all_info.mutation[i][0]+"'>"+all_info.mutation[i][0]+"</a></li>");
+                                $('.mutation_info').html("<div style='font-size: 12px;'>"+mutation_info[all_info.mutation[i][0]]+"</div>");
+                                selected_mutation = all_info.mutation[i][0];
+                            }
+                            else{
+                                $('.mutation_list').append("<li><a data-id='"+all_info.mutation[i][0]+"'>"+all_info.mutation[i][0]+"</a></li>");
+                            }
+                        });
+                        $('.mutation_list li a').click(function(){
+                            $('.mutation_info').html("<div style='font-size: 12px;'>"+mutation_info[$(this).attr("data-id")]+"</div>");
+                            $('.mutation_list li').removeClass('active');
+                            $(this).parent('li').addClass('active');
+                            selected_mutation = $(this).attr("data-id");
+                        });
                     
-                    //read all operators types
-                    $.each(all_info.operators, function(i, item) {
-                        operators_info[all_info.operators[i][0]] = all_info.operators[i][1];
-                        if(i == 0){
-                            $('.operators_list').append("<li class='active'><a data-id='"+all_info.operators[i][0]+"'>"+all_info.operators[i][0]+"</a></li>");
-                            $('.operator_info').html("<div style='font-size: 12px;'>"+mutation_info[all_info.operators[i][0]]+"</div>");
-                            selected_operator = all_info.operators[i][0];
-                        }
-                        else{
-                            $('.operators_list').append("<li><a data-id='"+all_info.operators[i][0]+"'>"+all_info.operators[i][0]+"</a></li>");
-                        }
-                    });
-                    $('.operators_list li a').click(function(){
-                        $('.operator_info').html("<div style='font-size: 12px;'>"+operators_info[$(this).attr("data-id")]+"</div>");
-                        $('.operators_list li').removeClass('active');
-                        $(this).parent('li').addClass('active');
-                        selected_operator = $(this).attr("data-id");
-                    });
+                        //read all operators types
+                        $.each(all_info.operators, function(i, item) {
+                            operators_info[all_info.operators[i][0]] = all_info.operators[i][1];
+                            if(i == 0){
+                                $('.operators_list').append("<li class='active'><a data-id='"+all_info.operators[i][0]+"'>"+all_info.operators[i][0]+"</a></li>");
+                                $('.operator_info').html("<div style='font-size: 12px;'>"+mutation_info[all_info.operators[i][0]]+"</div>");
+                                selected_operator = all_info.operators[i][0];
+                            }
+                            else{
+                                $('.operators_list').append("<li><a data-id='"+all_info.operators[i][0]+"'>"+all_info.operators[i][0]+"</a></li>");
+                            }
+                        });
+                        $('.operators_list li a').click(function(){
+                            $('.operator_info').html("<div style='font-size: 12px;'>"+operators_info[$(this).attr("data-id")]+"</div>");
+                            $('.operators_list li').removeClass('active');
+                            $(this).parent('li').addClass('active');
+                            selected_operator = $(this).attr("data-id");
+                        });
                     
-                    //recombination types
-                    $.each(all_info.recombinations, function(i, item) {
-                        recombination_info[all_info.recombinations[i][0]] = all_info.recombinations[i][1];
-                        if(i == 0){
-                            $('.recombination_list').append("<li class='active'><a data-id='"+all_info.recombinations[i][0]+"'>"+all_info.recombinations[i][0]+"</a></li>");
-                            $('.recombination_info').html("<div style='font-size: 12px;'>"+recombination_info[all_info.recombinations[i][0]]+"</div>");
-                            selected_recombination = all_info.recombinations[i][0];
-                        }
-                        else{
-                            $('.recombination_list').append("<li><a data-id='"+all_info.recombinations[i][0]+"'>"+all_info.recombinations[i][0]+"</a></li>");
-                        }
-                    });
-                    $('.recombination_list li a').click(function(){
-                        $('.recombination_info').html("<div style='font-size: 12px;'>"+recombination_info[$(this).attr("data-id")]+"</div>");
-                        $('.recombination_list li').removeClass('active');
-                        $(this).parent('li').addClass('active');
-                        selected_recombination = $(this).attr("data-id");
-                    });
+                        //recombination types
+                        $.each(all_info.recombinations, function(i, item) {
+                            recombination_info[all_info.recombinations[i][0]] = all_info.recombinations[i][1];
+                            if(i == 0){
+                                $('.recombination_list').append("<li class='active'><a data-id='"+all_info.recombinations[i][0]+"'>"+all_info.recombinations[i][0]+"</a></li>");
+                                $('.recombination_info').html("<div style='font-size: 12px;'>"+recombination_info[all_info.recombinations[i][0]]+"</div>");
+                                selected_recombination = all_info.recombinations[i][0];
+                            }
+                            else{
+                                $('.recombination_list').append("<li><a data-id='"+all_info.recombinations[i][0]+"'>"+all_info.recombinations[i][0]+"</a></li>");
+                            }
+                        });
+                        $('.recombination_list li a').click(function(){
+                            $('.recombination_info').html("<div style='font-size: 12px;'>"+recombination_info[$(this).attr("data-id")]+"</div>");
+                            $('.recombination_list li').removeClass('active');
+                            $(this).parent('li').addClass('active');
+                            selected_recombination = $(this).attr("data-id");
+                        });
                     
-                    //replacements types
-                    $.each(all_info.replacements, function(i, item) {
-                        replacement_info[all_info.replacements[i][0]] = all_info.replacements[i][1];
-                        if(i == 0){
-                            $('.replacement_list').append("<li class='active'><a data-id='"+all_info.replacements[i][0]+"'>"+all_info.replacements[i][0]+"</a></li>");
-                            $('.replacement_info').html("<div style='font-size: 12px;'>"+replacement_info[all_info.replacements[i][0]]+"</div>");
-                            selected_replacement= all_info.replacements[i][0];
-                        }
-                        else{
-                            $('.replacement_list').append("<li><a data-id='"+all_info.replacements[i][0]+"'>"+all_info.replacements[i][0]+"</a></li>");
-                        }
-                    });
-                    $('.replacement_list li a').click(function(){
-                        $('.replacement_info').html("<div style='font-size: 12px;'>"+replacement_info[$(this).attr("data-id")]+"</div>");
-                        $('.replacement_list li').removeClass('active');
-                        $(this).parent('li').addClass('active');
-                        selected_replacement = $(this).attr("data-id");
-                    });
-                    //selections types
-                    $.each(all_info.selections, function(i, item) {
-                        selection_info[all_info.selections[i][0]] = all_info.selections[i][1];
-                        if(i == 0){
-                            $('.selection_list').append("<li class='active'><a data-id='"+all_info.selections[i][0]+"'>"+all_info.selections[i][0]+"</a></li>");
-                            $('.selection_info').html("<div style='font-size: 12px;'>"+selection_info[all_info.selections[i][0]]+"</div>");
-                            selected_selection= all_info.selections[i][0];
-                        }
-                        else{
-                            $('.selection_list').append("<li><a data-id='"+all_info.selections[i][0]+"'>"+all_info.selections[i][0]+"</a></li>");
-                        }
-                    });
-                    $('.selection_list li a').click(function(){
-                        $('.selection_info').html("<div style='font-size: 12px;'>"+selection_info[$(this).attr("data-id")]+"</div>");
-                        $('.selection_list li').removeClass('active');
-                        $(this).parent('li').addClass('active');
-                        selected_selection = $(this).attr("data-id");
-                    });
-                    
+                        //replacements types
+                        $.each(all_info.replacements, function(i, item) {
+                            replacement_info[all_info.replacements[i][0]] = all_info.replacements[i][1];
+                            if(i == 0){
+                                $('.replacement_list').append("<li class='active'><a data-id='"+all_info.replacements[i][0]+"'>"+all_info.replacements[i][0]+"</a></li>");
+                                $('.replacement_info').html("<div style='font-size: 12px;'>"+replacement_info[all_info.replacements[i][0]]+"</div>");
+                                selected_replacement= all_info.replacements[i][0];
+                            }
+                            else{
+                                $('.replacement_list').append("<li><a data-id='"+all_info.replacements[i][0]+"'>"+all_info.replacements[i][0]+"</a></li>");
+                            }
+                        });
+                        $('.replacement_list li a').click(function(){
+                            $('.replacement_info').html("<div style='font-size: 12px;'>"+replacement_info[$(this).attr("data-id")]+"</div>");
+                            $('.replacement_list li').removeClass('active');
+                            $(this).parent('li').addClass('active');
+                            selected_replacement = $(this).attr("data-id");
+                        });
+                        //selections types
+                        $.each(all_info.selections, function(i, item) {
+                            selection_info[all_info.selections[i][0]] = all_info.selections[i][1];
+                            if(i == 0){
+                                $('.selection_list').append("<li class='active'><a data-id='"+all_info.selections[i][0]+"'>"+all_info.selections[i][0]+"</a></li>");
+                                $('.selection_info').html("<div style='font-size: 12px;'>"+selection_info[all_info.selections[i][0]]+"</div>");
+                                selected_selection= all_info.selections[i][0];
+                            }
+                            else{
+                                $('.selection_list').append("<li><a data-id='"+all_info.selections[i][0]+"'>"+all_info.selections[i][0]+"</a></li>");
+                            }
+                        });
+                        $('.selection_list li a').click(function(){
+                            $('.selection_info').html("<div style='font-size: 12px;'>"+selection_info[$(this).attr("data-id")]+"</div>");
+                            $('.selection_list li').removeClass('active');
+                            $(this).parent('li').addClass('active');
+                            selected_selection = $(this).attr("data-id");
+                        });
+                    }
                 });
                
             
