@@ -471,6 +471,7 @@
                 
                 // Evento que recebe a info do problema a resolver      
                 socket.on('getProblemInfoResult', function (dadosInfo) {
+                    alert(dadosInfo);
                         $('#resultOfInfo').html("");
                         $("#resultOfInfo").hide().append("").fadeIn('slow');
                         $("#resultOfInfo").append("<p>ID Problem: " + dadosInfo.idProblem +"</p><p>Algorithm: " + dadosInfo.algorithm +"</p><p>Selection: " + dadosInfo.selection +"</p><p>Mutation: " + dadosInfo.mutation +"</p><p>Recombination: " + dadosInfo.recombination +"</p><p>Replacement: " + dadosInfo.Replacement +"</p><p>Date/Hour: " + dadosInfo.time +"</p>").fadeIn('slow');      
