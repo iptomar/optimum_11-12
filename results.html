@@ -474,7 +474,7 @@
                 socket.on('getProblemInfoResult', function (dadosInfo) {
                         $('#resultOfInfo').html("");
                         $("#resultOfInfo").hide().append("").fadeIn('slow');
-                        $("#resultOfInfo").append("<p>ID Problem: " + dadosInfo.idProblem +"</p><p>Algorithm: " + dadosInfo.algorithm +"</p><p>Selection: " + dadosInfo.selection +"</p><p>Mutation: " + dadosInfo.mutation +"</p><p>Recombination: " + dadosInfo.recombination +"</p><p>Replacement: " + dadosInfo.Replacement +"</p><p>Date/Hour: " + dadosInfo.time +"</p>").fadeIn('slow');      
+                        $("#resultOfInfo").append("<p>ID Problem: " + dadosInfo[0].idProblem +"</p><p>Algorithm: " + dadosInfo[0].algorithm +"</p><p>Selection: " + dadosInfo[0].selection +"</p><p>Mutation: " + dadosInfo[0].mutation +"</p><p>Recombination: " + dadosInfo[0].recombination +"</p><p>Replacement: " + dadosInfo[0].Replacement +"</p><p>Date/Hour: " + dadosInfo[0].time +"</p>").fadeIn('slow');      
                 });
                 
                 
