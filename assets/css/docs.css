@@ -860,6 +860,7 @@ width:200px;
 .box_group{
     width:300px;
     float:left; 
+    margin-bottom: 15px;
 }
 .box_group:hover{
     cursor:pointer;

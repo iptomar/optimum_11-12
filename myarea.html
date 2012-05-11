@@ -95,7 +95,7 @@
             <header class="jumbotron masthead" style="margin-bottom: 20px;">
                 <div class="row" style="margin-top:-60px;">
                     <div class="span1 offset2" >
-                        <figure style="margin-left:70px;margin-top:45px;float:left;text-align: center;"> 
+                        <figure style="margin-left:70px;margin-top:45px;float:left;text-align: center;">
                             <img style="" src="assets/img/myarea.png" />
                         </figure>
                     </div>
@@ -158,14 +158,14 @@
                                                 <span style="margin-left: 110px;" class="help-inline"><b>City:</b></span>
                                                 <input type="text" name="city" id="city" class="span3" placeholder="Insert your city">
                                             </p>
-                                          
+
                                         </div>
                                         <div class="span5">
                                             <p style="font-size:14px;margin-top: 10px;text-align: left;">
                                                 <span style="margin-left: 100px;" class="help-inline"><b>Address:</b></span>
                                                 <input type="text" name="address1" id="address" class="span3" placeholder="Insert your address">
-                                            </p> 
-                                              <p style="font-size:14px;text-align: left;">
+                                            </p>
+                                            <p style="font-size:14px;text-align: left;">
                                                 <span style="margin-left: 94px;" class="help-inline"><b>Zip Code:</b></span>
                                                 <input type="text" name="zipcode" id="zipcode" class="span3" placeholder="Insert your zip code">
                                             </p>
@@ -180,7 +180,7 @@
                                             <p style="font-size:14px;text-align: left;">
                                                 <span style="margin-left: 102px;" class="help-inline"><b>Website: </b></span>
                                                 <input type="text" name="website" id="website" class="span3" placeholder="Insert your website">
-                                            </p>         
+                                            </p>
 
                                         </div>
                                     </form>
@@ -189,37 +189,49 @@
                                     </div>
                                 </div>
 
-                                <div id="lB" class="tab-pane ">
+                                <div id="lB" class="tab-pane">
                                     <h2 style="margin-left:30px;margin-bottom: 20px;">Your Problem history</h2>
                                     <div id="problems" class="span3">
 
                                     </div>
                                     <div id="resultados" class="span7">
-                                        <img class="bs-icon" src="assets/img/glyphicons/glyphicons_042_group.png">
-                                        <h2 id="titleFirst">Get your best population</h2>
-                                        <div class="geralInput"></div>
-                                        <div class="AllResults" style="display: inline">
-                                            <div style="margin-left: 0px;margin-top:30px" class="span6">
-                                                <img class="bs-icon" src="assets/img/glyphicons/glyphicons_079_podium.png">
-                                                <h2 id="titleSecound">Getting data solution</h2>
-                                            </div>
-                                            <div style="margin-top:30px;" class="span6" >
-                                                <h2 style="padding-top: 7px;"><span class="titleRequest">Best and Avarage</span></h2>
-                                                <div  id="chart_div"></div>
-                                            </div>
-                                            <div style="margin-top:30px;" class="span6" >
-                                                <h2  style="padding-top: 7px;"><span class="titleRequest">Num of Best and Deviation</span></h2>
-                                                <div  id="chart_div_numbest"></div>
-                                            </div>
+                                        <ul class="nav nav-tabs">
+                                            <li class="active">
+                                                <a data-toggle="tab" href="#tab1">information</a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#tab2">data charts</a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#tab3">final results</a>
+                                            </li>
 
-                                            <div class="span6" >
-                                                <h2 style="padding-top: 7px;"><span class="titleRequest">String</span></h2>
+                                        </ul>
+                                        <div class="tab-content" style="width:100%;">
+                                            <div id="tab1" class="tab-pane active" >
+                                                <div class="geralInput"></div>
                                             </div>
-                                            <div class="span2 offset1" style="margin-bottom: 20px;" id="ResultEndString">
+                                            <div id="tab2" class="tab-pane" >
+                                                <div style="margin-top:30px;" class="span6" >
+                                                    <h2 style="padding-top: 7px;"><span class="titleRequest">Best and Avarage</span></h2>
+                                                    <div  id="chart_div"></div>
+                                                </div>
+                                                <div style="margin-top:30px;" class="span6" >
+                                                    <h2  style="padding-top: 7px;"><span class="titleRequest">Num of Best and Deviation</span></h2>
+                                                    <div  id="chart_div_numbest"></div>
+                                                </div>
+                                            </div>
+                                            <div id="tab3" class="tab-pane">
+                                                <div class="span2 offset1" style="margin-bottom: 20px;" id="ResultEndString">
 
 
+                                                </div>
                                             </div>
                                         </div>
+
+
+
+
                                     </div>
                                 </div>
 
@@ -253,7 +265,7 @@
                         <h3>LifeInspiration</h3>
                         <p style="padding-left: 10px; color: white;">
 
-                            Life Inspiration help our clients to resolve hard engineer problems with 
+                            Life Inspiration help our clients to resolve hard engineer problems with
                             big compute processing.
                         </p>
                     </div>
@@ -266,7 +278,7 @@
                             <li><img style="margin-left: 10px; margin-top: -5px;" src="assets/img/linked_icon.png" />  LinkedIn</li>
                         </ul>
                     </div>
-                </div> 
+                </div>
                 <div style="margin-bottom: 5px;  padding-left: 10%;" class="row">
                     <div class="span12">
                         <h3>Teams</h3>
@@ -288,7 +300,7 @@
                     </div>
                 </div>
 
-                <div style="padding-left: 0%; margin-bottom: -25px;margin-top: 25px;" class="row">			
+                <div style="padding-left: 0%; margin-bottom: -25px;margin-top: 25px;" class="row">
                     <div class="span3">
                         <p style="font-size: 11px;">© Life Inspiration - 2012 All Rights Reserved.</p>
                     </div>
@@ -296,7 +308,7 @@
                         <p style="font-size: 11px;">IPT - Projecto de Sistemas de Informação</p>
                     </div>
                 </div>
-            </div>          
+            </div>
         </footer>
 
 
@@ -332,7 +344,8 @@
             socket.emit("getUserData",data);
             var allPenaltys =["null","Linear","Quadratic","Cubic"];
             var allMode =["null","Penalty","Pseudo-Random","Random"];
-            
+            var dataforChart;
+            var currentPosition;
             socket.on('getUserDataResult', function (dados) {
                 $('#name').val(dados[0].nome);
                 $('#email').val(dados[0].email);
@@ -345,10 +358,10 @@
             var selectedProblem;
             socket.on('getUserProblemsResult', function (data) {
                 $.each(data, function(i, item) {
-                    $("#problems").append("<div data-id='"+data[i].idProblem +"' class='box_group'><figure class='box_image'><img src='assets/img/box.png' /></figure><p class='box_name' style='font-size:13px;text-align:left;line-height:20px;'><b>ID Problema</b>: "+data[i].idProblem+"</p><p class='box_schudule' style='font-size:13px;text-align:left;line-height:20px;'><b>Data e Hora</b>: "+ data[i].time +"</p></div>");
+                    $("#problems").append("<div data-id='"+data[i].idProblem +"' class='box_group'><figure class='box_image'><img src='assets/img/box.png' /></figure><p class='box_name' style='font-size:15px;text-align:left;line-height:10px;margin-bottom:0px'><b>"+data[i].name+"</b></p><p class='box_name' style='font-size:13px;text-align:left;line-height:29px;margin-bottom:0px;'><b>IdProblem</b>: "+data[i].idProblem+"</p><p class='box_schudule' style='font-size:13px;text-align:left;line-height:29px;margin-bottom:0px'>"+ data[i].time +"</p></div>");
                 });
                 $('.box_group').click(function(){
-                    
+
                     selectedProblem = $(this).attr('data-id');
                     var data = {'idClient': readCookie('idClient'), 'idProblem':selectedProblem};
                     socket.emit('getProblemInfo',data);
@@ -356,18 +369,16 @@
                     socket.emit('getString',data);
                 });
             });
-            
-            socket.on('getProblemInfoResult', function (data) {
-                var problem = data[0];
+
+            socket.on('getProblemInfoResult', function (dadosInfo) {
                 $(".geralInput").html("");
-                $(".geralInput").hide().append("<div class='span2'>ID Problem: "+problem['idProblem']+"</div><div class='span2'>Problem type: "+problem['type']+"</div><div class='span2'>Iterations: "+problem['iterations']+"</div><div class='span2'>Population: "+problem['pop']+"</div><div class='span2'>weight: "+problem['weight']+"</div><div class='span2'>Alello: "+problem['alello']+"</div><div class='span2'>Best: "+problem['best']+"</div><div class='span2'>Penalty type: "+allPenaltys[problem['penalty']]+"</div><div class='span2'>Penalty type: "+allMode[problem['mode']]+"</div>").fadeIn('slow');
-                $(".geralInput").hide().append("<div class='span2'>Selection: "+problem['selection']+"</div><div class='span2'>Mutation: "+problem['mutation']+"</div><div class='span2'>Recombination: "+problem['recombination']+"</div><div class='span2'>Replacement: "+problem['replacement']+"</div>");
+                $(".geralInput").append("<div class='row'><div class='span7' style='font-size:16px;'>"+dadosInfo[0].name+"</div></div><div class='row'><div class='span7'><b>Problem description: </b>"+dadosInfo[0].description+"</div></div><div class='row'><div class='span3'><b>Problem Identifier: </b>" + dadosInfo[0].idProblem +"</div><div class='span3'><b>Date/Hour: </b> " + dadosInfo[0].time +"</div></div><div class='row'><div class='span7'><b>Algorithm: </b> " + dadosInfo[0].algorithm +"</div></div><div class='row'><div class='span3'><b>Selection:</b>  " + dadosInfo[0].selection +"</div><div class='span3'><b>Mutation: </b> " + dadosInfo[0].mutation +"</div></div><div class='row'><div class='span3'><b>Recombination: </b> " + dadosInfo[0].recombination +"</div><div class='span3'><b>Replacement: </b> " + dadosInfo[0].replacement +"</div></div>").fadeIn('slow');      
             });
-         
-         
-            $(document).ready(function(){  
+
+
+            $(document).ready(function(){
                 $(".nome").html("welcome, "+ readCookie('nome'));
-                
+
                 //First Graph
                 var teste = new Array();
                 var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
@@ -376,22 +387,22 @@
                 var showitera = 0;
                 var totalitera = 0;
                 var options = {
-                    title: 'Params',      
+                    title: 'Params',
                     width: 630,
                     height: 340,
                     animation:{
                         duration: 1000,
                         easing: 'out'
                     }
-               
+
                 };
                 data.addColumn('string','Iter');
                 data.addColumn('number','Avarage');
                 data.addColumn('number','Best');
-                
+
                 data.addRows([["1",0,0]]);
-                chart.draw(data, options); 
-                
+                chart.draw(data, options);
+
                 //SecoundGraph
                 var testeNumBest = new Array();
                 var chartNumBest = new google.visualization.LineChart(document.getElementById('chart_div_numbest'));
@@ -400,53 +411,86 @@
                 var showiteraNumBest  = 0;
                 var totaliteraNumBest  = 0;
                 var optionsNumBest  = {
-                    title: 'NumBest',      
+                    title: 'NumBest',
                     width: 630,
                     height: 340,
                     animation:{
                         duration: 1000,
                         easing: 'out'
                     }
-               
+
                 };
                 dataNumBest.addColumn('string','Iter');
                 dataNumBest.addColumn('number','Deviation');
                 dataNumBest.addColumn('number','Num of Best');
                 dataNumBest.addRows([["1",0,0]]);
-                chartNumBest.draw(dataNumBest, optionsNumBest); 
-                       
+                chartNumBest.draw(dataNumBest, optionsNumBest);
+
                 socket.on('loadCharts', function (dados) {
-                    $.each(dados, function(i, item) {
-                        if(selectedProblem==dados[i].idProblem){
-                            data.addRows([[(dados[i].itera+1)+"",dados[i].globalAvarage,dados[i].globalBest]]);
-                            dataNumBest.addRows([[(dados[i].itera+1)+"",dados[i].globalDeviation,dados[i].globalNumBest]]);
-                            chart.draw(data,options);
-                            chartNumBest.draw(dataNumBest, optionsNumBest); 
-                        }else{
-                      
+                    var data = new google.visualization.DataTable();
+                    data.addColumn('string','Iter');
+                    data.addColumn('number','Avarage');
+                    data.addColumn('number','Best');
+                    data.addRows([["1",0,0]]);
+                    chart.draw(data, options);
+                    var dataNumBest = new google.visualization.DataTable();
+                    dataNumBest.addColumn('string','Iter');
+                    dataNumBest.addColumn('number','Deviation');
+                    dataNumBest.addColumn('number','Num of Best');
+                    dataNumBest.addRows([["1",0,0]]);
+                    chartNumBest.draw(dataNumBest, optionsNumBest);
+                    dataforChart = dados;
+                    currentPosition = 0;
+                    clearInterval(intervalID);
+                    var timeItera = 2200;
+                    var intervalID = setInterval(function() {
+                        var n_itera = 10;
+                        if((dataforChart.length-currentPosition) < 10){
+                            n_itera = dataforChart.length-currentPosition;
                         }
-                    });
-                    
-                    
+                        if(dataforChart.length > 200 && dataforChart.length != currentPosition){
+                            data.addRows([[(dados[currentPosition].itera+1)+"",dados[currentPosition].globalAvarage,dados[currentPosition].globalBest]]);
+                            dataNumBest.addRows([[(dados[currentPosition].itera+1)+"",dados[currentPosition].globalDeviation,dados[currentPosition].globalNumBest]]);
+                            chart.draw(data,options);
+                            chartNumBest.draw(dataNumBest, optionsNumBest);
+                            currentPosition = currentPosition+n_itera;
+                        }
+                        if(dataforChart.length != currentPosition && dataforChart.length < 200){
+                            for(var i = currentPosition;i<currentPosition+n_itera;i++){
+                                data.addRows([[(dados[i].itera+1)+"",dados[i].globalAvarage,dados[i].globalBest]]);
+                                dataNumBest.addRows([[(dados[i].itera+1)+"",dados[i].globalDeviation,dados[i].globalNumBest]]);
+                                chart.draw(data,options);
+                                chartNumBest.draw(dataNumBest, optionsNumBest);
+                            }
+                            currentPosition = currentPosition+n_itera;
+                        }
+                        
+                        if(dataforChart.length == currentPosition){
+                            clearInterval(intervalID);
+                        }
+                         
+                    },timeItera);
+
                 });
                 
-                
+              
+
                 socket.on('loadString', function (dadosEND) {
-                    if(selectedProblem==dadosEND.idProblem){//Fechar Modal que mostra o resultado final            
+                    if(selectedProblem==dadosEND.idProblem){//Fechar Modal que mostra o resultado final
                         $('#ResultEndString').html("");
-                        $('#ResultEndString').append("<p style='font-size:13px;'>Max Best: "+dadosEND.dados[0].max_best+"</p><p style='font-size:13px;'>Atribute: "+dadosEND.dados[0].attribute +" </p>");                        
+                        $('#ResultEndString').append("<p style='font-size:13px;'>Max Best: "+dadosEND.dados[0].max_best+"</p><p style='font-size:13px;'>Atribute: "+dadosEND.dados[0].attribute +" </p>");
                     }
                 });
-                
-                
+
+
             });
-           
-        
-           
-            
-           
-            
-            
+
+
+
+
+
+
+
         </script>
 
         <!--scrypts para a plot-->
