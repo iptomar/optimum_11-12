@@ -134,59 +134,73 @@
                             </ul>
                             <div class="tab-content" style="width:85%;">
                                 <div id="lA" class="tab-pane active" >
-                                    <h2 style="margin-left:30px;margin-bottom: 20px;">Change your personal information</h2>
-
-                                    <form class="row">
-                                        <div class="span5">
-                                            <p style="font-size:14px;margin-top: 10px;text-align: left;">
-                                                <span style="margin-left: 100px;" class="help-inline"><b>Name:</b></span>
-                                                <input type="text" name="name" id="name" class="span3" placeholder="Insert your name">
-                                            </p>
-                                            <p style="font-size:14px;text-align: left;">
-                                                <span style="margin-left: 102px;" class="help-inline"><b>Email: </b></span>
-                                                <input type="text" name="email" id="email" class="span3" placeholder="Insert your email">
-                                            </p>
-                                            <p style="font-size:14px;text-align: left;">
-                                                <span style="margin-left: 42px;" class="help-inline"><b>New Password: </b></span>
-                                                <input type="password" name="pass1" id="pass1" class="span3" placeholder="Insert your password">
-                                            </p>
-                                            <p style="font-size:14px;text-align: left;">
-                                                <span style="margin-left: 25px;" class="help-inline"><b>Retype Password: </b></span>
-                                                <input type="password" name="pass2" id="pass2" class="span3" placeholder="Retype your password">
-                                            </p>
-                                            <p style="font-size:14px;text-align: left;">
-                                                <span style="margin-left: 110px;" class="help-inline"><b>City:</b></span>
-                                                <input type="text" name="city" id="city" class="span3" placeholder="Insert your city">
-                                            </p>
+                                    <h2 style="margin-left:30px;margin-bottom: 20px;">Change your Password</h2>
+                                    <form id="formPassword">
+                                        <div  class="row">
+                                            <div class="span5">
+                                                <p class="span5" style="font-size:14px;text-align: left;">
+                                                    <span style="margin-left: 42px;" class="help-inline"><b>New Password: </b></span>
+                                                    <input type="password" name="pass1" id="pass1" class="span3" placeholder="Insert your password">
+                                                </p>
+                                                <p class="span5" style="font-size:14px;text-align: left;">
+                                                    <span style="margin-left: 25px;" class="help-inline"><b>Retype Password: </b></span>
+                                                    <input type="password" name="pass2" id="pass2" class="span3" placeholder="Retype your password">
+                                                </p>
+                                            </div>
 
                                         </div>
-                                        <div class="span5">
-                                            <p style="font-size:14px;margin-top: 10px;text-align: left;">
-                                                <span style="margin-left: 100px;" class="help-inline"><b>Address:</b></span>
-                                                <input type="text" name="address1" id="address" class="span3" placeholder="Insert your address">
-                                            </p>
-                                            <p style="font-size:14px;text-align: left;">
-                                                <span style="margin-left: 94px;" class="help-inline"><b>Zip Code:</b></span>
-                                                <input type="text" name="zipcode" id="zipcode" class="span3" placeholder="Insert your zip code">
-                                            </p>
-                                            <p style="font-size:14px;margin-top: 10px;text-align: left;">
-                                                <span style="margin-left: 82px;" class="help-inline"><b>Phone One:</b></span>
-                                                <input type="text" name="phone1" id="phone1" class="span3" placeholder="Insert your phone one">
-                                            </p>
-                                            <p style="font-size:14px;text-align: left;">
-                                                <span style="margin-left: 83px;" class="help-inline"><b>Phone Two: </b></span>
-                                                <input type="text" name="phone2" id="phone2" class="span3" placeholder="Insert your phone two">
-                                            </p>
-                                            <p style="font-size:14px;text-align: left;">
-                                                <span style="margin-left: 102px;" class="help-inline"><b>Website: </b></span>
-                                                <input type="text" name="website" id="website" class="span3" placeholder="Insert your website">
-                                            </p>
-
+                                        <div class="row">
+                                            <button type="submit" id="changePassword" style="float:left;margin-left: 30%" class="btn btn-primary">Change your Password</button><div id="passwordResult" style="float:left;margin-top:5px;margin-left:15px;"></div>
                                         </div>
                                     </form>
-                                    <div class="row">
-                                        <button type="submit" id="newAccount" style="float:right;margin-right: 6%" class="btn btn-primary">Change your Information</button>
-                                    </div>
+
+                                    <h2 style="margin-left:30px;margin-bottom: 20px;margin-top:50px;">Change your personal information</h2>
+
+                                    <form id="formInfo">
+                                        <div class="row">
+                                            <div class="span5">
+                                                <p class="span5" style="font-size:14px;margin-top: 10px;text-align: left;">
+                                                    <span style="margin-left: 100px;" class="help-inline"><b>Name:</b></span>
+                                                    <input type="text" name="name" id="name" class="span3" placeholder="Insert your name">
+                                                </p>
+                                                <p class="span5" style="font-size:14px;text-align: left;">
+                                                    <span style="margin-left: 102px;" class="help-inline"><b>Email: </b></span>
+                                                    <input type="text" name="email" id="email" class="span3" placeholder="Insert your email">
+                                                </p>
+                                                <p class="span5" style="font-size:14px;margin-top: 10px;text-align: left;">
+                                                    <span style="margin-left: 85px;" class="help-inline"><b>Address:</b></span>
+                                                    <input type="text" name="address" id="address" class="span3" placeholder="Insert your address">
+                                                </p>
+                                                <p class="span5" style="font-size:14px;text-align: left;">
+                                                    <span style="margin-left: 110px;" class="help-inline"><b>City:</b></span>
+                                                    <input type="text" name="city" id="city" class="span3" placeholder="Insert your city">
+                                                </p>
+                                            </div>
+                                            <div class="span5">
+                                                <p class="span5" style="font-size:14px;text-align: left;">
+                                                    <span style="margin-left: 94px;" class="help-inline"><b>Zip Code:</b></span>
+                                                    <input type="text" name="zipcode" id="zipcode" class="span3" placeholder="Insert your zip code">
+                                                </p>
+                                                <p class="span5" style="font-size:14px;margin-top: 10px;text-align: left;">
+                                                    <span style="margin-left: 82px;" class="help-inline"><b>Phone One:</b></span>
+                                                    <input type="text" name="phone1" id="phone1" class="span3" placeholder="Insert your phone one">
+                                                </p>
+                                                <p class="span5" style="font-size:14px;text-align: left;">
+                                                    <span style="margin-left: 83px;" class="help-inline"><b>Phone Two: </b></span>
+                                                    <input type="text" name="phone2" id="phone2" class="span3" placeholder="Insert your phone two">
+                                                </p>
+                                                <p class="span5" style="font-size:14px;text-align: left;">
+                                                    <span style="margin-left: 102px;" class="help-inline"><b>Website: </b></span>
+                                                    <input type="text" name="website" id="website" class="span3" placeholder="Insert your website">
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <button class="btn btn-primary" style="float:right;margin-right: 6%" id="changeAccount" type="submit">Change your Information</button><div style="float:right;margin-top:5px;margin-left:15px;" id="infoResult"></div>
+                                        </div>
+                                    </form>
+
                                 </div>
 
                                 <div id="lB" class="tab-pane">
@@ -196,66 +210,57 @@
                                     </div>
                                     <div id="resultados" class="span7">
                                         <ul class="nav nav-tabs">
-                                            <li class="active">
+                                            <li >
                                                 <a data-toggle="tab" href="#tab1">information</a>
                                             </li>
+                                            <li class="active">
+                                                <a data-toggle="tab" href="#tab2">problem data</a>
+                                            </li>
+                                           
                                             <li>
-                                                <a data-toggle="tab" href="#tab2">data charts</a>
+                                                <a data-toggle="tab" href="#tab3">Final Results</a>
                                             </li>
                                             <li>
-                                                <a data-toggle="tab" href="#tab3">final results</a>
+                                                <a data-toggle="tab" href="#tab4">options</a>
                                             </li>
-
                                         </ul>
                                         <div class="tab-content" style="width:100%;">
-                                            <div id="tab1" class="tab-pane active" >
+                                            <div id="tab1" class="tab-pane " >
                                                 <div class="geralInput"></div>
                                             </div>
-                                            <div id="tab2" class="tab-pane" >
-                                                <div style="margin-top:30px;" class="span6" >
-                                                    <h2 style="padding-top: 7px;"><span class="titleRequest">Best and Avarage</span></h2>
+                                            <div id="tab2" class="tab-pane active">
+                                                <div style="margin-top:-10px;margin-left:-40px;" class="span6" >
                                                     <div  id="chart_div"></div>
                                                 </div>
-                                                <div style="margin-top:30px;" class="span6" >
-                                                    <h2  style="padding-top: 7px;"><span class="titleRequest">Num of Best and Deviation</span></h2>
+                                                  <div style="margin-top:-10px;margin-left:-40px;" class="span6" >
                                                     <div  id="chart_div_numbest"></div>
                                                 </div>
+                                                 <div style="margin-top:-10px;margin-left:-40px;" class="span6" >
+                                                    <div  id="chart_div_dev"></div>
+                                                </div>
                                             </div>
+                                           
                                             <div id="tab3" class="tab-pane">
-                                                <div class="span2 offset1" style="margin-bottom: 20px;" id="ResultEndString">
-
+                                                <div id="ResultEndString" style="margin-top:30px;" class="span6" >
+                                                    
+                                                </div>
+                                            </div>
+                                             <div id="tab4" class="tab-pane">
+                                                <div style="margin-top:30px;" class="span6" >
 
                                                 </div>
                                             </div>
                                         </div>
-
-
-
-
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
-
-
-
-
                     </div>
-
-
-
                     <!--Div para a plot-->
                     <!--<div class="span12" id="chart_div" style="height:400px; width:100%;"></div>-->
-
                 </div><!--/row-->
-
             </div><!-- /.marketing -->
-
-
         </div><!-- /container -->
-
         <!-- Footer
          ================================================== -->
         <footer class="footer" style="background-color: #252525; ">
@@ -264,7 +269,6 @@
                     <div class="span5">
                         <h3>LifeInspiration</h3>
                         <p style="padding-left: 10px; color: white;">
-
                             Life Inspiration help our clients to resolve hard engineer problems with
                             big compute processing.
                         </p>
@@ -284,7 +288,6 @@
                         <h3>Teams</h3>
                     </div>
                 </div>
-
                 <div style="padding-left: 0%;" class="row">
                     <div class="span3">
                         <img style="margin-right:5px;" src="assets/img/pw.png">Optimum Computing
@@ -299,7 +302,6 @@
                         <img style="margin-right:5px;" src="assets/img/pw.png">Power Computing
                     </div>
                 </div>
-
                 <div style="padding-left: 0%; margin-bottom: -25px;margin-top: 25px;" class="row">
                     <div class="span3">
                         <p style="font-size: 11px;">© Life Inspiration - 2012 All Rights Reserved.</p>
@@ -310,10 +312,6 @@
                 </div>
             </div>
         </footer>
-
-
-
-
         <!-- Le javascript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
@@ -331,13 +329,14 @@
         <script src="assets/js/bootstrap-collapse.js"></script>
         <script src="assets/js/bootstrap-carousel.js"></script>
         <script src="assets/js/bootstrap-typeahead.js"></script>
+
         <script src="assets/js/application.js"></script>
         <script src="http://cloudglare.com:90/socket.io/socket.io.js"></script>
         <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+        <script src="assets/js/jqueryvalidate.js"></script>
         <script type="text/javascript">
             google.load('visualization', '1', {packages: ['corechart']});
         </script>
-
         <script class="code" type="text/javascript">
             var socket = io.connect('cloudglare.com',{port:90});
             var data = {"idClient":readCookie('idClient')}
@@ -349,19 +348,26 @@
             socket.on('getUserDataResult', function (dados) {
                 $('#name').val(dados[0].nome);
                 $('#email').val(dados[0].email);
-                $('#pass1').val("");
-                $('#pass2').val("");
-                $()
+                $('#address').val(dados[0].address);
+                $('#city').val(dados[0].city);
+                $('#zipcode').val(dados[0].zipcode);
+                $('#phone1').val(dados[0].phone1);
+                $('#phone2').val(dados[0].phone2);
+                $('#website').val(dados[0].website);
             });
             var data = {"idClient":readCookie('idClient')}
             socket.emit("getUserProblems",data);
             var selectedProblem;
             socket.on('getUserProblemsResult', function (data) {
                 $.each(data, function(i, item) {
-                    $("#problems").append("<div data-id='"+data[i].idProblem +"' class='box_group'><figure class='box_image'><img src='assets/img/box.png' /></figure><p class='box_name' style='font-size:15px;text-align:left;line-height:10px;margin-bottom:0px'><b>"+data[i].name+"</b></p><p class='box_name' style='font-size:13px;text-align:left;line-height:29px;margin-bottom:0px;'><b>IdProblem</b>: "+data[i].idProblem+"</p><p class='box_schudule' style='font-size:13px;text-align:left;line-height:29px;margin-bottom:0px'>"+ data[i].time +"</p></div>");
+                    $("#problems").append("<div data-id='"+data[i].idProblem +"' class='box_group'><figure style='width:65px;height:54px;' class='box_image "+data[i].idProblem+"'><img class='box_img' src='assets/img/box.png' /></figure><p class='box_name' style='font-size:15px;text-align:left;line-height:10px;margin-bottom:0px'><b>"+data[i].name+"</b></p><p class='box_name' style='font-size:13px;text-align:left;line-height:29px;margin-bottom:0px;'><b>IdProblem</b>: "+data[i].idProblem+"</p><p class='box_schudule' style='font-size:13px;text-align:left;line-height:29px;margin-bottom:0px'>"+ data[i].time +"</p></div>");
                 });
+                var data = {'idClient': readCookie('idClient'), 'idProblem':data[0].idProblem};
+                socket.emit('getProblemInfo',data);
+                socket.emit('getCharts',data);
+                socket.emit('getString',data);
                 $('.box_group').click(function(){
-
+                    $('.'+$(this).attr('data-id')).html("<img src='http://www.greatdiscountz.com/imagens/159.gif' style='margin-top:15px;margin-left:27px;'/>");
                     selectedProblem = $(this).attr('data-id');
                     var data = {'idClient': readCookie('idClient'), 'idProblem':selectedProblem};
                     socket.emit('getProblemInfo',data);
@@ -372,13 +378,81 @@
 
             socket.on('getProblemInfoResult', function (dadosInfo) {
                 $(".geralInput").html("");
-                $(".geralInput").append("<div class='row'><div class='span7' style='font-size:16px;'>"+dadosInfo[0].name+"</div></div><div class='row'><div class='span7'><b>Problem description: </b>"+dadosInfo[0].description+"</div></div><div class='row'><div class='span3'><b>Problem Identifier: </b>" + dadosInfo[0].idProblem +"</div><div class='span3'><b>Date/Hour: </b> " + dadosInfo[0].time +"</div></div><div class='row'><div class='span7'><b>Algorithm: </b> " + dadosInfo[0].algorithm +"</div></div><div class='row'><div class='span3'><b>Selection:</b>  " + dadosInfo[0].selection +"</div><div class='span3'><b>Mutation: </b> " + dadosInfo[0].mutation +"</div></div><div class='row'><div class='span3'><b>Recombination: </b> " + dadosInfo[0].recombination +"</div><div class='span3'><b>Replacement: </b> " + dadosInfo[0].replacement +"</div></div>").fadeIn('slow');      
+                $(".geralInput").append("<div class='row'><div class='span7' style='font-size:16px;'>"+dadosInfo[0].name+"</div></div><div class='row'><div class='span7'><b>Problem description: </b>"+dadosInfo[0].description+"</div></div><div class='row'><div class='span3'><b>Problem Identifier: </b>" + dadosInfo[0].idProblem +"</div><div class='span3'><b>Date/Hour: </b> " + dadosInfo[0].time +"</div></div><div class='row'><div class='span7'><b>Algorithm: </b> " + dadosInfo[0].algorithm +"</div></div><div class='row'><div class='span3'><b>Selection:</b>  " + dadosInfo[0].selection +"</div><div class='span3'><b>Mutation: </b> " + dadosInfo[0].mutation +"</div></div><div class='row'><div class='span3'><b>Recombination: </b> " + dadosInfo[0].recombination +"</div><div class='span3'><b>Replacement: </b> " + dadosInfo[0].replacement +"</div></div>").fadeIn('slow');
             });
 
-
+           
             $(document).ready(function(){
+                /************ CHANGE USER PASSWORD! *************/
+                $("#changePassword").click(function(){
+                    $("#formPassword").validate({
+                        rules: {
+                            pass1: { required: true }, 
+                            pass2: { required: true,equalTo: "#pass1"}
+                        },
+                        messages: {
+                            pass1: {
+                                required: "",
+                                minlength: "A password tem de ter mais de 5 caracteres"
+                            },
+                            pass2: {
+                                required: "",
+                                minlength: "A password tem de ter mais de 5 caracteres.",
+                                equalTo: "As passwords não coincidem."
+                            }     
+                        },
+                        submitHandler: function(form) {
+                             var data =  { "idClient" : readCookie("idClient"), "password": $('#pass1').val()};
+                            socket.emit("changeClientPassword", data);
+                        }    
+                    });           
+                });
+                socket.on('changeClientPasswordResult', function (dadosInfo) {
+                    $("#passwordResult").html('<img src="assets/img/minicheck.png"/> <span style="margin-left:7px;">Password changed, use it in next login</span>');
+                    $("#pass1").val("");
+                    $("#pass2").val("");
+                });
+                
+                /************ CHANGE USER INFORMATION! *************/
+                $("#changeAccount").click(
+                function () { 
+                    $("#formInfo").validate({
+                        rules: {
+                            name: { required: true },
+                            email: { required: true }
+                        },
+                        messages: {
+                            name: "",
+                            email: {
+                                required: ""
+                            }              
+                        },
+                        submitHandler: function(FormLoginUser) {
+                            var data = {
+                                idClient: readCookie("idClient"),
+                                name: $('#name').val(),
+                                email: $('#email').val(),
+                                address: $('#address').val(),
+                                city: $('#city').val(),
+                                zipcode: $('#zipcode').val(),
+                                phone1: $('#phone1').val(),
+                                phone2: $('#phone2').val(),
+                                website: $('#website').val()
+                              
+                            }
+                           
+                            socket.emit("changeClientInfo", data);
+                        }    
+                    });                                   
+                });
+                socket.on('changeClientInfoResult', function (dadosInfo) {
+                    $("#infoResult").html('<img src="assets/img/minicheck.png" style="float:right;margin-right:15px;"><span style="margin-right:10px;float:right;">your information has been changed sucessfuly</span> ');
+                    var data = {"idClient":readCookie('idClient')}
+                    socket.emit("getUserData",data);
+                });
+                
+                
                 $(".nome").html("welcome, "+ readCookie('nome'));
-
                 //First Graph
                 var teste = new Array();
                 var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
@@ -388,13 +462,12 @@
                 var totalitera = 0;
                 var options = {
                     title: 'Params',
-                    width: 630,
-                    height: 340,
+                    width: 430,
+                    height: 240,
                     animation:{
-                        duration: 1000,
+                        duration: 500,
                         easing: 'out'
                     }
-
                 };
                 data.addColumn('string','Iter');
                 data.addColumn('number','Avarage');
@@ -411,21 +484,40 @@
                 var showiteraNumBest  = 0;
                 var totaliteraNumBest  = 0;
                 var optionsNumBest  = {
-                    title: 'NumBest',
-                    width: 630,
-                    height: 340,
+                    title: 'Number of Bests',
+                    width: 430,
+                    height: 240,
                     animation:{
-                        duration: 1000,
+                        duration: 500,
                         easing: 'out'
                     }
 
                 };
                 dataNumBest.addColumn('string','Iter');
-                dataNumBest.addColumn('number','Deviation');
                 dataNumBest.addColumn('number','Num of Best');
-                dataNumBest.addRows([["1",0,0]]);
+                dataNumBest.addRows([["1",0]]);
                 chartNumBest.draw(dataNumBest, optionsNumBest);
 
+                // 3rd graph
+                var testedev = new Array();
+                var chartdev = new google.visualization.LineChart(document.getElementById('chart_div_dev'));
+                var iteradev = 0;
+                var datadev = new google.visualization.DataTable();
+                var showiteradev  = 0;
+                var totaliteradev  = 0;
+                var optionsdev  = {
+                    title: 'Deviation',
+                    width: 430,
+                    height: 240,
+                    animation:{
+                        duration: 500,
+                        easing: 'out'
+                    }
+                };
+                datadev.addColumn('string','Iter');
+                datadev.addColumn('number','Deviation');
+                datadev.addRows([["1",0]]);
+                chartdev.draw(datadev, optionsdev);
                 socket.on('loadCharts', function (dados) {
                     var data = new google.visualization.DataTable();
                     data.addColumn('string','Iter');
@@ -435,62 +527,60 @@
                     chart.draw(data, options);
                     var dataNumBest = new google.visualization.DataTable();
                     dataNumBest.addColumn('string','Iter');
-                    dataNumBest.addColumn('number','Deviation');
                     dataNumBest.addColumn('number','Num of Best');
-                    dataNumBest.addRows([["1",0,0]]);
+                    dataNumBest.addRows([["1",0]]);
                     chartNumBest.draw(dataNumBest, optionsNumBest);
+                    var datadev = new google.visualization.DataTable();
+                    datadev.addColumn('string','Iter');
+                    datadev.addColumn('number','Deviation');
+                    datadev.addRows([["1",0]]);
+                    chartdev.draw(datadev, optionsdev);
                     dataforChart = dados;
                     currentPosition = 0;
                     clearInterval(intervalID);
-                    var timeItera = 2200;
+                    var timeItera = 2500;
+                    if(dataforChart.length > 200){
+                        timeItera = 2800;
+                    }
                     var intervalID = setInterval(function() {
-                        var n_itera = 10;
-                        if((dataforChart.length-currentPosition) < 10){
+                        var n_itera = 20;
+                        if((dataforChart.length-currentPosition) < 20){
                             n_itera = dataforChart.length-currentPosition;
                         }
-                        if(dataforChart.length > 200 && dataforChart.length != currentPosition){
+                        if(dataforChart.length > 100 && dataforChart.length != currentPosition){
                             data.addRows([[(dados[currentPosition].itera+1)+"",dados[currentPosition].globalAvarage,dados[currentPosition].globalBest]]);
-                            dataNumBest.addRows([[(dados[currentPosition].itera+1)+"",dados[currentPosition].globalDeviation,dados[currentPosition].globalNumBest]]);
+                            dataNumBest.addRows([[(dados[currentPosition].itera+1)+"",dados[currentPosition].globalNumBest]]);
+                            datadev.addRows([[(dados[currentPosition].itera+1)+"",dados[currentPosition].globalDeviation]]);
                             chart.draw(data,options);
                             chartNumBest.draw(dataNumBest, optionsNumBest);
+                            chartdev.draw(datadev, optionsdev);
                             currentPosition = currentPosition+n_itera;
                         }
                         if(dataforChart.length != currentPosition && dataforChart.length < 200){
                             for(var i = currentPosition;i<currentPosition+n_itera;i++){
                                 data.addRows([[(dados[i].itera+1)+"",dados[i].globalAvarage,dados[i].globalBest]]);
-                                dataNumBest.addRows([[(dados[i].itera+1)+"",dados[i].globalDeviation,dados[i].globalNumBest]]);
+                                dataNumBest.addRows([[(dados[i].itera+1)+"",dados[i].globalNumBest]]);
+                                datadev.addRows([[(dados[i].itera+1)+"",dados[i].globalDeviation]]);
                                 chart.draw(data,options);
                                 chartNumBest.draw(dataNumBest, optionsNumBest);
+                                chartdev.draw(datadev, optionsdev);
                             }
                             currentPosition = currentPosition+n_itera;
                         }
-                        
                         if(dataforChart.length == currentPosition){
                             clearInterval(intervalID);
+                            $('.'+dados[0].idProblem).html("<img class='box_img' src='assets/img/box.png' />");
+                            
                         }
-                         
                     },timeItera);
-
                 });
-                
-              
-
                 socket.on('loadString', function (dadosEND) {
                     if(selectedProblem==dadosEND.idProblem){//Fechar Modal que mostra o resultado final
                         $('#ResultEndString').html("");
                         $('#ResultEndString').append("<p style='font-size:13px;'>Max Best: "+dadosEND.dados[0].max_best+"</p><p style='font-size:13px;'>Atribute: "+dadosEND.dados[0].attribute +" </p>");
                     }
                 });
-
-
             });
-
-
-
-
-
-
-
         </script>
 
         <!--scrypts para a plot-->
