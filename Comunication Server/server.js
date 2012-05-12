@@ -34,10 +34,15 @@ io.sockets.on('connection', function (socket) {
     socket.on('start', function (data) {
     	client_bd.query('USE '+TEST_DATABASE);
       console.log(data);
+      var algorithm = data.algorithm[0] + ", Parameters: " + data.algorithm[1] + ", Solver Parameters: " + data.algorithm[2];
+      var mutation = data.mutation[0] + ", Parameters: " + data.mutation[1];
+      var selection =  data.selection[0] + ", Parameters: " + data.selection[1];
+      var recombination = data.recombination[0] + ", Parameters: " + data.recombination[1];
+      var replacement = data.replacement[0] + ", Parameters: " + data.replacement[1];
       var now = new Date();
       var date = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate() + " " +now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
-      client_bd.query('INSERT INTO tblProblemas SET idProblem = ?, idClient = ?, selection = ?, mutation = ?, recombination = ?, replacement = ?, iterations = ?, pop = ?, weight = ?, alello = ?, best = ?, penalty = ?, mode = ?, length = ?, data = ?, type = ?, time = ?',
-        [data.id, data.client, data.selection, data.mutation, data.recombination, data.replacement, data.iterations, data.pop, data.weight,data.alello,data.best, data.penalty,data.mode,data['lenght'],data.data,data.type,date]
+      client_bd.query('INSERT INTO tblProblemas SET idProblem = ?, idClient = ?, algorithm = ?, selection = ?, mutation = ?, recombination = ?, replacement = ?, time = ?, name = ?, description = ?',
+        [data.id, data.client, algorithm, selection, mutation, recombination, replacement, date, data.nome, data.desc]
       );
   	});
 
@@ -209,6 +214,7 @@ io.sockets.on('connection', function (socket) {
       if (err) {
         throw err;
       }
+      console.log(results);
       socket.emit('loadCharts',results);
     });
   });
@@ -226,8 +232,27 @@ io.sockets.on('connection', function (socket) {
       });
   });
 
+  /**** ChangeClientPassword ***/
+  socket.on('changeClientPassword', function (data) {
+    client_bd.query('USE '+TEST_DATABASE);
+    client_bd.query('Update tblClientes set password="'+ data.password +'" where idClient= "'+data.idClient+'"', function selectCb(err, results, fields) {
+        if (err) {
+          throw err;
+        }
+        socket.emit('changeClientPasswordResult','done');
+      });
+  });
 
-
+  /**** ChangeClientPassword ***/
+  socket.on('changeClientInfo', function (data) {
+    client_bd.query('USE '+TEST_DATABASE);
+    client_bd.query('Update tblClientes set nome="'+ data.name +'", email="'+data.email+'", address="'+data.address+'", city="'+data.city+'", zipcode="'+data.zipcode+'", phone1="'+data.phone1+'", phone2="'+data.phone2+'", website="'+data.website+'"  where idClient= "'+data.idClient+'"', function selectCb(err, results, fields) {
+        if (err) {
+          throw err;
+        }
+        socket.emit('changeClientInfoResult','done');
+      });
+  });
 
 });
 
