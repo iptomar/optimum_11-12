@@ -1,0 +1,515 @@
+
+    <!-- ***************************** ALL MODAL'S ***************************** -->
+
+    <!-- Modal de registo -->
+    <form id="FormNewAccount" name="FormNewAccount" method="post" action="">
+        <div  class="modal hide fade" id="myModal">             
+            <div class="modal-header">
+                <a href="" id="close" class="close" data-dismiss="modal">&times;</a>
+                <h3>Regist your account</h3>
+            </div>
+            <div class="modal-body">
+                <p style="margin-top: 10px">
+                    <span style="margin-left: 100px;" class="help-inline"><b>Name:</b></span>
+                    <input type="text" name="name" id="name" class="span3" placeholder="Insert your name">
+                </p>
+                <p>
+                    <span style="margin-left: 102px;" class="help-inline"><b>Email: </b></span>
+                    <input type="text" name="email" id="email" class="span3" placeholder="Insert your email">
+                </p>
+                <p>
+                    <span style="margin-left: 72px;" class="help-inline"><b>Password: </b></span>
+                    <input type="password" name="pass1" id="pass1" class="span3" placeholder="Insert your password">
+                </p>
+                <p>
+                    <span style="margin-left: 25px;" class="help-inline"><b>Retype password: </b></span>
+                    <input type="password" name="pass2" id="pass2" class="span3" placeholder="Retype your password">
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" id="newAccount" style="margin-left: 15%" class="btn btn-primary">Create new account</button>
+
+            </div>  
+        </div>
+    </form>
+
+    <!-- Modal de login -->
+    <form id="FormLoginUser" name="FormLoginUser" method="post">
+        <div  class="modal hide fade" id="myModalLoginUser">             
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h3>Sign up</h3>
+            </div>
+            <div class="modal-body">
+                <p style="margin-top: 30px">
+                    <span style="margin-left: 75px;" class="help-inline"><b>Email: </b></span>
+                    <input type="text" id="email2"  class="span3" placeholder="Insert your email">
+                </p>
+                <p>
+                    <span style="margin-left: 45px;" class="help-inline"><b>Password: </b></span>
+                    <input type="password"  id="pass12"  class="span3" placeholder="Insert your password">
+                </p>
+
+                <p style="margin-left: 120px"><a id="restorePassword" href="#">Forgot your password?</a></p>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" id="sigin" name="sigin" style="margin-left: 2%" class="btn btn-success">Sign in</button> 
+                <div style="float:left; margin-left:0px; width: 100%; margin-top:10px;" class="fb-login-button" id="fb-login-button2" ><img style="width: 200px; height: 39px;margin-right:-2px;" src="assets/img/login_03.png"></div>
+            </div>  
+
+        </div>
+    </form>
+
+    <!-- Modal restore password -->
+    <div  class="modal hide fade" id="myModalRestore">             
+        <div class="modal-header">
+            <a href="#" class="close" data-dismiss="modal">&times;</a>
+            <h3>Restore password</h3>
+        </div>
+        <div class="modal-body">
+            <p style="margin-top: 30px">
+                <span style="margin-left: 75px;" class="help-inline"><b>Email: </b></span>
+                <input type="text" id="emailRestore"  class="span3" placeholder="Insert your email">
+            </p>
+            <p id="errorMail" style="margin-top: -15px; margin-left: 120px;color:red">
+
+            </p>
+        </div>
+        <div class="modal-footer" id="modal-footer-restore">
+            <button type="submit" id="restorePass" name="restorePass" style="margin-left: 15%" class="btn btn-primary">Restore password</button>
+        </div>  
+    </div>
+
+
+    <!-- Modal que mostra o resultado final -->
+    <form id="FormLogin" name="FormLogin" method="post">
+        <div  class="modal hide fade" id="myModalLogin">             
+            <div class="modal-header">
+                <h3>Best value</h3>
+            </div>
+            <div class="modal-body">
+                It's necessary execute your solution.
+            </div>
+            <div class="modal-footer">
+                <img  id="closeResultFinal" name="closeResultFinal" style="margin-left: 10px; margin-top: -5px;" src="assets/img/close-btt_02.png" />
+            </div>  
+        </div>
+    </form>
+
+    <!-- Modal que indica conta nao estava confirmada -->
+    <div  class="modal hide fade" id="myModalVerify">             
+        <div class="modal-header">
+            <h3>Please, verify your account</h3>
+        </div>
+        <div class="modal-body">
+            <table>
+                <tr>
+                    <td rowspan='3'>
+                        <img style='margin-right: 20px;margin-left:25px' src='assets/img/1336052983_warning_48.png'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Sorry, but you need verify your account.
+                    </td>
+                </tr>
+                <tr>
+                    <td>You need to check your email.</td>
+                </tr>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <img  id="closeVerifyModal" name="closeVerifyModal" style="margin-left: 10px; margin-top: -5px;" src="assets/img/close-btt_02.png" />
+        </div> 
+    </div>
+
+    <!-- Modal que mostra o estado dos servers -->
+    <div class="modal hide fade" id="myModalStatus">             
+        <div class="modal-header">
+            <a href="#" class="close" data-dismiss="modal">&times;</a>
+            <h3>Servers status</h3>
+        </div>
+        <div class="modal-body">
+            <table class="ServerStatusTable">
+                <tr>
+                    <td>
+                        <img class="StatusImage"  src="assets/img/down.png" style="margin-top: -4px">   
+                    </td>
+                    <td>
+                        <b>PowerComputing Master</b>
+                    </td>
+                </tr>   
+            </table>
+        </div>
+        <div class="modal-footer">
+        </div> 
+    </div>
+
+    <!-- Modal que mostra o resultado final -->
+    <div  class="modal hide fade" id="myModalConfirmAccount">             
+        <div class="modal-header">
+            <h3>Your account has been confirmed</h3>
+        </div>
+        <div class="modal-body">
+            <table>
+                <tr>
+                    <td rowspan='3'>
+                        <img style='margin-right: 20px;margin-left:25px' src='assets/img/1335984882_success.png'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Thanks for your confirmation.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Now will be redirect to our home page.</td>
+                </tr>
+            </table>
+        </div>
+        <div class="modal-footer">
+        </div> 
+    </div>  
+
+
+
+    <script type="text/javascript">
+            
+        //criação de ligação node JS
+            
+        $(document).ready(function(){
+           
+            /************************************************* *
+             * Modal's existentes no index                     *
+             ************************************************* */        
+
+            //Modal que mostra o resultado final
+            $("#serverStatus").click(function(){
+                $('#myModalStatus').modal('show');
+            });
+                
+                
+            //Modal que mostra o resultado final
+            $("#resultEnd").click(function(){
+                $('#myModalLogin').modal('show');
+            });
+                
+            //Fechar todos os modals
+            $("#close").click(function(){
+                $('#myModalLoginUser').modal('hide');
+                $('#myModal').modal('hide');
+                $('#myModalLogin').modal('hide');
+            });
+                
+                
+            // Botao que mostra o modal Regist
+            $("#menu_buttons_regist").click(function(){
+                $('#myModal').modal('show'); 
+            });
+    
+            // Botao que mostra o modal Login
+            $("#menu_buttons_Login").click(
+            function () {
+                if(readCookie('nome')==null){
+                    $('#myModalLoginUser').modal('show');
+                }
+            });
+                
+            //modal que indica conta confirmada
+            $("#closeVerifyModal").click(function(){
+                $('#myModalVerify').modal('hide');
+            });
+                
+            // Botao que mostra o modal restorePassword
+            $("#restorePassword").click(
+            function () {
+                $('#myModalLoginUser').modal('hide');
+                $('#myModalRestore').modal('show');
+            });
+            /************************************************* *
+             * Eventos definidos para ligação de node js       *
+             ************************************************* */       
+                
+            // Evento que recebe o estado dos servers       
+            socket.on('codeStatsResult', function (status) {
+                if(status == "up"){
+                    $('.StatusImage').css("background-image", "url('assets/img/up.png')");       
+                }
+            });
+                
+            // Evento que mostra o resultado do registo
+            socket.on('registResult', function (dados) {
+                if(dados == 'ok'){
+                    $('.modal-body').html("");
+                    $('.modal-body').append("<table><tr><td rowspan='3'><img style='margin-right: 20px;margin-left:25px' src='assets/img/1335984882_success.png'></td></tr><tr><td>Confime o seu registo através do link enviado para o seu email.</td></tr><tr><td>Caso não encontre a mensagem, verifique a sua caixa de spam.</td></tr>");
+                    $('.modal-footer').html("");
+                    $('.modal-footer').append("<button type='submit' id='closeModalRegist' name='close' style='margin-left: 2%' class='btn btn-success'>Close</button>");
+                    $("#closeModalRegist").click(function(){
+                        setTimeout(goOut, 2000); 
+                    });
+                }
+            });
+                
+            // Evento que mostra o resultado do login
+            socket.on('loginResult', function (dados) {
+                if(dados != 'error'){
+                    if(dados[0].status == '0'){
+                        $('#myModalLoginUser').modal('hide');
+                        $('#myModalVerify').modal('show');     
+                    }else{
+                        $('#LiRegist').html("");
+                        $('#LiRegist').append("<a href='#Logoutuser' id='LogoutUser' ><i style='margin-top: 4px;'   class='icon-off'></i> Logout</a>");
+                        $('.logo_image').css("margin-right", "120px");
+                        $('#textLogin').html("");
+                        createCookie('nome',dados[0].nome,1);
+                        createCookie('idClient',dados[0].idClient,1);
+                        var nome = readCookie('nome').split(" ");
+                        $('#textLogin').append("Olá "+nome[0]);
+                        $('#LiLogin a').attr("href","myarea.html");
+                        $('#loginButton').css("background-image", "url('assets/img/myarea_1.png')");
+                        $('#myModalLoginUser').modal('hide');
+                        // Botao Logout
+                        $("#LogoutUser").click(
+                        function () {
+                            $('.loaderAjax2').html("<img style='margin-left:-10px;margin-top:25px;' src='http://www.greatdiscountz.com/imagens/159.gif'>");
+                            eraseCookie('nome');
+                            eraseCookie('idClient');
+                            setTimeout(goOut, 2000);       
+                        }); 
+                    }   
+                }
+                else
+                {
+                    alert('Verify your data');
+                }
+            });
+                
+                
+            
+                          
+            /************************************************* *
+             * Funções despoletadas pelo user                  *
+             ************************************************* */  
+            //Botão que emite novo registo de utilizador.
+                
+            $("#newAccount").click(function(){
+                $("#FormNewAccount").validate({
+                    rules: {
+                        name: "required", 
+                        email: "required",
+                        pass1: { required: true }, 
+                        pass2: { required: true,equalTo: "#pass1"},
+                        email: {
+                            required: true,
+                            email: true
+                        }
+                    },
+                    messages: {
+                        name: "",
+                        pass1: {
+                            required: "",
+                            minlength: "A password tem de ter mais de 5 caracteres"
+                        },
+                        pass2: {
+                            required: "",
+                            minlength: "A password tem de ter mais de 5 caracteres.",
+                            equalTo: "As passwords não coincidem."
+                        },
+                        email: ""       
+                    },
+                    submitHandler: function(form) {
+                                 var data =  { "name" : $('#name').val(), "email": $('#email').val(), "pass": $('#pass1').val()};
+                                            socket.emit("registAccount", data);
+                    }    
+                });           
+            });
+
+                
+            // Botao que submet Login
+            $("#sigin").click(
+            function () { 
+                $("#FormLoginUser").validate({
+                    rules: {
+                        email: "",
+                        pass1: { required: true }
+                    },
+                    messages: {
+                        email: "",
+                        pass1: {
+                            required: "",
+                            minlength: "A password tem de ter mais de 5 caracteres"
+                        }              
+                    },
+                    submitHandler: function(FormLoginUser) {
+                        var data =  { "email" : $('#email2').val(), "password": $('#pass12').val()};
+                        socket.emit("LoginAccount", data);
+                    }    
+                });                                   
+            });
+                
+            // Botao Logout
+            $("#LogoutUser").click(
+            function () {
+                $('.loaderAjax2').html("<img style='margin-left:-10px;margin-top:25px;' src='http://www.greatdiscountz.com/imagens/159.gif'>");
+                eraseCookie('nome');
+                eraseCookie('idClient');
+                FB.logout();
+                setTimeout(goOut, 2000);
+            });
+                
+            //Limpa div que mostra mensagem de erro
+            $('#emailRestore').click(function(){
+                $("#errorMail").html("").fadeIn('slow');
+            });
+                
+            // Botao para emitir pedido de restore de password
+            $("#restorePass").click(function(){
+                if( !isValidEmailAddress($('#emailRestore').val()) ) {
+                    $('#emailRestore').val("");
+                    $("#errorMail").hide().append("").fadeIn('slow');
+                    $("#errorMail").append("Please insert a valid email.").fadeIn('slow');
+                } else {   
+                    var data =  { "email" : $('#emailRestore').val()};  
+                    socket.emit("emitRestorePassword", data); 
+                }      
+            });
+                
+                
+            // Evento que mostra o resultado do login
+            socket.on('emitRestorePasswordResult', function (dados) {
+                if(dados == 'false'){
+                    $("#modal-footer-restore").html("");
+                    $("#modal-footer-restore").hide().append("").fadeIn('slow');
+                    $("#modal-footer-restore").append("<button type='submit' id='ShowRegist' name='ShowRegist' style='margin-left: 15%' class='btn btn-primary'>Create new account</button>").fadeIn('slow');
+                    $("#errorMail").css("color","red");
+                    $("#errorMail").hide().append("").fadeIn('slow');
+                    $("#errorMail").append("Your account has not been created. On our homepage can create your account.").fadeIn('slow');
+                        
+                    // on forgot password create a new account
+                    $("#ShowRegist").click(function(){
+                        $('#myModalRestore').modal('hide');
+                        $('#myModal').modal('show');
+                    });        
+                    
+                } else {
+                    $(".modal-footer").html("");
+                    $("#errorMail").css("color","green");
+                    $("#errorMail").hide().append("").fadeIn('slow');
+                    $("#errorMail").append("Now need check your email, to create a new password.").fadeIn('slow');
+                    setTimeout(goOut, 3000);
+                }      
+            });
+            
+            // Evento que recebe idClient apos login por facebook
+            socket.on('registAccountFacebook', function (dados) {
+            alert('recebi do nodeJS');
+                createCookie('nome',me.name,1);
+                createCookie('idClient',dados[0].idClient,1);    
+            });
+                
+                      
+            /************************************************* *
+             * APi login face and comments                     *
+             ************************************************* */ 
+
+            // Load the SDK Asynchronously
+            (function(d){
+                var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement('script'); js.id = id; js.async = true;
+                js.src = "//connect.facebook.net/en_US/all.js";
+                ref.parentNode.insertBefore(js, ref);
+            }(document));
+
+            // Init the SDK upon load
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId      : '109314285872146', // App ID
+                    channelUrl : '//'+window.location.hostname+'/channel', // Path to your Channel File
+                    status     : true, // check login status
+                    cookie     : true, // enable cookies to allow the server to access the session
+                    xfbml      : true  // parse XFBML
+                });
+
+                // listen for and handle auth.statusChange events
+                FB.Event.subscribe('auth.statusChange', function(response) {
+                    if (response.authResponse) {
+                        // user has auth'd your app and is logged into Facebook
+                        FB.api('/me', function(me){
+                            if (me.name) {
+                                // formatação efectuada a pagina apos receber dados de login
+                                var nome = (me.name).split(" ");
+                                $('#textLogin').append("Olá "+nome[0]);
+                                $('#LiRegist').html("");
+                                $('#LiRegist').append("<a href='#Logoutuser' id='LogoutUser' ><i style='margin-top: 4px;'   class='icon-off'></i> Logout</a>");
+                                $('.logo_image').css("margin-right", "120px");
+                                $('#textLogin').html("");     
+                                $('#textLogin').append("Olá "+nome[0]);
+                                $('#LiLogin a').attr("href","myarea.html");
+                                $('#loginButton').css("background-image", "url('assets/img/myarea_1.png')");
+                                $('#myModalLoginUser').modal('hide');
+                                    
+                                
+                                    
+                                //inserção de novo utilizador, caso não exista(validação efectuada no node js)
+                                //create random id                  
+                                var newPass = new Date;
+                                var newPassword = Math.round((newPass.getTime())/10000);
+                                        
+                                //evento de criacao de conta
+                                var data =  { "name" : me.name, "email": me.email};
+                                                   socket.emit("registAccountFacebook", data);
+                            
+                                // Botao Logout
+                                $("#LogoutUser").click(
+                                function () {
+                                    $('.loaderAjax2').html("<img style='margin-left:-10px;margin-top:25px;' src='http://www.greatdiscountz.com/imagens/159.gif'>");
+                                    eraseCookie('nome');
+                                    eraseCookie('idClient');
+                                    FB.logout();
+                                    setTimeout(goOut, 2000);
+                                }); 
+                            }
+                        })
+                    } 
+                });
+                   
+                //btt de login de facebook
+                $("#fb-login-button2").click(function(){
+                    FB.login(function(response) {
+                        if (response.authResponse) {
+                              
+                        } else {
+                            // User cancelled login or did not fully authorize.
+                        }
+                    }, {scope:'email'});
+                    // respond to clicks on the login and logout links
+                });
+                    
+                document.getElementById('LogoutUser').addEventListener('click', function(){
+                    FB.logout();
+                }); 
+            }
+ 
+        });
+            
+        /************************************************* *
+         * API from facebook like and google +                      *
+         ************************************************* */ 
+
+        (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })();
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/pt_PT/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
