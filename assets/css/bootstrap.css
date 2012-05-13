@@ -4071,3 +4071,53 @@ to {
 		#p50 { top: 215px; }
 		#p75 { top: 191px; }
 		#p100 { top: 40px; }
+                
+                .fb-login-button:hover{
+                    cursor: pointer;
+                    opacity: 0.8;
+                }
+                
+#StyleExample {
+-moz-box-shadow: 0 0 5px 5px #888;
+-webkit-box-shadow: 0 0 5px 5px#888;
+box-shadow: 0 0 5px 5px #888;
+}
+
+#tweets{
+    margin-left:65px;
+    margin-top: -5px;
+}
+
+
+
+#tweets .twtr-tweet {
+
+    background: #fff;
+    font-size: 12px;
+
+}
+
+#tweets .twtr-tweet a:link,
+#tweets .twtr-tweet a:visited,
+#tweets .twtr-tweet a:hover {
+
+    color: #e89405 !important;
+
+}
+
+
+
+#tweets .twtr-tweet .twtr-tweet-text p {
+
+    color: #333 !important;
+
+}
+
+.fb-like{
+    margin-left: 12px;
+    margin-top: 5px;
+}
+.googleMais{
+    margin-left: 12px;
+    margin-top: 5px;
+}
