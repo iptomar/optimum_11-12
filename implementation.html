@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="http://www.facebook.com/2008/fbml">
+
     <head>
         <meta charset="utf-8">
-        <title>Life Inspiration</title>
+        <title>Life Inspiration - Implementation</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -13,6 +16,11 @@
         <link href="assets/css/docs.css" rel="stylesheet">
         <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
+        <!--css para a plot-->
+        <link class="include" rel="stylesheet" type="text/css" href="assets/css/jquery.jqplot.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/examples.min.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/syntaxhighlighter/styles/shCoreDefault.min.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/syntaxhighlighter/styles/shThemejqPlot.min.css" />
 
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
@@ -24,19 +32,36 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/logo_inspiration_114.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/logo_inspiration_72.png">
         <link rel="apple-touch-icon-precomposed" href="assets/ico/logo_inspiration_57.png">
-        <style>
-            #map_canvas {
-                height: 300px;
-                position: relative;
-                width: 100%;
-            }
-        </style>
+
         <script src="assets/js/cookies.js"></script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+        <!-- Facebook Meta Tags -->
+        <meta property="og:title" content="Life Inspiration"/>
+        <meta property="og:type" content="company"/>
+        <meta property="og:url" content="http://www.cloudglare.com/"/>
+        <meta property="og:image" content="http://www.cloudglare.com/assets/img/Life-Inspiration_03ss_03.png"/>
+        <meta property="og:site_name" content="LifeInspiration"/>
+        <meta property="fb:admins" content="100001620293641"/>
+        <meta property="og:description"
+              content="Life Inspiration helps our clients solving complex engineering problems with smart processing time."/>
+
+        <!-- Google + atributos que iram aparecer ao fazer +1/Like -->
+        <!-- Update your html tag to include the itemscope and itemtype attributes -->
+        <html itemscope itemtype="http://schema.org/Organization">
+
+        <!-- Add the following three tags inside head -->
+        <meta itemprop="name" content="Life Inspiration">
+        <meta itemprop="description" content="Life Inspiration helps our clients solving complex engineering problems with
+              smart processing time">
+        <meta itemprop="image" content="http://cloudglare.com/assets/img/logo_inspiration.png">
+
         <script class="code" type="text/javascript">
             $(document).ready(function(){
-                
+                //carrega pagina com modals e funcoes por defeito
+                 $("#modals").load("views/modals.html");
+                 
                 //Verifica se tem login ou não para mostrar botao correspondnt
                 if(readCookie('nome')!=null){
                     $('#LiRegist').html("");
@@ -46,16 +71,18 @@
                     var nome = readCookie('nome').split(" ");
                     $('#textLogin').append("Olá "+nome[0]);
                     $('#LiLogin a').attr("href","myarea.html");
-                    $('#loginButton').css("background-image", "url('assets/img/myArea_03_03.png')");
-                }else{
-                  
-                    
+                    $('#loginButton').css("background-image", "url('assets/img/myarea_1.png')");
                 }
+   
             });
         </script>
     </head>
 
     <body data-spy="scroll" data-target=".subnav" data-offset="50">
+        <a id="loginButton" class="loginButton" href="myarea.html">&nbsp;</a>
+        <a id="serverStatus" class="serverStatus" href="#">
+            <img class="StatusImage" style="margin-top: 10px" src="assets/img/down.png">   
+        </a>
 
         <!-- Navbar
           ================================================== -->
@@ -67,7 +94,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <img style="float:left; margin:5px; margin-left:0px;margin-right:170px;" class="logo_image" src="assets/img/logo_inspiration.png">
+                   <a href="./index.html"><img width="199px" style="float:left; margin:5px; margin-left:0px;margin-right:170px;" class="logo_image" src="assets/img/logo_inspiration.png"></a>
                     <div class="nav-collapse">
                         <ul class="nav nav-pills" style="margin-top:15px;">
                             <li>
@@ -76,7 +103,7 @@
                             <li>
                                 <a href="./how_works.html"><i style="margin-top: 4px;" class="icon-star"></i> How works</a>
                             </li>
-                            <li class="active">
+                            <li  class="active">
                                 <a href="./implementation.html"><i style="margin-top: 4px;" class="icon-cog icon-white"></i> Implementation</a>
                             </li>
                             <li>
@@ -94,17 +121,18 @@
                             </li>
 
                         </ul>
+                        <span class="loaderAjax2"></span>
                     </div>
                 </div>
             </div>
         </div>
-
+        
         <div class="container">
-
+            <div id="fb-root"></div>
             <!-- Masthead
-            ================================================== -->
+           ================================================== -->
             <header class="jumbotron masthead" style="margin-bottom: 20px;">
-                <div class="row" style="margin-top:-60px;">
+                <div class="row" style="margin-top:30px;">
                     <div class="span1 offset1" >
                         <figure style="margin-left:10px;margin-top:45px;float:left;text-align: center;"> 
                             <img style="" src="assets/img/myarea.png" />
@@ -412,64 +440,10 @@
                 </div><!--/row-->
 
             </div><!-- /.marketing -->
-            <!-- Modal de registo -->
-            <form id="FormNewAccount" name="FormNewAccount" method="post" action="">
-                <div  class="modal hide fade" id="myModal">             
-                    <div class="modal-header">
-                        <a href="" id="close" class="close" data-dismiss="modal">&times;</a>
-                        <h3>Regist your account</h3>
-                    </div>
-                    <div class="modal-body">
-                        <p style="margin-top: 10px">
-                            <span style="margin-left: 100px;" class="help-inline"><b>Name:</b></span>
-                            <input type="text" name="name" id="name" class="span3" placeholder="Insert your name">
-                        </p>
-                        <p>
-                            <span style="margin-left: 102px;" class="help-inline"><b>Email: </b></span>
-                            <input type="text" name="email" id="email" class="span3" placeholder="Insert your email">
-                        </p>
-                        <p>
-                            <span style="margin-left: 72px;" class="help-inline"><b>Password: </b></span>
-                            <input type="password" name="pass1" id="pass1" class="span3" placeholder="Insert your password">
-                        </p>
-                        <p>
-                            <span style="margin-left: 25px;" class="help-inline"><b>Retype password: </b></span>
-                            <input type="password" name="pass2" id="pass2" class="span3" placeholder="Retype your password">
-                        </p>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="submit" id="newAccount" style="margin-left: 15%" class="btn btn-primary">Create new account</button>
-
-                    </div>  
-                </div>
-            </form>
-
-            <!-- Modal de login -->
-
-            <form id="FormLoginUser" name="FormLoginUser" method="post">
-                <div  class="modal hide fade" id="myModalLoginUser">             
-                    <div class="modal-header">
-                        <a href="#" class="close" data-dismiss="modal">&times;</a>
-                        <h3>Sign up</h3>
-                    </div>
-                    <div class="modal-body">
-                        <p style="margin-top: 30px">
-                            <span style="margin-left: 75px;" class="help-inline"><b>Email: </b></span>
-                            <input type="text" id="email2"  class="span3" placeholder="Insert your email">
-                        </p>
-                        <p>
-                            <span style="margin-left: 45px;" class="help-inline"><b>Password: </b></span>
-                            <input type="password"  id="pass12"  class="span3" placeholder="Insert your password">
-                        </p>
-                        <p style="margin-left: 120px"><a href="#">Forgot your password?</a></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" id="newAccount" name="newAccount" style="margin-left: 15%" class="btn btn-primary">Create new account</button>
-                        <button type="submit" id="sigin" name="sigin" style="margin-left: 2%" class="btn btn-success">Sign in</button> 
-                    </div>  
-                </div>
-            </form>
+            <!-- div que recebe o load do modals.html --> 
+            <div id="modals">
+            </div>
+            
             <!-- Solver info modal -->
 
             <div  class="modal hide fade" id="myModalSolver">             
@@ -502,15 +476,15 @@
                     </div>
                     <div class="span2 offset4">
                         <h3>Follow us</h3>
-                        <ul class="the-icons">
-                            <li><img style="margin-left: 10px; margin-top: -5px;" src="assets/img/twitter_icon.png" />  Twitter</li>
-                            <li><img style="margin-left: 10px; margin-top: -5px;" src="assets/img/google_icon.png" />  Google +</li>
-                            <li><img style="margin-left: 10px; margin-top: -5px;" src="assets/img/face_icon.png" />  Facebook</li>
-                            <li><img style="margin-left: 10px; margin-top: -5px;" src="assets/img/linked_icon.png" />  LinkedIn</li>
-                        </ul>
+
+                        <!-- Coloque esta etiqueta onde pretende que o botão de +1 seja apresentado -->
+                        <div class="googleMais"><g:plusone annotation="none" style="margin-left: 10px;"></g:plusone></div>
+                        <!-- Facebook like btt -->
+                        <div class="fb-like" data-href="http://www.cloudglare.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="trebuchet ms"></div>
+
                     </div>
                 </div> 
-                <div style="margin-bottom: 5px;  padding-left: 10%;" class="row">
+                <div style="margin-bottom: 5px;margin-top: 15px;" class="row">
                     <div class="span12">
                         <h3>Teams</h3>
                     </div>
@@ -544,7 +518,6 @@
 
 
 
-
         <!-- Le javascript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
@@ -566,6 +539,7 @@
         <!--<script src="assets/js/jquery.ui.bmap.full.js"></script>
        <script src="assets/js/jquery.ui.bmap.overlays.min.js"></script>-->
         <script src="assets/js/application.js"></script>
+        <script src="assets/js/functions.js"></script>
         <script src="http://cloudglare.com:90/socket.io/socket.io.js"></script>
         <script type="text/javascript" src="http://www.google.com/jsapi"></script>
         <script type="text/javascript">
@@ -652,6 +626,9 @@
             var solver_info = "";
             
             $(document).ready(function(){
+                //call node status
+                statusNodeJS();
+                
                 $("#bt_solverinfo").click(function(){
                     //$("#myModalSolver").modal('show');
                     var problem_name = $('#problem_name').val();
