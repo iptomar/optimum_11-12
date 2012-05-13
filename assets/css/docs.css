@@ -941,4 +941,11 @@ width:200px;
 }
 .knap_weights{
     display:none;
-}                            
+}                
+#drop_zone {
+    border: 2px dashed #BBBBBB;
+    border-radius: 5px 5px 5px 5px;
+    color: #BBBBBB;
+    padding: 25px;
+    text-align: center;
+}

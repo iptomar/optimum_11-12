@@ -201,25 +201,9 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <div class="well span6 knap_values" style="padding: 8px;">
-                                                <ul class="nav nav-list">
-                                                    <li class="nav-header">
-                                                        knapSack values
-                                                    </li>
-                                                    <li>
-                                                        <label class="span3" style="margin-left:0px;">Insert values for items: </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="value_params"/>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="well span6 knap_weights" style="padding: 8px;">
-                                                <ul class="nav nav-list">
-                                                    <li class="nav-header">
-                                                        knapSack weight
-                                                    </li>
-                                                    <li>
-                                                        <label class="span3" style="margin-left:0px;">Insert weights for items: </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="weight_params"/>
-                                                    </li>
-                                                </ul>
+                                            <div class="well span6 knap_file" style="padding: 8px;">
+                                                <div id="drop_zone">Drop file w/ knapSack items here </div>
+                                                <div id="file_data"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -594,6 +578,46 @@
                 }
                 return string;
             }
+            var dropZone = document.getElementById('drop_zone');
+            dropZone.addEventListener('dragover', handleDragOver, false);
+            dropZone.addEventListener('drop', handleFileSelect, false);
+            function handleFileSelect(evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+
+                var files = evt.dataTransfer.files; // FileList object.
+
+                var file = files[0];
+                var start =  0;
+                var stop =  file.size - 1;
+
+                var reader = new FileReader();
+
+                // If we use onloadend, we need to check the readyState.
+                reader.onloadend = function(evt) {
+                    if (evt.target.readyState == FileReader.DONE) { // DONE == 2
+                        document.getElementById('file_data').textContent = evt.target.result;
+                        document.getElementById('file_data').textContent = 
+                            ['Read bytes: ', start + 1, ' - ', stop + 1,
+                            ' of ', file.size, ' byte file'].join('');
+                    }
+                };
+
+                if (file.webkitSlice) {
+                    var blob = file.webkitSlice(start, stop + 1);
+                } else if (file.mozSlice) {
+                    var blob = file.mozSlice(start, stop + 1);
+                }
+                alert(reader.readAsBinaryString(blob));
+                document.getElementById('file_data').textContent = reader.readAsBinaryString(blob);
+            }
+
+            function handleDragOver(evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+            }
+            
             var socket = io.connect('cloudglare.com',{port:90});
             var algorithms_info = new Array();
             var mutation_info = new Array();
@@ -628,7 +652,7 @@
                     var selection_params = $('#selection_params').val();
                     var value_params = $('#value_params').val();
                     var weight_params = $('#weight_params').val();
-                     var problem_name = $('#problem_name').val();
+                    var problem_name = $('#problem_name').val();
                     var problem_description = $('#problem_description').val();
                     problem_name = replaceAll(problem_name, "-", "");
                     problem_name = replaceAll(problem_name, "'", "");
@@ -639,7 +663,7 @@
                     if(problem_name == ""){
                         problem_name = "teste";
                     }
-                     if(problem_description == ""){
+                    if(problem_description == ""){
                         problem_description = "testes tecnicos das equipas";
                     }
                     var newDate = new Date;
@@ -709,12 +733,10 @@
                                 $('.myModelSolver_body').html(solver_info);
                                 selected_algorithm = all_info.algorithms[i][0];
                                 if(selected_algorithm == "genetics.algorithms.KnapSack"){
-                                    $(".knap_values").show();
-                                    $(".knap_weights").show();
+                                    $(".knap_file").show();
                                 }
                                 else{
-                                    $(".knap_values").hide();
-                                    $(".knap_weights").hide();
+                                    $(".knap_file").hide();
                                 }
                             }
                             else{
@@ -727,12 +749,10 @@
                             $(this).parent('li').addClass('active');
                             selected_algorithm = $(this).attr("data-id");
                             if(selected_algorithm == "genetics.algorithms.KnapSack"){
-                                $(".knap_values").show();
-                                $(".knap_weights").show();
+                                $(".knap_file").show();
                             }
                             else{
-                                $(".knap_values").hide();
-                                $(".knap_weights").hide();
+                                $(".knap_file").hide();
                             }
                         });
                     
