@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="http://www.facebook.com/2008/fbml">
+
     <head>
         <meta charset="utf-8">
-        <title>Life Inspiration</title>
+        <title>Life Inspiration - Contacts</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -30,9 +33,56 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/logo_inspiration_72.png">
         <link rel="apple-touch-icon-precomposed" href="assets/ico/logo_inspiration_57.png">
 
+        <script src="assets/js/cookies.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+        <!-- Facebook Meta Tags -->
+        <meta property="og:title" content="Life Inspiration"/>
+        <meta property="og:type" content="company"/>
+        <meta property="og:url" content="http://www.cloudglare.com/"/>
+        <meta property="og:image" content="http://www.cloudglare.com/assets/img/Life-Inspiration_03ss_03.png"/>
+        <meta property="og:site_name" content="LifeInspiration"/>
+        <meta property="fb:admins" content="100001620293641"/>
+        <meta property="og:description"
+              content="Life Inspiration helps our clients solving complex engineering problems with smart processing time."/>
+
+        <!-- Google + atributos que iram aparecer ao fazer +1/Like -->
+        <!-- Update your html tag to include the itemscope and itemtype attributes -->
+        <html itemscope itemtype="http://schema.org/Organization">
+
+        <!-- Add the following three tags inside head -->
+        <meta itemprop="name" content="Life Inspiration">
+        <meta itemprop="description" content="Life Inspiration helps our clients solving complex engineering problems with
+              smart processing time">
+        <meta itemprop="image" content="http://cloudglare.com/assets/img/logo_inspiration.png">
+
+        <script class="code" type="text/javascript">
+            $(document).ready(function(){
+                //carrega pagina com modals e funcoes por defeito
+                $("#modals").load("views/modals.html");
+                 
+                //Verifica se tem login ou não para mostrar botao correspondnt
+                if(readCookie('nome')!=null){
+                    $('#LiRegist').html("");
+                    $('#LiRegist').append("<a href='#Logoutuser' id='LogoutUser' ><i style='margin-top: 4px;'   class='icon-off'></i> Logout</a>");
+                    $('.logo_image').css("margin-right", "120px");
+                    $('#textLogin').html("");
+                    var nome = readCookie('nome').split(" ");
+                    $('#textLogin').append("Olá "+nome[0]);
+                    $('#LiLogin a').attr("href","myarea.html");
+                    $('#loginButton').css("background-image", "url('assets/img/myarea_1.png')");
+                }
+   
+            });
+        </script>
     </head>
 
     <body data-spy="scroll" data-target=".subnav" data-offset="50">
+        <a id="loginButton" class="loginButton" href="myarea.html">&nbsp;</a>
+        <a id="serverStatus" class="serverStatus" href="#">
+            <img class="StatusImage" style="margin-top: 10px" src="assets/img/down.png">   
+        </a>
 
         <!-- Navbar
           ================================================== -->
@@ -44,12 +94,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <img style="float:left; margin:5px;margin-right:280px;" class="logo_image" src="assets/img/logo_inspiration.png">
+                    <img width="199px" style="float:left; margin:5px; margin-left:0px;margin-right:170px;" class="logo_image" src="assets/img/logo_inspiration.png">
                     <div class="nav-collapse">
                         <ul class="nav nav-pills" style="margin-top:15px;">
                             <li>
                                 <a href="./index.html"><i style="margin-top: 3px;" class="icon-home"></i> Home</a>
-
                             </li>
                             <li>
                                 <a href="./how_works.html"><i style="margin-top: 4px;" class="icon-star"></i> How works</a>
@@ -63,19 +112,25 @@
                             <li class="active">
                                 <a href="./contacts.html"><i style="margin-top: 4px;" class="icon-eye-open icon-white"></i> Contacts</a>
                             </li>
-                            <li>
-                                <a href="./login.html"><i style="margin-top: 4px;" class="icon-user"></i> Login</a>
+
+                            <li id="LiLogin">
+                                <a href="#login"  id="menu_buttons_Login"><i style="margin-top: 4px;" class="icon-user"></i> <span id="textLogin">Login</span></a>
                             </li>
+                            <li id="LiRegist">
+                                <a href="#regist" id="menu_buttons_regist" ><i style="margin-top: 4px;"   class="icon-plus"></i> Regist</a>
+                            </li>
+
                         </ul>
+                        <span class="loaderAjax2"></span>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="container">
-
+            <div id="fb-root"></div>
             <!-- Masthead
-            ================================================== -->
+           ================================================== -->
             <header class="jumbotron masthead">
                 <figure style="width:30%;margin-top:45px;float:left;text-align: center;"> 
                     <img style="" src="assets/img/myarea.png" />
@@ -138,6 +193,9 @@
 
             </div><!-- /.marketing -->
 
+            <!-- div que recebe o load do modals.html --> 
+            <div id="modals">
+            </div>
 
         </div><!-- /container -->
 
@@ -156,15 +214,15 @@
                     </div>
                     <div class="span2 offset4">
                         <h3>Follow us</h3>
-                        <ul class="the-icons">
-                            <li><img style="margin-left: 10px; margin-top: -5px;" src="assets/img/twitter_icon.png" />  Twitter</li>
-                            <li><img style="margin-left: 10px; margin-top: -5px;" src="assets/img/google_icon.png" />  Google +</li>
-                            <li><img style="margin-left: 10px; margin-top: -5px;" src="assets/img/face_icon.png" />  Facebook</li>
-                            <li><img style="margin-left: 10px; margin-top: -5px;" src="assets/img/linked_icon.png" />  LinkedIn</li>
-                        </ul>
+
+                        <!-- Coloque esta etiqueta onde pretende que o botão de +1 seja apresentado -->
+                        <div class="googleMais"><g:plusone annotation="none" style="margin-left: 10px;"></g:plusone></div>
+                        <!-- Facebook like btt -->
+                        <div class="fb-like" data-href="http://www.cloudglare.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="trebuchet ms"></div>
+
                     </div>
                 </div> 
-                <div style="margin-bottom: 5px;" class="row">
+                <div style="margin-bottom: 5px;margin-top: 15px;" class="row">
                     <div class="span12">
                         <h3>Teams</h3>
                     </div>
@@ -199,10 +257,10 @@
 
 
         <!-- Le javascript
-        ================================================== -->
+          ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
         <script src="assets/js/google-code-prettify/prettify.js"></script>
         <script src="assets/js/bootstrap-transition.js"></script>
         <script src="assets/js/bootstrap-alert.js"></script>
@@ -217,138 +275,22 @@
         <script src="assets/js/bootstrap-carousel.js"></script>
         <script src="assets/js/bootstrap-typeahead.js"></script>
         <script src="assets/js/application.js"></script>
+        <script src="assets/js/functions.js"></script>
         <script src="http://cloudglare.com:90/socket.io/socket.io.js"></script>
         <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-        <script type="text/javascript">
-            google.load('visualization', '1', {packages: ['corechart']});
-        </script>
+        <script src="assets/js/jqueryvalidate.js"></script>
 
         <script class="code" type="text/javascript">
+            //Load google Charts
+            google.load('visualization', '1', {packages: ['corechart']});
+            //criação de ligação node JS
             var socket = io.connect('cloudglare.com',{port:90});
-            
-            $(document).ready(function(){
-                var teste = new Array();
-                var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-                var data = new google.visualization.DataTable();
-                var itera = 0;
-                var showitera = 0;
-                var totalitera = 0;
-                var options = {
-                    title: 'Company Performance',      
-                    width: 800,
-                    height: 340,
-                    animation:{
-                        duration: 1000,
-                        easing: 'out'
-                    },
-                    vAxis: {minValue:0, maxValue:10}
-                };
-                function drawChart(){
-                  
-                }
-                
-                data.addColumn('string', 'Iter');
-                data.addColumn('number', 'Res');
-                    
-                chart.draw(data, options); 
-             
-                var intervalo = window.setInterval(function() {
-                    if(itera > 0){
-                        data.addRows([
-                            [""+(showitera+0), parseFloat(teste[showitera+0])],
-                            [""+(showitera+1), parseFloat(teste[showitera+1])],
-                            [""+(showitera+2), parseFloat(teste[showitera+2])],
-                            [""+(showitera+3), parseFloat(teste[showitera+3])],
-                            [""+(showitera+4), parseFloat(teste[showitera+4])]
-                        ]);
-                        showitera = showitera + 5;
-                        chart.draw(data,options);
-                        if(totalitera != 0 && showitera >= totalitera){
-                            window.clearInterval(intervalo);
-                        }
-                    }
-                    
-                    
-                }, 1500);
-                
-                
-                socket.on('newtry', function (dados) {
-                    // console.log(dados);
-                    teste[itera] = dados;
-                    itera = itera + 1;
-                    
-                });
-                socket.on('total', function (dados) {
-                    // console.log(dados);
-                    totalitera = dados;
-                    
-                });
+
+            $(document).ready(function(){     
+                //call node status
+                statusNodeJS();    
             });
-           
-           
-        
             
-            /* socket.on('news', function (data) {
-                $('#FormPost').html(""); 
-                $('.loaderAjax2').html("");
-                $('#chart2').html("");
-                var ajaxDataRenderer = function(url, plot, options) {
-                    var ret = null;
-                    $.ajax({
-                        // have to use synchronous here, else the function 
-                        // will return before the data is fetched
-                        async: false,
-                        url: url,
-                        dataType:"json",
-                        success: function(data) {
-                            ret = data;
-  
-                        }
-                    });
-                    return ret;
-                };
-                // The url for our json data
-                var jsonurl = "./jsondata.txt";
-
-                // passing in the url string as the jqPlot data argument is a handy
-                // shortcut for our renderer.  You could also have used the
-                // "dataRendererOptions" option to pass in the url.
-                var plot2 = $.jqplot('chart2', jsonurl,{
-                    title: "Average fitness population",
-                    dataRenderer: ajaxDataRenderer,
-                    dataRendererOptions: {
-                        unusedOptionalUrl: jsonurl
-                    },cursor:{
-                        show: true,
-                        zoom:true,
-                        showTooltip:false
-                    } 
-                });  
-                
-
-            });*/
-
-            
-           
-            
-            $('.bt_execute').click(function(){
-                $('.btn btn-large btn-primary bt_execute').html("");
-                $('#chart2').html("<img style='margin-left:50%;margin-top:0px;'src='http://www.greatdiscountz.com/imagens/159.gif'/>"); 
-                var population = $('.population').val();
-                var maximum = $('.maximum').val();
-                var mutation = $('.mutation').val();
-                var data=  { "population" : population, "maximum": maximum, "mutation":mutation }
-         
-                $.ajax({
-                    type: 'GET',
-                    url: "http://code.dei.estt.ipt.pt:8080/index.html?"+"pop="+population+"&max="+maximum+"&mut="+mutation
-                
-                });
-            
-                
-                
-                //socket.emit("start", data);
-            });
         </script>
 
         <!--scrypts para a plot-->
