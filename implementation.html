@@ -203,7 +203,8 @@
                                             </div>
                                             <div class="well span6 knap_file" style="padding: 8px;">
                                                 <div id="drop_zone">Drop file w/ knapSack items here </div>
-                                                <div id="file_data"></div>
+                                                <div id="file_data" style="display:none;"></div>
+                                                <div id="items_info" style="margin-top:10px;margin-left:10px;"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -572,6 +573,8 @@
         </script>
 
         <script class="code" type="text/javascript">
+            var weights;
+            var values;
             function replaceAll(string, token, newtoken) {
                 while (string.indexOf(token) != -1) {
                     string = string.replace(token, newtoken);
@@ -596,10 +599,12 @@
                 // If we use onloadend, we need to check the readyState.
                 reader.onloadend = function(evt) {
                     if (evt.target.readyState == FileReader.DONE) { // DONE == 2
-                        document.getElementById('file_data').textContent = evt.target.result;
-                        document.getElementById('file_data').textContent = 
-                            ['Read bytes: ', start + 1, ' - ', stop + 1,
-                            ' of ', file.size, ' byte file'].join('');
+                        // alert(evt.target.result);
+                        if(evt.target.result != null || evt.target.result != ""){
+                            document.getElementById('file_data').textContent = evt.target.result;
+                            countItems();
+                        } 
+                        
                     }
                 };
 
@@ -608,8 +613,8 @@
                 } else if (file.mozSlice) {
                     var blob = file.mozSlice(start, stop + 1);
                 }
-                alert(reader.readAsBinaryString(blob));
                 document.getElementById('file_data').textContent = reader.readAsBinaryString(blob);
+                
             }
 
             function handleDragOver(evt) {
@@ -617,7 +622,20 @@
                 evt.preventDefault();
                 evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
             }
-            
+            function countItems(){
+                var teste = $('#file_data').html();
+                teste = teste.split(/(\r\n|\n|\r)/gm);
+                var number = teste[0].split(" ");
+                var number2 = teste[2].split(" ");
+                values = teste[0];
+                weights = teste[2];
+                if(number.length == number2.length){
+                    $("#items_info").html("Total Items for knapSack: " + number.length);
+                }
+                else{
+                    $("#items_info").html("<span style='color:red;'>number of values is not the same of weights!</span>");
+                }
+            }
             var socket = io.connect('cloudglare.com',{port:90});
             var algorithms_info = new Array();
             var mutation_info = new Array();
@@ -632,6 +650,7 @@
             var selected_replacement = "";
             var selected_selection ="";
             var solver_info = "";
+            
             $(document).ready(function(){
                 $("#bt_solverinfo").click(function(){
                     //$("#myModalSolver").modal('show');
@@ -679,7 +698,7 @@
                         data = {
                             id: (randomProblem),
                             client: readCookie('idClient'),
-                            algorithm: [selected_algorithm,algorithm_params,algorithm_params_solver,value_params,weight_params],
+                            algorithm: [selected_algorithm,algorithm_params+"$$"+values+" " + weights,algorithm_params_solver],
                             mutation: [selected_mutation,mutation_params],
                             operator: [selected_operator,"0"],
                             recombination: [selected_recombination,recombination_params],
@@ -702,19 +721,16 @@
                             desc: problem_description
                         }
                     }
-                    
+                    alert(JSON.stringify(data));
                     $.ajax({
                         type: 'GET',
                                    url: "socket.php?"+"teste=load-"+JSON.stringify(data)
                     });
-                    socket.emit("start",data);
-                     
-                                 
+                    socket.emit("start",data);                                 
                                        setTimeout(function() {
                                               window.location = "results.html";
                                        }, 1000);
-                                  
-                    
+
                 });
                 $.ajax({
                     type: 'GET',
