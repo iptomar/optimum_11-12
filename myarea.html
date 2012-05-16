@@ -303,8 +303,8 @@
             <div id="modals">
             </div>
         </div><!-- /container -->
-         <!-- Footer
-         ================================================== -->
+        <!-- Footer
+        ================================================== -->
         <footer class="footer" style="background-color: #252525; ">
             <div class="container">
                 <div style="padding-left: 0%;" class="row">
@@ -379,7 +379,7 @@
         <script src="http://cloudglare.com:90/socket.io/socket.io.js"></script>
         <script type="text/javascript" src="http://www.google.com/jsapi"></script>
         <script src="assets/js/jqueryvalidate.js"></script>
-        
+
         <script type="text/javascript">
             google.load('visualization', '1', {packages: ['corechart']});
         </script>
@@ -626,7 +626,15 @@
                 socket.on('loadString', function (dadosEND) {
                     if(selectedProblem==dadosEND.idProblem){//Fechar Modal que mostra o resultado final
                         $('#ResultEndString').html("");
-                        $('#ResultEndString').append("<p style='font-size:13px;'>Max Best: "+dadosEND.dados[0].max_best+"</p><p style='font-size:13px;'>Atribute: "+dadosEND.dados[0].attribute +" </p>");
+                        
+                        var final2 = dadosEND.dados[0].attribute.split('-');
+                        var show = final2.split(' ');
+                        alert('sad');
+                        alert(show.length);
+                        for (i=0;i<=show.length;i++)
+                        {
+                            $('#ResultEndString').append("<p style='font-size:13px;'>Max Best: "+dadosEND.dados[0].max_best+"</p><p style='font-size:13px;'>Atribute: "+show[i] +" </p>");
+                        }
                     }
                 });
             });
