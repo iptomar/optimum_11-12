@@ -402,9 +402,8 @@
             });
             
             // Evento que recebe idClient apos login por facebook
-            socket.on('registAccountFacebook', function (dados) {
-            alert('recebi do nodeJS');
-                createCookie('nome',me.name,1);
+            socket.on('registAccountFacebookResult', function (dados) {
+                createCookie('nome',dados[0].nome,1);
                 createCookie('idClient',dados[0].idClient,1);    
             });
                 
