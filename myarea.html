@@ -63,7 +63,8 @@
                 $("#modals").load("views/modals.html");
                  
                 //Verifica se tem login ou não para mostrar botao correspondnt
-                if(readCookie('nome')!=null){
+                if(readCookie('nome') != null){
+                    
                     $('#LiRegist').html("");
                     $('#LiRegist').append("<a href='#Logoutuser' id='LogoutUser' ><i style='margin-top: 4px;'   class='icon-off'></i> Logout</a>");
                     $('.logo_image').css("margin-right", "120px");
@@ -72,6 +73,8 @@
                     $('#textLogin').append("Olá "+nome[0]);
                     $('#LiLogin a').attr("href","myarea.html");
                     $('#loginButton').css("background-image", "url('assets/img/myarea_1.png')");
+                    $(".nome").html("");
+                    $(".nome").html("Welcome, " + readCookie('nome'));
                 }
    
             });
@@ -157,7 +160,7 @@
 
                     <div  id="FormPost" class="jumbotron masthead">
                         <img class="bs-icon" src="assets/img/glyphicons/glyphicons_042_group.png">
-                        <h2 class="nome"></h2>
+                        <h2 class="nome">Welcome</h2>
 
                         <div style="margin-top:80px;" class="tabbable tabs-left">
                             <ul class="nav nav-tabs">
@@ -280,9 +283,13 @@
                                             </div>
 
                                             <div id="tab3" class="tab-pane">
-                                                <div id="ResultEndString" style="margin-top:30px;" class="span6" >
+                                                <div style="margin-top:30px;" class="span6" >
+                                                    <h2>Final string</h2>
+                                                    <div id="ResultEndString" style="margin-top:30px;height: auto" >
 
+                                                    </div>
                                                 </div>
+
                                             </div>
                                             <div id="tab4" class="tab-pane">
                                                 <div style="margin-top:30px;" class="span6" >
@@ -430,7 +437,7 @@
                     socket.emit('getString',data);
                 });
             });
-             /*** Recebe parametros do problema pedido ***/
+            /*** Recebe parametros do problema pedido ***/
             socket.on('getProblemInfoResult', function (dadosInfo) {
                 $(".geralInput").html("");
                 $(".geralInput").append("<div class='row'><div class='span7' style='font-size:16px;'>"+dadosInfo[0].name+"</div></div><div class='row'><div class='span7'><b>Problem description: </b>"+dadosInfo[0].description+"</div></div><div class='row'><div class='span3'><b>Problem Identifier: </b>" + dadosInfo[0].idProblem +"</div><div class='span3'><b>Date/Hour: </b> " + dadosInfo[0].time +"</div></div><div class='row'><div class='span7'><b>Algorithm: </b> " + dadosInfo[0].algorithm +"</div></div><div class='row'><div class='span3'><b>Selection:</b>  " + dadosInfo[0].selection +"</div><div class='span3'><b>Mutation: </b> " + dadosInfo[0].mutation +"</div></div><div class='row'><div class='span3'><b>Recombination: </b> " + dadosInfo[0].recombination +"</div><div class='span3'><b>Replacement: </b> " + dadosInfo[0].replacement +"</div></div>").fadeIn('slow');
@@ -512,7 +519,7 @@
                 });
                 
                 
-                $(".nome").html("welcome, "+ readCookie('nome'));
+                $(".nome").html("Welcome, "+ readCookie('nome'));
                 //First Graph
                 var teste = new Array();
                 var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
@@ -582,75 +589,81 @@
                 /*** Recebe dados para gerar gráficos do problema pedido ***/
                 socket.on('loadCharts', function (dados) {
                     // dados para limpar gráficos por cada vez que lê um novo problema
-                    var data = new google.visualization.DataTable();
-                    data.addColumn('string','Iter');
-                    data.addColumn('number','Avarage');
-                    data.addColumn('number','Best');
-                    data.addRows([["1",0,0]]);
-                    chart.draw(data, options);
-                    var dataNumBest = new google.visualization.DataTable();
-                    dataNumBest.addColumn('string','Iter');
-                    dataNumBest.addColumn('number','Num of Best');
-                    dataNumBest.addRows([["1",0]]);
-                    chartNumBest.draw(dataNumBest, optionsNumBest);
-                    var datadev = new google.visualization.DataTable();
-                    datadev.addColumn('string','Iter');
-                    datadev.addColumn('number','Deviation');
-                    datadev.addRows([["1",0]]);
-                    chartdev.draw(datadev, optionsdev);
-                    // <---
-                    dataforChart = dados;
-                    currentPosition = 0;
-                    clearInterval(intervalID);
-                    var timeItera = 2500;
-                    if(dataforChart.length > 200){
-                        timeItera = 2800;
-                    }
-                    // Intervalo para ler o array onde estão todos os dados e ler de 2800ms para o gráfico conseguir convergir os valores
-                    var intervalID = setInterval(function() {
-                        var n_itera = 20;
-                        if((dataforChart.length-currentPosition) < 20){
-                            n_itera = dataforChart.length-currentPosition;
+                    if(dados.length >1){
+                        var data = new google.visualization.DataTable();
+                        data.addColumn('string','Iter');
+                        data.addColumn('number','Avarage');
+                        data.addColumn('number','Best');
+                        data.addRows([["1",0,0]]);
+                        chart.draw(data, options);
+                        var dataNumBest = new google.visualization.DataTable();
+                        dataNumBest.addColumn('string','Iter');
+                        dataNumBest.addColumn('number','Num of Best');
+                        dataNumBest.addRows([["1",0]]);
+                        chartNumBest.draw(dataNumBest, optionsNumBest);
+                        var datadev = new google.visualization.DataTable();
+                        datadev.addColumn('string','Iter');
+                        datadev.addColumn('number','Deviation');
+                        datadev.addRows([["1",0]]);
+                        chartdev.draw(datadev, optionsdev);
+                        // <---
+                        dataforChart = dados;
+                        currentPosition = 0;
+                        clearInterval(intervalID);
+                        var timeItera = 2500;
+                        if(dataforChart.length > 200){
+                            timeItera = 2800;
                         }
-                        if(dataforChart.length > 100 && dataforChart.length != currentPosition){
-                            data.addRows([[(dados[currentPosition].itera+1)+"",dados[currentPosition].globalAvarage,dados[currentPosition].globalBest]]);
-                            dataNumBest.addRows([[(dados[currentPosition].itera+1)+"",dados[currentPosition].globalNumBest]]);
-                            datadev.addRows([[(dados[currentPosition].itera+1)+"",dados[currentPosition].globalDeviation]]);
-                            chart.draw(data,options);
-                            chartNumBest.draw(dataNumBest, optionsNumBest);
-                            chartdev.draw(datadev, optionsdev);
-                            currentPosition = currentPosition+n_itera;
-                        }
-                        if(dataforChart.length != currentPosition && dataforChart.length < 200){
-                            for(var i = currentPosition;i<currentPosition+n_itera;i++){
-                                data.addRows([[(dados[i].itera+1)+"",dados[i].globalAvarage,dados[i].globalBest]]);
-                                dataNumBest.addRows([[(dados[i].itera+1)+"",dados[i].globalNumBest]]);
-                                datadev.addRows([[(dados[i].itera+1)+"",dados[i].globalDeviation]]);
+                        // Intervalo para ler o array onde estão todos os dados e ler de 2800ms para o gráfico conseguir convergir os valores
+                        var intervalID = setInterval(function() {
+                            var n_itera = 20;
+                            if((dataforChart.length-currentPosition) < 20){
+                                n_itera = dataforChart.length-currentPosition;
+                            }
+                            if(dataforChart.length > 100 && dataforChart.length != currentPosition){
+                                data.addRows([[(dados[currentPosition].itera+1)+"",dados[currentPosition].globalAvarage,dados[currentPosition].globalBest]]);
+                                dataNumBest.addRows([[(dados[currentPosition].itera+1)+"",dados[currentPosition].globalNumBest]]);
+                                datadev.addRows([[(dados[currentPosition].itera+1)+"",dados[currentPosition].globalDeviation]]);
                                 chart.draw(data,options);
                                 chartNumBest.draw(dataNumBest, optionsNumBest);
                                 chartdev.draw(datadev, optionsdev);
+                                currentPosition = currentPosition+n_itera;
                             }
-                            currentPosition = currentPosition+n_itera;
-                        }
-                        if(dataforChart.length == currentPosition){
-                            clearInterval(intervalID);
-                            $('.'+dados[0].idProblem).html("<img class='box_img' src='assets/img/box.png' />");
+                            if(dataforChart.length != currentPosition && dataforChart.length < 200){
+                                for(var i = currentPosition;i<currentPosition+n_itera;i++){
+                                    data.addRows([[(dados[i].itera+1)+"",dados[i].globalAvarage,dados[i].globalBest]]);
+                                    dataNumBest.addRows([[(dados[i].itera+1)+"",dados[i].globalNumBest]]);
+                                    datadev.addRows([[(dados[i].itera+1)+"",dados[i].globalDeviation]]);
+                                    chart.draw(data,options);
+                                    chartNumBest.draw(dataNumBest, optionsNumBest);
+                                    chartdev.draw(datadev, optionsdev);
+                                }
+                                currentPosition = currentPosition+n_itera;
+                            }
+                            if(dataforChart.length == currentPosition){
+                                clearInterval(intervalID);
+                                $('.'+dados[0].idProblem).html("<img class='box_img' src='assets/img/box.png' />");
                             
-                        }
-                    },timeItera);
-                });
+                            }
+                        },timeItera);
+                    }
+                })
+                ;
                 /*** Recebe dados Finais do problema pedido ***/
                 socket.on('loadString', function (dadosEND) {
                     if(selectedProblem==dadosEND.idProblem){//Fechar Modal que mostra o resultado final
                         $('#ResultEndString').html("");
                         
                         var final2 = dadosEND.dados[0].attribute.split('-');
-                        var show = final2.split(' ');
-                        alert('sad');
-                        alert(show.length);
+                        var show = final2[1].split(' ');
                         for (i=0;i<=show.length;i++)
                         {
-                            $('#ResultEndString').append("<p style='font-size:13px;'>Max Best: "+dadosEND.dados[0].max_best+"</p><p style='font-size:13px;'>Atribute: "+show[i] +" </p>");
+                            if(show[i]=='1'){
+                                $('#ResultEndString').append("<span id='blackString'>&nbsp</span>"); 
+                            }else if(show[i]=='0'){
+                                $('#ResultEndString').append("<span id='greyString'>&nbsp</span>"); 
+                            }
+                            
                         }
                     }
                 });
