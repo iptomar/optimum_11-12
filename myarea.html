@@ -391,6 +391,8 @@
             var allMode =["null","Penalty","Pseudo-Random","Random"];
             var dataforChart;
             var currentPosition;
+            
+            /*** Recebe via nodejs os dados do utilizador e mostra-os nas suas respectivas texts ***/
             socket.on('getUserDataResult', function (dados) {
                 $('#name').val(dados[0].nome);
                 $('#email').val(dados[0].email);
@@ -401,18 +403,24 @@
                 $('#phone2').val(dados[0].phone2);
                 $('#website').val(dados[0].website);
             });
+            
+            /*** Pede todos os problemas do utilizador ao nodejs ***/
             var data = {"idClient":readCookie('idClient')}
             socket.emit("getUserProblems",data);
+            
+            /*** Recebe todos os problemas do utilizador recebendo do nodejs ***/
             var selectedProblem;
             socket.on('getUserProblemsResult', function (data) {
                 $.each(data, function(i, item) {
                     $("#problems").append("<div data-id='"+data[i].idProblem +"' class='box_group'><figure style='width:65px;height:54px;' class='box_image "+data[i].idProblem+"'><img class='box_img' src='assets/img/box.png' /></figure><div class='box_name' style='font-size:15px;text-align:left;line-height:10px;margin-bottom:0px'><b>"+data[i].name+"</b></div><div class='box_name' style='font-size:13px;text-align:left;line-height:29px;margin-bottom:0px;'><b>IdProblem</b>: "+data[i].idProblem+"</div><div class='box_schudule' style='font-size:13px;text-align:left;line-height:29px;margin-bottom:0px'>"+ data[i].time +"</div></div>");
                 });
+                // Inicia logo o primeiro problemas por defeito
                 var data = {'idClient': readCookie('idClient'), 'idProblem':data[0].idProblem};
                 socket.emit('getProblemInfo',data);
                 socket.emit('getCharts',data);
                 socket.emit('getString',data);
                 $('.'+data.idProblem).html("<img src='http://www.greatdiscountz.com/imagens/159.gif' style='margin-top:15px;margin-left:27px;'/>");
+                // Ao clicar no problema envia um pedido ao server nodejs de toda a sua informação 
                 $('.box_group').click(function(){
                     $('.'+$(this).attr('data-id')).html("<img src='http://www.greatdiscountz.com/imagens/159.gif' style='margin-top:15px;margin-left:27px;'/>");
                     selectedProblem = $(this).attr('data-id');
@@ -422,7 +430,7 @@
                     socket.emit('getString',data);
                 });
             });
-
+             /*** Recebe parametros do problema pedido ***/
             socket.on('getProblemInfoResult', function (dadosInfo) {
                 $(".geralInput").html("");
                 $(".geralInput").append("<div class='row'><div class='span7' style='font-size:16px;'>"+dadosInfo[0].name+"</div></div><div class='row'><div class='span7'><b>Problem description: </b>"+dadosInfo[0].description+"</div></div><div class='row'><div class='span3'><b>Problem Identifier: </b>" + dadosInfo[0].idProblem +"</div><div class='span3'><b>Date/Hour: </b> " + dadosInfo[0].time +"</div></div><div class='row'><div class='span7'><b>Algorithm: </b> " + dadosInfo[0].algorithm +"</div></div><div class='row'><div class='span3'><b>Selection:</b>  " + dadosInfo[0].selection +"</div><div class='span3'><b>Mutation: </b> " + dadosInfo[0].mutation +"</div></div><div class='row'><div class='span3'><b>Recombination: </b> " + dadosInfo[0].recombination +"</div><div class='span3'><b>Replacement: </b> " + dadosInfo[0].replacement +"</div></div>").fadeIn('slow');
@@ -494,9 +502,12 @@
                         }    
                     });                                   
                 });
+                
+                /*** Quando os dados do utilizador são modificados com sucesso ***/
                 socket.on('changeClientInfoResult', function (dadosInfo) {
                     $("#infoResult").html('<img src="assets/img/minicheck.png" style="float:right;margin-right:15px;"><span style="margin-right:10px;float:right;">your information has been changed sucessfuly</span> ');
                     var data = {"idClient":readCookie('idClient')}
+                    // pede novamente os dados para preencher as texts com as novas modificações
                     socket.emit("getUserData",data);
                 });
                 
@@ -567,7 +578,10 @@
                 datadev.addColumn('number','Deviation');
                 datadev.addRows([["1",0]]);
                 chartdev.draw(datadev, optionsdev);
+                
+                /*** Recebe dados para gerar gráficos do problema pedido ***/
                 socket.on('loadCharts', function (dados) {
+                    // dados para limpar gráficos por cada vez que lê um novo problema
                     var data = new google.visualization.DataTable();
                     data.addColumn('string','Iter');
                     data.addColumn('number','Avarage');
@@ -584,6 +598,7 @@
                     datadev.addColumn('number','Deviation');
                     datadev.addRows([["1",0]]);
                     chartdev.draw(datadev, optionsdev);
+                    // <---
                     dataforChart = dados;
                     currentPosition = 0;
                     clearInterval(intervalID);
@@ -591,6 +606,7 @@
                     if(dataforChart.length > 200){
                         timeItera = 2800;
                     }
+                    // Intervalo para ler o array onde estão todos os dados e ler de 2800ms para o gráfico conseguir convergir os valores
                     var intervalID = setInterval(function() {
                         var n_itera = 20;
                         if((dataforChart.length-currentPosition) < 20){
@@ -623,6 +639,7 @@
                         }
                     },timeItera);
                 });
+                /*** Recebe dados Finais do problema pedido ***/
                 socket.on('loadString', function (dadosEND) {
                     if(selectedProblem==dadosEND.idProblem){//Fechar Modal que mostra o resultado final
                         $('#ResultEndString').html("");

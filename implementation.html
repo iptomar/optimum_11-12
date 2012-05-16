@@ -552,15 +552,21 @@
             var tamanho_mochila;
             var alello;
             var tsp_data = "";
+            
+            /*** Função para fazer replace de um char por toda uma string ***/
             function replaceAll(string, token, newtoken) {
                 while (string.indexOf(token) != -1) {
                     string = string.replace(token, newtoken);
                 }
                 return string;
             }
+            
+            /*** Função para remover espaços a esquerda ***/
             function ltrim(str) {
 		return str.replace(/^\s+/,"");
             }
+            
+            /*** Funções para ler ficheiros drag&drop ***/
             var dropZone = document.getElementById('drop_zone');
             dropZone.addEventListener('dragover', handleDragOver, false);
             dropZone.addEventListener('drop', handleFileSelect, false);
@@ -602,6 +608,8 @@
                 evt.preventDefault();
                 evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
             }
+            
+            /***** Função para ir buscar aos ficheiros os valores necessários consoante o algoritmo escolhido *****/
             function countItems(){
                 var teste = $('#file_data').html();
                 if(selected_algorithm == "genetics.algorithms.KnapSack"){
@@ -636,6 +644,8 @@
                     
                 }
             }
+            
+            /**** Variaveis globais para criar a string final ****/
             var socket = io.connect('cloudglare.com',{port:90});
             var algorithms_info = new Array();
             var mutation_info = new Array();
@@ -654,16 +664,13 @@
             $(document).ready(function(){
                 //call node status
                 statusNodeJS();
-                
+                /*** Função para fazer descer o modal com o info do solver ***/
                 $("#bt_solverinfo").click(function(){
-                    //$("#myModalSolver").modal('show');
-                    var problem_name = $('#problem_name').val();
-                    var problem_description = $('#problem_description').val();
-                    problem_name = replaceAll(problem_name, "-", "");
-                    problem_name = replaceAll(problem_name, "'", "");
-                    problem_name = replaceAll(problem_name, "\"", "");
-                    alert(problem_name);
+                    $("#myModalSolver").modal('show');
+                 
                 });
+                
+                /**** Função onclick quando o utilizador manda executar um novo problema *****/
                 $("#id_btexecute").click(function(){
                     var algorithm_params = $('#algorithm_params').val();
                     var algorithm_params_solver = $('#algorithm_params_solver').val();
@@ -740,7 +747,7 @@
                         }
                     }
                     alert(JSON.stringify(data));
-                    /*$.ajax({
+                    $.ajax({
                         type: 'GET',
                                    url: "socket.php?"+"teste=load-"+JSON.stringify(data)
                     });
@@ -748,12 +755,16 @@
                                        setTimeout(function() {
                                               window.location = "results.html";
                                        }, 1000);
-                     */
+                     
                 });
+                
+                /*** Pedir informação sobre algoritmos, mutations, etc... dinamicamente ao code ***/
                 $.ajax({
                     type: 'GET',
                     url: "socket.php?"+"teste=info-" + readCookie('idClient')
                 });
+                
+                /*** Recebe informação via node server dos algoritmos, mutations, etc... ***/
                 socket.on('getInfo', function (data) {
                     var all_info = JSON.parse(data);
                     solver_info = all_info.solver;
@@ -892,20 +903,6 @@
             
         </script>
 
-        <!--scrypts para a plot-->
-        <!-- End example scripts -->
-
-        <!-- Don't touch this! -->
-
-
-
-        <!-- End Don't touch this! -->
-
-        <!-- Additional plugins go here -->
-
-
-        <!-- End additional plugins -->
-        <!--END scrypts para a plot-->
 
     </body>
 </html>

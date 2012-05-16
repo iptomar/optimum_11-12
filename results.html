@@ -4,17 +4,17 @@
       xmlns:fb="http://www.facebook.com/2008/fbml">
 
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8"/>
         <title>Life Inspiration - your results</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
 
         <!-- Le styles -->
-        <link href="assets/css/bootstrap.css" rel="stylesheet">
-        <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
-        <link href="assets/css/docs.css" rel="stylesheet">
-        <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+        <link href="assets/css/bootstrap.css" rel="stylesheet"/>
+        <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"/>
+        <link href="assets/css/docs.css" rel="stylesheet"/>
+        <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet"/>
 
         <!--css para a plot-->
         <link class="include" rel="stylesheet" type="text/css" href="assets/css/jquery.jqplot.min.css" />
@@ -28,10 +28,10 @@
         <![endif]-->
 
         <!-- Le fav and touch icons -->
-        <link rel="shortcut icon" href="assets/ico/favicon.ico">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/logo_inspiration_114.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/logo_inspiration_72.png">
-        <link rel="apple-touch-icon-precomposed" href="assets/ico/logo_inspiration_57.png">
+        <link rel="shortcut icon" href="assets/ico/favicon.ico"/>
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/logo_inspiration_114.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/logo_inspiration_72.png"/>
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/logo_inspiration_57.png"/>
 
         <script src="assets/js/cookies.js"></script>
 
@@ -49,13 +49,13 @@
 
         <!-- Google + atributos que iram aparecer ao fazer +1/Like -->
         <!-- Update your html tag to include the itemscope and itemtype attributes -->
-    <html itemscope itemtype="http://schema.org/Organization">
+        <html itemscope itemtype="http://schema.org/Organization"/>
 
         <!-- Add the following three tags inside head -->
-        <meta itemprop="name" content="Life Inspiration">
+        <meta itemprop="name" content="Life Inspiration"/>
         <meta itemprop="description" content="Life Inspiration helps our clients solving complex engineering problems with
-              smart processing time">
-        <meta itemprop="image" content="http://cloudglare.com/assets/img/logo_inspiration.png">
+              smart processing time"/>
+        <meta itemprop="image" content="http://cloudglare.com/assets/img/logo_inspiration.png"/>
 
         <script class="code" type="text/javascript">
             $(document).ready(function(){
@@ -149,63 +149,109 @@
 
             <hr class="soften">
 
-            <div class="marketing">
-                <div class="row">
-                    <div class="AllResults">
-                        <div style="margin-left: 0px;margin-top:30px" class="span12">
-                            <img class="bs-icon" src="assets/img/glyphicons/glyphicons_079_podium.png">
-                            <h2 id="titleSecound">Getting data solution<span class="loaderAjax2"><img style="margin-left:10px;margin-top:0px;" src="http://www.greatdiscountz.com/imagens/159.gif"></span></h2>
-                            <div class="span12" id="resultOfInfo">
+                <div class="marketing">
+                    <div class="row">
+                        <div class="AllResults">
+                            <div style="margin-left: 0px;margin-top:30px;margin-bottom: 40px;" class="span12">
+                                <img class="bs-icon" src="assets/img/glyphicons/glyphicons_079_podium.png">
+                                    <h2 id="titleSecound">Getting data solution<span class="loaderAjax2"><img style="margin-left:10px;margin-top:0px;" src="http://www.greatdiscountz.com/imagens/159.gif"></span></h2>
 
                             </div>
-                        </div>
-                        <div style="margin-top:30px;" class="span6" >
-                            <img class="bs-icon" style="width: 30px;height: 28px;margin-top:12px;" src="assets/img/pointicon.png">
-                            <h2 style="padding-top: 7px;"><span class="titleRequest">Best and Avarage</span></h2>
-                            <div  id="chart_div"></div>
-                        </div>
-                        <div style="margin-top:30px;" class="span6" >
-                            <img class="bs-icon" style="width: 30px;height: 28px;margin-top:12px;" src="assets/img/pointicon.png">
-                            <h2  style="padding-top: 7px;"><span class="titleRequest">Num of Best and Deviation</span></h2>
-                            <div  id="chart_div_numbest"></div>
-                        </div>
+                            <div class="tabbable" >
+                                <ul class="nav nav-tabs">
+                                    <li >
+                                        <a data-toggle="tab" href="#lA">Problem Information</a>
+                                    </li>
 
-                        <div class="span12" >
-                            <img class="bs-icon" style="width: 30px;height: 28px;margin-top:12px;" src="assets/img/pointicon.png">
-                            <h2 style="padding-top: 7px;"><span class="titleRequestLastResult">String</span></h2>
-                        </div>
-                        <div id="FinalResult" class="span5 offset4" style="height: 450px; margin-top: 20px;">
+                                    <li class="active">
+                                        <a data-toggle="tab" href="#lB">Problem Data</a>
+                                    </li>
 
-                            <div id="grapharea">
+                                    <li>
+                                        <a data-toggle="tab" href="#lC">Problem Final Result</a>
+                                    </li>
 
-                                <div id="p50" class="graphlabel">Medium</div>
-                                <div id="p100" class="graphlabel">MAX</div>
+                                </ul>
+                                <div class="tab-content" style="width:100%;">
+                                    <div id="lA" class="tab-pane">
+                                        <div class="span12" id="resultOfInfo">
 
-                                <div id="graphcontainer">
-                                    <img src="assets/img/graphbackground.png" id="graphbackground" width="262" height="300" alt="" />
-                                    <img src="assets/img/graphbar.png" id="graphbar" width="262" height="300" alt="" />
-                                    <img src="assets/img/graphforeground.png" id="graphforeground" width="262" height="300" alt="" />
+                                        </div>
+
+                                    </div>
+
+                                    <div id="lB" class="tab-pane active">
+                                        <div style="margin-top:30px;" class="span6" >
+                                             <!--<img class="bs-icon" style="width: 30px;height: 28px;margin-top:12px;" src="assets/img/pointicon.png">
+                                               <h2 style="padding-top: 7px;"><span class="titleRequest">Best and Avarage</span></h2> -->
+                                                <div  id="chart_div"></div>
+                                        </div>
+                                        <div style="margin-top:30px;" class="span6" >
+                                           <!-- <img class="bs-icon" style="width: 30px;height: 28px;margin-top:12px;" src="assets/img/pointicon.png">
+                                                  <h2  style="padding-top: 7px;"><span class="titleRequest">Num of Best</span></h2>-->
+                                                <div  id="chart_div_numbest"></div>
+                                        </div>
+                                        <div style="margin-top:30px;" class="span6 offset3" >
+                                          <!--   <img class="bs-icon" style="width: 30px;height: 28px;margin-top:12px;" src="assets/img/pointicon.png">
+                                                 <h2  style="padding-top: 7px;"><span class="titleRequest">Deviation</span></h2>-->
+                                                <div  id="chart_div_dev"></div>
+                                        </div>
+                                    </div>
+
+                                    <div id="lC" class="tab-pane">
+                                        <div class="span12" >
+                                            <img class="bs-icon" style="width: 30px;height: 28px;margin-top:12px;" src="assets/img/pointicon.png">
+                                                <h2 style="padding-top: 7px;"><span class="titleRequestLastResult">String</span></h2>
+                                        </div>
+                                        <div id="FinalResult" class="span5 offset4" style="height: 450px; margin-top: 20px;">
+
+                                            <div id="grapharea">
+
+                                                <div id="p50" class="graphlabel">Medium</div>
+                                                <div id="p100" class="graphlabel">MAX</div>
+
+                                                <div id="graphcontainer">
+                                                    <img src="assets/img/graphbackground.png" id="graphbackground" width="262" height="300" alt="" />
+                                                    <img src="assets/img/graphbar.png" id="graphbar" width="262" height="300" alt="" />
+                                                    <img src="assets/img/graphforeground.png" id="graphforeground" width="262" height="300" alt="" />
+                                                </div>
+                                            </div>
+                                            <div style="width: 100%" id="closeResultFinal2" name="closeResultFinal2">corre</div>
+                                        </div>
+
+                                        <div class="span2 offset6" style="margin-bottom: 20px;" id="ResultEndString">
+
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
-                            <div style="width: 100%" id="closeResultFinal2" name="closeResultFinal2">corre</div>
-                        </div>
 
-                        <div class="span2 offset6" style="margin-bottom: 20px;" id="ResultEndString">
+
+
+
+
+
+
+
+
+
+
+
 
                         </div>
-                    </div>
-                    <div class="span12">
-                        <div id="id_btexecute" class="span1">
-                            <a style="margin-left:-40px;" class='btn btn-large btn-primary disabled bt_execute'>Working...</a>
-                            <!--/<a class="btn btn-large btn-primary bt_execute">New</a>-->
+                        <div class="span12">
+                            <div id="id_btexecute" class="span1">
+                                <a style="margin-left:-40px;" class='btn btn-large btn-primary disabled bt_execute'>Working...</a>
+                                <!--/<a class="btn btn-large btn-primary bt_execute">New</a>-->
+                            </div>
                         </div>
-                    </div>
-                </div><!--/row-->
+                    </div><!--/row-->
 
-            </div><!-- /.marketing -->
-            <!-- div que recebe o load do modals.html --> 
-            <div id="modals">
-            </div>
+                </div><!-- /.marketing -->
+                <!-- div que recebe o load do modals.html --> 
+                <div id="modals">
+                </div>
 
 
         </div><!-- /container -->
@@ -330,22 +376,21 @@
                 var showitera = 0;
                 var totalitera = 0;
                 var options = {
-                    title: 'Params',      
-                    width: 630,
-                    height: 340,
+                    title: 'Params',
+                    width: 500,
+                    height: 240,
                     animation:{
-                        duration: 1000,
+                        duration: 500,
                         easing: 'out'
                     }
-               
                 };
                 data.addColumn('string','Iter');
                 data.addColumn('number','Avarage');
                 data.addColumn('number','Best');
-                
+
                 data.addRows([["1",0,0]]);
-                chart.draw(data, options); 
-                
+                chart.draw(data, options);
+
                 //SecoundGraph
                 var testeNumBest = new Array();
                 var chartNumBest = new google.visualization.LineChart(document.getElementById('chart_div_numbest'));
@@ -354,20 +399,40 @@
                 var showiteraNumBest  = 0;
                 var totaliteraNumBest  = 0;
                 var optionsNumBest  = {
-                    title: 'NumBest',      
-                    width: 630,
-                    height: 340,
+                    title: 'Number of Bests',
+                    width: 500,
+                    height: 240,
                     animation:{
-                        duration: 1000,
+                        duration: 500,
                         easing: 'out'
                     }
-               
+
                 };
                 dataNumBest.addColumn('string','Iter');
-                dataNumBest.addColumn('number','Deviation');
                 dataNumBest.addColumn('number','Num of Best');
-                dataNumBest.addRows([["1",0,0]]);
-                chartNumBest.draw(dataNumBest, optionsNumBest); 
+                dataNumBest.addRows([["1",0]]);
+                chartNumBest.draw(dataNumBest, optionsNumBest);
+
+                // 3rd graph
+                var testedev = new Array();
+                var chartdev = new google.visualization.LineChart(document.getElementById('chart_div_dev'));
+                var iteradev = 0;
+                var datadev = new google.visualization.DataTable();
+                var showiteradev  = 0;
+                var totaliteradev  = 0;
+                var optionsdev  = {
+                    title: 'Deviation',
+                    width: 500,
+                    height: 240,
+                    animation:{
+                        duration: 500,
+                        easing: 'out'
+                    }
+                };
+                datadev.addColumn('string','Iter');
+                datadev.addColumn('number','Deviation');
+                datadev.addRows([["1",0]]);
+                chartdev.draw(datadev, optionsdev);
                 
                 /************************************************* *
                  * Eventos definidos para ligação de node js       *
@@ -385,9 +450,11 @@
                 socket.on('run', function (dados) {
                     if(readCookie('id_problem')==dados[0].idProblem){
                         data.addRows([[(dados[0].itera+1)+"",dados[0].globalAvarage,dados[0].globalBest]]);
-                        dataNumBest.addRows([[(dados[0].itera+1)+"",dados[0].globalDeviation,dados[0].globalNumBest]]);
+                        dataNumBest.addRows([[(dados[0].itera+1)+"",dados[0].globalNumBest]]);
+                        datadev.addRows([[(dados[0].itera+1)+"",dados[0].globalDeviation]]);
                         chart.draw(data,options);
-                        chartNumBest.draw(dataNumBest, optionsNumBest); 
+                        chartNumBest.draw(dataNumBest, optionsNumBest);
+                        chartdev.draw(datadev, optionsdev);
                     }else{
                       
                     } 
