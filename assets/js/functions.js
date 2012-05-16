@@ -16,14 +16,18 @@ function goOut(){
                 
 //função que retorna a pagina principal
 function statusNodeJS(){
+    $.ajax({
+                type: 'GET',
+                           url: "socket.php?teste=status-"
+    });
     //função que verifica o estado do servers de 3 em 3 segundos
     $(function() {
         var intervalID = setInterval(function() {
             $.ajax({
                 type: 'GET',
-                           url: "socket.php?status"
+                           url: "socket.php?teste=status-"
             });
-        },3000);
+        },30000);
         setTimeout(function() {
             clearInterval(intervalID);
         }, 18000);
