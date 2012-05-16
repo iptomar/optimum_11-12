@@ -159,11 +159,11 @@
                     <div class="modal-body">
                         <p style="font-size:14px;text-align: left;">
                             <span style="margin-left: 42px;" class="help-inline"><b>New Password: </b></span>
-                            <input type="password" name="pass1" id="pass1" class="span3" placeholder="Insert your password">
+                            <input type="password" name="passx" id="passx" class="span3" placeholder="Insert your password">
                         </p>
                         <p style="font-size:14px;text-align: left;">
                             <span style="margin-left: 25px;" class="help-inline"><b>Retype Password: </b></span>
-                            <input type="password" name="pass2" id="pass2" class="span3" placeholder="Retype your password">
+                            <input type="password" name="passy" id="passy" class="span3" placeholder="Retype your password">
                         </p>
                     </div>
                     <div class="modal-footer" id="modal-footer-restore">
@@ -349,15 +349,15 @@
                 $("#restorePass").click(function(){
                     $("#formRestore").validate({
                         rules: {
-                            pass1: { required: true }, 
-                            pass2: { required: true,equalTo: "#pass1"}
+                            passx: { required: true }, 
+                            passy: { required: true,equalTo: "#passx"}
                         },
                         messages: {
-                            pass1: {
+                            passx: {
                                 required: "",
                                 minlength: "A password tem de ter mais de 5 caracteres"
                             },
-                            pass2: {
+                            passy: {
                                 required: "",
                                 minlength: "A password tem de ter mais de 5 caracteres.",
                                 equalTo: "As passwords não coincidem."

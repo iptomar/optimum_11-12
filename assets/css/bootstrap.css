@@ -2678,120 +2678,120 @@ input[type="submit"].btn.btn-mini {
     border-color: #999999;
 }
 .tabbable {
-  *zoom: 1;
+    *zoom: 1;
 }
 
 .tabbable:before,
 .tabbable:after {
-  display: table;
-  content: "";
+    display: table;
+    content: "";
 }
 
 .tabbable:after {
-  clear: both;
+    clear: both;
 }
 
 .tab-content {
-  overflow: auto;
+    overflow: auto;
 }
 
 .tabs-below > .nav-tabs,
 .tabs-right > .nav-tabs,
 .tabs-left > .nav-tabs {
-  border-bottom: 0;
+    border-bottom: 0;
 }
 
 .tab-content > .tab-pane,
 .pill-content > .pill-pane {
-  display: none;
+    display: none;
 }
 
 .tab-content > .active,
 .pill-content > .active {
-  display: block;
+    display: block;
 }
 
 .tabs-below > .nav-tabs {
-  border-top: 1px solid #ddd;
+    border-top: 1px solid #ddd;
 }
 
 .tabs-below > .nav-tabs > li {
-  margin-top: -1px;
-  margin-bottom: 0;
+    margin-top: -1px;
+    margin-bottom: 0;
 }
 
 .tabs-below > .nav-tabs > li > a {
-  -webkit-border-radius: 0 0 4px 4px;
-     -moz-border-radius: 0 0 4px 4px;
-          border-radius: 0 0 4px 4px;
+    -webkit-border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+    border-radius: 0 0 4px 4px;
 }
 
 .tabs-below > .nav-tabs > li > a:hover {
-  border-top-color: #ddd;
-  border-bottom-color: transparent;
+    border-top-color: #ddd;
+    border-bottom-color: transparent;
 }
 
 .tabs-below > .nav-tabs > .active > a,
 .tabs-below > .nav-tabs > .active > a:hover {
-  border-color: transparent #ddd #ddd #ddd;
+    border-color: transparent #ddd #ddd #ddd;
 }
 
 .tabs-left > .nav-tabs > li,
 .tabs-right > .nav-tabs > li {
-  float: none;
+    float: none;
 }
 
 .tabs-left > .nav-tabs > li > a,
 .tabs-right > .nav-tabs > li > a {
-  min-width: 74px;
-  margin-right: 0;
-  margin-bottom: 3px;
+    min-width: 74px;
+    margin-right: 0;
+    margin-bottom: 3px;
 }
 
 .tabs-left > .nav-tabs {
-  float: left;
-  margin-right: 19px;
-  border-right: 1px solid #ddd;
+    float: left;
+    margin-right: 19px;
+    border-right: 1px solid #ddd;
 }
 
 .tabs-left > .nav-tabs > li > a {
-  margin-right: -1px;
-  -webkit-border-radius: 4px 0 0 4px;
-     -moz-border-radius: 4px 0 0 4px;
-          border-radius: 4px 0 0 4px;
+    margin-right: -1px;
+    -webkit-border-radius: 4px 0 0 4px;
+    -moz-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
 }
 
 .tabs-left > .nav-tabs > li > a:hover {
-  border-color: #eeeeee #dddddd #eeeeee #eeeeee;
+    border-color: #eeeeee #dddddd #eeeeee #eeeeee;
 }
 
 .tabs-left > .nav-tabs .active > a,
 .tabs-left > .nav-tabs .active > a:hover {
-  border-color: #ddd transparent #ddd #ddd;
-  *border-right-color: #ffffff;
+    border-color: #ddd transparent #ddd #ddd;
+    *border-right-color: #ffffff;
 }
 
 .tabs-right > .nav-tabs {
-  float: right;
-  margin-left: 19px;
-  border-left: 1px solid #ddd;
+    float: right;
+    margin-left: 19px;
+    border-left: 1px solid #ddd;
 }
 
 .tabs-right > .nav-tabs > li > a {
-  margin-left: -1px;
-  -webkit-border-radius: 0 4px 4px 0;
-     -moz-border-radius: 0 4px 4px 0;
-          border-radius: 0 4px 4px 0;
+    margin-left: -1px;
+    -webkit-border-radius: 0 4px 4px 0;
+    -moz-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0;
 }
 
 .tabs-right > .nav-tabs > li > a:hover {
-  border-color: #eeeeee #eeeeee #eeeeee #dddddd;
+    border-color: #eeeeee #eeeeee #eeeeee #dddddd;
 }
 
 .tabs-right > .nav-tabs .active > a,
 .tabs-right > .nav-tabs .active > a:hover {
-  border-color: #ddd #ddd #ddd transparent;
-  *border-left-color: #ffffff;
+    border-color: #ddd #ddd #ddd transparent;
+    *border-left-color: #ffffff;
 }
 .navbar {
     *position: relative;
@@ -4061,26 +4061,26 @@ to {
 #closeVerifyModal:hover{cursor: pointer}
 
 #formcontainer { float: left; }
-		#grapharea { position: relative; float: left; margin-left: 4em; }
-		#graphcontainer { position: relative; width: 262px; height: 425px; overflow: hidden; }
-		#graphbackground, #graphforeground { position: absolute; }
-		#graphbar { position: absolute; top: 420px; }
-		
-		.graphlabel { position: absolute; left: 270px; width: 100px; }
-		#p25 { top: 365px; }
-		#p50 { top: 215px; }
-		#p75 { top: 191px; }
-		#p100 { top: 40px; }
-                
-                .fb-login-button:hover{
-                    cursor: pointer;
-                    opacity: 0.8;
-                }
-                
+#grapharea { position: relative; float: left; margin-left: 4em; }
+#graphcontainer { position: relative; width: 262px; height: 425px; overflow: hidden; }
+#graphbackground, #graphforeground { position: absolute; }
+#graphbar { position: absolute; top: 420px; }
+
+.graphlabel { position: absolute; left: 270px; width: 100px; }
+#p25 { top: 365px; }
+#p50 { top: 215px; }
+#p75 { top: 191px; }
+#p100 { top: 40px; }
+
+.fb-login-button:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
 #StyleExample {
--moz-box-shadow: 0 0 5px 5px #888;
--webkit-box-shadow: 0 0 5px 5px#888;
-box-shadow: 0 0 5px 5px #888;
+    -moz-box-shadow: 0 0 5px 5px #888;
+    -webkit-box-shadow: 0 0 5px 5px#888;
+    box-shadow: 0 0 5px 5px #888;
 }
 
 #tweets{
@@ -4120,4 +4120,28 @@ box-shadow: 0 0 5px 5px #888;
 .googleMais{
     margin-left: 12px;
     margin-top: 5px;
+}
+
+/*css for stri*/
+
+#ResultEndString{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+#greyString{
+    height: 20px;
+    width: 20px;
+    float: left;
+    border: 1px solid white;
+    background-color: #9d9d9d;
+}
+
+#blackString{
+    height: 20px;
+    width: 20px;
+    float:left;
+    border: 1px solid white;
+    background-color: black;
 }
