@@ -49,7 +49,7 @@
 
         <!-- Google + atributos que iram aparecer ao fazer +1/Like -->
         <!-- Update your html tag to include the itemscope and itemtype attributes -->
-        <html itemscope itemtype="http://schema.org/Organization">
+    <html itemscope itemtype="http://schema.org/Organization">
 
         <!-- Add the following three tags inside head -->
         <meta itemprop="name" content="Life Inspiration">
@@ -60,7 +60,7 @@
         <script class="code" type="text/javascript">
             $(document).ready(function(){
                 //carrega pagina com modals e funcoes por defeito
-                 $("#modals").load("views/modals.html");
+                $("#modals").load("views/modals.html");
                  
                 //Verifica se tem login ou não para mostrar botao correspondnt
                 if(readCookie('nome')!=null){
@@ -94,7 +94,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                   <a href="./index.html"><img width="199px" style="float:left; margin:5px; margin-left:0px;margin-right:170px;" class="logo_image" src="assets/img/logo_inspiration.png"></a>
+                    <a href="./index.html"><img width="199px" style="float:left; margin:5px; margin-left:0px;margin-right:170px;" class="logo_image" src="assets/img/logo_inspiration.png"></a>
                     <div class="nav-collapse">
                         <ul class="nav nav-pills" style="margin-top:15px;">
                             <li >
@@ -126,13 +126,13 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="container">
             <div id="fb-root"></div>
             <!-- Masthead
            ================================================== -->
             <header class="jumbotron masthead">
-                <figure style="width:90%;margin-top:45px;float:left;text-align:center;">
+                <figure style="width:90%; margin-top:70px; float:left;text-align:center;">
                     <img style="" src="assets/img/work.png" />
                 </figure>
                 <div class="inner">
@@ -140,10 +140,10 @@
                         <img style="float:left;margin-top:-25px;" src="assets/img/how_worksbest.png" /> 
                         <h1 style="float:left">How Works</h1>
                     </div>    
-                     
+
                     <p>Life Inspiration helps our clients solving complex engineering problems with <br/> smart processing time</p>
-                 
-                    
+
+
                 </div>
             </header>
 
@@ -155,27 +155,15 @@
                     <div  id="FormPost" class="jumbotron masthead">
                         <img class="bs-icon" src="assets/img/glyphicons/glyphicons_042_group.png">
                         <h2>How Woks</h2>
-    
-                        <!--
-                        <p style="text-align:left; color: black; font-size: 16px; font-weight: bold;">
-                        LifeInspiration:
-                        </p>
-                        
-                        <p style="padding-left: 10px; text-align:left; color: black; font-size: 14px;">
-                        ... Texto ...
-                            
-                        </p>    
-                        
-                        
-                        <div class="span11 offset1">
-                            <div class="control-group">
-                                <label class="control-label" for="input01">Yours</label>
-                                <div class="controls">
-                                    <input id="input01" class="input-xlarge population" type="text">
-                                </div>
-                            </div>
-                        </div>  
-                        -->
+                        <div class="span12 offset3">                         
+                            <iframe src="http://www.youtube.com/embed/4x7oT7e7S2Q?rel=0" width="640" height="360" align="left" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="span3">
+                            <img style="margin-right:5px;" src="assets/img/optima.png">Optimum Computing
+                        </div>
+
+
+
                     </div>
 
                     <!--Div para a plot-->
@@ -184,10 +172,12 @@
                 </div><!--/row-->
 
             </div><!-- /.marketing -->
-     <!-- div que recebe o load do modals.html --> 
-        <div id="modals">
-        </div>
-            
+
+
+            <!-- div que recebe o load do modals.html --> 
+            <div id="modals">
+            </div>
+
         </div><!-- /container -->
 
         <!-- Footer
@@ -274,10 +264,10 @@
             //criação de ligação node JS
             var socket = io.connect('cloudglare.com',{port:90});
 
-    $(document).ready(function(){     
-        //call node status
-        statusNodeJS();    
-    });
+            $(document).ready(function(){     
+                //call node status
+                statusNodeJS();    
+            });
             
         </script>
 

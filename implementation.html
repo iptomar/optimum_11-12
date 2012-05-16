@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:og="http://ogp.me/ns#"
-      xmlns:fb="http://www.facebook.com/2008/fbml">
+      xmlns:fb="http://www.facebook.com/2008/fbml"
+      itemtype="http://schema.org/Organization">
 
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8"/>
         <title>Life Inspiration - Implementation</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
-
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <meta property="og:title" content="Life Inspiration"/>
+        <meta property="og:type" content="company"/>
+        <meta property="og:url" content="http://www.cloudglare.com/"/>
+        <meta property="og:image" content="http://www.cloudglare.com/assets/img/Life-Inspiration_03ss_03.png"/>
+        <meta property="og:site_name" content="LifeInspiration"/>
+        <meta property="fb:admins" content="100001620293641"/>
+        <meta property="og:description" content="Life Inspiration helps our clients solving complex engineering problems with smart processing time."/>
+        <meta itemprop="name" content="Life Inspiration"/>
+        <meta itemprop="description" content="Life Inspiration helps our clients solving complex engineering problems with
+              smart processing time"/>
+        <meta itemprop="image" content="http://cloudglare.com/assets/img/logo_inspiration.png"/>
         <!-- Le styles -->
-        <link href="assets/css/bootstrap.css" rel="stylesheet">
-        <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
-        <link href="assets/css/docs.css" rel="stylesheet">
-        <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+        <link href="assets/css/bootstrap.css" rel="stylesheet"/>
+        <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"/>
+        <link href="assets/css/docs.css" rel="stylesheet"/>
+        <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet"/>
 
         <!--css para a plot-->
         <link class="include" rel="stylesheet" type="text/css" href="assets/css/jquery.jqplot.min.css" />
@@ -28,39 +39,28 @@
         <![endif]-->
 
         <!-- Le fav and touch icons -->
-        <link rel="shortcut icon" href="assets/ico/favicon.ico">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/logo_inspiration_114.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/logo_inspiration_72.png">
-        <link rel="apple-touch-icon-precomposed" href="assets/ico/logo_inspiration_57.png">
+        <link rel="shortcut icon" href="assets/ico/favicon.ico"/>
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/logo_inspiration_114.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/logo_inspiration_72.png"/>
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/logo_inspiration_57.png"/>
 
         <script src="assets/js/cookies.js"></script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
         <!-- Facebook Meta Tags -->
-        <meta property="og:title" content="Life Inspiration"/>
-        <meta property="og:type" content="company"/>
-        <meta property="og:url" content="http://www.cloudglare.com/"/>
-        <meta property="og:image" content="http://www.cloudglare.com/assets/img/Life-Inspiration_03ss_03.png"/>
-        <meta property="og:site_name" content="LifeInspiration"/>
-        <meta property="fb:admins" content="100001620293641"/>
-        <meta property="og:description"
-              content="Life Inspiration helps our clients solving complex engineering problems with smart processing time."/>
+
 
         <!-- Google + atributos que iram aparecer ao fazer +1/Like -->
         <!-- Update your html tag to include the itemscope and itemtype attributes -->
-        <html itemscope itemtype="http://schema.org/Organization">
 
         <!-- Add the following three tags inside head -->
-        <meta itemprop="name" content="Life Inspiration">
-        <meta itemprop="description" content="Life Inspiration helps our clients solving complex engineering problems with
-              smart processing time">
-        <meta itemprop="image" content="http://cloudglare.com/assets/img/logo_inspiration.png">
+
 
         <script class="code" type="text/javascript">
             $(document).ready(function(){
                 //carrega pagina com modals e funcoes por defeito
-                 $("#modals").load("views/modals.html");
+                $("#modals").load("views/modals.html");
                  
                 //Verifica se tem login ou não para mostrar botao correspondnt
                 if(readCookie('nome')!=null){
@@ -94,7 +94,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                   <a href="./index.html"><img width="199px" style="float:left; margin:5px; margin-left:0px;margin-right:170px;" class="logo_image" src="assets/img/logo_inspiration.png"></a>
+                    <a href="./index.html"><img width="199px" style="float:left; margin:5px; margin-left:0px;margin-right:170px;" class="logo_image" src="assets/img/logo_inspiration.png"></a>
                     <div class="nav-collapse">
                         <ul class="nav nav-pills" style="margin-top:15px;">
                             <li>
@@ -126,7 +126,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="container">
             <div id="fb-root"></div>
             <!-- Masthead
@@ -150,315 +150,315 @@
 
             <hr class="soften">
 
-            <div class="marketing">
+                <div class="marketing">
 
-                <div class="row">
+                    <div class="row">
 
 
-                    <div  id="FormPost" class="jumbotron masthead">
-                        <img class="bs-icon" src="assets/img/glyphicons/glyphicons_042_group.png">
-                        <h2>Implementation</h2>
-                        <!--<div id="map_canvas"></div>-->
-                        <div style="margin-top:80px; margin-left: 50px;" class="tabbable tabs-left">
-                            <ul class="nav nav-tabs">
-                                <li class="active">
-                                    <a data-toggle="tab" href="#lA">Algoritmos</a>
-                                </li>
-                                <li >
-                                    <a data-toggle="tab" href="#lB">Mutation</a>
-                                </li>
-                                <!--<li >
-                                    <a data-toggle="tab" href="#lC">Operators</a>
-                                </li>-->
-                                <li >
-                                    <a data-toggle="tab" href="#lC">Recombination</a>
-                                </li>
-                                <li >
-                                    <a data-toggle="tab" href="#lD">Replacement</a>
-                                </li>
-                                <li >
-                                    <a data-toggle="tab" href="#lE">Selection</a>
-                                </li>
-                                <li >
-                                    <a data-toggle="tab" href="#lF">Description</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content" style="width:85%;padding-left: 25px;">
-                                <div id="lA" class="tab-pane active" >
-                                    <div class="row">
-                                        <div class="span3" style="margin-left:0px;">
-                                            <div class="well span3" style="padding: 8px;">
-                                                <ul class="nav nav-list algorithm_list">
-                                                    <li class="nav-header">
-                                                        Algorithm List
-                                                    </li>
-                                                </ul>
+                        <div  id="FormPost" class="jumbotron masthead">
+                            <img class="bs-icon" src="assets/img/glyphicons/glyphicons_042_group.png">
+                                <h2>Implementation</h2>
+                                <!--<div id="map_canvas"></div>-->
+                                <div style="margin-top:80px; margin-left: 50px;" class="tabbable tabs-left">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active">
+                                            <a data-toggle="tab" href="#lA">Algoritmos</a>
+                                        </li>
+                                        <li >
+                                            <a data-toggle="tab" href="#lB">Mutation</a>
+                                        </li>
+                                        <!--<li >
+                                            <a data-toggle="tab" href="#lC">Operators</a>
+                                        </li>-->
+                                        <li >
+                                            <a data-toggle="tab" href="#lC">Recombination</a>
+                                        </li>
+                                        <li >
+                                            <a data-toggle="tab" href="#lD">Replacement</a>
+                                        </li>
+                                        <li >
+                                            <a data-toggle="tab" href="#lE">Selection</a>
+                                        </li>
+                                        <li >
+                                            <a data-toggle="tab" href="#lF">Description</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" style="width:85%;padding-left: 25px;">
+                                        <div id="lA" class="tab-pane active" >
+                                            <div class="row">
+                                                <div class="span3" style="margin-left:0px;">
+                                                    <div class="well span3" style="padding: 8px;">
+                                                        <ul class="nav nav-list algorithm_list">
+                                                            <li class="nav-header">
+                                                                Algorithm List
+                                                            </li>
+                                                        </ul>
 
+                                                    </div>
+                                                    <button type="submit" id="bt_solverinfo" style="margin-left: 15%" class="btn btn-primary">Get Solver Information</button>
+                                                </div>
+
+                                                <div class="span6" style="margin-left:80px;">
+                                                    <div class="well span6 algorithm_info_container" style="padding: 8px;">
+                                                        <ul class="nav nav-list">
+                                                            <li class="nav-header">
+                                                                Algorithm Information
+                                                            </li>
+                                                            <div class="algorithm_info"></div>
+                                                        </ul>
+                                                    </div>
+
+
+                                                    <div class="well span6" style="padding: 8px;">
+                                                        <ul class="nav nav-list">
+                                                            <li class="nav-header">
+                                                                Algorithm Parameters
+                                                            </li>
+                                                            <li>
+                                                                <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="algorithm_params"/>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="well span6" style="padding: 8px;">
+                                                        <ul class="nav nav-list">
+                                                            <li class="nav-header">
+                                                                Solver Parameters
+                                                            </li>
+                                                            <li>
+                                                                <label class="span3" style="margin-left:0px;">Insert solver parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="algorithm_params_solver"/>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="well span6 knap_file" style="padding: 8px;">
+                                                        <div id="drop_zone">Drop file w/ knapSack items here </div>
+                                                        <div id="file_data" style="display:none;"></div>
+                                                        <div id="items_info" style="margin-top:10px;margin-left:10px;"></div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <button type="submit" id="bt_solverinfo" style="margin-left: 15%" class="btn btn-primary">Get Solver Information</button>
                                         </div>
+                                        <div id="lB" class="tab-pane" >
+                                            <div class="row">
+                                                <div class="well span3" style="padding: 8px;">
+                                                    <ul class="nav nav-list mutation_list">
+                                                        <li class="nav-header">
+                                                            Mutation List
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="span6">
+                                                    <div class="well span6 mutation_info_container" style="padding: 8px;">
+                                                        <ul class="nav nav-list">
+                                                            <li class="nav-header">
+                                                                Mutation Information
+                                                            </li>
+                                                            <div class="mutation_info"></div>
+                                                        </ul>
+                                                    </div>
 
-                                        <div class="span6" style="margin-left:80px;">
-                                            <div class="well span6 algorithm_info_container" style="padding: 8px;">
-                                                <ul class="nav nav-list">
-                                                    <li class="nav-header">
-                                                        Algorithm Information
-                                                    </li>
-                                                    <div class="algorithm_info"></div>
-                                                </ul>
+                                                    <div class="well span6" style="padding: 8px;">
+                                                        <ul class="nav nav-list">
+                                                            <li class="nav-header">
+                                                                Mutation Parameters
+                                                            </li>
+                                                            <li>
+                                                                <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="mutation_params"/>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                             </div>
+                                        </div>
+                                        <!--<div id="lC" class="tab-pane ">
+                                            <div class="row">
+                                                <div class="well span3" style="padding: 8px;">
+                                                    <ul class="nav nav-list operators_list">
+                                                        <li class="nav-header">
+                                                            Operators List
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="span6">
+                                                    <div class="well span6 operators_info_container" style="padding: 8px;">
+                                                        <ul class="nav nav-list">
+                                                            <li class="nav-header">
+                                                                Operator Information
+                                                            </li>
+                                                            <div class="operator_info"></div>
+                                                        </ul>
+                                                    </div>
+        
+                                                    <div class="well span6" style="padding: 8px;">
+                                                        <ul class="nav nav-list">
+                                                            <li class="nav-header">
+                                                                Operator Parameters
+                                                            </li>
+                                                            <li>
+                                                                <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="operator_params"/>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                                        <div id="lC" class="tab-pane ">
+                                            <div class="row">
+                                                <div class="well span3" style="padding: 8px;">
+                                                    <ul class="nav nav-list recombination_list">
+                                                        <li class="nav-header">
+                                                            Recombination List
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="span6">
+                                                    <div class="well span6 recombination_info_container" style="padding: 8px;">
+                                                        <ul class="nav nav-list">
+                                                            <li class="nav-header">
+                                                                Recombination Information
+                                                            </li>
+                                                            <div class="recombination_info"></div>
+                                                        </ul>
+                                                    </div>
 
+                                                    <div class="well span6" style="padding: 8px;">
+                                                        <ul class="nav nav-list">
+                                                            <li class="nav-header">
+                                                                Recombination Parameters
+                                                            </li>
+                                                            <li>
+                                                                <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="recombination_params"/>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="lD" class="tab-pane ">
+                                            <div class="row">
+                                                <div class="well span3" style="padding: 8px;">
+                                                    <ul class="nav nav-list replacement_list">
+                                                        <li class="nav-header">
+                                                            Replacement List
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="span6">
+                                                    <div class="well span6 replacement_info_container" style="padding: 8px;">
+                                                        <ul class="nav nav-list">
+                                                            <li class="nav-header">
+                                                                Replacement Information
+                                                            </li>
+                                                            <div class="replacement_info"></div>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="well span6" style="padding: 8px;">
+                                                        <ul class="nav nav-list">
+                                                            <li class="nav-header">
+                                                                Replacement Parameters
+                                                            </li>
+                                                            <li>
+                                                                <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="replacement_params"/>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
 
-                                            <div class="well span6" style="padding: 8px;">
-                                                <ul class="nav nav-list">
-                                                    <li class="nav-header">
-                                                        Algorithm Parameters
-                                                    </li>
-                                                    <li>
-                                                        <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="algorithm_params"/>
-                                                    </li>
-                                                </ul>
+                                                </div>
                                             </div>
-                                            <div class="well span6" style="padding: 8px;">
-                                                <ul class="nav nav-list">
-                                                    <li class="nav-header">
-                                                        Solver Parameters
-                                                    </li>
-                                                    <li>
-                                                        <label class="span3" style="margin-left:0px;">Insert solver parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="algorithm_params_solver"/>
-                                                    </li>
-                                                </ul>
+                                        </div>
+                                        <div id="lE" class="tab-pane ">
+                                            <div class="row">
+                                                <div class="well span3" style="padding: 8px;">
+                                                    <ul class="nav nav-list selection_list">
+                                                        <li class="nav-header">
+                                                            Selection List
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="span6">
+                                                    <div class="well span6 selection_info_container" style="padding: 8px;">
+                                                        <ul class="nav nav-list">
+                                                            <li class="nav-header">
+                                                                Selection Information
+                                                            </li>
+                                                            <div class="selection_info"></div>
+                                                        </ul>
+                                                    </div>
+
+                                                    <div class="well span6" style="padding: 8px;">
+                                                        <ul class="nav nav-list">
+                                                            <li class="nav-header">
+                                                                Selection Parameters
+                                                            </li>
+                                                            <li>
+                                                                <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="selection_params"/>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="well span6 knap_file" style="padding: 8px;">
-                                                <div id="drop_zone">Drop file w/ knapSack items here </div>
-                                                <div id="file_data" style="display:none;"></div>
-                                                <div id="items_info" style="margin-top:10px;margin-left:10px;"></div>
+                                        </div>
+                                        <div id="lF" class="tab-pane ">
+                                            <div class="row">
+                                                <div class="span6">
+                                                    <div class="well span6 selection_info_container" style="padding: 8px;">
+                                                        <ul class="nav nav-list">
+                                                            <li class="nav-header">
+                                                                Problem Name
+                                                            </li>
+                                                            <li>
+                                                                <label class="span3" style="margin-left:0px;">Insert problem name: </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="problem_name"/>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+
+                                                    <div class="well span6" style="padding: 8px;">
+                                                        <ul class="nav nav-list">
+                                                            <li class="nav-header">
+                                                                Problem Description
+                                                            </li>
+                                                            <li>
+                                                                <label class="span3" style="margin-left:0px;">Insert problem description: </label><textarea class="span3" style="margin-top:-4px;margin-left: -9px;resize: none;" id="problem_description"></textarea>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div id="lB" class="tab-pane" >
-                                    <div class="row">
-                                        <div class="well span3" style="padding: 8px;">
-                                            <ul class="nav nav-list mutation_list">
-                                                <li class="nav-header">
-                                                    Mutation List
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="span6">
-                                            <div class="well span6 mutation_info_container" style="padding: 8px;">
-                                                <ul class="nav nav-list">
-                                                    <li class="nav-header">
-                                                        Mutation Information
-                                                    </li>
-                                                    <div class="mutation_info"></div>
-                                                </ul>
-                                            </div>
-
-                                            <div class="well span6" style="padding: 8px;">
-                                                <ul class="nav nav-list">
-                                                    <li class="nav-header">
-                                                        Mutation Parameters
-                                                    </li>
-                                                    <li>
-                                                        <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="mutation_params"/>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                                <div class="span12">
+                                    <div class="span1" id="id_btexecute"> 
+                                        <a class="btn btn-large btn-primary bt_execute">Execute</a>
+                                        <div class="loaderAjax2"></div>
                                     </div>
                                 </div>
-                                <!--<div id="lC" class="tab-pane ">
-                                    <div class="row">
-                                        <div class="well span3" style="padding: 8px;">
-                                            <ul class="nav nav-list operators_list">
-                                                <li class="nav-header">
-                                                    Operators List
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="span6">
-                                            <div class="well span6 operators_info_container" style="padding: 8px;">
-                                                <ul class="nav nav-list">
-                                                    <li class="nav-header">
-                                                        Operator Information
-                                                    </li>
-                                                    <div class="operator_info"></div>
-                                                </ul>
-                                            </div>
-
-                                            <div class="well span6" style="padding: 8px;">
-                                                <ul class="nav nav-list">
-                                                    <li class="nav-header">
-                                                        Operator Parameters
-                                                    </li>
-                                                    <li>
-                                                        <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="operator_params"/>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>-->
-                                <div id="lC" class="tab-pane ">
-                                    <div class="row">
-                                        <div class="well span3" style="padding: 8px;">
-                                            <ul class="nav nav-list recombination_list">
-                                                <li class="nav-header">
-                                                    Recombination List
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="span6">
-                                            <div class="well span6 recombination_info_container" style="padding: 8px;">
-                                                <ul class="nav nav-list">
-                                                    <li class="nav-header">
-                                                        Recombination Information
-                                                    </li>
-                                                    <div class="recombination_info"></div>
-                                                </ul>
-                                            </div>
-
-                                            <div class="well span6" style="padding: 8px;">
-                                                <ul class="nav nav-list">
-                                                    <li class="nav-header">
-                                                        Recombination Parameters
-                                                    </li>
-                                                    <li>
-                                                        <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="recombination_params"/>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="lD" class="tab-pane ">
-                                    <div class="row">
-                                        <div class="well span3" style="padding: 8px;">
-                                            <ul class="nav nav-list replacement_list">
-                                                <li class="nav-header">
-                                                    Replacement List
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="span6">
-                                            <div class="well span6 replacement_info_container" style="padding: 8px;">
-                                                <ul class="nav nav-list">
-                                                    <li class="nav-header">
-                                                        Replacement Information
-                                                    </li>
-                                                    <div class="replacement_info"></div>
-                                                </ul>
-                                            </div>
-                                            <div class="well span6" style="padding: 8px;">
-                                                <ul class="nav nav-list">
-                                                    <li class="nav-header">
-                                                        Replacement Parameters
-                                                    </li>
-                                                    <li>
-                                                        <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="replacement_params"/>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                         
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="lE" class="tab-pane ">
-                                    <div class="row">
-                                        <div class="well span3" style="padding: 8px;">
-                                            <ul class="nav nav-list selection_list">
-                                                <li class="nav-header">
-                                                    Selection List
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="span6">
-                                            <div class="well span6 selection_info_container" style="padding: 8px;">
-                                                <ul class="nav nav-list">
-                                                    <li class="nav-header">
-                                                        Selection Information
-                                                    </li>
-                                                    <div class="selection_info"></div>
-                                                </ul>
-                                            </div>
-
-                                            <div class="well span6" style="padding: 8px;">
-                                                <ul class="nav nav-list">
-                                                    <li class="nav-header">
-                                                        Selection Parameters
-                                                    </li>
-                                                    <li>
-                                                        <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="selection_params"/>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="lF" class="tab-pane ">
-                                    <div class="row">
-                                        <div class="span6">
-                                            <div class="well span6 selection_info_container" style="padding: 8px;">
-                                                <ul class="nav nav-list">
-                                                    <li class="nav-header">
-                                                        Problem Name
-                                                    </li>
-                                                    <li>
-                                                        <label class="span3" style="margin-left:0px;">Insert problem name: </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="problem_name"/>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="well span6" style="padding: 8px;">
-                                                <ul class="nav nav-list">
-                                                    <li class="nav-header">
-                                                        Problem Description
-                                                    </li>
-                                                    <li>
-                                                        <label class="span3" style="margin-left:0px;">Insert problem description: </label><textarea class="span3" style="margin-top:-4px;margin-left: -9px;resize: none;" id="problem_description"></textarea>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                        <div class="span12">
-                            <div class="span1" id="id_btexecute"> 
-                                <a class="btn btn-large btn-primary bt_execute">Execute</a>
-                                <div class="loaderAjax2"></div>
-                            </div>
-                        </div>
+
+                        <!--Div para a plot-->
+                        <!--<div class="span12" id="chart_div" style="height:400px; width:100%;"></div>-->
+
+                    </div><!--/row-->
+
+                </div><!-- /.marketing -->
+                <!-- div que recebe o load do modals.html --> 
+                <div id="modals">
+                </div>
+
+                <!-- Solver info modal -->
+
+                <div  class="modal hide fade" id="myModalSolver">             
+                    <div class="modal-header">
+                        <a href="" id="close" class="close" data-dismiss="modal">&times;</a>
+                        <h3>Solver Information</h3>
+                    </div>
+                    <div class="modal-body myModelSolver_body">
+
                     </div>
 
-                    <!--Div para a plot-->
-                    <!--<div class="span12" id="chart_div" style="height:400px; width:100%;"></div>-->
+                    <div class="modal-footer">
 
-                </div><!--/row-->
-
-            </div><!-- /.marketing -->
-            <!-- div que recebe o load do modals.html --> 
-            <div id="modals">
-            </div>
-            
-            <!-- Solver info modal -->
-
-            <div  class="modal hide fade" id="myModalSolver">             
-                <div class="modal-header">
-                    <a href="" id="close" class="close" data-dismiss="modal">&times;</a>
-                    <h3>Solver Information</h3>
+                    </div>  
                 </div>
-                <div class="modal-body myModelSolver_body">
-
-                </div>
-
-                <div class="modal-footer">
-
-                </div>  
-            </div>
         </div><!-- /container -->
 
         <!-- Footer
@@ -549,12 +549,24 @@
         <script class="code" type="text/javascript">
             var weights;
             var values;
+            var tamanho_mochila;
+            var alello;
+            var tsp_data = "";
+            
+            /*** Função para fazer replace de um char por toda uma string ***/
             function replaceAll(string, token, newtoken) {
                 while (string.indexOf(token) != -1) {
                     string = string.replace(token, newtoken);
                 }
                 return string;
             }
+            
+            /*** Função para remover espaços a esquerda ***/
+            function ltrim(str) {
+		return str.replace(/^\s+/,"");
+            }
+            
+            /*** Funções para ler ficheiros drag&drop ***/
             var dropZone = document.getElementById('drop_zone');
             dropZone.addEventListener('dragover', handleDragOver, false);
             dropZone.addEventListener('drop', handleFileSelect, false);
@@ -596,20 +608,44 @@
                 evt.preventDefault();
                 evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
             }
+            
+            /***** Função para ir buscar aos ficheiros os valores necessários consoante o algoritmo escolhido *****/
             function countItems(){
                 var teste = $('#file_data').html();
-                teste = teste.split(/(\r\n|\n|\r)/gm);
-                var number = teste[0].split(" ");
-                var number2 = teste[2].split(" ");
-                values = teste[0];
-                weights = teste[2];
-                if(number.length == number2.length){
-                    $("#items_info").html("Total Items for knapSack: " + number.length);
+                if(selected_algorithm == "genetics.algorithms.KnapSack"){
+                    teste = teste.split(/(\r\n|\n|\r)/gm);
+                    var number = teste[4].split(" ");
+                    var number2 = teste[6].split(" ");
+                    values = teste[4];
+                    weights = teste[6];
+                    allelo = teste[0];
+                    tamanho_mochila = teste[2];
+                    if(number.length == number2.length){
+                        $("#items_info").html("Total Items for knapSack: " + number.length);
+                    }
+                    else{
+                        $("#items_info").html("<span style='color:red;'>number of values is not the same of weights!</span>");
+                    }
                 }
-                else{
-                    $("#items_info").html("<span style='color:red;'>number of values is not the same of weights!</span>");
+                else if(selected_algorithm == "genetics.algorithms.TSPProblem"){
+                    teste = teste.split(/(\r\n|\n|\r)/gm);
+                    for(var i=0; i < teste.length;i++){
+                        var coord = teste[i];
+                        coord = ltrim(coord);
+                        tsp_data += coord + ";";
+                        i++;
+                    }
+                    tsp_data = replaceAll(tsp_data, "  "," ")
+                    tsp_data = tsp_data.substring(0, tsp_data.length-1);
+                    var name = teste[0].split(" ");
+                   
+                        $("#items_info").html("Problem Name: "+name[2]+"<br/>"+teste[6]);
+                
+                    
                 }
             }
+            
+            /**** Variaveis globais para criar a string final ****/
             var socket = io.connect('cloudglare.com',{port:90});
             var algorithms_info = new Array();
             var mutation_info = new Array();
@@ -628,16 +664,13 @@
             $(document).ready(function(){
                 //call node status
                 statusNodeJS();
-                
+                /*** Função para fazer descer o modal com o info do solver ***/
                 $("#bt_solverinfo").click(function(){
-                    //$("#myModalSolver").modal('show');
-                    var problem_name = $('#problem_name').val();
-                    var problem_description = $('#problem_description').val();
-                    problem_name = replaceAll(problem_name, "-", "");
-                    problem_name = replaceAll(problem_name, "'", "");
-                    problem_name = replaceAll(problem_name, "\"", "");
-                    alert(problem_name);
+                    $("#myModalSolver").modal('show');
+                 
                 });
+                
+                /**** Função onclick quando o utilizador manda executar um novo problema *****/
                 $("#id_btexecute").click(function(){
                     var algorithm_params = $('#algorithm_params').val();
                     var algorithm_params_solver = $('#algorithm_params_solver').val();
@@ -675,7 +708,7 @@
                         data = {
                             id: (randomProblem),
                             client: readCookie('idClient'),
-                            algorithm: [selected_algorithm,algorithm_params+"$$"+values+" " + weights,algorithm_params_solver],
+                            algorithm: [selected_algorithm,algorithm_params+":"+allelo+" "+tamanho_mochila+" "+values+" " + weights,algorithm_params_solver],
                             mutation: [selected_mutation,mutation_params],
                             operator: [selected_operator,"0"],
                             recombination: [selected_recombination,recombination_params],
@@ -684,7 +717,22 @@
                             nome: problem_name,
                             desc: problem_description
                         }
-                    }else{
+                    }else if(selected_algorithm == "genetics.algorithms.TSPProblem"){
+                        data = {
+                            id: (randomProblem),
+                            client: readCookie('idClient'),
+                            algorithm: [selected_algorithm,algorithm_params,algorithm_params_solver],
+                            tspproblem: [tsp_data],
+                            mutation: [selected_mutation,mutation_params],
+                            operator: [selected_operator,"0"],
+                            recombination: [selected_recombination,recombination_params],
+                            replacement: [selected_replacement,replacement_params],
+                            selection: [selected_selection, selection_params],
+                            nome: problem_name,
+                            desc: problem_description
+                        }
+                    }
+                    else{
                         data = {
                             id: (randomProblem),
                             client: readCookie('idClient'),
@@ -707,12 +755,16 @@
                                        setTimeout(function() {
                                               window.location = "results.html";
                                        }, 1000);
-
+                     
                 });
+                
+                /*** Pedir informação sobre algoritmos, mutations, etc... dinamicamente ao code ***/
                 $.ajax({
                     type: 'GET',
                     url: "socket.php?"+"teste=info-" + readCookie('idClient')
                 });
+                
+                /*** Recebe informação via node server dos algoritmos, mutations, etc... ***/
                 socket.on('getInfo', function (data) {
                     var all_info = JSON.parse(data);
                     solver_info = all_info.solver;
@@ -725,7 +777,7 @@
                                 $('.algorithm_info').html("<div>"+algorithms_info[all_info.algorithms[i][0]]+"</div>");
                                 $('.myModelSolver_body').html(solver_info);
                                 selected_algorithm = all_info.algorithms[i][0];
-                                if(selected_algorithm == "genetics.algorithms.KnapSack"){
+                                if(selected_algorithm == "genetics.algorithms.KnapSack" || selected_algorithm == "genetics.algorithms.TSPProblem"){
                                     $(".knap_file").show();
                                 }
                                 else{
@@ -741,7 +793,7 @@
                             $('.algorithm_list li').removeClass('active');
                             $(this).parent('li').addClass('active');
                             selected_algorithm = $(this).attr("data-id");
-                            if(selected_algorithm == "genetics.algorithms.KnapSack"){
+                            if(selected_algorithm == "genetics.algorithms.KnapSack" || selected_algorithm == "genetics.algorithms.TSPProblem"){
                                 $(".knap_file").show();
                             }
                             else{
@@ -851,20 +903,6 @@
             
         </script>
 
-        <!--scrypts para a plot-->
-        <!-- End example scripts -->
-
-        <!-- Don't touch this! -->
-
-
-
-        <!-- End Don't touch this! -->
-
-        <!-- Additional plugins go here -->
-
-
-        <!-- End additional plugins -->
-        <!--END scrypts para a plot-->
 
     </body>
 </html>
