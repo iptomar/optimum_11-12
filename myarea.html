@@ -285,6 +285,9 @@
                                             <div id="tab3" class="tab-pane">
                                                 <div style="margin-top:30px;" class="span6" >
                                                     <h2>Final string</h2>
+                                                    <div id="ResultEndStringText" style="margin-top:30px;margin-bottom: 10px" >
+
+                                                    </div>
                                                     <div id="ResultEndString" style="margin-top:30px;height: auto" >
 
                                                     </div>
@@ -589,7 +592,7 @@
                 /*** Recebe dados para gerar gráficos do problema pedido ***/
                 socket.on('loadCharts', function (dados) {
                     // dados para limpar gráficos por cada vez que lê um novo problema
-                    if(dados.length >1){
+   
                         var data = new google.visualization.DataTable();
                         data.addColumn('string','Iter');
                         data.addColumn('number','Avarage');
@@ -646,14 +649,16 @@
                             
                             }
                         },timeItera);
-                    }
+                    
                 })
                 ;
                 /*** Recebe dados Finais do problema pedido ***/
                 socket.on('loadString', function (dadosEND) {
                     if(selectedProblem==dadosEND.idProblem){//Fechar Modal que mostra o resultado final
                         $('#ResultEndString').html("");
+                        $('#ResultEndStringText').html("");
                         
+                        $('#ResultEndStringText').append(dadosEND.dados[0].attribute);
                         var final2 = dadosEND.dados[0].attribute.split('-');
                         var show = final2[1].split(' ');
                         for (i=0;i<=show.length;i++)

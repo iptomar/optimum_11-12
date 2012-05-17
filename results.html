@@ -182,19 +182,19 @@
 
                                     <div id="lB" class="tab-pane active">
                                         <div style="margin-top:30px;" class="span6" >
-                                             <!--<img class="bs-icon" style="width: 30px;height: 28px;margin-top:12px;" src="assets/img/pointicon.png">
-                                               <h2 style="padding-top: 7px;"><span class="titleRequest">Best and Avarage</span></h2> -->
-                                                <div  id="chart_div"></div>
+                                            <!--<img class="bs-icon" style="width: 30px;height: 28px;margin-top:12px;" src="assets/img/pointicon.png">
+                                              <h2 style="padding-top: 7px;"><span class="titleRequest">Best and Avarage</span></h2> -->
+                                            <div  id="chart_div"></div>
                                         </div>
                                         <div style="margin-top:30px;" class="span6" >
-                                           <!-- <img class="bs-icon" style="width: 30px;height: 28px;margin-top:12px;" src="assets/img/pointicon.png">
-                                                  <h2  style="padding-top: 7px;"><span class="titleRequest">Num of Best</span></h2>-->
-                                                <div  id="chart_div_numbest"></div>
+                                            <!-- <img class="bs-icon" style="width: 30px;height: 28px;margin-top:12px;" src="assets/img/pointicon.png">
+                                                   <h2  style="padding-top: 7px;"><span class="titleRequest">Num of Best</span></h2>-->
+                                            <div  id="chart_div_numbest"></div>
                                         </div>
                                         <div style="margin-top:30px;" class="span6 offset3" >
-                                          <!--   <img class="bs-icon" style="width: 30px;height: 28px;margin-top:12px;" src="assets/img/pointicon.png">
-                                                 <h2  style="padding-top: 7px;"><span class="titleRequest">Deviation</span></h2>-->
-                                                <div  id="chart_div_dev"></div>
+                                            <!--   <img class="bs-icon" style="width: 30px;height: 28px;margin-top:12px;" src="assets/img/pointicon.png">
+                                                   <h2  style="padding-top: 7px;"><span class="titleRequest">Deviation</span></h2>-->
+                                            <div  id="chart_div_dev"></div>
                                         </div>
                                     </div>
 
@@ -241,8 +241,12 @@
 
                         </div>
                         <div class="span12">
-                            <div id="id_btexecute" class="span1">
+                            <div id="id_btexecute" style="float:left;margin-left:40%;" class="span1">
                                 <a style="margin-left:-40px;" class='btn btn-large btn-primary disabled bt_execute'>Working...</a>
+                                <!--/<a class="btn btn-large btn-primary bt_execute">New</a>-->
+                            </div>
+                            <div id="id_btstop" style="float:left;padding-left:30px;" class="span1">
+                                <a style="margin-left:-40px;width:150px;" class='btn btn-danger btn-large btn-primary'>Stop Problem</a>
                                 <!--/<a class="btn btn-large btn-primary bt_execute">New</a>-->
                             </div>
                         </div>
@@ -367,7 +371,16 @@
                 var dataInfoProblem = {idClient: readCookie('idClient'),idProblem: readCookie('id_problem') }
                 //Emit que permite devolver info do problema a resolver
                 socket.emit("getProblemInfo", dataInfoProblem);
-
+                
+                
+                $('#id_btstop').click(function(){
+                  var dataInfoProblem = {idClient: readCookie('idClient'),idProblem: readCookie('id_problem') }
+                    $.ajax({
+                        type: 'GET',
+                        url: "socket.php?"+"teste=stop-" + JSON.stringify(dataInfoProblem)
+                    });
+                });
+                
                 //First Graph
                 var teste = new Array();
                 var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
@@ -390,7 +403,7 @@
 
                 data.addRows([["1",0,0]]);
                 chart.draw(data, options);
-
+                
                 //SecoundGraph
                 var testeNumBest = new Array();
                 var chartNumBest = new google.visualization.LineChart(document.getElementById('chart_div_numbest'));

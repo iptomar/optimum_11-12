@@ -627,7 +627,7 @@
                         $("#items_info").html("<span style='color:red;'>number of values is not the same of weights!</span>");
                     }
                 }
-                else if(selected_algorithm == "genetics.algorithms.TSPProblem"){
+                else if(selected_algorithm == "genetics.algorithms.TSP"){
                     teste = teste.split(/(\r\n|\n|\r)/gm);
                     for(var i=0; i < teste.length;i++){
                         var coord = teste[i];
@@ -639,7 +639,7 @@
                     tsp_data = tsp_data.substring(0, tsp_data.length-1);
                     var name = teste[0].split(" ");
                    
-                        $("#items_info").html("Problem Name: "+name[2]+"<br/>"+teste[6]);
+                    $("#items_info").html(teste[6]);
                 
                     
                 }
@@ -717,12 +717,12 @@
                             nome: problem_name,
                             desc: problem_description
                         }
-                    }else if(selected_algorithm == "genetics.algorithms.TSPProblem"){
+                    }else if(selected_algorithm == "genetics.algorithms.TSP"){
                         data = {
                             id: (randomProblem),
                             client: readCookie('idClient'),
                             algorithm: [selected_algorithm,algorithm_params,algorithm_params_solver],
-                            tspproblem: [tsp_data],
+                            TSP: [tsp_data],
                             mutation: [selected_mutation,mutation_params],
                             operator: [selected_operator,"0"],
                             recombination: [selected_recombination,recombination_params],
@@ -777,7 +777,7 @@
                                 $('.algorithm_info').html("<div>"+algorithms_info[all_info.algorithms[i][0]]+"</div>");
                                 $('.myModelSolver_body').html(solver_info);
                                 selected_algorithm = all_info.algorithms[i][0];
-                                if(selected_algorithm == "genetics.algorithms.KnapSack" || selected_algorithm == "genetics.algorithms.TSPProblem"){
+                                if(selected_algorithm == "genetics.algorithms.KnapSack" || selected_algorithm == "genetics.algorithms.TSP"){
                                     $(".knap_file").show();
                                 }
                                 else{
@@ -793,7 +793,7 @@
                             $('.algorithm_list li').removeClass('active');
                             $(this).parent('li').addClass('active');
                             selected_algorithm = $(this).attr("data-id");
-                            if(selected_algorithm == "genetics.algorithms.KnapSack" || selected_algorithm == "genetics.algorithms.TSPProblem"){
+                            if(selected_algorithm == "genetics.algorithms.KnapSack" || selected_algorithm == "genetics.algorithms.TSP"){
                                 $(".knap_file").show();
                             }
                             else{
