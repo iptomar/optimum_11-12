@@ -365,12 +365,13 @@
                                                                                      ************************************************* */ 
     
     
-                                                                                    $("#Feed").click(function(){alert('1');
+                                                                                    $("#Feed").click(function(){
                                                       
                                                                   
                                                                                     
                                                                                                          var data =  { "nome" : $('#nome').val(), "news": $('#news').val()};
                                                                                                                     socket.emit("insertFeed", data);
+                                                                                                alert('Comment inserted successfully');
                                                                                                   
                                                                                     });
                                                                                 
