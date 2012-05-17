@@ -151,6 +151,7 @@
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#tab1" data-toggle="tab">Feeds on Facebook</a></li>
                             <li><a href="#tab2" data-toggle="tab">Feeds on Twitter</a></li>
+                            <li><a href="#tab3" data-toggle="tab">Direct Feed</a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab1">
@@ -222,6 +223,37 @@
                                     </script>
                                 </div>
                             </div>
+
+                                   <div class="tab-pane" id="tab3">
+
+
+
+                                                                                                        <!-- Modal que faz o feed para a bd -->
+                                                                                                        <form id="FormFeed" name="FormFeed" method="post" action="">
+
+
+                                                                                                            <div >
+                                                                                                                <p style="margin-top: 10px">
+                                                                                                                    <span style="margin-left: 100px;" class="help-inline"><b>Name:</b></span>
+                                                                                                                    <input type="text" name="nome" id="nome" class="span3" placeholder="Insert your name">
+                                                                                                                </p>
+                                                                                                                <p>
+                                                                                                                    <span style="margin-left: 102px;" class="help-inline"><b>Your Text: </b></span>
+                                                                                                                    <input type="text" name="news" id="news" class="span3" placeholder="Insert your coments">
+                                                                                                                </p>
+
+                                                                                                            </div>
+
+
+                                                                                                            <button type="submit" id="Feed" style="margin-left: 15%" class="btn btn-primary">Insert your coment</button>
+
+
+
+                                                                                                        </form>
+
+
+
+                                                                                                    </div>
                         </div>
                     </div>
 
@@ -324,6 +356,28 @@
                 //call node status
                 statusNodeJS();    
             });
+
+
+                                                                                
+                                                                                    
+                                                                                    /************************************************* *
+                                                                                     * API to insert feeds on BD                     *
+                                                                                     ************************************************* */ 
+    
+    
+                                                                                    $("#Feed").click(function(){
+                                                      
+                                                                  
+                                                                                    
+                                                                                                 var data =  { "nome" : $('#nome').val(), "news": $('#news').val()};
+                                                                                                            socket.emit("insertFeed", data);
+                                                                                        alert('comment inserted successfully');
+                                                                                                  
+                                                                                    });
+                                                                                
+                                                                                });
+                                         
+
         </script>
 
         <!--scrypts para a plot-->
