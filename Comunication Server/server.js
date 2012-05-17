@@ -254,7 +254,7 @@ io.sockets.on('connection', function (socket) {
       });
   });
 
- /**** insertFeed***/
+    /**** insertFeed***/
     socket.on('insertFeed', function (data) {
         client_bd.query('USE '+TEST_DATABASE);
         client_bd.query('INSERT INTO feed SET nome = ?,news = ?',[data.nome, data.news]);
