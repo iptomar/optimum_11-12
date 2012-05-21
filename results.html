@@ -374,7 +374,7 @@
                 
                 
                 $('#id_btstop').click(function(){
-                  var dataInfoProblem = {idClient: readCookie('idClient'),idProblem: readCookie('id_problem') }
+                  var dataInfoProblem = {client: readCookie('idClient'),id: readCookie('id_problem') }
                     $.ajax({
                         type: 'GET',
                         url: "socket.php?"+"teste=stop-" + JSON.stringify(dataInfoProblem)
