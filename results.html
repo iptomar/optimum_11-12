@@ -374,6 +374,7 @@
                 
                 
                 $('#id_btstop').click(function(){
+                    $(this).remove
                   var dataInfoProblem = {client: readCookie('idClient'),id: readCookie('id_problem') }
                     $.ajax({
                         type: 'GET',
@@ -463,7 +464,7 @@
                 socket.on('run', function (dados) {
                     if(readCookie('id_problem')==dados[0].idProblem){
                         data.addRows([[(dados[0].itera+1)+"",dados[0].globalAvarage,dados[0].globalBest]]);
-                        dataNumBest.addRows([[(dados[0].itera+1)+"",dados[0].globalNumBest]]);
+                        dataNumBest.addRows([[(dados[0].itera+1)+"",parseInt(dados[0].globalNumBest)]]);
                         datadev.addRows([[(dados[0].itera+1)+"",dados[0].globalDeviation]]);
                         chart.draw(data,options);
                         chartNumBest.draw(dataNumBest, optionsNumBest);
