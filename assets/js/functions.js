@@ -13,6 +13,12 @@ function isValidEmailAddress(emailAddress) {
 function goOut(){
     window.location="/"
 };
+
+//Remove espaço a direita
+function rtrim(stringToTrim) {
+ return stringToTrim.replace(/\s+$/,"");
+}
+
                 
 //função que retorna a pagina principal
 function statusNodeJS(){

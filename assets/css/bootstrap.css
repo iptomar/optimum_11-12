@@ -4066,7 +4066,7 @@ to {
 #graphbackground, #graphforeground { position: absolute; }
 #graphbar { position: absolute; top: 420px; }
 
-.graphlabel { position: absolute; left: 270px; width: 100px; }
+.graphlabel { position: absolute; left: 270px; width: 160px; }
 #p25 { top: 365px; }
 #p50 { top: 215px; }
 #p75 { top: 191px; }
@@ -4144,4 +4144,12 @@ to {
     float:left;
     border: 1px solid white;
     background-color: black;
+}
+
+#FinalResult{
+    display:none;
+}
+
+#FinalResultTSP{
+      
 }

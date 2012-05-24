@@ -156,9 +156,9 @@
             <div class="marketing">
 
                 <div class="row">
-
-
-                    <div  id="FormPost" class="jumbotron masthead">
+                    <!--Under construction - NÃO MEXER
+                    <div id="BIGPost" style="width: 12000px">-->
+                    <div id="FormPost" class="jumbotron masthead" >
                         <img class="bs-icon" src="assets/img/glyphicons/glyphicons_042_group.png">
                         <h2 class="nome">Welcome</h2>
 
@@ -286,11 +286,30 @@
                                                 <div style="margin-top:30px;" class="span6" >
                                                     <h2>Final string</h2>
                                                     <div id="ResultEndStringText" style="margin-top:30px;margin-bottom: 10px" >
-
                                                     </div>
                                                     <div id="ResultEndString" style="margin-top:30px;height: auto" >
+                                                    </div>
+
+                                                    <!-- TSP show results
+                                                    ================================================== -->
+                                                    <div id="FinalResultTSP" class="span5" style="margin-top: 20px;">
+                                                        
 
                                                     </div>
+                                                    <!-- K50/k100/knapSack show results
+                                                    ================================================== -->
+                                                    <div id="FinalResultKs" class="span5" style="height: 450px; margin-top: 20px;">
+                                                        <div id="grapharea">
+                                                            <div id="p100" class="graphlabel">MAX</div>
+                                                            <div id="graphcontainer">
+                                                                <img src="assets/img/graphbackground.png" id="graphbackground" width="262" height="300" alt="" />
+                                                                <img src="assets/img/graphbar.png" id="graphbar" width="262" height="300" alt="" />
+                                                                <img src="assets/img/graphforeground.png" id="graphforeground" width="262" height="300" alt="" />
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
                                                 </div>
 
                                             </div>
@@ -305,6 +324,12 @@
                             </div>
                         </div>
                     </div>
+                        <!--Under construction - NÃO MEXER
+                    <div id="FormPost2" style="float:left;width: 600px; height: 600px;background-color: blue;">
+                    aSDDS
+                    </div>
+                </div> 
+                    -->
                     <!--Div para a plot-->
                     <!--<div class="span12" id="chart_div" style="height:400px; width:100%;"></div>-->
                 </div><!--/row-->
@@ -389,6 +414,9 @@
         <script src="http://cloudglare.com:90/socket.io/socket.io.js"></script>
         <script type="text/javascript" src="http://www.google.com/jsapi"></script>
         <script src="assets/js/jqueryvalidate.js"></script>
+        <script src="assets/js/springy.js"></script>
+        <script src="assets/js/springyui.js"></script>
+
 
         <script type="text/javascript">
             google.load('visualization', '1', {packages: ['corechart']});
@@ -593,84 +621,188 @@
                 socket.on('loadCharts', function (dados) {
                     // dados para limpar gráficos por cada vez que lê um novo problema
    
-                        var data = new google.visualization.DataTable();
-                        data.addColumn('string','Iter');
-                        data.addColumn('number','Avarage');
-                        data.addColumn('number','Best');
-                        data.addRows([["1",0,0]]);
-                        chart.draw(data, options);
-                        var dataNumBest = new google.visualization.DataTable();
-                        dataNumBest.addColumn('string','Iter');
-                        dataNumBest.addColumn('number','Num of Best');
-                        dataNumBest.addRows([["1",0]]);
-                        chartNumBest.draw(dataNumBest, optionsNumBest);
-                        var datadev = new google.visualization.DataTable();
-                        datadev.addColumn('string','Iter');
-                        datadev.addColumn('number','Deviation');
-                        datadev.addRows([["1",0]]);
-                        chartdev.draw(datadev, optionsdev);
-                        // <---
-                        dataforChart = dados;
-                        currentPosition = 0;
-                        clearInterval(intervalID);
-                        var timeItera = 2500;
-                        if(dataforChart.length > 200){
-                            timeItera = 2800;
+                    var data = new google.visualization.DataTable();
+                    data.addColumn('string','Iter');
+                    data.addColumn('number','Avarage');
+                    data.addColumn('number','Best');
+                    data.addRows([["1",0,0]]);
+                    chart.draw(data, options);
+                    var dataNumBest = new google.visualization.DataTable();
+                    dataNumBest.addColumn('string','Iter');
+                    dataNumBest.addColumn('number','Num of Best');
+                    dataNumBest.addRows([["1",0]]);
+                    chartNumBest.draw(dataNumBest, optionsNumBest);
+                    var datadev = new google.visualization.DataTable();
+                    datadev.addColumn('string','Iter');
+                    datadev.addColumn('number','Deviation');
+                    datadev.addRows([["1",0]]);
+                    chartdev.draw(datadev, optionsdev);
+                    // <---
+                    dataforChart = dados;
+                    currentPosition = 0;
+                    clearInterval(intervalID);
+                    var timeItera = 2500;
+                    if(dataforChart.length > 200){
+                        timeItera = 2800;
+                    }
+                    // Intervalo para ler o array onde estão todos os dados e ler de 2800ms para o gráfico conseguir convergir os valores
+                    var intervalID = setInterval(function() {
+                        var n_itera = 20;
+                        if((dataforChart.length-currentPosition) < 20){
+                            n_itera = dataforChart.length-currentPosition;
                         }
-                        // Intervalo para ler o array onde estão todos os dados e ler de 2800ms para o gráfico conseguir convergir os valores
-                        var intervalID = setInterval(function() {
-                            var n_itera = 20;
-                            if((dataforChart.length-currentPosition) < 20){
-                                n_itera = dataforChart.length-currentPosition;
-                            }
-                            if(dataforChart.length > 100 && dataforChart.length != currentPosition){
-                                data.addRows([[(dados[currentPosition].itera+1)+"",dados[currentPosition].globalAvarage,dados[currentPosition].globalBest]]);
-                                dataNumBest.addRows([[(dados[currentPosition].itera+1)+"",dados[currentPosition].globalNumBest]]);
-                                datadev.addRows([[(dados[currentPosition].itera+1)+"",dados[currentPosition].globalDeviation]]);
+                        if(dataforChart.length > 100 && dataforChart.length != currentPosition){
+                            data.addRows([[(dados[currentPosition].itera+1)+"",dados[currentPosition].globalAvarage,dados[currentPosition].globalBest]]);
+                            dataNumBest.addRows([[(dados[currentPosition].itera+1)+"",parseInt(dados[currentPosition].globalNumBest)]]);
+                            datadev.addRows([[(dados[currentPosition].itera+1)+"",dados[currentPosition].globalDeviation]]);
+                            chart.draw(data,options);
+                            chartNumBest.draw(dataNumBest, optionsNumBest);
+                            chartdev.draw(datadev, optionsdev);
+                            currentPosition = currentPosition+n_itera;
+                        }
+                        if(dataforChart.length != currentPosition && dataforChart.length < 200){
+                            for(var i = currentPosition;i<currentPosition+n_itera;i++){
+                                data.addRows([[(dados[i].itera+1)+"",dados[i].globalAvarage,dados[i].globalBest]]);
+                                dataNumBest.addRows([[(dados[i].itera+1)+"",parseInt(dados[i].globalNumBest)]]);
+                                datadev.addRows([[(dados[i].itera+1)+"",dados[i].globalDeviation]]);
                                 chart.draw(data,options);
                                 chartNumBest.draw(dataNumBest, optionsNumBest);
                                 chartdev.draw(datadev, optionsdev);
-                                currentPosition = currentPosition+n_itera;
                             }
-                            if(dataforChart.length != currentPosition && dataforChart.length < 200){
-                                for(var i = currentPosition;i<currentPosition+n_itera;i++){
-                                    data.addRows([[(dados[i].itera+1)+"",dados[i].globalAvarage,dados[i].globalBest]]);
-                                    dataNumBest.addRows([[(dados[i].itera+1)+"",dados[i].globalNumBest]]);
-                                    datadev.addRows([[(dados[i].itera+1)+"",dados[i].globalDeviation]]);
-                                    chart.draw(data,options);
-                                    chartNumBest.draw(dataNumBest, optionsNumBest);
-                                    chartdev.draw(datadev, optionsdev);
-                                }
-                                currentPosition = currentPosition+n_itera;
-                            }
-                            if(dataforChart.length == currentPosition){
-                                clearInterval(intervalID);
-                                $('.'+dados[0].idProblem).html("<img class='box_img' src='assets/img/box.png' />");
+                            currentPosition = currentPosition+n_itera;
+                        }
+                        if(dataforChart.length == currentPosition){
+                            clearInterval(intervalID);
+                            $('.'+dados[0].idProblem).html("<img class='box_img' src='assets/img/box.png' />");
                             
-                            }
-                        },timeItera);
+                        }
+                    },timeItera);
                     
                 })
                 ;
                 /*** Recebe dados Finais do problema pedido ***/
                 socket.on('loadString', function (dadosEND) {
-                    if(selectedProblem==dadosEND.idProblem){//Fechar Modal que mostra o resultado final
+                    
+                    
+                     $('#FinalResultKs').css("display","none");
+                     $('#FinalResultTSP').css("display","none"); 
+                    var type = dadosEND.type[0].algorithm.split(',');
+     
+                    var typefinal=type[0].split('.');
+
+                    if (typefinal[2] == 'OnesMax'){
+                        if(selectedProblem==dadosEND.idProblem){
+                            //limpa divs
+                            
+                            $('#ResultEndString').html("");
+                            $('#ResultEndStringText').html("");
+                            // mostra resultados do one max
+                            $('#ResultEndStringText').append(dadosEND.dados[0].attribute);
+                            
+                            var final2 = dadosEND.dados[0].attribute.split('-');
+                            var show = final2[1].split(' ');
+                            for (i=0;i<=show.length;i++)
+                            {
+                                if(show[i]=='1'){
+                                    $('#ResultEndString').append("<span id='blackString'>&nbsp</span>"); 
+                                }else if(show[i]=='0'){
+                                    $('#ResultEndString').append("<span id='greyString'>&nbsp</span>"); 
+                                }
+                            
+                            }
+                       
+                        }
+                    }else if (typefinal[2] == 'K50' || typefinal[2] == 'K100' || typefinal[2] == 'KnapSack' ){
                         $('#ResultEndString').html("");
                         $('#ResultEndStringText').html("");
                         
-                        $('#ResultEndStringText').append(dadosEND.dados[0].attribute);
-                        var final2 = dadosEND.dados[0].attribute.split('-');
-                        var show = final2[1].split(' ');
-                        for (i=0;i<=show.length;i++)
-                        {
-                            if(show[i]=='1'){
-                                $('#ResultEndString').append("<span id='blackString'>&nbsp</span>"); 
-                            }else if(show[i]=='0'){
-                                $('#ResultEndString').append("<span id='greyString'>&nbsp</span>"); 
+                        //Get values to fill bag
+                        var valuesBAG = dadosEND.dados[0].attribute.split(';');
+                        valuesBAG = valuesBAG[1].split(':');
+                        var ValueBag = valuesBAG[0];
+                        var MediaBag = valuesBAG[1];
+                        var MaxBAG =   valuesBAG[2];
+                        //show values to bag
+                        $('#ResultEndStringText').append("<p style='font-size:16px;width:100%;text-align:left;margin-bottom:-45px;'><b>Peso do individuo = </b>"+MediaBag+"</p>");
+                        $('#ResultEndStringText').append("<p style='font-size:16px;width:100%;text-align:left;margin-bottom:-45px;'><b>Peso máximo da mochila = </b>"+ValueBag+"</p>");
+                        $('#ResultEndStringText').append("<p style='font-size:16px;width:100%;text-align:left;margin-bottom:-45px;'><b>Peso total dos items da mochila = </b>"+MaxBAG+"</p>");
+                        //Show results space
+                        $('#FinalResultKs').css("display","inherit");
+                           
+                        //dados para conseguir mostrar mochila
+                        var ZEROPOS = 355;
+                        var salary = ValueBag;
+                        var savings = MediaBag;
+                        var percent = savings / salary;
+                        var val;
+                        $('#ResultEndStringText').append("<p style='font-size:16px;width:100%;text-align:left;margin-bottom:-45px;'>Percentagem do graph a encher = "+percent+"</p>");
+                        val = (percent == 0) ? ZEROPOS : ZEROPOS - (percent * ZEROPOS);
+                        $("#graphbar").animate({ top: val + "px" }, 3000);
+                        $(".titleRequestLastResult").html("");
+                        $(".titleRequestLastResult").hide().append("").fadeIn('slow');
+                        $(".titleRequestLastResult").append("Result of KnapSack").fadeIn('slow');
+                        $("#p100").html("");
+                        $("#p100").hide().append("").fadeIn('slow');
+                        $("#p100").append("Peso mochila: "+MaxBAG).fadeIn('slow');
+                            
+                    
+                                
+                    }else if (typefinal[2] == 'TSP'){
+                        if(selectedProblem==dadosEND.idProblem){
+                            
+                            //limpa divs
+                            var graph = new Graph();
+                           
+                            //$("#FormPost").scrollLeft(5000);
+                            //$('#BIGPost').animate({right:"+=2000"},2000);
+                            /*$('#FormPost').stop().animate({
+                                scrollLeft: '2002px'
+                            }, 1000);
+                            */
+                            $('#ResultEndString').html("");
+                            $('#ResultEndStringText').html("");
+                            
+                            
+                            //$('#ResultEndStringText').append("<p style='width:100%;font-size:12px;text-align:left'>show left</p>");
+                            
+                            //Show results space
+                            $('#FinalResultTSP').css("display","inherit");
+                            
+                            //add title
+                            
+                            $('#ResultEndString').append("<div style='width: 100%;text-align:left;margin-left:15px;'><h2>Best path</h2></div>");
+                            //add canvas space
+                            $('#ResultEndString').append("<br/><canvas id='springydemo' width='640' height='600' />");
+                        
+                            //vai buscar os dados para preencher o varios pontos
+                            var points = dadosEND.dados[0].attribute.split('>>>>');
+                            
+                            // separa os valores
+                            var OnlyValues = rtrim(points[0].substring(4,(points[0].lenght)));
+                            OnlyValues = OnlyValues.split(' -> ');
+                            $('#ResultEndStringText').append("<b style='width: 100%;text-align:left;margin-left:15px;'>Total de Nós: "+ OnlyValues.length +"</b>");
+                            // criação do tipo de grafico
+                            graph = new Graph();
+                        
+                            // criação de pontos e união dos mesmos
+                            var pointsShow = new Array();
+                            for (i=0;i<=(OnlyValues.length)-1;i++)
+                            {
+                                pointsShow[i] = graph.newNode({label: OnlyValues[i]});
                             }
+                        
+                            for (i=0;i<(pointsShow.length-1);i++)
+                            {
+                                graph.newEdge(pointsShow[i],pointsShow[i+1], {color: '#0a858a'});
+                            }
+                            //Display dos pontos ja unidos
+                            $('#springydemo').springy({
+                                graph: graph
+                            });
+                            
                             
                         }
-                    }
+                    }  
                 });
             });
         </script>
