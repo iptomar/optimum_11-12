@@ -62,14 +62,14 @@
                 //carrega pagina com modals e funcoes por defeito
                 $("#modals").load("views/modals.html");
                  
-                //Verifica se tem login ou n√£o para mostrar botao correspondnt
+                //Verifica se tem login ou n„o para mostrar botao correspondnt
                 if(readCookie('nome')!=null){
                     $('#LiRegist').html("");
                     $('#LiRegist').append("<a href='#Logoutuser' id='LogoutUser' ><i style='margin-top: 4px;'   class='icon-off'></i> Logout</a>");
                     $('.logo_image').css("margin-right", "120px");
                     $('#textLogin').html("");
                     var nome = readCookie('nome').split(" ");
-                    $('#textLogin').append("Ol√° "+nome[0]);
+                    $('#textLogin').append("Ol· "+nome[0]);
                     $('#LiLogin a').attr("href","myarea.html");
                     $('#loginButton').css("background-image", "url('assets/img/myarea_1.png')");
                 }
@@ -132,59 +132,140 @@
             <!-- Masthead
            ================================================== -->
             <header class="jumbotron masthead">
-                <figure style="width:30%;margin-top:45px;float:left;text-align: center;"> 
-                    <img style="" src="assets/img/myarea.png" />
-                </figure>
-                <div style="float:left;width:50%;" class="inner">
-                    <h1>my area</h1>
-                    <p>Life Inspiration helps our clients solving complex engineering problems with <br/> smart processing time</p>
-                </div>
+                <div class="row" style="margin-top:60px;">
+					<div class="span1 offset1" >
+						<figure style="width:220px;margin-top:-10px;margin-bottom:-30px;float:left;text-align:center;">
+							<img style="" src="assets/img/contact.png" />
+						</figure>
+					</div>
+					<div class="span6" style="margin-left:130px;margin-top:50px;">
+						<div class="inner">
+							<h1>Contacts</h1>
+						</div>
+					</div>
+				</div>
             </header>
 
             <hr class="soften">
-
             <div class="marketing">
-
                 <div class="row">
 
-
-                    <div  id="FormPost" class="jumbotron masthead">
+                  <!--  <div  id="FormPost" class="jumbotron masthead">
                         <img class="bs-icon" src="assets/img/glyphicons/glyphicons_042_group.png">
-                        <h2>Contacts</h2>
-
-                        <p style="text-align:left; color: black; font-size: 16px; font-weight: bold;">
-                            LifeInspiration:
-                        </p>
-
-                        <p style="padding-left: 30px; text-align:left; color: black; font-size: 14px;">
-                            Ant√≥nio Costa
-                            <br/>
-                            Amiguinho
-                            <br/>
-                            Ricardo
-                            <br/>
-                            Paulo
-                            <br/>
-                            Joana
-                            <br/>
-                            Bruno
-                        </p>    
-                        <div class="input-prepend">
-                            <span style="margin-top: -10px; " class="add-on"><i class="icon-envelope"></i></span>
-                            <input class="span2" id="inputIcon" type="text">
-                        </div>
-
-                        <div class="span11 offset1">
-                            <div class="control-group">
-                                <label class="control-label" for="input01">Yours</label>
-                                <div class="controls">
-                                    <input id="input01" class="input-xlarge population" type="text">
-                                </div>
+                        <h2>Contacts</h2>-->
+					<div class="tabbable"> 
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab1" data-toggle="tab">life inspiration</a></li>
+                            <li><a href="#tab2" data-toggle="tab">optimum computing</a></li>
+                            <li><a href="#tab3" data-toggle="tab">power computing</a></li>
+							<li><a href="#tab4" data-toggle="tab">genetic lab</a></li>
+                            <li><a href="#tab5" data-toggle="tab">inovative mind</a></li>
+						</ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab1">
+								<table>
+									<tr>
+										<td>
+											<img src="assets/img/li.png" alt="life inspiration" width="100" height="100" />
+										</td>
+										<td width="10"></td>
+										<td>
+											<p style="text-align:left; font-family: verdana; font-size: 12px;">
+												<b>Gmail:    </b>lifeinspiration12 <br/>
+												<b>Facebook: </b>lifeinspiration12 <br/>
+												<b>Twitter:  </b>@LifeInspiratio2
+											</p>
+										</td>
+									</tr>
+								</table>
                             </div>
-                        </div>     
-                    </div>
-
-
+							<div class="tab-pane" id="tab2">
+                               <table>
+									<tr>
+										<td>
+											<img src="assets/img/optimum.png" alt="optimum computing" width="100" height="100" />
+										</td>
+										<td width="10"></td>
+										<td>
+											<p style="text-align:left; font-family: verdana; font-size: 12px;">
+											Ricardo Martins<br/>
+											Emanuel Amiguinho<br/>
+											Paulo Nicolau<br/>
+											Antonio Costa<br/>
+											Joana Mendes<br/>
+											<p/>
+										</td>
+									</tr>
+								</table> 
+                            </div>
+                            <div class="tab-pane" id="tab3">
+                                <table>
+									<tr>
+										<td>
+											<img src="assets/img/pc.jpg" alt="power computing" width="100" height="100" />
+										</td>
+										<td width="10"></td>
+										<td>
+											<p style="text-align:left; font-family: verdana; font-size: 12px;">
+											Bruno Oliveira<br/>
+											Filipe Cardoso<br/>
+											Francisco Nunes<br/>
+											Paulo Lemos<br/>
+											Rodrigo Marinheiro<br/>
+											Joao Verissimo<br/>
+											Miguel Miranda<br/>
+											Pedro Leal<br/>
+											Tiago Duarte<br/>
+											<p/>
+										</td>
+									</tr>
+								</table> 
+							</div>
+							<div class="tab-pane" id="tab4">
+                              <table>
+								<tr>
+									<td>
+										<img src="assets/img/li.png" alt="genetic lab" width="100" height="100" />
+									</td>
+									<td width="10"></td>
+									<td>
+										<p style="text-align:left; font-family: verdana; font-size: 12px;">
+										Tiago Duarte<br/>
+										Andre Simoes<br/>
+										Aurelien Mota<br/>
+										Ruben Felix<br/>
+										Helio Miranda<br/>
+										Pedro Alves<br/>
+										Andre Miranda<br/>
+										Pedro Isidoro<br/>
+										<p/>
+									</td>
+								</tr>
+							</table> 
+                            </div>
+							<div class="tab-pane" id="tab5">
+                               <table>
+									<tr>
+										<td>
+											<img src="assets/img/li.png" alt="inovative mind" width="100" height="100" />
+										</td>
+										<td width="10"></td>
+										<td>
+											<p style="text-align:left; font-family: verdana; font-size: 12px;">
+											 Paulo Chorinca<br/>
+											 Carlos Neto<br/>
+											 Goncalo Dias<br/>
+											 Diogo Antonio<br/>
+											 Bruno Mendes<br/>
+											 Fernando Saraiva<br/>
+											 <p/>
+										</td>
+									</tr>
+								</table> 
+                            </div>
+						</div><!--tab-content-->
+                    <!--Div para a plot-->
+                    </div><!--/tabbable-->    
 
                     <!--Div para a plot-->
                     <!--<div class="span12" id="chart_div" style="height:400px; width:100%;"></div>-->
@@ -194,8 +275,7 @@
             </div><!-- /.marketing -->
 
             <!-- div que recebe o load do modals.html --> 
-            <div id="modals">
-            </div>
+            <div id="modals"></div>
 
         </div><!-- /container -->
 
@@ -215,7 +295,7 @@
                     <div class="span2 offset4">
                         <h3>Follow us</h3>
 
-                        <!-- Coloque esta etiqueta onde pretende que o bot√£o de +1 seja apresentado -->
+                        <!-- Coloque esta etiqueta onde pretende que o bot„o de +1 seja apresentado -->
                         <div class="googleMais"><g:plusone annotation="none" style="margin-left: 10px;"></g:plusone></div>
                         <!-- Facebook like btt -->
                         <div class="fb-like" data-href="http://www.cloudglare.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="trebuchet ms"></div>
@@ -245,10 +325,10 @@
 
                 <div style="padding-left: 0%; margin-bottom: -25px;margin-top: 25px;" class="row">			
                     <div class="span3">
-                        <p style="font-size: 11px;">¬© Life Inspiration - 2012 All Rights Reserved.</p>
+                        <p style="font-size: 11px;">© Life Inspiration - 2012 All Rights Reserved.</p>
                     </div>
                     <div style="text-align: right;" class="span3 offset5">
-                        <p style="font-size: 11px;">IPT - Projecto de Sistemas de Informa√ß√£o</p>
+                        <p style="font-size: 11px;">IPT - Projecto de Sistemas de InformaÁ„o</p>
                     </div>
                 </div>
             </div>          
@@ -283,7 +363,7 @@
         <script class="code" type="text/javascript">
             //Load google Charts
             google.load('visualization', '1', {packages: ['corechart']});
-            //cria√ß√£o de liga√ß√£o node JS
+            //criaÁ„o de ligaÁ„o node JS
             var socket = io.connect('cloudglare.com',{port:90});
 
             $(document).ready(function(){     
