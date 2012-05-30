@@ -41,8 +41,8 @@ io.sockets.on('connection', function (socket) {
       var replacement = data.replacement[0] + ", Parameters: " + data.replacement[1];
       var now = new Date();
       var date = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate() + " " +now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
-      client_bd.query('INSERT INTO tblProblemas SET idProblem = ?, idClient = ?, algorithm = ?, selection = ?, mutation = ?, recombination = ?, replacement = ?, time = ?, name = ?, description = ?',
-        [data.id, data.client, algorithm, selection, mutation, recombination, replacement, date, data.nome, data.desc]
+      client_bd.query('INSERT INTO tblProblemas SET idProblem = ?, idClient = ?, algorithm = ?, selection = ?, mutation = ?, recombination = ?, replacement = ?, time = ?, name = ?, description = ?, filename = ?',
+        [data.id, data.client, algorithm, selection, mutation, recombination, replacement, date, data.nome, data.desc, data.filen]
       );
   	});
 
@@ -53,7 +53,7 @@ io.sockets.on('connection', function (socket) {
     socket.on('run', function (data) {
     	client_bd.query('USE '+TEST_DATABASE);
     	console.log(data.Itera);
-		client_bd.query('SELECT * from tblResults where itera="'+data.Itera+'" and idClient="'+data.idClient+'" and idProblem="'+data.idProblem+'"', function selectCb(err, results, fields) {
+		  client_bd.query('SELECT * from tblResults where itera="'+data.Itera+'" and idClient="'+data.idClient+'" and idProblem="'+data.idProblem+'"', function selectCb(err, results, fields) {
 			if (err) {
 				throw err;
 			}
@@ -73,6 +73,26 @@ io.sockets.on('connection', function (socket) {
   			var data2 = { 'idClient' : data.idClient, 'idProblem': data.idProblem, 'dados':results }
   			console.log(JSON.stringify(data2));
   			clients.forEach(function(c){c.socket.emit('end',data2);});
+        client_bd.query('SELECT * from tblClientes where idClient="'+data.idClient+'"', function selectCb(err, results, fields) {
+              email.send({
+                host : "smtp.gmail.com",              // smtp server hostname
+                port : "465",                     // smtp server port
+                ssl: true,                        // for SSL support - REQUIRES NODE v0.3.x OR HIGHER
+                domain : "www.cloudglare.com",            // domain used by client to identify itself to server
+                to : results[0].email,
+                from : "noreply@cloudglare.com",
+                subject : "O problema com o ID:" + data.idProblem +" terminou de ser processado",
+                body: results[0].nome + ", o problema com o ID "+data.idProblem+" foi executado com sucesso para aceder aos dados e resultados obtidos pelo nosso sistema faça login no nosso site e entre na sua área de cliente! http://www.cloudglare.com .\n\nObrigado, LifeInspiration Optima Team",
+                authentication : "login",        // auth login is supported; anything else is no auth
+                username : "urbaneousapp@gmail.com",        // username
+                password : "25713423"         // password
+              },
+              function(err, result){
+                if(err){ 
+                  console.log(err); 
+                }
+              });
+        });
 		  });
   	});
 
@@ -91,6 +111,7 @@ io.sockets.on('connection', function (socket) {
     });
 
     socket.on('codeStats', function (data) {
+      console.log(JSON.stringify(data));
       clients.forEach(function(c){c.socket.emit('codeStatsResult','up');});
     });
 
@@ -125,10 +146,12 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('confirmAccount', function (data) {
       client_bd.query('USE '+TEST_DATABASE);
+      var name = "";
       client_bd.query('select * from tblClientes where email="'+data.email+'"', function selectCb(err, results, fields) {
         if (err) {
           throw err;
         }
+        name = results[0].nome;
         if(results[0].id_confirmation == data.id_confirmacao){
           client_bd.query('Update tblClientes SET status = 1 where email="'+data.email+'"');
           socket.emit('resultConfirmAccount',results);
@@ -145,7 +168,7 @@ io.sockets.on('connection', function (socket) {
           to : data.email,
           from : "noreply@cloudglare.com",
           subject : "Confirmação do Registo de Conta",
-          body: data.name + ", a sua conta na LifeInspiration foi confirmada com sucesso, a partir de agora pode usufruir de todos os nossos serviços.\n\nObrigado, LifeInspiration Optima Team",
+          body: name + ", a sua conta na LifeInspiration foi confirmada com sucesso, a partir de agora pode usufruir de todos os nossos serviços.\n\nObrigado, LifeInspiration Optima Team",
           authentication : "login",        // auth login is supported; anything else is no auth
           username : "urbaneousapp@gmail.com",        // username
           password : "25713423"         // password
@@ -224,11 +247,18 @@ io.sockets.on('connection', function (socket) {
    socket.on('getString', function (data) {
     client_bd.query('USE '+TEST_DATABASE);
     client_bd.query('select max(best) as max_best, attribute from tblIterations where idClient= "'+data.idClient+'" AND idProblem="'+data.idProblem+'" AND type = "2"', function selectCb(err, results, fields) {
+      if (err) {
+          throw err;
+      }
+      client_bd.query('SELECT algorithm from tblProblemas where idClient="'+data.idClient+'" and idProblem="'+data.idProblem+'"', function selectCb(err2, results2, fields2) {
         if (err) {
           throw err;
-        }
-        var data2 = { 'idClient' : data.idClient, 'idProblem': data.idProblem, 'dados':results }
+      }
+      var data2 = { 'idClient' : data.idClient, 'idProblem': data.idProblem, 'dados':results, 'type':results2 }
+      console.log(JSON.stringify(data2));
         socket.emit('loadString',data2);
+      });
+        
       });
   });
 
@@ -254,40 +284,115 @@ io.sockets.on('connection', function (socket) {
       });
   });
 
-    /**** insertFeed***/
-    socket.on('insertFeed', function (data) {
-        client_bd.query('USE '+TEST_DATABASE);
-        client_bd.query('INSERT INTO feed SET nome = ?,news = ?',[data.nome, data.news]);
-    
-    
-        
-        socket.emit('respostFeed',data);
-    
-    });
-
-  
-    /**** insertFeed***/
-    socket.on('insertFeed', function (data) {
-        client_bd.query('USE '+TEST_DATABASE);
-        client_bd.query('INSERT INTO feed SET nome = ?,news = ?',[data.nome, data.news]);
-    
-    
-        
-        socket.emit('respostFeed',data);
-    
-    });
-  
-    /**** selectFeed***/
-    socket.on('selectFeed', function (results) {
-        client_bd.query('USE '+TEST_DATABASE);
-        client_bd.query('select * from feed "', function selectCb(err, results, fields) {
-            if (err) {
-                throw err;
-            }
-            console.log(JSON.stringify(results));
-            socket.emit('chooseFeed',results);
+  /**** RestorePassword ****/
+  socket.on('emitRestorePassword', function (data) {
+    client_bd.query('SELECT * from tblClientes where email="'+data.email+'"', function selectCb(err, results, fields) {
+      if (err) {
+       throw err;
+      }
+      if(results.length != 0){
+        email.send({
+            host : "smtp.gmail.com",              // smtp server hostname
+            port : "465",                     // smtp server port
+            ssl: true,                        // for SSL support - REQUIRES NODE v0.3.x OR HIGHER
+            domain : "www.cloudglare.com",            // domain used by client to identify itself to server
+            to : results[0].email,
+            from : "noreply@cloudglare.com",
+            subject : "LifeInspiration Password Reset",
+            body: results[0].nome + ", para criar uma nova password para aceder ao nosso sistema clique no seguinte link http://www.cloudglare.com/forgotpass.html?email="+ results[0].email+"&id_confirmacao="+ results[0].id_confirmation+"\n\nIrá ser reencaminhado para uma página que lhe permitirá introduzir uma nova password desejada.\n\nObrigado, LifeInspiration Optima Team",
+            authentication : "login",        // auth login is supported; anything else is no auth
+            username : "urbaneousapp@gmail.com",        // username
+            password : "25713423"         // password
+        },
+          function(err, result){
+           if(err){ console.log(err); }
         });
+        socket.emit('emitRestorePasswordResult','true');
+      }
+      else{
+        socket.emit('emitRestorePasswordResult','false');
+      }
     });
+  });
+   
+  /**** Facebook login search if client exists or is first time ***/
+  socket.on('registAccountFacebook', function (data) {
+    client_bd.query('USE '+TEST_DATABASE);
+    client_bd.query('SELECT * from tblClientes where email="'+data.email+'"', function selectCb(err, results, fields) {
+      if (err) {
+       throw err;
+      }
+      if(results.length == 0){
+           client_bd.query('USE '+TEST_DATABASE);
+            var newDate = new Date;
+            var id_confirmacao = newDate.getTime();
+            client_bd.query('INSERT INTO tblClientes SET nome = ?, email = ?, id_confirmation = ?, status = ?',
+              [data.name, data.email, id_confirmacao, 1]
+            );
+      }
+      client_bd.query('SELECT * from tblClientes where email="'+data.email+'"', function selectCb(err, results, fields) {
+      if (err) {
+       throw err;
+      }
+          socket.emit("registAccountFacebookResult", results)
+      });
+    });
+  });
+
+  /**** ChangeClientPassword ***/
+  socket.on('RestoreClientPassword', function (data) {
+    client_bd.query('USE '+TEST_DATABASE);
+    client_bd.query('SELECT * from tblClientes where email="'+data.email+'"', function selectCb(err, results, fields) {
+      if (err) {
+       throw err;
+      }
+      if(results[0].id_confirmation == data.id_confirmacao){
+            client_bd.query('Update tblClientes set password="'+ data.password +'" where email="'+data.email+'"', function selectCb(err, results, fields) {
+              if (err) {
+                throw err;
+             }
+             socket.emit('RestoreClientPasswordResult','true');
+            });
+      }
+      else{
+        socket.emit('RestoreClientPasswordResult','false');
+      }
+    });
+   
+  });
+
+ /**** insertFeed***/
+    socket.on('insertFeed', function (data) {
+    client_bd.query('USE '+TEST_DATABASE);
+    client_bd.query('INSERT INTO feed SET nome = ?,news = ?',[data.nome, data.news]);
+    
+    
+        
+        socket.emit('respostFeed',data);
+    
+  });
+       /**** selectFeed***/
+    socket.on('selectFeed', function (results) {
+        client_bd.query('USE '+TEST_DATABASE);
+        client_bd.query('select * from feed "', function selectCb(err, results, fields) {
+            if (err) {
+                throw err;
+            }
+            console.log(JSON.stringify(results));
+            socket.emit('chooseFeed',results);
+        });
+    });
+
+  socket.on('getFilename', function (data) {
+        client_bd.query('USE '+TEST_DATABASE);
+        client_bd.query('select * from tblProblemas where idProblem="'+data.idProblem+'"', function selectCb(err, results, fields) {
+            if (err) {
+                throw err;
+            }
+            socket.emit('filename',results);
+        });
+    });
+
 
 });
 
