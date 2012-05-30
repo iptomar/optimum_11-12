@@ -265,7 +265,29 @@ io.sockets.on('connection', function (socket) {
     
     });
 
-
+  
+    /**** insertFeed***/
+    socket.on('insertFeed', function (data) {
+        client_bd.query('USE '+TEST_DATABASE);
+        client_bd.query('INSERT INTO feed SET nome = ?,news = ?',[data.nome, data.news]);
+    
+    
+        
+        socket.emit('respostFeed',data);
+    
+    });
+  
+    /**** selectFeed***/
+    socket.on('selectFeed', function (results) {
+        client_bd.query('USE '+TEST_DATABASE);
+        client_bd.query('select * from feed "', function selectCb(err, results, fields) {
+            if (err) {
+                throw err;
+            }
+            console.log(JSON.stringify(results));
+            socket.emit('chooseFeed',results);
+        });
+    });
 
 });
 
