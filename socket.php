@@ -2,7 +2,7 @@
  
 $string =  $_GET['teste'];
 /* Open a socket to port 1234 on localhost */
-$socket = stream_socket_client('tcp://193.137.5.223:8080');
+$socket = stream_socket_client('tcp://code.dei.estt.ipt.pt:8080');
 
 /* Send ordinary data via ordinary channels. */
 //fwrite($socket, "Normal data transmit.");
