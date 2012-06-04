@@ -261,8 +261,7 @@ greg.ross.visualisation.JSSurfacePlot = function(x, y, width, height, colourGrad
 		
 		canvasContext.stroke();
 		
-		if (!isIE())
-			renderAxisText(axes);
+		
 	}
 	
 	function renderAxisText(axes)
@@ -507,7 +506,6 @@ greg.ross.visualisation.JSSurfacePlot = function(x, y, width, height, colourGrad
 		this.targetDiv.id = id;
 		this.targetDiv.className = "surfaceplot";
 		this.targetDiv.style.background = '#ffffff'
-		this.targetDiv.style.position = 'absolute';
 		
 		if (!targetElement) 
 			document.body.appendChild(this.targetDiv);
@@ -516,25 +514,18 @@ greg.ross.visualisation.JSSurfacePlot = function(x, y, width, height, colourGrad
 			this.targetDiv.style.position = 'relative';
 			targetElement.appendChild(this.targetDiv);
 		}
-		
-		this.targetDiv.style.left = x + "px";
-		this.targetDiv.style.top = y + "px";
+
 	}
 	
 	function createCanvas()
 	{
 		canvas = document.createElement("canvas");
 		
-		if (isIE())
-		{
-			G_vmlCanvasManager.initElement(canvas);
-			canvas.style.width = width;
-			canvas.style.height = height;
-		}
+		
 			
 		canvas.className = "surfacePlotCanvas";
-        canvas.setAttribute("width", width);
-        canvas.setAttribute("height", height);
+                canvas.setAttribute("width", width);
+                canvas.setAttribute("height", height);
 		canvas.style.left = '0px';
 		canvas.style.top =  '0px';
 		
@@ -658,22 +649,7 @@ greg.ross.visualisation.JSSurfacePlot = function(x, y, width, height, colourGrad
 	
 	function getMousePositionFromEvent(e)
 	{
-		if (isIE())
-		{
-			var e = window.event;
-			
-			if (e.srcElement.getAttribute('Stroked') == true)
-			{
-				if (mousePosX == null || mousePosY == null)
-					return;
-			}
-			else
-			{
-				mousePosX = e.offsetX;
-				mousePosY = e.offsetY;
-			}
-		}
-		else if (e.layerX || e.layerX == 0) // Firefox
+	   if (e.layerX || e.layerX == 0) // Firefox
 		{
 		    mousePosX = e.layerX;
 		    mousePosY = e.layerY;

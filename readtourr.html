@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="http://www.facebook.com/2008/fbml"
+      itemtype="http://schema.org/Organization">
+
+    <head>
+        <meta charset="utf-8"/>
+        <title>Life Inspiration - Implementation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <meta property="og:title" content="Life Inspiration"/>
+        <meta property="og:type" content="company"/>
+        <meta property="og:url" content="http://www.cloudglare.com/"/>
+        <meta property="og:image" content="http://www.cloudglare.com/assets/img/Life-Inspiration_03ss_03.png"/>
+        <meta property="og:site_name" content="LifeInspiration"/>
+        <meta property="fb:admins" content="100001620293641"/>
+        <meta property="og:description" content="Life Inspiration helps our clients solving complex engineering problems with smart processing time."/>
+        <meta itemprop="name" content="Life Inspiration"/>
+        <meta itemprop="description" content="Life Inspiration helps our clients solving complex engineering problems with
+              smart processing time"/>
+        <meta itemprop="image" content="http://cloudglare.com/assets/img/logo_inspiration.png"/>
+        <!-- Le styles -->
+        <link href="assets/css/bootstrap.css" rel="stylesheet"/>
+        <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"/>
+        <link href="assets/css/docs.css" rel="stylesheet"/>
+        <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet"/>
+
+        <!--css para a plot-->
+        <link class="include" rel="stylesheet" type="text/css" href="assets/css/jquery.jqplot.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/examples.min.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/syntaxhighlighter/styles/shCoreDefault.min.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/syntaxhighlighter/styles/shThemejqPlot.min.css" />
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <!-- Le fav and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favicon.ico"/>
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/logo_inspiration_114.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/logo_inspiration_72.png"/>
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/logo_inspiration_57.png"/>
+
+        <script src="assets/js/cookies.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+        <!-- Facebook Meta Tags -->
+
+
+        <!-- Google + atributos que iram aparecer ao fazer +1/Like -->
+        <!-- Update your html tag to include the itemscope and itemtype attributes -->
+
+        <!-- Add the following three tags inside head -->
+
+
+        <script class="code" type="text/javascript">
+            $(document).ready(function(){
+                //carrega pagina com modals e funcoes por defeito
+                $("#modals").load("views/modals.html");
+                 
+                //Verifica se tem login ou não para mostrar botao correspondnt
+                if(readCookie('nome')!=null){
+                    $('#LiRegist').html("");
+                    $('#LiRegist').append("<a href='#Logoutuser' id='LogoutUser' ><i style='margin-top: 4px;'   class='icon-off'></i> Logout</a>");
+                    $('.logo_image').css("margin-right", "120px");
+                    $('#textLogin').html("");
+                    var nome = readCookie('nome').split(" ");
+                    $('#textLogin').append("Olá "+nome[0]);
+                    $('#LiLogin a').attr("href","myarea.html");
+                    $('#loginButton').css("background-image", "url('assets/img/myarea_1.png')");
+                }
+   
+            });
+        </script>
+    </head>
+
+    <body data-spy="scroll" data-target=".subnav" data-offset="50">
+        <a id="loginButton" class="loginButton" href="myarea.html">&nbsp;</a>
+        <a id="serverStatus" class="serverStatus" href="#">
+            <img class="StatusImage" style="margin-top: 10px" src="assets/img/down.png">   
+        </a>
+
+        <!-- Navbar
+          ================================================== -->
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a href="./index.html"><img width="199px" style="float:left; margin:5px; margin-left:0px;margin-right:170px;" class="logo_image" src="assets/img/logo_inspiration.png"></a>
+                    <div class="nav-collapse">
+                        <ul class="nav nav-pills" style="margin-top:15px;">
+                            <li>
+                                <a href="./index.html"><i style="margin-top: 3px;" class="icon-home"></i> Home</a>
+                            </li>
+                            <li>
+                                <a href="./how_works.html"><i style="margin-top: 4px;" class="icon-star"></i> How works</a>
+                            </li>
+                            <li  class="active">
+                                <a href="./implementation.html"><i style="margin-top: 4px;" class="icon-cog icon-white"></i> Implementation</a>
+                            </li>
+                            <li>
+                                <a href="./feedback.html"><i style="margin-top: 4px;" class="icon-tags"></i> Feedback</a>
+                            </li>
+                            <li>
+                                <a href="./contacts.html"><i style="margin-top: 4px;" class="icon-eye-open"></i> Contacts</a>
+                            </li>
+
+                            <li id="LiLogin">
+                                <a href="#login"  id="menu_buttons_Login"><i style="margin-top: 4px;" class="icon-user"></i> <span id="textLogin">Login</span></a>
+                            </li>
+                            <li id="LiRegist">
+                                <a href="#regist" id="menu_buttons_regist" ><i style="margin-top: 4px;"   class="icon-plus"></i> Regist</a>
+                            </li>
+
+                        </ul>
+                        <span class="loaderAjax2"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div id="fb-root"></div>
+            <!-- Masthead
+           ================================================== -->
+            <header class="jumbotron masthead" style="margin-bottom: 20px;">
+                <div class="row" style="margin-top:30px;">
+                    <div class="span1 offset1" >
+                        <figure style="margin-left:10px;margin-top:45px;float:left;text-align: center;"> 
+                            <img style="" src="assets/img/myarea.png" />
+                        </figure>
+                    </div>
+                    <div class="span6" style="margin-left:130px;margin-top:50px;">
+                        <div class="inner">
+                            <h1>Implementation</h1>
+
+                        </div>
+                    </div>
+                </div>
+
+            </header>
+
+            <hr class="soften">
+
+            <div class="marketing">
+
+                <div class="row">
+
+
+                    <div  id="FormPost" class="jumbotron masthead">
+                        <img class="bs-icon" src="assets/img/glyphicons/glyphicons_042_group.png">
+                        <h2>Implementation</h2>
+                        <!--<div id="map_canvas"></div>-->
+                        <div style="margin-top:80px; margin-left: 50px;" class="tabbable tabs-left">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a data-toggle="tab" href="#lA">Algoritmos</a>
+                                </li>
+                                <li >
+                                    <a data-toggle="tab" href="#lB">Mutation</a>
+                                </li>
+                                <!--<li >
+                                    <a data-toggle="tab" href="#lC">Operators</a>
+                                </li>-->
+                                <li >
+                                    <a data-toggle="tab" href="#lC">Recombination</a>
+                                </li>
+                                <li >
+                                    <a data-toggle="tab" href="#lD">Replacement</a>
+                                </li>
+                                <li >
+                                    <a data-toggle="tab" href="#lE">Selection</a>
+                                </li>
+                                <li >
+                                    <a data-toggle="tab" href="#lF">Description</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" style="width:85%;padding-left: 25px;">
+                                <div id="lA" class="tab-pane active" >
+                                    <div class="row">
+                                        <div class="span3" style="margin-left:0px;">
+                                            <div class="well span3" style="padding: 8px;">
+                                                <ul class="nav nav-list algorithm_list">
+                                                    <li class="nav-header">
+                                                        Algorithm List
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+                                            <button type="submit" id="bt_solverinfo" style="margin-left: 15%" class="btn btn-primary">Get Solver Information</button>
+                                        </div>
+
+                                        <div class="span6" style="margin-left:80px;">
+                                            <div class="well span6 algorithm_info_container" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Algorithm Information
+                                                    </li>
+                                                    <div class="algorithm_info"></div>
+                                                </ul>
+                                            </div>
+
+
+                                            <div class="well span6" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Algorithm Parameters
+                                                    </li>
+                                                    <li>
+                                                        <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="algorithm_params"/>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="well span6" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Solver Parameters
+                                                    </li>
+                                                    <li>
+                                                        <label class="span3" style="margin-left:0px;">Insert solver parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="algorithm_params_solver"/>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="well span6 knap_file" style="padding: 8px;">
+                                                <div id="drop_zone">Drop file w/ knapSack items here </div>
+                                                <div id="file_data" ><p>teste </p></div>
+                                                <div id="items_info" style="margin-top:10px;margin-left:10px;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="lB" class="tab-pane" >
+                                    <div class="row">
+                                        <div class="well span3" style="padding: 8px;">
+                                            <ul class="nav nav-list mutation_list">
+                                                <li class="nav-header">
+                                                    Mutation List
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="span6">
+                                            <div class="well span6 mutation_info_container" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Mutation Information
+                                                    </li>
+                                                    <div class="mutation_info"></div>
+                                                </ul>
+                                            </div>
+
+                                            <div class="well span6" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Mutation Parameters
+                                                    </li>
+                                                    <li>
+                                                        <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="mutation_params"/>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<div id="lC" class="tab-pane ">
+                                    <div class="row">
+                                        <div class="well span3" style="padding: 8px;">
+                                            <ul class="nav nav-list operators_list">
+                                                <li class="nav-header">
+                                                    Operators List
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="span6">
+                                            <div class="well span6 operators_info_container" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Operator Information
+                                                    </li>
+                                                    <div class="operator_info"></div>
+                                                </ul>
+                                            </div>
+
+                                            <div class="well span6" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Operator Parameters
+                                                    </li>
+                                                    <li>
+                                                        <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="operator_params"/>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>-->
+                                <div id="lC" class="tab-pane ">
+                                    <div class="row">
+                                        <div class="well span3" style="padding: 8px;">
+                                            <ul class="nav nav-list recombination_list">
+                                                <li class="nav-header">
+                                                    Recombination List
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="span6">
+                                            <div class="well span6 recombination_info_container" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Recombination Information
+                                                    </li>
+                                                    <div class="recombination_info"></div>
+                                                </ul>
+                                            </div>
+
+                                            <div class="well span6" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Recombination Parameters
+                                                    </li>
+                                                    <li>
+                                                        <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="recombination_params"/>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="lD" class="tab-pane ">
+                                    <div class="row">
+                                        <div class="well span3" style="padding: 8px;">
+                                            <ul class="nav nav-list replacement_list">
+                                                <li class="nav-header">
+                                                    Replacement List
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="span6">
+                                            <div class="well span6 replacement_info_container" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Replacement Information
+                                                    </li>
+                                                    <div class="replacement_info"></div>
+                                                </ul>
+                                            </div>
+                                            <div class="well span6" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Replacement Parameters
+                                                    </li>
+                                                    <li>
+                                                        <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="replacement_params"/>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="lE" class="tab-pane ">
+                                    <div class="row">
+                                        <div class="well span3" style="padding: 8px;">
+                                            <ul class="nav nav-list selection_list">
+                                                <li class="nav-header">
+                                                    Selection List
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="span6">
+                                            <div class="well span6 selection_info_container" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Selection Information
+                                                    </li>
+                                                    <div class="selection_info"></div>
+                                                </ul>
+                                            </div>
+
+                                            <div class="well span6" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Selection Parameters
+                                                    </li>
+                                                    <li>
+                                                        <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="selection_params"/>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="lF" class="tab-pane ">
+                                    <div class="row">
+                                        <div class="span6">
+                                            <div class="well span6 selection_info_container" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Problem Name
+                                                    </li>
+                                                    <li>
+                                                        <label class="span3" style="margin-left:0px;">Insert problem name: </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="problem_name"/>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="well span6" style="padding: 8px;">
+                                                <ul class="nav nav-list">
+                                                    <li class="nav-header">
+                                                        Problem Description
+                                                    </li>
+                                                    <li>
+                                                        <label class="span3" style="margin-left:0px;">Insert problem description: </label><textarea class="span3" style="margin-top:-4px;margin-left: -9px;resize: none;" id="problem_description"></textarea>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span12">
+                            <div class="span1" id="id_btexecute"> 
+                                <a class="btn btn-large btn-primary bt_execute">Execute</a>
+                                <div class="loaderAjax2"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Div para a plot-->
+                    <!--<div class="span12" id="chart_div" style="height:400px; width:100%;"></div>-->
+
+                </div><!--/row-->
+
+            </div><!-- /.marketing -->
+            <!-- div que recebe o load do modals.html --> 
+            <div id="modals">
+            </div>
+
+            <!-- Solver info modal -->
+
+            <div  class="modal hide fade" id="myModalSolver">             
+                <div class="modal-header">
+                    <a href="" id="close" class="close" data-dismiss="modal">&times;</a>
+                    <h3>Solver Information</h3>
+                </div>
+                <div class="modal-body myModelSolver_body">
+
+                </div>
+
+                <div class="modal-footer">
+
+                </div>  
+            </div>
+        </div><!-- /container -->
+
+        <!-- Footer
+         ================================================== -->
+        <footer class="footer" style="background-color: #252525; ">
+            <div class="container">
+                <div style="padding-left: 0%;" class="row">
+                    <div class="span5">
+                        <h3>LifeInspiration</h3>
+                        <p style="padding-left: 10px; color: white;">
+
+                            Life Inspiration help our clients to resolve hard engineer problems with 
+                            big compute processing.
+                        </p>
+                    </div>
+                    <div class="span2 offset4">
+                        <h3>Follow us</h3>
+
+                        <!-- Coloque esta etiqueta onde pretende que o botão de +1 seja apresentado -->
+                        <div class="googleMais"><g:plusone annotation="none" style="margin-left: 10px;"></g:plusone></div>
+                        <!-- Facebook like btt -->
+                        <div class="fb-like" data-href="http://www.cloudglare.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="trebuchet ms"></div>
+
+                    </div>
+                </div> 
+                <div style="margin-bottom: 5px;margin-top: 15px;" class="row">
+                    <div class="span12">
+                        <h3>Teams</h3>
+                    </div>
+                </div>
+
+                <div style="padding-left: 0%;" class="row">
+                    <div class="span3">
+                        <img style="margin-right:5px;" src="assets/img/pw.png">Optimum Computing
+                    </div>
+                    <div class="span3">
+                        <img style="margin-right:5px;" src="assets/img/pw.png">Inovative Mind
+                    </div>
+                    <div class="span3">
+                        <img style="margin-right:5px;" src="assets/img/pw.png">Genetic Lab
+                    </div>
+                    <div class="span3">
+                        <img style="margin-right:5px;" src="assets/img/pw.png">Power Computing
+                    </div>
+                </div>
+
+                <div style="padding-left: 0%; margin-bottom: -25px;margin-top: 25px;" class="row">			
+                    <div class="span3">
+                        <p style="font-size: 11px;">© Life Inspiration - 2012 All Rights Reserved.</p>
+                    </div>
+                    <div style="text-align: right;" class="span3 offset5">
+                        <p style="font-size: 11px;">IPT - Projecto de Sistemas de Informação</p>
+                    </div>
+                </div>
+            </div>          
+        </footer>
+
+
+
+        <!-- Le javascript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+        <!--<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>-->
+        <script src="assets/js/google-code-prettify/prettify.js"></script>
+        <script src="assets/js/bootstrap-transition.js"></script>
+        <script src="assets/js/bootstrap-alert.js"></script>
+        <script src="assets/js/bootstrap-modal.js"></script>
+        <script src="assets/js/bootstrap-dropdown.js"></script>
+        <script src="assets/js/bootstrap-scrollspy.js"></script>
+        <script src="assets/js/bootstrap-tab.js"></script>
+        <script src="assets/js/bootstrap-tooltip.js"></script>
+        <script src="assets/js/bootstrap-popover.js"></script>
+        <script src="assets/js/bootstrap-button.js"></script>
+        <script src="assets/js/bootstrap-collapse.js"></script>
+        <script src="assets/js/bootstrap-carousel.js"></script>
+        <script src="assets/js/bootstrap-typeahead.js"></script>
+        <!--<script src="assets/js/jquery.ui.bmap.full.js"></script>
+       <script src="assets/js/jquery.ui.bmap.overlays.min.js"></script>-->
+        <script src="assets/js/application.js"></script>
+        <script src="assets/js/functions.js"></script>
+        <script src="http://cloudglare.com:90/socket.io/socket.io.js"></script>
+        <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+            google.load('visualization', '1', {packages: ['corechart']});
+        </script>
+
+        <script class="code" type="text/javascript">
+            var weights;
+            var values;
+            var tamanho_mochila;
+            var alello;
+            var tsp_data = "";
+            
+            
+            
+            
+            /**** Variaveis globais para criar a string final ****/
+            var socket = io.connect('cloudglare.com',{port:90});
+            $(document).ready(function(){       
+                
+                 $.ajax({
+                      type: 'GET',
+                       url: "socket.php?"+"teste=info-"
+                    }); 
+                /*
+                var solution;
+               jQuery.get('eil76.opt.tour', function(data) {
+                    
+                    var teste = data;
+                    var correctResult = new Array();
+                    var count=0;
+                    teste = teste.split(/(\r\n|\n|\r)/gm);
+                    for(var i=0; i < teste.length;i++){
+                        if(i>9 && teste[i] != -1 && teste[i]!= 'EOF'){  
+                            correctResult[count] = teste[i];
+                            count=count+1;
+                        }    
+                        }
+                         for(var i=0; i < correctResult.length;i++){
+                            $("#file_data").append(correctResult[i]);
+ 
+                        }
+                    });
+                    */
+                   
+                 
+                    
+                    
+                    //tsp_data = replaceAll(tsp_data, "  "," ")
+                    //tsp_data = tsp_data.substring(0, tsp_data.length-1);
+                    //var name = teste[0].split(" ");
+                   
+                    //$("#items_info").html(teste[6]);
+
+              
+            
+                
+                //call node status
+                statusNodeJS();
+                
+            
+            });
+            
+            
+        </script>
+
+
+    </body>
+</html>
