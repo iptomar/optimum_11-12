@@ -749,7 +749,7 @@
                     alert(JSON.stringify(data));
                     $.ajax({
                         type: 'GET',
-                                   url: "socket.php?"+"teste=load-"+JSON.stringify(data)
+                                   url: "socket.php?"+"teste=load|"+JSON.stringify(data)
                     });
                     socket.emit("start",data);                                 
                                        setTimeout(function() {
@@ -761,7 +761,7 @@
                 /*** Pedir informação sobre algoritmos, mutations, etc... dinamicamente ao code ***/
                 $.ajax({
                     type: 'GET',
-                    url: "socket.php?"+"teste=info-" + readCookie('idClient')
+                    url: "socket.php?"+"teste=info|" + readCookie('idClient')
                 });
                 
                 /*** Recebe informação via node server dos algoritmos, mutations, etc... ***/

@@ -361,7 +361,7 @@
                   var dataInfoProblem = {client: readCookie('idClient'),id: readCookie('id_problem') }
                     $.ajax({
                         type: 'GET',
-                        url: "socket.php?"+"teste=stop-" + JSON.stringify(dataInfoProblem)
+                        url: "socket.php?"+"teste=stop|" + JSON.stringify(dataInfoProblem)
                     });
                 });
                 

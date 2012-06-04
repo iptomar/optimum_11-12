@@ -24,14 +24,14 @@ function rtrim(stringToTrim) {
 function statusNodeJS(){
     $.ajax({
                 type: 'GET',
-                           url: "socket.php?teste=status-"
+                           url: "socket.php?teste=status|"
     });
     //função que verifica o estado do servers de 3 em 3 segundos
     $(function() {
         var intervalID = setInterval(function() {
             $.ajax({
                 type: 'GET',
-                           url: "socket.php?teste=status-"
+                           url: "socket.php?teste=status#"
             });
         },30000);
         setTimeout(function() {
