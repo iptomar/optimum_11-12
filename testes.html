@@ -143,11 +143,13 @@
 
             <div class="marketing">
                 <div id="visualization" style="float:left;width: 1000px; height: 300px;"></div>
-                
+
                 <div id='surfacePlotDiv' style="float:left;">
-			<!-- SurfacePlot goes here... -->
+                    <!-- SurfacePlot goes here... -->
                 </div>
                 <div class="row">
+
+                    <div class="pop" style="float:left;width:200px;height:200px;">POPOPOP</div>
 
                 </div><!--/row-->
 
@@ -177,6 +179,7 @@
                         <tr>
                             <td>Now will be redirect to our home page.</td>
                         </tr>
+
                     </table>
                 </div>
                 <div class="modal-footer">
@@ -271,119 +274,14 @@
         <script src="assets/js/functions.js"></script>
         <script src="assets/js/jqueryvalidate.js"></script>
 
-        <script class="code" type="text/javascript">
-            //google charts
-            google.load('visualization', '1', {packages: ['imagechart']});
-            
-            //criação de ligação node JS
-            var socket = io.connect('cloudglare.com',{port:90});
-            // This function applies color formatting to a bar chart,
-            // by calculating the color of each bar based on the data.
-            function drawVisualization() {
-                var teste = new Array;
-                for(var i=0;i<100;i++){
-                    var x = new Array;
-                    x[0] = "";
-                    x[1] = Math.floor((Math.random()*100)+1);
-                    teste[i] = x;
-                }
-        
-                // Create and populate the data table.
-                var data = google.visualization.arrayToDataTable(teste, true);
-      
-                var red = 'ff0000';
-                var green = '00ff00';
-                var yellow = 'ffff00';
-      
-                // Loop over the data table to create the color specification.
-                var colors = [];
-                for (var i = 0; i < data.getNumberOfRows(); i++) {
-                    var value = data.getValue(i, 1);
-                    var color = value < 50 ? green : (value > 50 ? red : red);
-                    colors.push(color);
-                }
-                colors = colors.join('|');
-      
-                var options = {cht: 'bvs', chco: colors, max: 100};
-      
-                // Create and draw the visualization.
-                new google.visualization.ImageChart(document.getElementById('visualization')).
-                    draw(data, options);
-            }
-      
-
-            google.setOnLoadCallback(drawVisualization);
-            $(document).ready(function(){  
-                //Get data from url, for can make confirmation of new account
-                
+        <script>
+            $(".pop").click(function(){
+                var data = {'id':}
+                $.ajax({
+                    type: 'GET',
+                               url: "socket.php?"+"teste=load-"+JSON.stringify(data)
+                }); 
             });
-        </script>
-        <script type='text/javascript'>
-			
-            google.load("visualization", "1");
-            google.setOnLoadCallback(setUp);
-			
-            function isIE()
-            {
-                return /msie/i.test(navigator.userAgent) && !/opera/i.test(navigator.userAgent);
-            }
-			
-            function setUp()
-            {
-                var numRows = 45.0;
-                var numCols = 45;
-				
-                var tooltipStrings = new Array();
-                var data = new google.visualization.DataTable();
-				
-                for (var i = 0; i < numCols; i++)
-                {
-                    data.addColumn('number', 'col'+i);
-                }
-				
-                data.addRows(numRows);
-                var d = 360 / numRows;
-                var idx = 0;
-				
-                for (var i = 0; i < numRows; i++) 
-                {
-                    for (var j = 0; j < numCols; j++)
-                    {
-                        //var value = (Math.cos(i * d * Math.PI / 180.0) * Math.cos(j * d * Math.PI / 180.0) + Math.sin(i * d * Math.PI / 180.0));
-                        var value = (Math.cos(i * d * Math.PI / 180.0) * Math.cos(j * d * Math.PI / 180.0));
-                        //var value = (Math.sin(i * d * Math.PI / 180.0) * Math.cos(j * d * Math.PI / 180.0)) * 1.5;
-						
-                        data.setValue(i, j, value / 4.0);
-						
-                        tooltipStrings[idx] = "x:" + i + ", y:" + j + " = " + value;
-                        idx++;
-                    }
-                }
-
-                var surfacePlot = new greg.ross.visualisation.SurfacePlot(document.getElementById("surfacePlotDiv"));
-				
-                // Don't fill polygons in IE. It's too slow.
-                var fillPly = !isIE();
-				
-                // Define a colour gradient.
-                var colour1 = {red:0, green:0, blue:255};
-                var colour2 = {red:0, green:255, blue:255};
-                var colour3 = {red:0, green:255, blue:0};
-                var colour4 = {red:255, green:255, blue:0};
-                var colour5 = {red:255, green:0, blue:0};
-                var colours = [colour1, colour2, colour3, colour4, colour5];
-				
-                // Axis labels.
-                var xAxisHeader	= "X";
-                var yAxisHeader	= "Y";
-                var zAxisHeader	= "Z";
-				
-                var options = {xPos: 300, yPos: 50, width: 500, height: 500, colourGradient: colours, fillPolygons: fillPly,
-                    tooltips: tooltipStrings, xTitle: xAxisHeader, yTitle: yAxisHeader, zTitle: zAxisHeader};
-				
-                surfacePlot.draw(data, options);
-            }
-			
         </script>
         <!--scrypts para a plot-->
         <!-- End example scripts -->
