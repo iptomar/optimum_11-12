@@ -460,11 +460,12 @@
                
                 // Evento que mostra a string final do powercomputing
                 socket.on('end', function (dadosEND) {
+                    //alert(JSON.stringify(dadosEND.teste[0]));
                     if(readCookie('id_problem')==dadosEND.idProblem){
                         //Fechar Modal que mostra o resultado final            
                         $('#myModalLogin').modal('show');
                         $('.modal-body').html("");
-                        $('.modal-body').append("<p>Max Best: "+dadosEND.dados[0].max_best+"</p><p>Atribute: "+dadosEND.dados[0].attribute +" </p>");                        
+                        $('.modal-body').append("<p>Max Best: "+dadosEND.dados[0].max_best+"</p><p>Atribute: "+dadosEND.dados[0].attribute +" </p><p>Todos os resultados:</p><p>"+dadosEND.teste[0].finalfim+"</p>");                        
                         $('#titleSecound').html("");
                         $("#titleSecound").hide().append("").fadeIn('slow');
                         $("#titleSecound").append("Final results").fadeIn('slow');
