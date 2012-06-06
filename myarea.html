@@ -283,13 +283,10 @@
 
                                                 <div id="tab3" class="tab-pane">
                                                     <div id="NormalShow" style="margin-top:30px;" class="span6" >
-                                                        <h2>Final string</h2>
+                                                        <h2>Fenótipo</h2>
                                                         <div id="ResultEndStringText" style="margin-top:30px;margin-bottom: 10px" >
                                                         </div>
                                                         <div id="ResultEndString" style="margin-top:30px;height: auto" >
-
-
-
                                                             <div id='surfacePlotDiv' >
                                                                 SurfacePlot goes here... 
                                                             </div>
@@ -468,7 +465,7 @@
 
                 $(".geralInput").append("<h1>Choose your problem.</h1>")
                 $('.box_group').click(function(){
-                    $("body").scrollTop(300);
+                    $('html, body').animate({ scrollTop: 300 }, 'slow');
                     $('.'+$(this).attr('data-id')).html("");
                     $(".problemresults li").removeClass("active");
                     $(".tabsResults div").removeClass("active");
@@ -697,8 +694,8 @@
                 
                 //variavel que contem o tipo de problema
                 var typefinal;
-              
-      
+                var MediaBag;
+                var allKnapValues;
                 /*** Recebe dados Finais do problema pedido ***/
                 socket.on('loadString', function (dadosEND) {
                     $('#FinalResultKs').css("display","none");
@@ -712,24 +709,42 @@
                             $('#ResultEndString').html("");
                             $('#ResultEndStringText').html("");
                             
+                            //div que mostra quadrados de resultado final
+                            $('#ResultEndStringText').append("<div style='width:100%;float:left;margin-top:-20px;margin-bottom:20px;' class='Stringblocks'></div>");
                             // mostra resultados do one max
-                            $('#ResultEndStringText').append(dadosEND.dados[0].attribute);
-                            var final2 = dadosEND.dados[0].attribute.split('-');
-                            var show = final2[1].split(' ');
+                            var final2 = dadosEND.dados[0].attribute.split('<br>');     
+                            var show = final2[0].split('__');
+                            show = final2[1].split(' ');
+                            
                             for (i=0;i<=show.length;i++)
                             {
                                 if(show[i]=='1'){
-                                    $('#ResultEndString').append("<span id='blackString'>&nbsp</span>"); 
+                                    $('.Stringblocks').append("<span id='blackString'>&nbsp</span>"); 
                                 }else if(show[i]=='0'){
-                                    $('#ResultEndString').append("<span id='greyString'>&nbsp</span>"); 
+                                    $('.Stringblocks').append("<span id='greyString'>&nbsp</span>"); 
                                 }
                             
                             }
-                       
+                            $('#ResultEndStringText').append("<p style='width:100%;margin-top:0px;'><h2>Genótipo</h2></p>");
+                            var finalGenotipo = dadosEND.dados[0].attribute.split('<br>');
+                            var totalSolutions = (finalGenotipo.length) - 1;
+                            var maxBest = finalGenotipo[0].split('__');
+                            $('#ResultEndStringText').append("<p style='font-size:14px; text-align:left;margin-top:-60px; width:100%;'><b>Max Best: </b>"+maxBest[1]+"</p>");
+                            $('#ResultEndStringText').append("<p style='font-size:14px; text-align:left;margin-top:-10px; width:100%;'><b>Possiveis soluções ("+totalSolutions+"):</b></p>");
+                            
+                            for (i=0;i<finalGenotipo.length;i++){
+                                finalGenotipo[i] = finalGenotipo[i].split('__');
+                                if(i != (finalGenotipo.length)-1){
+                                    $('#ResultEndStringText').append("<p style='font-size:14px; text-align:left;margin-top:-10px;'>"+finalGenotipo[i][0]+"<hr/></p>");   
+                                }else {
+                                    $('#ResultEndStringText').append("<p style='font-size:14px; text-align:left;margin-top:-10px;'>"+finalGenotipo[i][0]+"</p>");   
+                                }
+                              
+                            }
                         }
                     }else if (typefinal[2] == 'K50' || typefinal[2] == 'K100' || typefinal[2] == 'KnapSack' ){
                         if(selectedProblem==dadosEND.idProblem){
-                            
+ 
                             $('#ResultEndString').html("");
                             $('#ResultEndStringText').html("");
                             //emit pedido de k50
@@ -738,29 +753,30 @@
                                            url: "socket.php?"+"teste=pop|"+JSON.stringify(dataPop)
                             }); 
                             $('#ResultTsp').html("");
-                            /*/alert(JSON.stringify(dadosEND));
-                            //Get values to fill bag
-                            var valuesBAG = dadosEND.dados[0].attribute.split(';');
-                            //alert(valuesBAG[1]);
-                            valuesBAG = valuesBAG[1].split(':');
-                            //alert(valuesBAG[0]);
-                            var ValueBag = valuesBAG[0];
-                            var MediaBag = valuesBAG[1];
-                            var MaxBAG =   valuesBAG[2];
-                             */
+                            
+                            allKnapValues=dadosEND.dados[0].attribute;
+                            //Get values to fill bag.split('<br>');
+                            var valuesBAG = dadosEND.dados[0].attribute.split('<br>');
+                            valuesBAG = valuesBAG[0].split('__');
+                            MediaBag = valuesBAG[1];
+                            
+                             
                             $('#ResultTsp').append("<h2 class='backToMyArea' style='width:100%; cursor:pointer'><img  style='margin-right:5px;' src='assets/img/139_03.png'>Back to my area</h2>");
                             $('#ResultTsp').append("<div style='width: 100%;text-align:left;margin-left:15px;'><h2 style='padding-top:20px;'>Results</h2></div>");
-                        
-                            //show values to bag
-                            /*
-                            $('#ResultTsp').append("<p style='font-size:16px;width:100%;text-align:left;margin-left:25px;'><b>Peso do individuo = </b>"+MediaBag+"</p>");
-                            $('#ResultTsp').append("<p style='font-size:16px;width:100%;text-align:left;margin-left:25px;'><b>Peso máximo da mochila = </b>"+ValueBag+"</p>");
-                            $('#ResultTsp').append("<p style='font-size:16px;width:100%;text-align:left;margin-left:25px;'><b>Peso total dos items da mochila = </b>"+MaxBAG+"</p>");
-                             */                
-                            $('#ResultTsp').append("<div id='visualization2' style='float:left;width: 1000px; margin-left:100px; margin-top:30px;  height: 300px;'></div>");
-                            $('#ResultTsp').append("<div style='width: 100%;text-align:left;margin-left:15px;'><span style='min-width:20px;min-height:20px;background-color:red'></span> <b> OUT</b></div>");
-                            $('#ResultTsp').append("<div style='width: 100%;text-align:left;margin-left:15px;'><span style='min-width:20px;min-height:20px;background-color:green'></span><b> IN</b></div>") 
-   
+                            $('#ResultTsp').append("<div id='visualization2' style='float:left;width: 1000px; margin-left:100px; margin-top:10px;  height: 300px;'></div>");
+                            $('#ResultTsp').append("<div id='StringResultsKs' style='float:left;width: 100%; margin-left:100px; margin-top:30px;'></div>");
+                            $('#StringResultsKs').append("<p style='font-size: 14px; text-align: left; margin-top: -10px; width: 100%;'><b>Legenda:</b></p>");
+                            $('#StringResultsKs').append("<p style='font-size: 14px; text-align: left; margin-left:20px; margin-top: -10px; width: 100%;'><span style='width: 40px; height: 20px;background-color:red;float:left;'></span> <b style='margin-left:10px;'> OUT</b></p>");
+                            $('#StringResultsKs').append("<p style='font-size: 14px; text-align: left; margin-left:20px; margin-top: -10px; width: 100%;'><span style='width: 40px; height: 20px;background-color:green;float:left;'></span><b style='margin-left:10px;'> IN</b></p>") 
+                            //button to back my area
+                            $(".backToMyArea").click(function(){
+                                $(".problemresults li").removeClass("active");
+                                $(".tabsResults div").removeClass("active");
+                                $("#tab2").addClass("active");
+                                $("#ProblemInfo").addClass("active");
+                                $('#FormPost').animate({right:"-=1180"},1000);
+                                $('#FormPost2').animate({right:"-=1180"},1000);
+                            });
                         }     
                     }else if (typefinal[2] == 'TSP'){
                         if(selectedProblem==dadosEND.idProblem){
@@ -769,6 +785,15 @@
                             //get name of resolution file
                             socket.emit("getFilename",data);
                         }
+                        //button to back my area
+                            $(".backToMyArea").click(function(){
+                                $(".problemresults li").removeClass("active");
+                                $(".tabsResults div").removeClass("active");
+                                $("#tab2").addClass("active");
+                                $("#ProblemInfo").addClass("active");
+                                $('#FormPost').animate({right:"-=1180"},1000);
+                                $('#FormPost2').animate({right:"-=1180"},1000);
+                            });
                     }else if (typefinal[2] == 'FN'){
                         if(selectedProblem==dadosEND.idProblem){
                             $('#NormalShow').html("");
@@ -894,39 +919,25 @@
                     if(typefinal[2] == 'TSP'){
                         //Mostra resultado final numa div maior
                             
-                        $("body").scrollTop(300);
+                        $('html, body').animate({ scrollTop: 300 }, 'slow');
                         $('#FormPost').animate({right:"+=1180"},1000);
                         $('#FormPost2').animate({right:"+=1180"},1000);
                     } else if(typefinal[2] == 'K50' || typefinal[2] == 'K100' || typefinal[2] == 'KnapSack' ){
                         //Mostra resultado final numa div maior
-                            
-                        $("body").scrollTop(300);
+                        $('html, body').animate({ scrollTop: 300 }, 'slow');
                         $('#FormPost').animate({right:"+=1180"},1000);
                         $('#FormPost2').animate({right:"+=1180"},1000);
                     } else if(typefinal[2] == 'FN' ){
                         
                         //Mostra resultado final numa div maior
-                        $("body").scrollTop(300);
+                        $('html, body').animate({ scrollTop: 300 }, 'slow');
                         $('#FormPost').animate({right:"+=1180"},1000);
                         $('#FormPost2').animate({right:"+=1180"},1000);
                     }
                 });
                 /*** Recebe dados Finais do problema pedido ***/
                 socket.on('popResult', function (Kresult) {
-                    
                     var Kresults = JSON.parse(Kresult);
-                    alert(Kresults);
-                    
-                    /*
-                    //Get values to fill bag
-                    var valuesBAG = dadosEND.dados[0].attribute.split(';');
-                            //alert(valuesBAG[1]);
-                            valuesBAG = valuesBAG[1].split(':');
-                            //alert(valuesBAG[0]);
-                            var ValueBag = valuesBAG[0];
-                            var MediaBag = valuesBAG[1];
-                            var MaxBAG =   valuesBAG[2];
-                    */
                     if (Kresults.idClient == readCookie('idClient')){
 
                         // by calculating the color of each bar based on the data.
@@ -937,21 +948,29 @@
                                 x[0] = "";
                                 x[1] = parseInt(Kresults.data[i][1]);
                                 teste[i] = x;
+                                if (i == Kresults.data.length-1){
+                                    x[1] = 2300;
+                                    teste[i]=x;
+                                }
                             }
-        
+                            
                             // Create and populate the data table.
                             var data = google.visualization.arrayToDataTable(teste, true);
                             var red = 'ff0000';
                             var green = '00ff00';
                             var yellow = 'ffff00';
-      
+                            var white = 'ffffff';
                             // Loop over the data table to create the color specification.
                             var colors = [];
                             for (var i = 0; i < data.getNumberOfRows(); i++) {
                                 var value = data.getValue(i, 1);
-                                var color = value < 1920 ? green : (value > 1920 ? red : red);
+                                var color = value <= MediaBag ? green : (value > MediaBag ? red : red);
+                                if(i == data.getNumberOfRows()-1){
+                                    color=white;
+                                }
                                 colors.push(color);
                             }
+                             
                             colors = colors.join('|');
       
                             var options = {cht: 'bvs', chco: colors, max: 100};
@@ -961,6 +980,26 @@
                                 draw(data, options);
                         }
                         drawVisualization();   
+                    
+                        // Colocar as strings de varios soluções possiveis por baixo do graficos
+                        
+                        $('#StringResultsKs').append("<p style='width:100%;margin-top:0px;'><h2>Genótipo</h2></p>");
+                        var finalGenotipo = allKnapValues.split('<br>');
+                        var totalSolutions = (finalGenotipo.length) - 1;
+                        var maxBest = finalGenotipo[0].split('__');
+                        $('#StringResultsKs').append("<p style='font-size:14px; text-align:left;margin-top:0px; width:100%;'><b>Max Best: </b>"+maxBest[1]+"</p>");
+                        $('#StringResultsKs').append("<p style='font-size:14px; text-align:left;margin-top:-10px; width:100%;'><b>Possiveis soluções ("+ totalSolutions +"):</b></p>");
+                            
+                        for (i=0;i<finalGenotipo.length;i++){
+                            finalGenotipo[i] = finalGenotipo[i].split('__');
+                            if(i != (finalGenotipo.length)-1){
+                                $('#StringResultsKs').append("<p style='font-size:14px; text-align:left;margin-top:-10px;'>"+finalGenotipo[i][0]+"<hr/></p>");   
+                            }else {
+                                $('#StringResultsKs').append("<p style='font-size:14px; text-align:left;margin-top:-10px;'>"+finalGenotipo[i][0]+"</p>");   
+                            }
+                              
+                        }
+                         
                     }
                 });
                             
@@ -973,6 +1012,7 @@
                             
                     $('#FormPost').animate({right:"-=1180"},1000);
                     $('#FormPost2').animate({right:"-=1180"},1000);
+                    $('html, body').animate({ scrollTop: 300 }, 'slow');
                 });
                 
                 
@@ -985,7 +1025,6 @@
                     $('#ResultEndString').html("");
                     $('#ResultEndStringText').html("");
                                     
-                    
                     var solution;//Show results space
                     $('#FinalResultTSP').css("display","inherit");
                     //add title
@@ -1001,48 +1040,41 @@
                                 count=count+1;
                                 i++;}    
                         }
-                        
+                        //alert(DadosTSP.dados[0].attribute); 
                         //vai buscar os dados para preencher o varios pontos
                         var points = DadosTSP.dados[0].attribute.split('>>>>');
-                            
                         // separa os valores
-                        var OnlyValues = rtrim(points[0].substring(4,(points[0].lenght)));
-                        OnlyValues = OnlyValues.split(' -> ');
-                    
+                        //var OnlyValues = rtrim(points[0].substring(0,(points[0].lenght)));
+                       
+                        var OnlyValues = points[0].split(' -> ');
                         // criação do tipo de grafico
                         graph = new Graph();  
                         // criação de pontos e união dos mesmos
                         var pointsShow = new Array();
-                        for (i=0;i<OnlyValues.length;i++)
+                        for (i=0;i<(OnlyValues.length)-1;i++)
                         {
-                            pointsShow[i] = graph.newNode({label: OnlyValues[i]});
-                            $("#ResultTsp").append("<p style='width:100%'>R = "+(correctResult[i]-1)+  "  && N = " + OnlyValues[i]+"</p>");
+                            pointsShow[i] = graph.newNode({label: parseInt(OnlyValues[i])+1});
+                            $("#ResultTsp").append("<p style='width:100%'>R = "+(correctResult[i])+  "  && N = " + (parseInt(OnlyValues[i])+1) +"</p>");
                         }
   
 
                         for (i=0;i<(pointsShow.length)-1;i++)
-                    
                         {
-                       
-
-                            if ((correctResult[i]-1) == OnlyValues[i]){
-                                if ((correctResult[i]-1) == OnlyValues[i+1]){
+                            if ((correctResult[i]) == (parseInt(OnlyValues[i])+1)){
+                                if ((correctResult[i+1]) == (parseInt(OnlyValues[i+1])+1)){
                                     graph.newEdge(pointsShow[i],pointsShow[i+1], {color: '#f3a31b'});
                                 }else{
                                     graph.newEdge(pointsShow[i],pointsShow[i+1], {color: '#0a858a'});
                                 }
                             }else{ 
-                            
-                                graph.newEdge(pointsShow[i],pointsShow[i+1], {color: '#0a858a'});
-                           
-                                
+                                graph.newEdge(pointsShow[i],pointsShow[i+1], {color: '#0a858a'}); 
                             }
                         
                         }
    
                         $('#ResultTsp').append("<h2 class='backToMyArea' style='width:100%; cursor:pointer'><img  style='margin-right:5px;' src='assets/img/139_03.png'>Back to my area</h2>");
                         $('#ResultTsp').append("<div style='width: 100%;text-align:left;margin-left:15px;'><h2 style='padding-top:20px;'>Best path</h2></div>");
-                        $('#ResultTsp').append("<b style='width: 100%;text-align:left;margin-left:15px;'>Total de Nós: "+ OnlyValues.length +"</b>");
+                        $('#ResultTsp').append("<b style='width: 100%;text-align:left;margin-left:15px;'>Total de Nós: "+ (OnlyValues.length-1) +"</b>");
                         //add canvas space
                         $('#ResultTsp').append("<br/><canvas id='springydemo' width='1180' height='660' />");
                     
@@ -1050,17 +1082,20 @@
                         $('#springydemo').springy({
                             graph: graph
                         });
-
+                        
                         //button to back my area
-                        $(".backToMyArea").click(function(){
-                            $(".problemresults li").removeClass("active");
-                            $(".tabsResults div").removeClass("active");
-                            $("#tab2").addClass("active");
-                            $("#ProblemInfo").addClass("active");
-                            $('#FormPost').animate({right:"-=1180"},1000);
-                            $('#FormPost2').animate({right:"-=1180"},1000);
-                        });             
+                            $(".backToMyArea").click(function(){
+                                $(".problemresults li").removeClass("active");
+                                $(".tabsResults div").removeClass("active");
+                                $("#tab2").addClass("active");
+                                $("#ProblemInfo").addClass("active");
+                                $('#FormPost').animate({right:"-=1180"},1000);
+                                $('#FormPost2').animate({right:"-=1180"},1000);
+                                $('html, body').animate({ scrollTop: 300 }, 'slow');
+                            });
+                        
                     }); 
+                   
                 });
                 
                 //button to back my area
@@ -1072,6 +1107,7 @@
                             
                     $('#FormPost').animate({right:"-=1180"},1000);
                     $('#FormPost2').animate({right:"-=1180"},1000);
+                    $('html, body').animate({ scrollTop: 300 }, 'slow');
                 });
                 
             });
