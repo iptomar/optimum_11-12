@@ -569,15 +569,16 @@
                         }
                     }
                     else{
+                        var teste = selected_algorithm.split('.');
                         data = {
                             id: (randomProblem),
                             client: readCookie('idClient'),
-                            algorithm: [selected_algorithm,algorithm_params,algorithm_params_solver],
-                            mutation: [selected_mutation,mutation_params],
-                            operator: [selected_operator,"0"],
-                            recombination: [selected_recombination,recombination_params],
-                            replacement: [selected_replacement,replacement_params],
-                            selection: [selected_selection, selection_params],
+                            algorithm: [selected_algorithm,"12 2 3 45 " + teste[3],algorithm_params_solver],
+                            mutation: ["operators.mutation.Flipbit"," "],
+                            operator: ["operators.recombinations.PMX","0"],
+                            recombination: ["operators.recombinations.UniformCrossover","0.75"],
+                            replacement: ["operators.replacements.Tournament","200 2"],
+                            selection: ["operators.selections.Tournament","200 2"],
                             nome: problem_name,
                             desc: problem_description,
                             filen: filename
