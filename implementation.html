@@ -61,7 +61,7 @@
             $(document).ready(function(){
                 //carrega pagina com modals e funcoes por defeito
                 $("#modals").load("views/modals.html");
-                 
+
                 //Verifica se tem login ou não para mostrar botao correspondnt
                 if(readCookie('nome')!=null){
                     $('#LiRegist').html("");
@@ -73,7 +73,7 @@
                     $('#LiLogin a').attr("href","myarea.html");
                     $('#loginButton').css("background-image", "url('assets/img/myarea_1.png')");
                 }
-   
+
             });
         </script>
     </head>
@@ -81,7 +81,7 @@
     <body data-spy="scroll" data-target=".subnav" data-offset="50">
         <a id="loginButton" class="loginButton" href="myarea.html">&nbsp;</a>
         <a id="serverStatus" class="serverStatus" href="#">
-            <img class="StatusImage" style="margin-top: 10px" src="assets/img/down.png">   
+            <img class="StatusImage" style="margin-top: 10px" src="assets/img/down.png">
         </a>
 
         <!-- Navbar
@@ -134,7 +134,7 @@
             <header class="jumbotron masthead" style="margin-bottom: 20px;">
                 <div class="row" style="margin-top:30px;">
                     <div class="span1 offset1" >
-                        <figure style="margin-left:10px;margin-top:45px;float:left;text-align: center;"> 
+                        <figure style="margin-left:10px;margin-top:45px;float:left;text-align: center;">
                             <img style="" src="assets/img/myarea.png" />
                         </figure>
                     </div>
@@ -164,21 +164,7 @@
                                         <li class="active">
                                             <a data-toggle="tab" href="#lA">Algoritmos</a>
                                         </li>
-                                        <li >
-                                            <a data-toggle="tab" href="#lB">Mutation</a>
-                                        </li>
-                                        <!--<li >
-                                            <a data-toggle="tab" href="#lC">Operators</a>
-                                        </li>-->
-                                        <li >
-                                            <a data-toggle="tab" href="#lC">Recombination</a>
-                                        </li>
-                                        <li >
-                                            <a data-toggle="tab" href="#lD">Replacement</a>
-                                        </li>
-                                        <li >
-                                            <a data-toggle="tab" href="#lE">Selection</a>
-                                        </li>
+                                        
                                         <li >
                                             <a data-toggle="tab" href="#lF">Description</a>
                                         </li>
@@ -209,20 +195,11 @@
                                                     </div>
 
 
+                                                    
                                                     <div class="well span6" style="padding: 8px;">
                                                         <ul class="nav nav-list">
                                                             <li class="nav-header">
-                                                                Algorithm Parameters
-                                                            </li>
-                                                            <li>
-                                                                <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="algorithm_params"/>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="well span6" style="padding: 8px;">
-                                                        <ul class="nav nav-list">
-                                                            <li class="nav-header">
-                                                                Solver Parameters
+                                                                Stop Criteria (Itera best): 
                                                             </li>
                                                             <li>
                                                                 <label class="span3" style="margin-left:0px;">Insert solver parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="algorithm_params_solver"/>
@@ -234,169 +211,11 @@
                                                         <div id="file_data" style="display:none;"></div>
                                                         <div id="items_info" style="margin-top:10px;margin-left:10px;"></div>
                                                     </div>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="lB" class="tab-pane" >
-                                            <div class="row">
-                                                <div class="well span3" style="padding: 8px;">
-                                                    <ul class="nav nav-list mutation_list">
-                                                        <li class="nav-header">
-                                                            Mutation List
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="span6">
-                                                    <div class="well span6 mutation_info_container" style="padding: 8px;">
-                                                        <ul class="nav nav-list">
-                                                            <li class="nav-header">
-                                                                Mutation Information
-                                                            </li>
-                                                            <div class="mutation_info"></div>
-                                                        </ul>
-                                                    </div>
-
-                                                    <div class="well span6" style="padding: 8px;">
-                                                        <ul class="nav nav-list">
-                                                            <li class="nav-header">
-                                                                Mutation Parameters
-                                                            </li>
-                                                            <li>
-                                                                <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="mutation_params"/>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--<div id="lC" class="tab-pane ">
-                                            <div class="row">
-                                                <div class="well span3" style="padding: 8px;">
-                                                    <ul class="nav nav-list operators_list">
-                                                        <li class="nav-header">
-                                                            Operators List
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="span6">
-                                                    <div class="well span6 operators_info_container" style="padding: 8px;">
-                                                        <ul class="nav nav-list">
-                                                            <li class="nav-header">
-                                                                Operator Information
-                                                            </li>
-                                                            <div class="operator_info"></div>
-                                                        </ul>
-                                                    </div>
-        
-                                                    <div class="well span6" style="padding: 8px;">
-                                                        <ul class="nav nav-list">
-                                                            <li class="nav-header">
-                                                                Operator Parameters
-                                                            </li>
-                                                            <li>
-                                                                <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="operator_params"/>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>-->
-                                        <div id="lC" class="tab-pane ">
-                                            <div class="row">
-                                                <div class="well span3" style="padding: 8px;">
-                                                    <ul class="nav nav-list recombination_list">
-                                                        <li class="nav-header">
-                                                            Recombination List
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="span6">
-                                                    <div class="well span6 recombination_info_container" style="padding: 8px;">
-                                                        <ul class="nav nav-list">
-                                                            <li class="nav-header">
-                                                                Recombination Information
-                                                            </li>
-                                                            <div class="recombination_info"></div>
-                                                        </ul>
-                                                    </div>
-
-                                                    <div class="well span6" style="padding: 8px;">
-                                                        <ul class="nav nav-list">
-                                                            <li class="nav-header">
-                                                                Recombination Parameters
-                                                            </li>
-                                                            <li>
-                                                                <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="recombination_params"/>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div id="lD" class="tab-pane ">
-                                            <div class="row">
-                                                <div class="well span3" style="padding: 8px;">
-                                                    <ul class="nav nav-list replacement_list">
-                                                        <li class="nav-header">
-                                                            Replacement List
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="span6">
-                                                    <div class="well span6 replacement_info_container" style="padding: 8px;">
-                                                        <ul class="nav nav-list">
-                                                            <li class="nav-header">
-                                                                Replacement Information
-                                                            </li>
-                                                            <div class="replacement_info"></div>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="well span6" style="padding: 8px;">
-                                                        <ul class="nav nav-list">
-                                                            <li class="nav-header">
-                                                                Replacement Parameters
-                                                            </li>
-                                                            <li>
-                                                                <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="replacement_params"/>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div id="lE" class="tab-pane ">
-                                            <div class="row">
-                                                <div class="well span3" style="padding: 8px;">
-                                                    <ul class="nav nav-list selection_list">
-                                                        <li class="nav-header">
-                                                            Selection List
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="span6">
-                                                    <div class="well span6 selection_info_container" style="padding: 8px;">
-                                                        <ul class="nav nav-list">
-                                                            <li class="nav-header">
-                                                                Selection Information
-                                                            </li>
-                                                            <div class="selection_info"></div>
-                                                        </ul>
-                                                    </div>
-
-                                                    <div class="well span6" style="padding: 8px;">
-                                                        <ul class="nav nav-list">
-                                                            <li class="nav-header">
-                                                                Selection Parameters
-                                                            </li>
-                                                            <li>
-                                                                <label class="span3" style="margin-left:0px;">Insert parameters separated by " " (space): </label><input class="span3" style="margin-top:-4px;margin-left: -9px;" type="text" id="selection_params"/>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                      
                                         <div id="lF" class="tab-pane ">
                                             <div class="row">
                                                 <div class="span6">
@@ -427,7 +246,7 @@
                                     </div>
                                 </div>
                                 <div class="span12">
-                                    <div class="span1" id="id_btexecute"> 
+                                    <div class="span1" id="id_btexecute">
                                         <a class="btn btn-large btn-primary bt_execute">Execute</a>
                                         <div class="loaderAjax2"></div>
                                     </div>
@@ -440,13 +259,13 @@
                     </div><!--/row-->
 
                 </div><!-- /.marketing -->
-                <!-- div que recebe o load do modals.html --> 
+                <!-- div que recebe o load do modals.html -->
                 <div id="modals">
                 </div>
 
                 <!-- Solver info modal -->
 
-                <div  class="modal hide fade" id="myModalSolver">             
+                <div  class="modal hide fade" id="myModalSolver">
                     <div class="modal-header">
                         <a href="" id="close" class="close" data-dismiss="modal">&times;</a>
                         <h3>Solver Information</h3>
@@ -457,7 +276,7 @@
 
                     <div class="modal-footer">
 
-                    </div>  
+                    </div>
                 </div>
         </div><!-- /container -->
 
@@ -470,7 +289,7 @@
                         <h3>LifeInspiration</h3>
                         <p style="padding-left: 10px; color: white;">
 
-                            Life Inspiration help our clients to resolve hard engineer problems with 
+                            Life Inspiration help our clients to resolve hard engineer problems with
                             big compute processing.
                         </p>
                     </div>
@@ -483,7 +302,7 @@
                         <div class="fb-like" data-href="http://www.cloudglare.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="trebuchet ms"></div>
 
                     </div>
-                </div> 
+                </div>
                 <div style="margin-bottom: 5px;margin-top: 15px;" class="row">
                     <div class="span12">
                         <h3>Teams</h3>
@@ -505,7 +324,7 @@
                     </div>
                 </div>
 
-                <div style="padding-left: 0%; margin-bottom: -25px;margin-top: 25px;" class="row">			
+                <div style="padding-left: 0%; margin-bottom: -25px;margin-top: 25px;" class="row">
                     <div class="span3">
                         <p style="font-size: 11px;">© Life Inspiration - 2012 All Rights Reserved.</p>
                     </div>
@@ -513,7 +332,7 @@
                         <p style="font-size: 11px;">IPT - Projecto de Sistemas de Informação</p>
                     </div>
                 </div>
-            </div>          
+            </div>
         </footer>
 
 
@@ -552,7 +371,7 @@
             var tamanho_mochila;
             var alello;
             var tsp_data = "";
-            
+            var filename = "";
             /*** Função para fazer replace de um char por toda uma string ***/
             function replaceAll(string, token, newtoken) {
                 while (string.indexOf(token) != -1) {
@@ -560,12 +379,12 @@
                 }
                 return string;
             }
-            
+
             /*** Função para remover espaços a esquerda ***/
             function ltrim(str) {
 		return str.replace(/^\s+/,"");
             }
-            
+
             /*** Funções para ler ficheiros drag&drop ***/
             var dropZone = document.getElementById('drop_zone');
             dropZone.addEventListener('dragover', handleDragOver, false);
@@ -579,7 +398,7 @@
                 var file = files[0];
                 var start =  0;
                 var stop =  file.size - 1;
-
+                filename = (file.name);
                 var reader = new FileReader();
 
                 // If we use onloadend, we need to check the readyState.
@@ -589,8 +408,8 @@
                         if(evt.target.result != null || evt.target.result != ""){
                             document.getElementById('file_data').textContent = evt.target.result;
                             countItems();
-                        } 
-                        
+                        }
+
                     }
                 };
 
@@ -600,7 +419,7 @@
                     var blob = file.mozSlice(start, stop + 1);
                 }
                 document.getElementById('file_data').textContent = reader.readAsBinaryString(blob);
-                
+
             }
 
             function handleDragOver(evt) {
@@ -608,7 +427,7 @@
                 evt.preventDefault();
                 evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
             }
-            
+
             /***** Função para ir buscar aos ficheiros os valores necessários consoante o algoritmo escolhido *****/
             function countItems(){
                 var teste = $('#file_data').html();
@@ -618,7 +437,8 @@
                     var number2 = teste[6].split(" ");
                     values = teste[4];
                     weights = teste[6];
-                    allelo = teste[0];
+                    alello = parseInt(teste[0]);
+                    alert(alello);
                     tamanho_mochila = teste[2];
                     if(number.length == number2.length){
                         $("#items_info").html("Total Items for knapSack: " + number.length);
@@ -638,13 +458,13 @@
                     tsp_data = replaceAll(tsp_data, "  "," ")
                     tsp_data = tsp_data.substring(0, tsp_data.length-1);
                     var name = teste[0].split(" ");
-                   
-                    $("#items_info").html(teste[6]);
-                
-                    
+                    var nelements = teste[6].split(":");
+                    $("#items_info").html(ltrim(nelements[1]));
+                    alello = parseInt(ltrim(nelements[1]));
+
                 }
             }
-            
+
             /**** Variaveis globais para criar a string final ****/
             var socket = io.connect('cloudglare.com',{port:90});
             var algorithms_info = new Array();
@@ -660,16 +480,16 @@
             var selected_replacement = "";
             var selected_selection ="";
             var solver_info = "";
-            
+
             $(document).ready(function(){
                 //call node status
                 statusNodeJS();
                 /*** Função para fazer descer o modal com o info do solver ***/
                 $("#bt_solverinfo").click(function(){
                     $("#myModalSolver").modal('show');
-                 
+
                 });
-                
+
                 /**** Função onclick quando o utilizador manda executar um novo problema *****/
                 $("#id_btexecute").click(function(){
                     var algorithm_params = $('#algorithm_params').val();
@@ -698,9 +518,9 @@
                     var newDate = new Date;
                     var randomProblem = Math.round((newDate.getTime()+100)/10000);
                     var data;
-                    if(readCookie('idClient')!=null){                  
+                    if(readCookie('idClient')!=null){
                         createCookie('id_problem',(randomProblem),1);
-                    }else{           
+                    }else{
                         eraseCookie('id_problem');
                         createCookie('id_problem',(randomProblem),1);
                     }
@@ -708,42 +528,60 @@
                         data = {
                             id: (randomProblem),
                             client: readCookie('idClient'),
-                            algorithm: [selected_algorithm,algorithm_params+":"+allelo+" "+tamanho_mochila+" "+values+" " + weights,algorithm_params_solver],
-                            mutation: [selected_mutation,mutation_params],
-                            operator: [selected_operator,"0"],
-                            recombination: [selected_recombination,recombination_params],
-                            replacement: [selected_replacement, replacement_params],
-                            selection: [selected_selection, selection_params],
+                            algorithm: ["genetics.algorithms.KnapSack",(alello*2)+" 1 1 "+alello+" KnapSack ModeFunction.RANDOM 2"+":"+alello+" "+tamanho_mochila+" "+values+" " + weights,algorithm_params_solver],
+                            mutation: ["operators.mutation.Flipbit",(1/alello)+""],
+                            operator: ["operators.recombinations.PMX","0"],
+                            recombination: ["operators.recombinations.UniformCrossover","0.75"],
+                            replacement: ["operators.replacements.Tournament",(alello*2) + " 2"],
+                            selection: ["operators.selections.Tournament",(alello*2) + " 2"],
                             nome: problem_name,
-                            desc: problem_description
+                            desc: problem_description,
+                            filen: filename
                         }
                     }else if(selected_algorithm == "genetics.algorithms.TSP"){
                         data = {
                             id: (randomProblem),
                             client: readCookie('idClient'),
-                            algorithm: [selected_algorithm,algorithm_params,algorithm_params_solver],
+                            algorithm: ["genetics.algorithms.TSP",(alello*2)+" 1 1 "+alello+" TSP",algorithm_params_solver],
                             TSP: [tsp_data],
-                            mutation: [selected_mutation,mutation_params],
+                            mutation: ["operators.mutation.Invertion","0.3"],
                             operator: [selected_operator,"0"],
-                            recombination: [selected_recombination,recombination_params],
-                            replacement: [selected_replacement,replacement_params],
-                            selection: [selected_selection, selection_params],
+                            recombination: ["operators.recombinations.PMX","0.75"],
+                            replacement: ["operators.replacements.Truncation"," "],
+                            selection: ["operators.selections.Tournament",(alello*2) + " 2"],
                             nome: problem_name,
-                            desc: problem_description
+                            desc: problem_description,
+                            filen: filename
                         }
                     }
-                    else{
+                    else if(selected_algorithm == "genetics.algorithms.OnesMax"){
                         data = {
                             id: (randomProblem),
                             client: readCookie('idClient'),
-                            algorithm: [selected_algorithm,algorithm_params,algorithm_params_solver],
-                            mutation: [selected_mutation,mutation_params],
-                            operator: [selected_operator,"0"],
-                            recombination: [selected_recombination,recombination_params],
-                            replacement: [selected_replacement,replacement_params],
-                            selection: [selected_selection, selection_params],
+                            algorithm: ["genetics.algorithms.OnesMax","200 1 1 100 OnesMax","100 1 120 0"],
+                            mutation: ["operators.mutation.Flipbit","0.01"],
+                            operator: ["operators.recombinations.PMX","0"],
+                            recombination: ["operators.recombinations.UniformCrossover","0.75"],
+                            replacement: ["operators.replacements.Tournament","200 2"],
+                            selection: ["operators.selections.Tournament","200 2"],
                             nome: problem_name,
-                            desc: problem_description
+                            filen: filename
+                        }
+                    }
+                    else{
+                        var teste = selected_algorithm.split('.');
+                        data = {
+                            id: (randomProblem),
+                            client: readCookie('idClient'),
+                            algorithm: [selected_algorithm,"12 2 3 45 " + teste[3],algorithm_params_solver],
+                            mutation: ["operators.mutation.Flipbit"," "],
+                            operator: ["operators.recombinations.PMX","0"],
+                            recombination: ["operators.recombinations.UniformCrossover","0.75"],
+                            replacement: ["operators.replacements.Tournament","200 2"],
+                            selection: ["operators.selections.Tournament","200 2"],
+                            nome: problem_name,
+                            desc: problem_description,
+                            filen: filename
                         }
                     }
                     alert(JSON.stringify(data));
@@ -755,15 +593,15 @@
                                        setTimeout(function() {
                                               window.location = "results.html";
                                        }, 1000);
-                     
+
                 });
-                
+
                 /*** Pedir informação sobre algoritmos, mutations, etc... dinamicamente ao code ***/
                 $.ajax({
                     type: 'GET',
                     url: "socket.php?"+"teste=info|" + readCookie('idClient')
                 });
-                
+
                 /*** Recebe informação via node server dos algoritmos, mutations, etc... ***/
                 socket.on('getInfo', function (data) {
                     var all_info = JSON.parse(data);
@@ -795,112 +633,24 @@
                             selected_algorithm = $(this).attr("data-id");
                             if(selected_algorithm == "genetics.algorithms.KnapSack" || selected_algorithm == "genetics.algorithms.TSP"){
                                 $(".knap_file").show();
+                                if(selected_algorithm == "genetics.algorithms.KnapSack"){
+                                    $('#drop_zone').html("Drop file w/ knapSack items here");
+                                }
+                                else{
+                                    $('#drop_zone').html("Drop TSP format file here");
+                                }
                             }
                             else{
                                 $(".knap_file").hide();
                             }
                         });
-                    
-                        //read all mutation types
-                        $.each(all_info.mutation, function(i, item) {
-                            mutation_info[all_info.mutation[i][0]] = all_info.mutation[i][1];
-                            if(i == 0){
-                                $('.mutation_list').append("<li class='active'><a data-id='"+all_info.mutation[i][0]+"'>"+all_info.mutation[i][0]+"</a></li>");
-                                $('.mutation_info').html("<div style='font-size: 12px;'>"+mutation_info[all_info.mutation[i][0]]+"</div>");
-                                selected_mutation = all_info.mutation[i][0];
-                            }
-                            else{
-                                $('.mutation_list').append("<li><a data-id='"+all_info.mutation[i][0]+"'>"+all_info.mutation[i][0]+"</a></li>");
-                            }
-                        });
-                        $('.mutation_list li a').click(function(){
-                            $('.mutation_info').html("<div style='font-size: 12px;'>"+mutation_info[$(this).attr("data-id")]+"</div>");
-                            $('.mutation_list li').removeClass('active');
-                            $(this).parent('li').addClass('active');
-                            selected_mutation = $(this).attr("data-id");
-                        });
-                    
-                        //read all operators types
-                        $.each(all_info.operators, function(i, item) {
-                            operators_info[all_info.operators[i][0]] = all_info.operators[i][1];
-                            if(i == 0){
-                                $('.operators_list').append("<li class='active'><a data-id='"+all_info.operators[i][0]+"'>"+all_info.operators[i][0]+"</a></li>");
-                                $('.operator_info').html("<div style='font-size: 12px;'>"+mutation_info[all_info.operators[i][0]]+"</div>");
-                                selected_operator = all_info.operators[i][0];
-                            }
-                            else{
-                                $('.operators_list').append("<li><a data-id='"+all_info.operators[i][0]+"'>"+all_info.operators[i][0]+"</a></li>");
-                            }
-                        });
-                        $('.operators_list li a').click(function(){
-                            $('.operator_info').html("<div style='font-size: 12px;'>"+operators_info[$(this).attr("data-id")]+"</div>");
-                            $('.operators_list li').removeClass('active');
-                            $(this).parent('li').addClass('active');
-                            selected_operator = $(this).attr("data-id");
-                        });
-                    
-                        //recombination types
-                        $.each(all_info.recombinations, function(i, item) {
-                            recombination_info[all_info.recombinations[i][0]] = all_info.recombinations[i][1];
-                            if(i == 0){
-                                $('.recombination_list').append("<li class='active'><a data-id='"+all_info.recombinations[i][0]+"'>"+all_info.recombinations[i][0]+"</a></li>");
-                                $('.recombination_info').html("<div style='font-size: 12px;'>"+recombination_info[all_info.recombinations[i][0]]+"</div>");
-                                selected_recombination = all_info.recombinations[i][0];
-                            }
-                            else{
-                                $('.recombination_list').append("<li><a data-id='"+all_info.recombinations[i][0]+"'>"+all_info.recombinations[i][0]+"</a></li>");
-                            }
-                        });
-                        $('.recombination_list li a').click(function(){
-                            $('.recombination_info').html("<div style='font-size: 12px;'>"+recombination_info[$(this).attr("data-id")]+"</div>");
-                            $('.recombination_list li').removeClass('active');
-                            $(this).parent('li').addClass('active');
-                            selected_recombination = $(this).attr("data-id");
-                        });
-                    
-                        //replacements types
-                        $.each(all_info.replacements, function(i, item) {
-                            replacement_info[all_info.replacements[i][0]] = all_info.replacements[i][1];
-                            if(i == 0){
-                                $('.replacement_list').append("<li class='active'><a data-id='"+all_info.replacements[i][0]+"'>"+all_info.replacements[i][0]+"</a></li>");
-                                $('.replacement_info').html("<div style='font-size: 12px;'>"+replacement_info[all_info.replacements[i][0]]+"</div>");
-                                selected_replacement= all_info.replacements[i][0];
-                            }
-                            else{
-                                $('.replacement_list').append("<li><a data-id='"+all_info.replacements[i][0]+"'>"+all_info.replacements[i][0]+"</a></li>");
-                            }
-                        });
-                        $('.replacement_list li a').click(function(){
-                            $('.replacement_info').html("<div style='font-size: 12px;'>"+replacement_info[$(this).attr("data-id")]+"</div>");
-                            $('.replacement_list li').removeClass('active');
-                            $(this).parent('li').addClass('active');
-                            selected_replacement = $(this).attr("data-id");
-                        });
-                        //selections types
-                        $.each(all_info.selections, function(i, item) {
-                            selection_info[all_info.selections[i][0]] = all_info.selections[i][1];
-                            if(i == 0){
-                                $('.selection_list').append("<li class='active'><a data-id='"+all_info.selections[i][0]+"'>"+all_info.selections[i][0]+"</a></li>");
-                                $('.selection_info').html("<div style='font-size: 12px;'>"+selection_info[all_info.selections[i][0]]+"</div>");
-                                selected_selection= all_info.selections[i][0];
-                            }
-                            else{
-                                $('.selection_list').append("<li><a data-id='"+all_info.selections[i][0]+"'>"+all_info.selections[i][0]+"</a></li>");
-                            }
-                        });
-                        $('.selection_list li a').click(function(){
-                            $('.selection_info').html("<div style='font-size: 12px;'>"+selection_info[$(this).attr("data-id")]+"</div>");
-                            $('.selection_list li').removeClass('active');
-                            $(this).parent('li').addClass('active');
-                            selected_selection = $(this).attr("data-id");
-                        });
                     }
                 });
-               
-            
+
+
             });
-            
-            
+
+
         </script>
 
 
