@@ -438,7 +438,7 @@
                     values = teste[4];
                     weights = teste[6];
                     alello = parseInt(teste[0]);
-                    alert(alello);
+                    //alert(alello);
                     tamanho_mochila = teste[2];
                     if(number.length == number2.length){
                         $("#items_info").html("Total Items for knapSack: " + number.length);
@@ -610,8 +610,11 @@
                     if(all_info.idClient == readCookie('idClient')){
                         $.each(all_info.algorithms, function(i, item) {
                             algorithms_info[all_info.algorithms[i][0]] = all_info.algorithms[i][1];
+                            if(all_info.algorithms[i][0].substr(-2) != "$1" && all_info.algorithms[i][0].substr(-3) != "K50" && all_info.algorithms[i][0].substr(-4) != "K100" && all_info.algorithms[i][0].substr(-2) != "K5" && all_info.algorithms[i][0] != "genetics.algorithms.FunctionBinary" && all_info.algorithms[i][0] != "genetics.algorithms.FunctionReal"){
+                            var teste = all_info.algorithms[i][0].split(".");
+                            var nome = teste[teste.length-1];
                             if(i == 0){
-                                $('.algorithm_list').append("<li class='active'><a data-id='"+all_info.algorithms[i][0]+"'>"+all_info.algorithms[i][0]+"</a></li>");
+                                $('.algorithm_list').append("<li class='active'><a data-id='"+all_info.algorithms[i][0]+"'>"+nome+"</a></li>");
                                 $('.algorithm_info').html("<div>"+algorithms_info[all_info.algorithms[i][0]]+"</div>");
                                 $('.myModelSolver_body').html(solver_info);
                                 selected_algorithm = all_info.algorithms[i][0];
@@ -623,7 +626,8 @@
                                 }
                             }
                             else{
-                                $('.algorithm_list').append("<li><a data-id='"+all_info.algorithms[i][0]+"'>"+all_info.algorithms[i][0]+"</a></li>");
+                                $('.algorithm_list').append("<li><a data-id='"+all_info.algorithms[i][0]+"'>"+nome+"</a></li>");
+                            }
                             }
                         });
                         $('.algorithm_list li a').click(function(){
