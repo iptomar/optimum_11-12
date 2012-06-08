@@ -279,43 +279,22 @@
                                                     <div style="margin-top:-10px;margin-left:-40px;" class="span6" >
                                                         <div  id="chart_div_dev"></div>
                                                     </div>
+                                                    
                                                 </div>
 
                                                 <div id="tab3" class="tab-pane">
                                                     <div id="NormalShow" style="margin-top:30px;" class="span6" >
-                                                        <h2>Fenótipo</h2>
                                                         <div id="ResultEndStringText" style="margin-top:30px;margin-bottom: 10px" >
                                                         </div>
                                                         <div id="ResultEndString" style="margin-top:30px;height: auto" >
-                                                            <div id='surfacePlotDiv' >
-                                                                SurfacePlot goes here... 
-                                                            </div>
-                                                            SurfacePlot goes here...
                                                             <div id='surfacePoints' >
 
                                                             </div>
+                
                                                         </div>
-
-                                                        <!-- TSP show results
-                                                        ================================================== -->
-                                                        <div id="FinalResultTSP" class="span5" style="margin-top: 20px;">
-
-
-                                                        </div>
-                                                        <!-- K50/k100/knapSack show results
-                                                        ================================================== -->
-                                                        <div id="FinalResultKs" class="span5" style="height: 450px; margin-top: 20px;">
-                                                            <div id="grapharea">
-                                                                <div id="p100" class="graphlabel">MAX</div>
-                                                                <div id="graphcontainer">
-                                                                    <img src="assets/img/graphbackground.png" id="graphbackground" width="262" height="300" alt="" />
-                                                                    <img src="assets/img/graphbar.png" id="graphbar" width="262" height="300" alt="" />
-                                                                    <img src="assets/img/graphforeground.png" id="graphforeground" width="262" height="300" alt="" />
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-
+                                                        
+                
+                                                        <div  id='chart_div_points'></div>
                                                     </div>
 
                                                 </div>
@@ -629,6 +608,27 @@
                 datadev.addRows([["1",0]]);
                 chartdev.draw(datadev, optionsdev);
                 
+                //points graph
+                var dataPoints = new google.visualization.DataTable();
+                dataPoints.addColumn('string','ID');
+                dataPoints.addColumn('number','X');
+                dataPoints.addColumn('number','Y');
+                dataPoints.addColumn('string','Tipo');        
+                dataPoints.addRows([["1",0,0,"Ponto"]]);
+                var optionsPoints = {
+                    title: 'Points',
+                    height:400,
+                    width: 600,
+                    sizeAxis:{minValue: 0,  maxSize: 8}
+                };
+                                
+                // Create and draw the visualization.
+                var chartPoints = new google.visualization.BubbleChart(
+                document.getElementById('chart_div_points'));
+                                 
+                chartPoints.draw(data, optionsPoints);
+                       
+                
                 /*** Recebe dados para gerar gráficos do problema pedido ***/
                 socket.on('loadCharts', function (dados) {
                     
@@ -696,26 +696,35 @@
                 var typefinal;
                 var MediaBag;
                 var allKnapValues;
+                 var dataPop;
+                 var dadosFinal;
                 /*** Recebe dados Finais do problema pedido ***/
                 socket.on('loadString', function (dadosEND) {
                     $('#FinalResultKs').css("display","none");
                     $('#FinalResultTSP').css("display","none"); 
                     var type = dadosEND.type[0].algorithm.split(',');
-     
+                     dadosFinal=dadosEND;
                     typefinal=type[0].split('.');
                     if (typefinal[2] == 'OnesMax'){
                         if(selectedProblem==dadosEND.idProblem){
+                          
                             //limpa divs
+                            $('#chart_div_points').css("display","none"); 
                             $('#ResultEndString').html("");
                             $('#ResultEndStringText').html("");
+                            $('#ResultEndStringText').css("display","inline");
+                            $('#ResultEndString').css("display","inline");
+             
                             
                             //div que mostra quadrados de resultado final
                             $('#ResultEndStringText').append("<div style='width:100%;float:left;margin-top:-20px;margin-bottom:20px;' class='Stringblocks'></div>");
                             // mostra resultados do one max
+        
+                            
                             var final2 = dadosEND.dados[0].attribute.split('<br>');     
                             var show = final2[0].split('__');
-                            show = final2[1].split(' ');
-                            
+                            show = final2[0].split(' ');
+                 
                             for (i=0;i<=show.length;i++)
                             {
                                 if(show[i]=='1'){
@@ -743,11 +752,13 @@
                             }
                         }
                     }else if (typefinal[2] == 'K50' || typefinal[2] == 'K100' || typefinal[2] == 'KnapSack' ){
+      
                         if(selectedProblem==dadosEND.idProblem){
- 
+                            $('#chart_div_points').css("display","none");
                             $('#ResultEndString').html("");
                             $('#ResultEndStringText').html("");
                             //emit pedido de k50
+                            dataPop = {'client': readCookie('idClient'), 'id':readCookie('id_problem')};
                             $.ajax({
                                 type: 'GET',
                                            url: "socket.php?"+"teste=pop|"+JSON.stringify(dataPop)
@@ -781,40 +792,52 @@
                     }else if (typefinal[2] == 'TSP'){
                         if(selectedProblem==dadosEND.idProblem){
                             DadosTSP = dadosEND;
+                            $('#chart_div_points').css("display","none");
                             var data = { idProblem: dadosEND.idProblem }
                             //get name of resolution file
                             socket.emit("getFilename",data);
                         }
                         //button to back my area
-                            $(".backToMyArea").click(function(){
-                                $(".problemresults li").removeClass("active");
-                                $(".tabsResults div").removeClass("active");
-                                $("#tab2").addClass("active");
-                                $("#ProblemInfo").addClass("active");
-                                $('#FormPost').animate({right:"-=1180"},1000);
-                                $('#FormPost2').animate({right:"-=1180"},1000);
-                            });
-                    }else if (typefinal[2] == 'FN'){
+                        $(".backToMyArea").click(function(){
+                            $(".problemresults li").removeClass("active");
+                            $(".tabsResults div").removeClass("active");
+                            $("#tab2").addClass("active");
+                            $("#ProblemInfo").addClass("active");
+                            $('#FormPost').animate({right:"-=1180"},1000);
+                            $('#FormPost2').animate({right:"-=1180"},1000);
+                        });
+                    }else if (typefinal[2] == 'functions'){
                         if(selectedProblem==dadosEND.idProblem){
-                            $('#NormalShow').html("");
-                            $('#NormalShow').append("<div style='width: 100%;text-align:left;margin-left:15px;'><h2 style='padding-top:20px;'>Surface Plot</h2></div>");
-                            $('#ResultEndString').append("<div id='visualization' style='float:left;width: 1000px; height: 300px;'></div>");
-                            $('#ResultEndStringText').html("");
+                            //$('#NormalShow').html("");
+                            $('#chart_div_points').css("display","inline"); 
+                            $('#ResultEndStringText').css("display","none");
+                            $('#ResultEndString').css("display","none");
+                            dataPop = {'client': readCookie('idClient'), 'id':readCookie('id_problem')};
+                          
+                                    //emit pedido de k50
+                                    $.ajax({
+                                        type: 'GET',
+                                               url: "socket.php?"+"teste=popf|"+JSON.stringify(dataPop)
+                                    });     
+                            
+                            //$('#NormalShow').append("<div style='width: 100%;text-align:left;margin-left:15px;'><h2 style='padding-top:20px;'>Surface Plot</h2></div>");
+                            //$('#ResultEndString').append("<div id='visualization' style='float:left;width: 1000px; height: 300px;'></div>");
+                            //$('#ResultEndStringText').html("");
                             
                             //cria divs que iram receber cada um dos plots
-                            $('#ResultTsp').append("<h2 class='backToMyArea' style='width:100%; cursor:pointer'><img  style='margin-right:5px;' src='assets/img/139_03.png'>Back to my area</h2>");
-                            $('#ResultTsp').append("<div style='width: 100%;text-align:left;margin-left:0px;'><h2 style='padding-top:20px;'>Function results</h2></div>");
-                            $('#ResultTsp').append("<div id='surfacePlotDiv' style='float:left;width: 590px; height: 600px;'></div>");
-                            $('#ResultTsp').append("<div id='surfacePointsGeral' style='float:left;width: 570px; height: 600px;'></div>");
-                            $('#surfacePointsGeral').append("<div style='width: 100%; text-align:left; margin-left:10px;'><h2 style='padding-top: 20px;margin-bottom:10px;'>Function Points</h2></div>");
-                            $('#surfacePointsGeral').append("<div id='surfacePoints' style='float:left;width: 570px; height: 600px;margin-top:-60px;'></div>");
-                            $('#surfacePlotDiv').append("<div style='width: 100%; text-align:left; margin-left:10px;'><h2 style='padding-top: 20px;margin-bottom:10px;'>Function surface</h2></div>");
+                            //$('#ResultTsp').append("<h2 class='backToMyArea' style='width:100%; cursor:pointer'><img  style='margin-right:5px;' src='assets/img/139_03.png'>Back to my area</h2>");
+                            //$('#ResultTsp').append("<div style='width: 100%;text-align:left;margin-left:0px;'><h2 style='padding-top:20px;'>Function results</h2></div>");
+                            //$('#ResultTsp').append("<div id='surfacePlotDiv' style='float:left;width: 1100px; height: 600px;'></div>");
+                            //$('#ResultTsp').append("<div id='surfacePointsGeral' style='float:left;width: 1100px; height: 600px;'></div>");
+                            //$('#surfacePointsGeral').append("<div style='width: 100%; text-align:left; margin-left:10px;'><h2 style='padding-top: 20px;margin-bottom:10px;'>Function Points</h2></div>");
+                            //$('#surfacePointsGeral').append("<div id='surfacePoints' style='float:left;width: 1100px; height: 600px;margin-top:-60px;'></div>");
+                            // $('#surfacePlotDiv').append("<div style='width: 100%; text-align:left; margin-left:10px;'><h2 style='padding-top: 20px;margin-bottom:10px;'>Function surface</h2></div>");
                             google.load("visualization", "1");
                             
                             /*
                              * show surface ploat in big div
                              * 
-                             *********************************/
+                             *******************************
                             function setUp()
                             {
                                 var numRows = 45.0;
@@ -873,32 +896,12 @@
                             
                             
                             setUp();
-                            
+                             **/
                             /*
                              * show points of function in big div
                              * 
                              *********************************/
-                            function drawVisualization() {
-                                
-                                // Create and populate the data table.
-                                var data = google.visualization.arrayToDataTable([
-                                    ['ID', 'X', 'Y'],
-                                    ['',    80.66,              1.67,],
-                                    ['',    -79,              1.36,],
-                                    ['',    78.6,               1.84,],
-                                    ['',    -72.73,              -2.78,],
-                                    ['',    80.05,              2,]
-                                ]);
-                                var options = {
-                                    title: 'Points'
-                                };
-                                // Create and draw the visualization.
-                                var chart = new google.visualization.BubbleChart(
-                                document.getElementById('surfacePoints'));
-                                chart.draw(data, options);
-                            }
                             
-                            drawVisualization();
                             
                             //button to back my area
                             $(".backToMyArea").click(function(){
@@ -927,7 +930,7 @@
                         $('html, body').animate({ scrollTop: 300 }, 'slow');
                         $('#FormPost').animate({right:"+=1180"},1000);
                         $('#FormPost2').animate({right:"+=1180"},1000);
-                    } else if(typefinal[2] == 'FN' ){
+                    } else if(typefinal[2] == 'functionss' ){
                         
                         //Mostra resultado final numa div maior
                         $('html, body').animate({ scrollTop: 300 }, 'slow');
@@ -1002,7 +1005,35 @@
                          
                     }
                 });
-                            
+                
+                 /*** Recebe dados Finais do problema pedido ***/
+            socket.on('popfResult', function (Kresult) {
+            var Kresults = JSON.parse(Kresult);
+    
+                if (Kresults.idClient == readCookie('idClient')){
+                     dataPoints = new google.visualization.DataTable();
+                                dataPoints.addColumn('string','ID');
+                                dataPoints.addColumn('number','X');
+                                dataPoints.addColumn('number','Y');
+                                dataPoints.addColumn('string','Tipo');
+                    for(var i=0; i<Kresults.data.length;i++){
+                         var XY = Kresults.data[i][1].split(' ');
+                         dataPoints.addRows([["",parseFloat(XY[0]),parseFloat(XY[1]),"Ponto"]]);
+                    }
+                   chartPoints.draw(dataPoints, optionsPoints);
+                   
+                   var pontoFinal=dadosFinal.dados[0].attribute.split("__");
+                   pontoFinal = pontoFinal[0].split(" ");
+                   
+                   dataPoints.addRows([["",parseFloat(pontoFinal[0]),parseFloat(pontoFinal[1]),"Ponto Final"]]);
+                   chartPoints.draw(dataPoints, optionsPoints);
+                   
+                }
+            });
+            
+                
+                
+                
                 //button to back my area
                 $(".backToMyArea").click(function(){
                     $(".problemresults li").removeClass("active");
@@ -1054,7 +1085,7 @@
                         for (i=0;i<(OnlyValues.length)-1;i++)
                         {
                             pointsShow[i] = graph.newNode({label: parseInt(OnlyValues[i])+1});
-                            $("#ResultTsp").append("<p style='width:100%'>R = "+(correctResult[i])+  "  && N = " + (parseInt(OnlyValues[i])+1) +"</p>");
+                            //$("#ResultTsp").append("<p style='width:100%'>R = "+(correctResult[i])+  "  && N = " + (parseInt(OnlyValues[i])+1) +"</p>");
                         }
   
 
@@ -1084,15 +1115,15 @@
                         });
                         
                         //button to back my area
-                            $(".backToMyArea").click(function(){
-                                $(".problemresults li").removeClass("active");
-                                $(".tabsResults div").removeClass("active");
-                                $("#tab2").addClass("active");
-                                $("#ProblemInfo").addClass("active");
-                                $('#FormPost').animate({right:"-=1180"},1000);
-                                $('#FormPost2').animate({right:"-=1180"},1000);
-                                $('html, body').animate({ scrollTop: 300 }, 'slow');
-                            });
+                        $(".backToMyArea").click(function(){
+                            $(".problemresults li").removeClass("active");
+                            $(".tabsResults div").removeClass("active");
+                            $("#tab2").addClass("active");
+                            $("#ProblemInfo").addClass("active");
+                            $('#FormPost').animate({right:"-=1180"},1000);
+                            $('#FormPost2').animate({right:"-=1180"},1000);
+                            $('html, body').animate({ scrollTop: 300 }, 'slow');
+                        });
                         
                     }); 
                    
