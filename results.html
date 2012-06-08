@@ -49,792 +49,806 @@
 
         <!-- Google + atributos que iram aparecer ao fazer +1/Like -->
         <!-- Update your html tag to include the itemscope and itemtype attributes -->
-    <html itemscope itemtype="http://schema.org/Organization"/>
+        <html itemscope itemtype="http://schema.org/Organization"/>
 
-    <!-- Add the following three tags inside head -->
-    <meta itemprop="name" content="Life Inspiration"/>
-    <meta itemprop="description" content="Life Inspiration helps our clients solving complex engineering problems with
-          smart processing time"/>
-    <meta itemprop="image" content="http://cloudglare.com/assets/img/logo_inspiration.png"/>
+        <!-- Add the following three tags inside head -->
+        <meta itemprop="name" content="Life Inspiration"/>
+        <meta itemprop="description" content="Life Inspiration helps our clients solving complex engineering problems with
+              smart processing time"/>
+        <meta itemprop="image" content="http://cloudglare.com/assets/img/logo_inspiration.png"/>
 
-    <script class="code" type="text/javascript">
-        $(document).ready(function(){
-            //carrega pagina com modals e funcoes por defeito
-            $("#modals").load("views/modals.html");
+        <script class="code" type="text/javascript">
+            $(document).ready(function(){
+                //carrega pagina com modals e funcoes por defeito
+                $("#modals").load("views/modals.html");
                  
-            //Verifica se tem login ou não para mostrar botao correspondnt
-            if(readCookie('nome')!=null){
-                $('#LiRegist').html("");
-                $('#LiRegist').append("<a href='#Logoutuser' id='LogoutUser' ><i style='margin-top: 4px;'   class='icon-off'></i> Logout</a>");
-                $('.logo_image').css("margin-right", "120px");
-                $('#textLogin').html("");
-                var nome = readCookie('nome').split(" ");
-                $('#textLogin').append("Olá "+nome[0]);
-                $('#LiLogin a').attr("href","myarea.html");
-                $('#loginButton').css("background-image", "url('assets/img/myarea_1.png')");
-            }
+                //Verifica se tem login ou não para mostrar botao correspondnt
+                if(readCookie('nome')!=null){
+                    $('#LiRegist').html("");
+                    $('#LiRegist').append("<a href='#Logoutuser' id='LogoutUser' ><i style='margin-top: 4px;'   class='icon-off'></i> Logout</a>");
+                    $('.logo_image').css("margin-right", "120px");
+                    $('#textLogin').html("");
+                    var nome = readCookie('nome').split(" ");
+                    $('#textLogin').append("Olá "+nome[0]);
+                    $('#LiLogin a').attr("href","myarea.html");
+                    $('#loginButton').css("background-image", "url('assets/img/myarea_1.png')");
+                }
    
-        });
-    </script>
-</head>
+            });
+        </script>
+    </head>
 
-<body data-spy="scroll" data-target=".subnav" data-offset="50">
-    <a id="loginButton" class="loginButton" href="myarea.html">&nbsp;</a>
-    <a id="serverStatus" class="serverStatus" href="#">
-        <img class="StatusImage" style="margin-top: 10px" src="assets/img/down.png">   
-    </a>
+    <body data-spy="scroll" data-target=".subnav" data-offset="50">
+        <a id="loginButton" class="loginButton" href="myarea.html">&nbsp;</a>
+        <a id="serverStatus" class="serverStatus" href="#">
+            <img class="StatusImage" style="margin-top: 10px" src="assets/img/down.png">   
+        </a>
 
-    <!-- Navbar
-      ================================================== -->
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <a href="./index.html"><img width="199px" style="float:left; margin:5px; margin-left:0px;margin-right:170px;" class="logo_image" src="assets/img/logo_inspiration.png"></a>
-                <div class="nav-collapse">
-                    <ul class="nav nav-pills" style="margin-top:15px;">
-                        <li >
-                            <a href="./index.html"><i style="margin-top: 3px;" class="icon-home"></i> Home</a>
-                        </li>
-                        <li>
-                            <a href="./how_works.html"><i style="margin-top: 4px;" class="icon-star"></i> How works</a>
-                        </li>
-                        <li class="active">
-                            <a href="./implementation.html"><i style="margin-top: 4px;" class="icon-cog icon-white"></i> Implementation</a>
-                        </li>
-                        <li>
-                            <a href="./feedback.html"><i style="margin-top: 4px;" class="icon-tags"></i> Feedback</a>
-                        </li>
-                        <li>
-                            <a href="./contacts.html"><i style="margin-top: 4px;" class="icon-eye-open"></i> Contacts</a>
-                        </li>
-
-                        <li id="LiLogin">
-                            <a href="#login"  id="menu_buttons_Login"><i style="margin-top: 4px;" class="icon-user"></i> <span id="textLogin">Login</span></a>
-                        </li>
-                        <li id="LiRegist">
-                            <a href="#regist" id="menu_buttons_regist" ><i style="margin-top: 4px;"   class="icon-plus"></i> Regist</a>
-                        </li>
-
-                    </ul>
-                    <span class="loaderAjax2"></span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div id="fb-root"></div>
-        <!-- Masthead
-       ================================================== -->
-        <header class="jumbotron masthead" style="margin-bottom: 20px;">
-            <div class="row" style="margin-top:60px;">
-                <div class="span1 offset1" >
-                    <figure style="margin-left:200px;margin-top:25px;float:left;text-align: center;"> 
-                        <img style="width: 128px;height: 128px;" src="assets/img/1336576416_success.png" />
-                    </figure>
-                </div>
-                <div class="span6" style="margin-left:180px;margin-top:50px;">
-                    <div class="inner">
-                        <h1>Results</h1>
-                    </div>
-                </div>
-            </div>
-
-        </header>
-
-        <hr class="soften">
-
-        <div class="marketing">
-            <div class="row">
-                <div class="AllResults">
-                    <div style="margin-left: 0px;margin-top:30px;margin-bottom: 40px;" class="span12">
-                        <img class="bs-icon" src="assets/img/glyphicons/glyphicons_079_podium.png">
-                        <h2 id="titleSecound">Getting data solution<span class="loaderAjax2"><img style="margin-left:10px;margin-top:0px;" src="http://www.greatdiscountz.com/imagens/159.gif"></span></h2>
-
-                    </div>
-                    <div class="tabbable" >
-                        <ul class="nav nav-tabs problemresults">
+        <!-- Navbar
+          ================================================== -->
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a href="./index.html"><img width="199px" style="float:left; margin:5px; margin-left:0px;margin-right:170px;" class="logo_image" src="assets/img/logo_inspiration.png"></a>
+                    <div class="nav-collapse">
+                        <ul class="nav nav-pills" style="margin-top:15px;">
                             <li >
-                                <a data-toggle="tab" href="#lA">Problem Information</a>
+                                <a href="./index.html"><i style="margin-top: 3px;" class="icon-home"></i> Home</a>
                             </li>
-
+                            <li>
+                                <a href="./how_works.html"><i style="margin-top: 4px;" class="icon-star"></i> How works</a>
+                            </li>
                             <li class="active">
-                                <a data-toggle="tab" href="#lB">Problem Data</a>
+                                <a href="./implementation.html"><i style="margin-top: 4px;" class="icon-cog icon-white"></i> Implementation</a>
+                            </li>
+                            <li>
+                                <a href="./feedback.html"><i style="margin-top: 4px;" class="icon-tags"></i> Feedback</a>
+                            </li>
+                            <li>
+                                <a href="./contacts.html"><i style="margin-top: 4px;" class="icon-eye-open"></i> Contacts</a>
                             </li>
 
-                            <li id="ProblemFinalResult">
-                                <a data-toggle="tab" href="#lC">Problem Final Result</a>
+                            <li id="LiLogin">
+                                <a href="#login"  id="menu_buttons_Login"><i style="margin-top: 4px;" class="icon-user"></i> <span id="textLogin">Login</span></a>
+                            </li>
+                            <li id="LiRegist">
+                                <a href="#regist" id="menu_buttons_regist" ><i style="margin-top: 4px;"   class="icon-plus"></i> Regist</a>
                             </li>
 
                         </ul>
-                        <div class="tab-content tabsResults" style="width:100%;">
-                            <div id="lA" class="tab-pane">
-                                <div class="span12" id="resultOfInfo">
+                        <span class="loaderAjax2"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                                </div>
+        <div class="container">
+            <div id="fb-root"></div>
+            <!-- Masthead
+           ================================================== -->
+            <header class="jumbotron masthead" style="margin-bottom: 20px;">
+                <div class="row" style="margin-top:60px;">
+                    <div class="span1 offset1" >
+                        <figure style="margin-left:200px;margin-top:25px;float:left;text-align: center;"> 
+                            <img style="width: 128px;height: 128px;" src="assets/img/1336576416_success.png" />
+                        </figure>
+                    </div>
+                    <div class="span6" style="margin-left:180px;margin-top:50px;">
+                        <div class="inner">
+                            <h1>Results</h1>
+                        </div>
+                    </div>
+                </div>
+
+            </header>
+
+            <hr class="soften">
+
+                <div class="marketing">
+                    <div class="row">
+                        <div class="AllResults">
+                            <div style="margin-left: 0px;margin-top:30px;margin-bottom: 40px;" class="span12">
+                                <img class="bs-icon" src="assets/img/glyphicons/glyphicons_079_podium.png">
+                                    <h2 id="titleSecound">Getting data solution<span class="loaderAjax2"><img style="margin-left:10px;margin-top:0px;" src="http://www.greatdiscountz.com/imagens/159.gif"></span></h2>
+
                             </div>
+                            <div class="tabbable" >
+                                <ul class="nav nav-tabs problemresults">
+                                    <li >
+                                        <a data-toggle="tab" href="#lA">Problem Information</a>
+                                    </li>
 
-                            <div id="lB" class="tab-pane active">
-                                <div style="margin-top:30px;" class="span6" >
-                                    <div  id="chart_div"></div>
-                                </div>
-                                <div style="margin-top:30px;" class="span6" >
-                                    <div  id="chart_div_numbest"></div>
-                                </div>
-                                <div style="margin-top:30px;" id="FunctionsPoints" class="span6 offset3" >
-                                    <div  id="chart_div_dev"></div>
-                                </div>
-                                <div style="margin-top:30px;" id="FunctionsPoints" class="span12" >
-                                    <div  id='chart_div_points'></div>
-                                </div>
-                                
-                            </div>
+                                    <li class="active">
+                                        <a data-toggle="tab" href="#lB">Problem Data</a>
+                                    </li>
 
-                            <div id="lC" class="tab-pane">
-                                <div class="span12" >
-                                    <div id="FinalResult" class="span5 offset3">
+                                    <li id="ProblemFinalResult">
+                                        <a data-toggle="tab" href="#lC">Problem Final Result</a>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content tabsResults" style="width:100%;">
+                                    <div id="lA" class="tab-pane">
+                                        <div class="span12" id="resultOfInfo">
+
+                                        </div>
+                                    </div>
+
+                                    <div id="lB" class="tab-pane active">
+                                        <div style="margin-top:30px;" class="span6" >
+                                            <div  id="chart_div"></div>
+                                        </div>
+                                        <div style="margin-top:30px;" class="span6" >
+                                            <div  id="chart_div_numbest"></div>
+                                        </div>
+                                        <div style="margin-top:30px;" id="FunctionsPoints" class="span6 offset3" >
+                                            <div  id="chart_div_dev"></div>
+                                        </div>
+                                        <div style="margin-top:30px;" id="FunctionsPoints" class="span12" >
+                                            <div  id='chart_div_points'></div>
+                                        </div>
+
+                                    </div>
+
+                                    <div id="lC" class="tab-pane">
+                                        <div class="span12" >
+                                            <div id="FinalResult" class="span5 offset3">
+
+                                            </div>
+                                        </div>
+
 
                                     </div>
                                 </div>
+                            </div>
 
 
+                        </div>
+                        <div id="buttonsStop" class="span12">
+                            <div id="id_btexecute" style="float:left;margin-left:40%;" class="span1">
+                                <a style="margin-left:-40px;" class='btn btn-large btn-primary disabled bt_execute'>Working...</a>
+                                <!--/<a class="btn btn-large btn-primary bt_execute">New</a>-->
+                            </div>
+                            <div id="id_btstop" style="float:left;padding-left:30px;" class="span1">
+                                <a style="margin-left:-40px;width:150px;" class='btn btn-danger btn-large btn-primary'>Stop Problem</a>
+                                <!--/<a class="btn btn-large btn-primary bt_execute">New</a>-->
                             </div>
                         </div>
+                    </div><!--/row-->
+
+                </div><!-- /.marketing -->
+                <!-- div que recebe o load do modals.html --> 
+                <div id="modals">
+                </div>
+
+
+        </div><!-- /container -->
+
+
+        <!-- Modal que mostra o resultado final -->
+        <form id="FormLogin" name="FormLogin" method="post">
+            <div  class="modal hide fade" id="myModalLogin">             
+                <div class="modal-header">
+                    <h3>Best value</h3>
+                </div>
+                <div class="modal-body">
+                    It's necessary execute your solution.
+                </div>
+                <div class="modal-footer">
+                    <img  id="closeResultFinal" name="closeResultFinal" style="margin-left: 10px; margin-top: -5px;" src="assets/img/close-btt_02.png" />
+                </div>  
+            </div>
+        </form>
+
+        <!-- Footer
+         ================================================== -->
+        <footer class="footer" style="background-color: #252525; ">
+            <div class="container">
+                <div style="padding-left: 0%;" class="row">
+                    <div class="span5">
+                        <h3>LifeInspiration</h3>
+                        <p style="padding-left: 10px; color: white;">
+
+                            Life Inspiration help our clients to resolve hard engineer problems with 
+                            big compute processing.
+                        </p>
                     </div>
+                    <div class="span2 offset4">
+                        <h3>Follow us</h3>
 
+                        <!-- Coloque esta etiqueta onde pretende que o botão de +1 seja apresentado -->
+                        <div class="googleMais"><g:plusone annotation="none" style="margin-left: 10px;"></g:plusone></div>
+                        <!-- Facebook like btt -->
+                        <div class="fb-like" data-href="http://www.cloudglare.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="trebuchet ms"></div>
 
-                </div>
-                <div id="buttonsStop" class="span12">
-                    <div id="id_btexecute" style="float:left;margin-left:40%;" class="span1">
-                        <a style="margin-left:-40px;" class='btn btn-large btn-primary disabled bt_execute'>Working...</a>
-                        <!--/<a class="btn btn-large btn-primary bt_execute">New</a>-->
                     </div>
-                    <div id="id_btstop" style="float:left;padding-left:30px;" class="span1">
-                        <a style="margin-left:-40px;width:150px;" class='btn btn-danger btn-large btn-primary'>Stop Problem</a>
-                        <!--/<a class="btn btn-large btn-primary bt_execute">New</a>-->
+                </div> 
+                <div style="margin-bottom: 5px;margin-top: 15px;" class="row">
+                    <div class="span12">
+                        <h3>Teams</h3>
                     </div>
                 </div>
-            </div><!--/row-->
 
-        </div><!-- /.marketing -->
-        <!-- div que recebe o load do modals.html --> 
-        <div id="modals">
-        </div>
-
-
-    </div><!-- /container -->
-
-
-    <!-- Modal que mostra o resultado final -->
-    <form id="FormLogin" name="FormLogin" method="post">
-        <div  class="modal hide fade" id="myModalLogin">             
-            <div class="modal-header">
-                <h3>Best value</h3>
-            </div>
-            <div class="modal-body">
-                It's necessary execute your solution.
-            </div>
-            <div class="modal-footer">
-                <img  id="closeResultFinal" name="closeResultFinal" style="margin-left: 10px; margin-top: -5px;" src="assets/img/close-btt_02.png" />
-            </div>  
-        </div>
-    </form>
-
-    <!-- Footer
-     ================================================== -->
-    <footer class="footer" style="background-color: #252525; ">
-        <div class="container">
-            <div style="padding-left: 0%;" class="row">
-                <div class="span5">
-                    <h3>LifeInspiration</h3>
-                    <p style="padding-left: 10px; color: white;">
-
-                        Life Inspiration help our clients to resolve hard engineer problems with 
-                        big compute processing.
-                    </p>
+                <div style="padding-left: 0%;" class="row">
+                    <div class="span3">
+                        <img style="margin-right:5px;" src="assets/img/pw.png">Optimum Computing
+                    </div>
+                    <div class="span3">
+                        <img style="margin-right:5px;" src="assets/img/pw.png">Inovative Mind
+                    </div>
+                    <div class="span3">
+                        <img style="margin-right:5px;" src="assets/img/pw.png">Genetic Lab
+                    </div>
+                    <div class="span3">
+                        <img style="margin-right:5px;" src="assets/img/pw.png">Power Computing
+                    </div>
                 </div>
-                <div class="span2 offset4">
-                    <h3>Follow us</h3>
 
-                    <!-- Coloque esta etiqueta onde pretende que o botão de +1 seja apresentado -->
-                    <div class="googleMais"><g:plusone annotation="none" style="margin-left: 10px;"></g:plusone></div>
-                    <!-- Facebook like btt -->
-                    <div class="fb-like" data-href="http://www.cloudglare.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="trebuchet ms"></div>
-
+                <div style="padding-left: 0%; margin-bottom: -25px;margin-top: 25px;" class="row">			
+                    <div class="span3">
+                        <p style="font-size: 11px;">© Life Inspiration - 2012 All Rights Reserved.</p>
+                    </div>
+                    <div style="text-align: right;" class="span3 offset5">
+                        <p style="font-size: 11px;">IPT - Projecto de Sistemas de Informação</p>
+                    </div>
                 </div>
-            </div> 
-            <div style="margin-bottom: 5px;margin-top: 15px;" class="row">
-                <div class="span12">
-                    <h3>Teams</h3>
-                </div>
-            </div>
-
-            <div style="padding-left: 0%;" class="row">
-                <div class="span3">
-                    <img style="margin-right:5px;" src="assets/img/pw.png">Optimum Computing
-                </div>
-                <div class="span3">
-                    <img style="margin-right:5px;" src="assets/img/pw.png">Inovative Mind
-                </div>
-                <div class="span3">
-                    <img style="margin-right:5px;" src="assets/img/pw.png">Genetic Lab
-                </div>
-                <div class="span3">
-                    <img style="margin-right:5px;" src="assets/img/pw.png">Power Computing
-                </div>
-            </div>
-
-            <div style="padding-left: 0%; margin-bottom: -25px;margin-top: 25px;" class="row">			
-                <div class="span3">
-                    <p style="font-size: 11px;">© Life Inspiration - 2012 All Rights Reserved.</p>
-                </div>
-                <div style="text-align: right;" class="span3 offset5">
-                    <p style="font-size: 11px;">IPT - Projecto de Sistemas de Informação</p>
-                </div>
-            </div>
-        </div>          
-    </footer>
+            </div>          
+        </footer>
 
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+        <!-- Le javascript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 
-    <script src="assets/js/google-code-prettify/prettify.js"></script>
-    <script src="assets/js/bootstrap-transition.js"></script>
-    <script src="assets/js/bootstrap-alert.js"></script>
-    <script src="assets/js/bootstrap-modal.js"></script>
-    <script src="assets/js/bootstrap-dropdown.js"></script>
-    <script src="assets/js/bootstrap-scrollspy.js"></script>
-    <script src="assets/js/bootstrap-tab.js"></script>
-    <script src="assets/js/bootstrap-tooltip.js"></script>
-    <script src="assets/js/bootstrap-popover.js"></script>
-    <script src="assets/js/bootstrap-button.js"></script>
-    <script src="assets/js/bootstrap-collapse.js"></script>
-    <script src="assets/js/bootstrap-carousel.js"></script>
-    <script src="assets/js/bootstrap-typeahead.js"></script>
-    <script src="assets/js/application.js"></script>
-    <script src="assets/js/functions.js"></script>
-    <script src="http://cloudglare.com:90/socket.io/socket.io.js"></script>
-    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-    <script src="assets/js/jqueryvalidate.js"></script>
-    <script src="assets/js/springy.js"></script>
-    <script src="assets/js/springyui.js"></script>
-    <script type="text/javascript" src='assets/js/SurfacePlot.js'></script>
-    <script type="text/javascript" src='assets/js/ColourGradient.js'></script>
+        <script src="assets/js/google-code-prettify/prettify.js"></script>
+        <script src="assets/js/bootstrap-transition.js"></script>
+        <script src="assets/js/bootstrap-alert.js"></script>
+        <script src="assets/js/bootstrap-modal.js"></script>
+        <script src="assets/js/bootstrap-dropdown.js"></script>
+        <script src="assets/js/bootstrap-scrollspy.js"></script>
+        <script src="assets/js/bootstrap-tab.js"></script>
+        <script src="assets/js/bootstrap-tooltip.js"></script>
+        <script src="assets/js/bootstrap-popover.js"></script>
+        <script src="assets/js/bootstrap-button.js"></script>
+        <script src="assets/js/bootstrap-collapse.js"></script>
+        <script src="assets/js/bootstrap-carousel.js"></script>
+        <script src="assets/js/bootstrap-typeahead.js"></script>
+        <script src="assets/js/application.js"></script>
+        <script src="assets/js/functions.js"></script>
+        <script src="http://cloudglare.com:90/socket.io/socket.io.js"></script>
+        <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+        <script src="assets/js/jqueryvalidate.js"></script>
+        <script src="assets/js/springy.js"></script>
+        <script src="assets/js/springyui.js"></script>
+        <script type="text/javascript" src='assets/js/SurfacePlot.js'></script>
+        <script type="text/javascript" src='assets/js/ColourGradient.js'></script>
 
-    <script class="code" type="text/javascript">
-        //Load google Charts
-        google.load('visualization', '1', {packages: ['corechart','imagechart']});
+        <script class="code" type="text/javascript">
+            //Load google Charts
+            google.load('visualization', '1', {packages: ['corechart','imagechart']});
             
-        //criação de ligação node JS
-        var socket = io.connect('cloudglare.com',{port:90});
+            //criação de ligação node JS
+            var socket = io.connect('cloudglare.com',{port:90});
           
           
                                 
-        $(document).ready(function(){
-            //call node status
-            statusNodeJS();   
+            $(document).ready(function(){
+                //call node status
+                statusNodeJS();   
                 
-            //criação do data necessário para carregar os resultados
-            var dataInfoProblem = {idClient: readCookie('idClient'),idProblem: readCookie('id_problem') }
-            //Emit que permite devolver info do problema a resolver
-            socket.emit("getProblemInfo", dataInfoProblem);
+                //criação do data necessário para carregar os resultados
+                var dataInfoProblem = {idClient: readCookie('idClient'),idProblem: readCookie('id_problem') }
+                //Emit que permite devolver info do problema a resolver
+                socket.emit("getProblemInfo", dataInfoProblem);
                 
                 
-            $('#id_btstop').click(function(){
-                $(this).remove
-                var dataInfoProblem = {client: readCookie('idClient'),id: readCookie('id_problem') }
-                $.ajax({
-                    type: 'GET',
-                    url: "socket.php?"+"teste=stop|" + JSON.stringify(dataInfoProblem)
+                $('#id_btstop').click(function(){
+                    $(this).remove
+                    var dataInfoProblem = {client: readCookie('idClient'),id: readCookie('id_problem') }
+                    $.ajax({
+                        type: 'GET',
+                        url: "socket.php?"+"teste=stop|" + JSON.stringify(dataInfoProblem)
+                    });
                 });
-            });
                 
-            //First Graph
-            var teste = new Array();
-            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-            var itera = 0;
-            var data = new google.visualization.DataTable();
-            var showitera = 0;
-            var totalitera = 0;
-            var options = {
-                title: 'Params',
-                width: 500,
-                height: 240,
-                animation:{
-                    duration: 500,
-                    easing: 'out'
-                }
-            };
-            data.addColumn('string','Iter');
-            data.addColumn('number','Avarage');
-            data.addColumn('number','Best');
+                //First Graph
+                var teste = new Array();
+                var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+                var itera = 0;
+                var data = new google.visualization.DataTable();
+                var showitera = 0;
+                var totalitera = 0;
+                var options = {
+                    title: 'Params',
+                    width: 500,
+                    height: 240,
+                    animation:{
+                        duration: 500,
+                        easing: 'out'
+                    }
+                };
+                data.addColumn('string','Iter');
+                data.addColumn('number','Avarage');
+                data.addColumn('number','Best');
 
-            data.addRows([["1",0,0]]);
-            chart.draw(data, options);
+                data.addRows([["1",0,0]]);
+                chart.draw(data, options);
                 
-            //SecoundGraph
-            var testeNumBest = new Array();
-            var chartNumBest = new google.visualization.LineChart(document.getElementById('chart_div_numbest'));
-            var iteraNumBest = 0;
-            var dataNumBest = new google.visualization.DataTable();
-            var showiteraNumBest  = 0;
-            var totaliteraNumBest  = 0;
-            var optionsNumBest  = {
-                title: 'Number of Bests',
-                width: 500,
-                height: 240,
-                animation:{
-                    duration: 500,
-                    easing: 'out'
-                }
+                //SecoundGraph
+                var testeNumBest = new Array();
+                var chartNumBest = new google.visualization.LineChart(document.getElementById('chart_div_numbest'));
+                var iteraNumBest = 0;
+                var dataNumBest = new google.visualization.DataTable();
+                var showiteraNumBest  = 0;
+                var totaliteraNumBest  = 0;
+                var optionsNumBest  = {
+                    title: 'Number of Bests',
+                    width: 500,
+                    height: 240,
+                    animation:{
+                        duration: 500,
+                        easing: 'out'
+                    }
 
-            };
-            dataNumBest.addColumn('string','Iter');
-            dataNumBest.addColumn('number','Num of Best');
-            dataNumBest.addRows([["1",0]]);
-            chartNumBest.draw(dataNumBest, optionsNumBest);
+                };
+                dataNumBest.addColumn('string','Iter');
+                dataNumBest.addColumn('number','Num of Best');
+                dataNumBest.addRows([["1",0]]);
+                chartNumBest.draw(dataNumBest, optionsNumBest);
 
-            // 3rd graph
-            var testedev = new Array();
-            var chartdev = new google.visualization.LineChart(document.getElementById('chart_div_dev'));
-            var iteradev = 0;
-            var datadev = new google.visualization.DataTable();
-            var showiteradev  = 0;
-            var totaliteradev  = 0;
-            var optionsdev  = {
-                title: 'Deviation',
-                width: 500,
-                height: 240,
-                animation:{
-                    duration: 500,
-                    easing: 'out'
-                }
-            };
-            datadev.addColumn('string','Iter');
-            datadev.addColumn('number','Deviation');
-            datadev.addRows([["1",0]]);
-            chartdev.draw(datadev, optionsdev);
+                // 3rd graph
+                var testedev = new Array();
+                var chartdev = new google.visualization.LineChart(document.getElementById('chart_div_dev'));
+                var iteradev = 0;
+                var datadev = new google.visualization.DataTable();
+                var showiteradev  = 0;
+                var totaliteradev  = 0;
+                var optionsdev  = {
+                    title: 'Deviation',
+                    width: 500,
+                    height: 240,
+                    animation:{
+                        duration: 500,
+                        easing: 'out'
+                    }
+                };
+                datadev.addColumn('string','Iter');
+                datadev.addColumn('number','Deviation');
+                datadev.addRows([["1",0]]);
+                chartdev.draw(datadev, optionsdev);
                                 
-                                var dataPoints = new google.visualization.DataTable();
-                                dataPoints.addColumn('string','ID');
-                                dataPoints.addColumn('number','X');
-                                dataPoints.addColumn('number','Y');
-                                dataPoints.addRows([["1",0,0]]);
+                var dataPoints = new google.visualization.DataTable();
+                dataPoints.addColumn('string','ID');
+                dataPoints.addColumn('number','X');
+                dataPoints.addColumn('number','Y');
+                dataPoints.addColumn('string','Tipo');
+                dataPoints.addRows([["1",0,0,"Ponto"]]);
                                 
-                                var optionsPoints = {
-                                    title: 'Points',
-                                    height:350,
-                                    sizeAxis:{minValue: 0,  maxSize: 8}
-                                };
+                var optionsPoints = {
+                    title: 'Points',
+                    height:350,
+                    sizeAxis:{minValue: 0,  maxSize: 8}
+                };
                                 
-                                // Create and draw the visualization.
-                                var chartPoints = new google.visualization.BubbleChart(
-                                document.getElementById('chart_div_points'));
+                // Create and draw the visualization.
+                var chartPoints = new google.visualization.BubbleChart(
+                document.getElementById('chart_div_points'));
                                  
-                                chartPoints.draw(data, optionsPoints);
+                chartPoints.draw(data, optionsPoints);
                        
             
-            var dataPop;
+                var dataPop;
             
-            /************************************************* *
-             * Eventos definidos para ligação de node js       *
-             ************************************************* */         
-            var typeFunction; 
-            // Evento que recebe a info do problema a resolver      
-            socket.on('getProblemInfoResult', function (dadosInfo) {
-                typeFunction=dadosInfo[0].algorithm;
-                typeFunction = typeFunction.split('.');
-                $('#resultOfInfo').html("");
-                $("#resultOfInfo").hide().append("").fadeIn('slow');
-                $("#resultOfInfo").append("<p>ID Problem: " + dadosInfo[0].idProblem +"</p><p>Algorithm: " + dadosInfo[0].algorithm +"</p><p>Selection: " + dadosInfo[0].selection +"</p><p>Mutation: " + dadosInfo[0].mutation +"</p><p>Recombination: " + dadosInfo[0].recombination +"</p><p>Replacement: " + dadosInfo[0].replacement +"</p><p>Date/Hour: " + dadosInfo[0].time +"</p>").fadeIn('slow');      
-            });
+                /************************************************* *
+                 * Eventos definidos para ligação de node js       *
+                 ************************************************* */         
+                var typeFunction; 
+                // Evento que recebe a info do problema a resolver      
+                socket.on('getProblemInfoResult', function (dadosInfo) {
+                    typeFunction=dadosInfo[0].algorithm;
+                    typeFunction = typeFunction.split('.');
+                    $('#resultOfInfo').html("");
+                    $("#resultOfInfo").hide().append("").fadeIn('slow');
+                    $("#resultOfInfo").append("<p>ID Problem: " + dadosInfo[0].idProblem +"</p><p>Algorithm: " + dadosInfo[0].algorithm +"</p><p>Selection: " + dadosInfo[0].selection +"</p><p>Mutation: " + dadosInfo[0].mutation +"</p><p>Recombination: " + dadosInfo[0].recombination +"</p><p>Replacement: " + dadosInfo[0].replacement +"</p><p>Date/Hour: " + dadosInfo[0].time +"</p>").fadeIn('slow');      
+                });
                 
         
-            // Evento que mostra em tempo real os dados vindos da powercomputing
-            socket.on('run', function (dados) {
-                 dataPop = {'client': readCookie('idClient'), 'id':readCookie('id_problem')};
-                if(readCookie('id_problem')==dados[0].idProblem){
+                // Evento que mostra em tempo real os dados vindos da powercomputing
+                socket.on('run', function (dados) {
+                    dataPop = {'client': readCookie('idClient'), 'id':readCookie('id_problem')};
+                    if(readCookie('id_problem')==dados[0].idProblem){
                      
-                    if(typeFunction[2]=='functions'){
+                        if(typeFunction[2]=='functions'){
                         
-                        //emit pedido de k50
-                        $.ajax({
-                            type: 'GET',
-                                   url: "socket.php?"+"teste=popf|"+JSON.stringify(dataPop)
-                        });     
-
-                       
-                       
-                    }
-                    else{
-                        $("#chart_div_points").css("display","none");
-                    }
-                    data.addRows([[(dados[0].itera+1)+"",dados[0].globalAvarage,dados[0].globalBest]]);
-                    dataNumBest.addRows([[(dados[0].itera+1)+"",parseInt(dados[0].globalNumBest)]]);
-                    datadev.addRows([[(dados[0].itera+1)+"",dados[0].globalDeviation]]);
-                    chart.draw(data,options);
-                    chartNumBest.draw(dataNumBest, optionsNumBest);
-                    chartdev.draw(datadev, optionsdev);
-                }  
-            });
-                
-            //variavel que contem o tipo de problema
-            var typefinal;
-            var MediaBag;
-            var allKnapValues;
-            
-            var DadosTSP;
-            /*** Recebe todos os problemas do utilizador recebendo do nodejs ***/
-            var selectedProblem = readCookie('id_problem');
-            // Evento que mostra a string final do powercomputing
-            socket.on('end', function (dadosEND) {
-               
-                dataPop = {'client': readCookie('idClient'), 'id':readCookie('id_problem')};
-                
-                $("#buttonsStop").html("");
-                $("#buttonsStop").append("<div id='id_btexecute' style='float:left;margin-left:40%;' class='span1'><a href='./implementation.html' style='margin-left: 50px;' class='btn btn-large btn-primary bt_execute'>New</a></div>");
-                $(".problemresults li").removeClass("active");
-                $(".tabsResults div").removeClass("active");
-                $("#lC").addClass("active");
-                $("#ProblemFinalResult").addClass("active");
-                    
-                $('.loaderAjax2').html("");
-                $('#FinalResult').css("display","inline");
-                //alert(JSON.stringify(dadosEND.teste[0]));
-                //alert(dadosEND.dados[0].attribute);
-                if(readCookie('id_problem')==dadosEND.idProblem){
-                    var type = dadosEND.type[0].algorithm.split(',');
-                    typefinal=type[0].split('.');
-                    if (typefinal[2] == 'OnesMax'){
-                        if(selectedProblem==dadosEND.idProblem){
-                            
-                            //limpa divs que recebe dados finais
-                            $('#FinalResult').html("");
-                            $('#FinalResult').append("<p style='width:100%;margin-top:0px;'><h2>Fenótipo</h2></p>");
-                            //div que mostra quadrados de resultado final
-                            $('#FinalResult').append("<div style='width:100%;float:left;margin-top:-20px;margin-bottom:20px; min-height:100px;' class='Stringblocks'></div>");
-                            // mostra resultados do one max
-                            var final2 = dadosEND.dados[0].attribute.split('<br>');     
-                            var show = final2[0].split('__');
-                            show = show[0].split(' ');
-                            for (i=0;i<=show.length;i++)
-                            {
-   
-                                if(show[i]=='1'){
-                                    $('.Stringblocks').append("<span id='blackString'>&nbsp</span>"); 
-                                }else if(show[i]=='0'){
-                                    $('.Stringblocks').append("<span id='greyString'>&nbsp</span>"); 
-                                }
-                            
-                            }
-                               
-                            $('#FinalResult').append("<p style='width:100%;margin-top:0px;'><h2>Genótipo</h2></p>");
-                            var finalGenotipo = dadosEND.dados[0].attribute.split('<br>');
-                            var totalSolutions = (finalGenotipo.length) - 1;
-                            var maxBest = finalGenotipo[0].split('__');
-                            $('#FinalResult').append("<p style='font-size:14px; text-align:left;margin-top:0px; width:100%;'><b>Max Best: </b>"+maxBest[1]+"</p>");
-                            $('#FinalResult').append("<p style='font-size:14px; text-align:left;margin-top:0px; width:100%;'><b>Possiveis soluções ("+totalSolutions+"):</b></p>");
-                  
-                            for (i=0;i<finalGenotipo.length;i++){
-                                finalGenotipo[i] = finalGenotipo[i].split('__');
-                                if(i != (finalGenotipo.length)-1){
-                                    $('#FinalResult').append("<p style='font-size:14px; text-align:left;margin-top:0px;'>"+finalGenotipo[i][0]+"<hr/></p>");   
-                                }else {
-                                    $('#FinalResult').append("<p style='font-size:14px; text-align:left;margin-top:0px;'>"+finalGenotipo[i][0]+"</p>");   
-                                }
-                              
-                            }
-                        }
-                    }else if (typefinal[2] == 'K50' || typefinal[2] == 'K100' || typefinal[2] == 'KnapSack' ){
-                        if(selectedProblem==dadosEND.idProblem){
-                            dataPop = {'client': readCookie('idClient'), 'id':dadosEND.idProblem};
-                            $("#FinalResult").removeClass("span5 offset3");
-                            $("#FinalResult").addClass("span10");
-                            //limpa divs que recebe dados finais
-                            $('#FinalResult').html("");
-                            
                             //emit pedido de k50
                             $.ajax({
                                 type: 'GET',
-                                           url: "socket.php?"+"teste=pop|"+JSON.stringify(dataPop)
-                            }); 
+                                       url: "socket.php?"+"teste=popf|"+JSON.stringify(dataPop)
+                            });     
+
+                       
+                       
+                        }
+                        else{
+                            $("#chart_div_points").css("display","none");
+                        }
+                        data.addRows([[(dados[0].itera+1)+"",dados[0].globalAvarage,dados[0].globalBest]]);
+                        dataNumBest.addRows([[(dados[0].itera+1)+"",parseInt(dados[0].globalNumBest)]]);
+                        datadev.addRows([[(dados[0].itera+1)+"",dados[0].globalDeviation]]);
+                        chart.draw(data,options);
+                        chartNumBest.draw(dataNumBest, optionsNumBest);
+                        chartdev.draw(datadev, optionsdev);
+                    }  
+                });
+                
+                //variavel que contem o tipo de problema
+                var typefinal;
+                var MediaBag;
+                var allKnapValues;
+            
+                var DadosTSP;
+                /*** Recebe todos os problemas do utilizador recebendo do nodejs ***/
+                var selectedProblem = readCookie('id_problem');
+                // Evento que mostra a string final do powercomputing
+                socket.on('end', function (dadosEND) {
+               
+                    dataPop = {'client': readCookie('idClient'), 'id':readCookie('id_problem')};
+                
+                 
+                    //alert(JSON.stringify(dadosEND.teste[0]));
+                    //alert(dadosEND.dados[0].attribute);
+                    if(readCookie('id_problem')==dadosEND.idProblem){
+                        var type = dadosEND.type[0].algorithm.split(',');
+                        typefinal=type[0].split('.');
+                        $("#buttonsStop").html("");
+                        $("#buttonsStop").append("<div id='id_btexecute' style='float:left;margin-left:40%;' class='span1'><a href='./implementation.html' style='margin-left: 50px;' class='btn btn-large btn-primary bt_execute'>New</a></div>");
+                        if (typefinal[2] != 'functions'){
+                            $(".problemresults li").removeClass("active");
+                            $(".tabsResults div").removeClass("active");
+                            $("#lC").addClass("active");
+                            $("#ProblemFinalResult").addClass("active");
+                        }
+                        $('.loaderAjax2').html("");
+                        $('#FinalResult').css("display","inline");
+                        if (typefinal[2] == 'OnesMax'){
+                            if(selectedProblem==dadosEND.idProblem){
+                            
+                                //limpa divs que recebe dados finais
+                                $('#FinalResult').html("");
+                                $('#FinalResult').append("<p style='width:100%;margin-top:0px;'><h2>Fenótipo</h2></p>");
+                                //div que mostra quadrados de resultado final
+                                $('#FinalResult').append("<div style='width:100%;float:left;margin-top:-20px;margin-bottom:20px; min-height:100px;' class='Stringblocks'></div>");
+                                // mostra resultados do one max
+                                var final2 = dadosEND.dados[0].attribute.split('<br>');     
+                                var show = final2[0].split('__');
+                                show = show[0].split(' ');
+                                for (i=0;i<=show.length;i++)
+                                {
+   
+                                    if(show[i]=='1'){
+                                        $('.Stringblocks').append("<span id='blackString'>&nbsp</span>"); 
+                                    }else if(show[i]=='0'){
+                                        $('.Stringblocks').append("<span id='greyString'>&nbsp</span>"); 
+                                    }
+                            
+                                }
+                               
+                                $('#FinalResult').append("<p style='width:100%;margin-top:0px;'><h2>Genótipo</h2></p>");
+                                var finalGenotipo = dadosEND.dados[0].attribute.split('<br>');
+                                var totalSolutions = (finalGenotipo.length) - 1;
+                                var maxBest = finalGenotipo[0].split('__');
+                                $('#FinalResult').append("<p style='font-size:14px; text-align:left;margin-top:0px; width:100%;'><b>Max Best: </b>"+maxBest[1]+"</p>");
+                                $('#FinalResult').append("<p style='font-size:14px; text-align:left;margin-top:0px; width:100%;'><b>Possiveis soluções ("+totalSolutions+"):</b></p>");
+                  
+                                for (i=0;i<finalGenotipo.length;i++){
+                                    finalGenotipo[i] = finalGenotipo[i].split('__');
+                                    if(i != (finalGenotipo.length)-1){
+                                        $('#FinalResult').append("<p style='font-size:14px; text-align:left;margin-top:0px;'>"+finalGenotipo[i][0]+"<hr/></p>");   
+                                    }else {
+                                        $('#FinalResult').append("<p style='font-size:14px; text-align:left;margin-top:0px;'>"+finalGenotipo[i][0]+"</p>");   
+                                    }
+                              
+                                }
+                            }
+                        }else if (typefinal[2] == 'K50' || typefinal[2] == 'K100' || typefinal[2] == 'KnapSack' ){
+                            if(selectedProblem==dadosEND.idProblem){
+                                alert(dadosEND.dados[0].attribute);
+                                dataPop = {'client': readCookie('idClient'), 'id':dadosEND.idProblem};
+                                $("#FinalResult").removeClass("span5 offset3");
+                                $("#FinalResult").addClass("span10");
+                                //limpa divs que recebe dados finais
+                                $('#FinalResult').html("");
+                            
+                                //emit pedido de k50
+                                $.ajax({
+                                    type: 'GET',
+                                               url: "socket.php?"+"teste=pop|"+JSON.stringify(dataPop)
+                                }); 
                                 
 
-                            allKnapValues=dadosEND.dados[0].attribute;
-                            //Get values to fill bag.split('<br>');
-                            var valuesBAG = dadosEND.dados[0].attribute.split('<br>');
-                            valuesBAG = valuesBAG[0].split('__');
-                            MediaBag = valuesBAG[1];
+                                allKnapValues=dadosEND.dados[0].attribute;
+                                //Get values to fill bag.split('<br>');
+                                var valuesBAG = dadosEND.dados[0].attribute.split('<br>');
+                                valuesBAG = valuesBAG[0].split('__');
+                                MediaBag = valuesBAG[1];
                             
              
-                            $('#FinalResult').append("<div style='width: 100%;text-align:left;margin-left:15px;'><h2>Results</h2></div>");
-                            $('#FinalResult').append("<div id='visualization2' style='float:left;width: 1000px; margin-left: 100px;margin-top:10px;  min-height: 300px;'></div>");
-                            $('#FinalResult').append("<div id='StringResultsKs' style='float:left;width: 100%; margin-left:100px; margin-top:30px;'></div>");
-                            $('#StringResultsKs').append("<p style='font-size: 14px; text-align: left; margin-top: -10px; width: 100%;'><b>Legenda:</b></p>");
-                            $('#StringResultsKs').append("<p style='font-size: 14px; text-align: left; margin-left:20px; margin-top: -10px; width: 100%;'><span style='width: 40px; height: 20px;background-color:red;float:left;'></span> <b style='margin-left:10px;'> OUT</b></p>");
-                            $('#StringResultsKs').append("<p style='font-size: 14px; text-align: left; margin-left:20px; margin-top: -10px; width: 100%;'><span style='width: 40px; height: 20px;background-color:green;float:left;'></span><b style='margin-left:10px;'> IN</b></p>") 
+                                $('#FinalResult').append("<div style='width: 100%;text-align:left;margin-left:15px;'><h2>Results</h2></div>");
+                                $('#FinalResult').append("<div id='visualization2' style='float:left;width: 1000px; margin-left: 100px;margin-top:10px;  min-height: 300px;'></div>");
+                                $('#FinalResult').append("<div id='StringResultsKs' style='float:left;width: 100%; margin-left:100px; margin-top:30px;'></div>");
+                                $('#StringResultsKs').append("<p style='font-size: 14px; text-align: left; margin-top: -10px; width: 100%;'><b>Legenda:</b></p>");
+                                $('#StringResultsKs').append("<p style='font-size: 14px; text-align: left; margin-left:20px; margin-top: -10px; width: 100%;'><span style='width: 40px; height: 20px;background-color:red;float:left;'></span> <b style='margin-left:10px;'> OUT</b></p>");
+                                $('#StringResultsKs').append("<p style='font-size: 14px; text-align: left; margin-left:20px; margin-top: -10px; width: 100%;'><span style='width: 40px; height: 20px;background-color:green;float:left;'></span><b style='margin-left:10px;'> IN</b></p>") 
                             
-                        }     
-                    }else if (typefinal[2] == 'TSP'){
-                        if(selectedProblem==dadosEND.idProblem){
-                            DadosTSP = dadosEND;
-                            var data = { idProblem: dadosEND.idProblem }
-                            //get name of resolution file
-                            socket.emit("getFilename",data);
-                            $("#FinalResult").removeClass("span5 offset3");
-                            $("#FinalResult").addClass("span10");
-                            //limpa divs que recebe dados finais
-                            $('#FinalResult').html("");
-                        }
+                            }     
+                        }else if (typefinal[2] == 'TSP'){
+                            if(selectedProblem==dadosEND.idProblem){
+                                DadosTSP = dadosEND;
+                                var data = { idProblem: dadosEND.idProblem }
+                                //get name of resolution file
+                                socket.emit("getFilename",data);
+                                $("#FinalResult").removeClass("span5 offset3");
+                                $("#FinalResult").addClass("span10");
+                                //limpa divs que recebe dados finais
+                                $('#FinalResult').html("");
+                            }
                         
-                    }else if (typefinal[2] == 'functions'){
+                        }else if (typefinal[2] == 'functions'){
 
-                        $('#FinalResult').html("");
-                        $('#FinalResult').append(dadosEND.dados[0].attribute);
-                        if(selectedProblem==dadosEND.idProblem){
+                       
+                            if(selectedProblem==dadosEND.idProblem){
+                                $('#FinalResult').html("");
+                                $('#FinalResult').append(dadosEND.dados[0].attribute);
+                                var pontos = dadosEND.dados[0].attribute.split("__");
+                                var pontosMesmo = pontos[0].split(' ');
+                                dataPoints.addRows([["",parseFloat(pontosMesmo[0]),parseFloat(pontosMesmo[1]),"PontoFinal"]]);
+                                optionsPoints = {
+                                    title: 'Points',
+                                    height:350,
+                                    sizeAxis:{minValue: 0,  maxSize: 8},
+                                    colorAxis: {colors: ['#FF0000', '#00FF00']}
+                                };
+                                chartPoints.draw(dataPoints, optionsPoints);
+                                //$('#FinalResult').html("");
+                                $('#FinalResult').append("<div style='width: 100%;text-align:left;margin-left:15px;'><h2 style='padding-top:20px;'>Surface Plot</h2></div>");
+                                $('#FinalResult').append("<div id='visualization' style='float:left;width: 1000px; height: 300px;'></div>");
+                                $('#ResultEndStringText').html("");
                             
-                            //$('#FinalResult').html("");
-                            $('#FinalResult').append("<div style='width: 100%;text-align:left;margin-left:15px;'><h2 style='padding-top:20px;'>Surface Plot</h2></div>");
-                            $('#FinalResult').append("<div id='visualization' style='float:left;width: 1000px; height: 300px;'></div>");
-                            $('#ResultEndStringText').html("");
-                            
-                            //cria divs que iram receber cada um dos plots
-                            $('#ResultTsp').append("<h2 class='backToMyArea' style='width:100%; cursor:pointer'><img  style='margin-right:5px;' src='assets/img/139_03.png'>Back to my area</h2>");
-                            $('#ResultTsp').append("<div style='width: 100%;text-align:left;margin-left:0px;'><h2 style='padding-top:20px;'>Function results</h2></div>");
-                            $('#ResultTsp').append("<div id='surfacePlotDiv' style='float:left;width: 590px; height: 600px;'></div>");
-                            $('#ResultTsp').append("<div id='surfacePointsGeral' style='float:left;width: 1100px; height: 600px;'></div>");
-                            $('#surfacePointsGeral').append("<div style='width: 100%; text-align:left; margin-left:10px;'><h2 style='padding-top: 20px;margin-bottom:10px;'>Function Points</h2></div>");
-                            $('#surfacePointsGeral').append("<div id='surfacePoints' style='float:left;width: 1100px; height: 600px;margin-top:0px;'></div>");
-                            //$('#surfacePlotDiv').append("<div style='width: 100%; text-align:left; margin-left:10px;'><h2 style='padding-top: 20px;margin-bottom:10px;'>Function surface</h2></div>");
-                            google.load("visualization", "1");
+                                //cria divs que iram receber cada um dos plots
+                                $('#ResultTsp').append("<h2 class='backToMyArea' style='width:100%; cursor:pointer'><img  style='margin-right:5px;' src='assets/img/139_03.png'>Back to my area</h2>");
+                                $('#ResultTsp').append("<div style='width: 100%;text-align:left;margin-left:0px;'><h2 style='padding-top:20px;'>Function results</h2></div>");
+                                $('#ResultTsp').append("<div id='surfacePlotDiv' style='float:left;width: 590px; height: 600px;'></div>");
+                                $('#ResultTsp').append("<div id='surfacePointsGeral' style='float:left;width: 1100px; height: 600px;'></div>");
+                                $('#surfacePointsGeral').append("<div style='width: 100%; text-align:left; margin-left:10px;'><h2 style='padding-top: 20px;margin-bottom:10px;'>Function Points</h2></div>");
+                                $('#surfacePointsGeral').append("<div id='surfacePoints' style='float:left;width: 1100px; height: 600px;margin-top:0px;'></div>");
+                                //$('#surfacePlotDiv').append("<div style='width: 100%; text-align:left; margin-left:10px;'><h2 style='padding-top: 20px;margin-bottom:10px;'>Function surface</h2></div>");
+                                google.load("visualization", "1");
                            
                             
                               
-                        }
-                    } 
-                }
-            });
+                            }
+                        } 
+                    }
+                });
                 
-            /*** Recebe dados Finais do problema pedido ***/
-            socket.on('popResult', function (Kresult) {
+                /*** Recebe dados Finais do problema pedido ***/
+                socket.on('popResult', function (Kresult) {
             
              
                
-                var Kresults = JSON.parse(Kresult);
+                    var Kresults = JSON.parse(Kresult);
           
-                if (Kresults.idClient == readCookie('idClient')){
-                    $('#StringResultsKs').append("<p style='width:100%;margin-top:0px;'><h2>Fenótipo</h2></p>");
-                    // by calculating the color of each bar based on the data.
-                    function drawVisualization() {
-                        var teste = new Array;
-                        for(var i=0;i < Kresults.data.length;i++){
-                            var x = new Array;
-                            x[0] = "";
-                            x[1] = parseInt(Kresults.data[i][1]);
-                            teste[i] = x;
-                            if (i == Kresults.data.length-1){
-                                x[1] = 2300;
-                                teste[i]=x;
+                    if (Kresults.idClient == readCookie('idClient')){
+                        $('#StringResultsKs').append("<p style='width:100%;margin-top:0px;'><h2>Fenótipo</h2></p>");
+                        // by calculating the color of each bar based on the data.
+                        function drawVisualization() {
+                            var teste = new Array;
+                            for(var i=0;i < Kresults.data.length;i++){
+                                var x = new Array;
+                                x[0] = "";
+                                x[1] = parseInt(Kresults.data[i][1]);
+                                teste[i] = x;
+                                if (i == Kresults.data.length-1){
+                                    x[1] = 2300;
+                                    teste[i]=x;
+                                }
                             }
-                        }
                             
-                        // Create and populate the data table.
-                        var data = google.visualization.arrayToDataTable(teste, true);
-                        var red = 'ff0000';
-                        var green = '00ff00';
-                        var yellow = 'ffff00';
-                        var white = 'ffffff';
-                        // Loop over the data table to create the color specification.
-                        var colors = [];
-                        for (var i = 0; i < data.getNumberOfRows(); i++) {
-                            var value = data.getValue(i, 1);
-                            var color = value <= MediaBag ? green : (value > MediaBag ? red : red);
-                            if(i == data.getNumberOfRows()-1){
-                                color=white;
+                            // Create and populate the data table.
+                            var data = google.visualization.arrayToDataTable(teste, true);
+                            var red = 'ff0000';
+                            var green = '00ff00';
+                            var yellow = 'ffff00';
+                            var white = 'ffffff';
+                            // Loop over the data table to create the color specification.
+                            var colors = [];
+                            for (var i = 0; i < data.getNumberOfRows(); i++) {
+                                var value = data.getValue(i, 1);
+                                var color = value <= MediaBag ? green : (value > MediaBag ? red : red);
+                                if(i == data.getNumberOfRows()-1){
+                                    color=white;
+                                }
+                                colors.push(color);
                             }
-                            colors.push(color);
-                        }
                              
-                        colors = colors.join('|');
+                            colors = colors.join('|');
       
-                        var options = {cht: 'bvs', chco: colors, max: 100};
+                            var options = {cht: 'bvs', chco: colors, max: 100};
       
-                        // Create and draw the visualization.
-                        new google.visualization.ImageChart(document.getElementById('visualization2')).
-                            draw(data, options);
-                    }
-                    drawVisualization();   
+                            // Create and draw the visualization.
+                            new google.visualization.ImageChart(document.getElementById('visualization2')).
+                                draw(data, options);
+                        }
+                        drawVisualization();   
                     
-                    // Colocar as strings de varios soluções possiveis por baixo do graficos
+                        // Colocar as strings de varios soluções possiveis por baixo do graficos
                         
-                    $('#StringResultsKs').append("<p style='width:100%;margin-top:0px;'><h2>Genótipo</h2></p>");
-                    var finalGenotipo = allKnapValues.split('<br>');
-                    var totalSolutions = (finalGenotipo.length) - 1;
-                    var maxBest = finalGenotipo[0].split('__');
-                    $('#StringResultsKs').append("<p style='font-size:14px; text-align:left;margin-top:0px; width:100%;'><b>Max Best: </b>"+maxBest[1]+"</p>");
-                    $('#StringResultsKs').append("<p style='font-size:14px; text-align:left;margin-top:-10px; width:100%;'><b>Possiveis soluções ("+ totalSolutions +"):</b></p>");
+                        $('#StringResultsKs').append("<p style='width:100%;margin-top:0px;'><h2>Genótipo</h2></p>");
+                        var finalGenotipo = allKnapValues.split('<br>');
+                        var totalSolutions = (finalGenotipo.length) - 1;
+                        var maxBest = finalGenotipo[0].split('__');
+                        $('#StringResultsKs').append("<p style='font-size:14px; text-align:left;margin-top:0px; width:100%;'><b>Max Best: </b>"+maxBest[1]+"</p>");
+                        $('#StringResultsKs').append("<p style='font-size:14px; text-align:left;margin-top:-10px; width:100%;'><b>Possiveis soluções ("+ totalSolutions +"):</b></p>");
                             
-                    for (i=0;i<finalGenotipo.length;i++){
-                        finalGenotipo[i] = finalGenotipo[i].split('__');
-                        if(i != (finalGenotipo.length)-1){
-                            $('#StringResultsKs').append("<p style='font-size:14px; text-align:left;margin-top:-10px;'>"+finalGenotipo[i][0]+"<hr/></p>");   
-                        }else {
-                            $('#StringResultsKs').append("<p style='font-size:14px; text-align:left;margin-top:-10px;'>"+finalGenotipo[i][0]+"</p>");   
-                        }
+                        for (i=0;i<finalGenotipo.length;i++){
+                            finalGenotipo[i] = finalGenotipo[i].split('__');
+                            if(i != (finalGenotipo.length)-1){
+                                $('#StringResultsKs').append("<p style='font-size:14px; text-align:left;margin-top:-10px;'>"+finalGenotipo[i][0]+"<hr/></p>");   
+                            }else {
+                                $('#StringResultsKs').append("<p style='font-size:14px; text-align:left;margin-top:-10px;'>"+finalGenotipo[i][0]+"</p>");   
+                            }
                               
-                    }
+                        }
                          
-                }
-            });
+                    }
+                });
             
             
-            /*** Recebe dados Finais do problema pedido ***/
-            socket.on('popfResult', function (Kresult) {
+                /*** Recebe dados Finais do problema pedido ***/
+                socket.on('popfResult', function (Kresult) {
          
-            var Kresults = JSON.parse(Kresult);
-                if (Kresults.idClient == readCookie('idClient')){
-                     var dataPoints = new google.visualization.DataTable();
-                                dataPoints.addColumn('string','ID');
-                                dataPoints.addColumn('number','X');
-                                dataPoints.addColumn('number','Y');
-                               
+                    var Kresults = JSON.parse(Kresult);
+                    if (Kresults.idClient == readCookie('idClient')){
+                        dataPoints = new google.visualization.DataTable();
+                        dataPoints.addColumn('string','ID');
+                        dataPoints.addColumn('number','X');
+                        dataPoints.addColumn('number','Y');
+                        dataPoints.addColumn('string','tipo');       
                   
                              
-                    for(var i=0; i<Kresults.data.length;i++){
-                         var XY = Kresults.data[i][1].split(' ');
+                        for(var i=0; i<Kresults.data.length;i++){
+                            var XY = Kresults.data[i][1].split(' ');
                   
-                         dataPoints.addRows([["",parseFloat(XY[0]),parseFloat(XY[1])]]);
+                            dataPoints.addRows([["",parseFloat(XY[0]),parseFloat(XY[1]),"Ponto"]]);
                        
-                    }
+                        }
                         chartPoints.draw(dataPoints, optionsPoints);
                     
-                }
-            });
+                    }
+                });
             
                 
                 
-            /*** Recebe dados Finais do problema pedido ***/
-            socket.on('filename', function (nameFile) {
+                /*** Recebe dados Finais do problema pedido ***/
+                socket.on('filename', function (nameFile) {
                
-                var nameFileFinal = nameFile[0].filename.split(".");
-                nameFileFinal = nameFileFinal[0];
-                //limpa divs
-                var graph = new Graph();
+                    var nameFileFinal = nameFile[0].filename.split(".");
+                    nameFileFinal = nameFileFinal[0];
+                    //limpa divs
+                    var graph = new Graph();
                                
-                var solution;//Show results space
+                    var solution;//Show results space
                     
-                //add title
-                $('#FinalResult').html(""); 
-                var correctResult = new Array();
-                jQuery.get("TSPtours/"+nameFileFinal+".opt.tour", function(data) {
-                    var teste = data;
-                    var count=0;
-                    teste = teste.split(/(\r\n|\n|\r)/gm);
-                    for(var i=0; i < teste.length;i++){
-                        if(teste[i] != " " && i>9 && teste[i] != -1 && teste[i]!= 'EOF'){
-                            correctResult[count] = teste[i];
-                            count=count+1;
-                            i++;}    
-                    }
-                    //alert(DadosTSP.dados[0].attribute); 
-                    //vai buscar os dados para preencher o varios pontos
-                    var points = DadosTSP.dados[0].attribute.split('>>>>');
+                    //add title
+                    $('#FinalResult').html(""); 
+                    var correctResult = new Array();
+                    jQuery.get("TSPtours/"+nameFileFinal+".opt.tour", function(data) {
+                        var teste = data;
+                        var count=0;
+                        teste = teste.split(/(\r\n|\n|\r)/gm);
+                        for(var i=0; i < teste.length;i++){
+                            if(teste[i] != " " && i>9 && teste[i] != -1 && teste[i]!= 'EOF'){
+                                correctResult[count] = teste[i];
+                                count=count+1;
+                                i++;}    
+                        }
+                        //alert(DadosTSP.dados[0].attribute); 
+                        //vai buscar os dados para preencher o varios pontos
+                        var points = DadosTSP.dados[0].attribute.split('>>>>');
                   
-                    // separa os valores
-                    //var OnlyValues = rtrim(points[0].substring(0,(points[0].lenght)));
+                        // separa os valores
+                        //var OnlyValues = rtrim(points[0].substring(0,(points[0].lenght)));
                        
-                    var OnlyValues = points[0].split(' -> ');
-                    // criação do tipo de grafico
-                    graph = new Graph();  
-                    // criação de pontos e união dos mesmos
-                    var pointsShow = new Array();
-                    for (i=0;i<(OnlyValues.length)-1;i++)
-                    {
-                        pointsShow[i] = graph.newNode({label: parseInt(OnlyValues[i])+1});
-                        //$("#FinalResult").append("<p style='width:100%'>R = "+(correctResult[i])+  "  && N = " + (parseInt(OnlyValues[i])+1) +"</p>");
-                    }
+                        var OnlyValues = points[0].split(' -> ');
+                        // criação do tipo de grafico
+                        graph = new Graph();  
+                        // criação de pontos e união dos mesmos
+                        var pointsShow = new Array();
+                        for (i=0;i<(OnlyValues.length)-1;i++)
+                        {
+                            pointsShow[i] = graph.newNode({label: parseInt(OnlyValues[i])+1});
+                            //$("#FinalResult").append("<p style='width:100%'>R = "+(correctResult[i])+  "  && N = " + (parseInt(OnlyValues[i])+1) +"</p>");
+                        }
   
 
-                    for (i=0;i<(pointsShow.length)-1;i++)
-                    {
-                        if ((correctResult[i]) == (parseInt(OnlyValues[i])+1)){
-                            if ((correctResult[i+1]) == (parseInt(OnlyValues[i+1])+1)){
-                                graph.newEdge(pointsShow[i],pointsShow[i+1], {color: '#f3a31b'});
-                            }else{
-                                graph.newEdge(pointsShow[i],pointsShow[i+1], {color: '#0a858a'});
+                        for (i=0;i<(pointsShow.length)-1;i++)
+                        {
+                            if ((correctResult[i]) == (parseInt(OnlyValues[i])+1)){
+                                if ((correctResult[i+1]) == (parseInt(OnlyValues[i+1])+1)){
+                                    graph.newEdge(pointsShow[i],pointsShow[i+1], {color: '#f3a31b'});
+                                }else{
+                                    graph.newEdge(pointsShow[i],pointsShow[i+1], {color: '#0a858a'});
+                                }
+                            }else{ 
+                                graph.newEdge(pointsShow[i],pointsShow[i+1], {color: '#0a858a'}); 
                             }
-                        }else{ 
-                            graph.newEdge(pointsShow[i],pointsShow[i+1], {color: '#0a858a'}); 
-                        }
                         
-                    }
+                        }
    
-                    $('#FinalResult').append("<div style='width: 100%;text-align:left;margin-left:15px;'><h2 style='padding-top:20px;'>Best path</h2></div>");
-                    $('#FinalResult').append("<b style='width: 100%;text-align:left;margin-left:15px;'>Total de Nós: "+ (OnlyValues.length-1) +"</b>");
-                    //add canvas space
-                    $('#FinalResult').append("<br/><canvas id='springydemo' width='1100' height='660' />");
+                        $('#FinalResult').append("<div style='width: 100%;text-align:left;margin-left:15px;'><h2 style='padding-top:20px;'>Best path</h2></div>");
+                        $('#FinalResult').append("<b style='width: 100%;text-align:left;margin-left:15px;'>Total de Nós: "+ (OnlyValues.length-1) +"</b>");
+                        //add canvas space
+                        $('#FinalResult').append("<br/><canvas id='springydemo' width='1100' height='660' />");
                     
-                    //Display dos pontos ja unidos
-                    $('#springydemo').springy({
-                        graph: graph
-                    });
+                        //Display dos pontos ja unidos
+                        $('#springydemo').springy({
+                            graph: graph
+                        });
                              
-                }); 
+                    }); 
                    
-            });
+                });
                 
-            /**************************************************** *
-             * Botao de teste que ira mostrar os dados da mochila *
-             *                                                    *
-             **************************************************** */  
-            $('#closeResultFinal2').click(function(){
-                var ZEROPOS = 0;
-                var salary = 2000;
-                var savings = 500;
-                var percent = savings / salary;
-                val = (percent == 0) ? ZEROPOS : ZEROPOS - (percent * ZEROPOS);
-                $("#graphbar").animate({ top: 0 + "px" }, 3000);
-                $(".titleRequestLastResult").html("");
-                $(".titleRequestLastResult").hide().append("").fadeIn('slow');
-                $(".titleRequestLastResult").append("Result of KnapSack").fadeIn('slow');
-                $("#p100").html("");
-                $("#p100").hide().append("").fadeIn('slow');
-                $("#p100").append("Soma = 500").fadeIn('slow');
-                $("#p50").html("");
-                $("#p50").hide().append("").fadeIn('slow');
-                $("#p50").append("Media = 250").fadeIn('slow');
-            });
+                /**************************************************** *
+                 * Botao de teste que ira mostrar os dados da mochila *
+                 *                                                    *
+                 **************************************************** */  
+                $('#closeResultFinal2').click(function(){
+                    var ZEROPOS = 0;
+                    var salary = 2000;
+                    var savings = 500;
+                    var percent = savings / salary;
+                    val = (percent == 0) ? ZEROPOS : ZEROPOS - (percent * ZEROPOS);
+                    $("#graphbar").animate({ top: 0 + "px" }, 3000);
+                    $(".titleRequestLastResult").html("");
+                    $(".titleRequestLastResult").hide().append("").fadeIn('slow');
+                    $(".titleRequestLastResult").append("Result of KnapSack").fadeIn('slow');
+                    $("#p100").html("");
+                    $("#p100").hide().append("").fadeIn('slow');
+                    $("#p100").append("Soma = 500").fadeIn('slow');
+                    $("#p50").html("");
+                    $("#p50").hide().append("").fadeIn('slow');
+                    $("#p50").append("Media = 250").fadeIn('slow');
+                });
                 
          
-        });
-    </script>
+            });
+        </script>
 
-    <!--scrypts para a plot-->
-    <!-- End example scripts -->
+        <!--scrypts para a plot-->
+        <!-- End example scripts -->
 
-    <!-- Don't touch this! -->
-
-
-
-    <script type="text/javascript" src="assets/css/syntaxhighlighter/scripts/shCore.min.js"></script>
-    <script type="text/javascript" src="assets/css/syntaxhighlighter/scripts/shBrushJScript.min.js"></script>
-    <script type="text/javascript" src="assets/css/syntaxhighlighter/scripts/shBrushXml.min.js"></script>
-
-    <!-- End Don't touch this! -->
-
-    <!-- Additional plugins go here -->
+        <!-- Don't touch this! -->
 
 
-    <!-- End additional plugins -->
-    <!--END scrypts para a plot-->
 
-</body>
+        <script type="text/javascript" src="assets/css/syntaxhighlighter/scripts/shCore.min.js"></script>
+        <script type="text/javascript" src="assets/css/syntaxhighlighter/scripts/shBrushJScript.min.js"></script>
+        <script type="text/javascript" src="assets/css/syntaxhighlighter/scripts/shBrushXml.min.js"></script>
+
+        <!-- End Don't touch this! -->
+
+        <!-- Additional plugins go here -->
+
+
+        <!-- End additional plugins -->
+        <!--END scrypts para a plot-->
+
+    </body>
 </html>
