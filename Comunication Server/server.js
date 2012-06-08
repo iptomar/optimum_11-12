@@ -7,14 +7,14 @@ var base64 = require('b64');
 var mysql = require('mysql');
 var TEST_DATABASE = 'powercomputing';
 var client_bd = mysql.createClient({
-    user: 'optima',
-    password: 'optima2power',
-    host: 'code.dei.estt.ipt.pt',
+    user: 'xxxx',
+    password: 'xxxxx',
+    host: 'aaaaa.com',
     port: '3306'
 });
 var last = 0;
 var count = 0;
-client_bd.host = '193.137.5.49';
+client_bd.host = 'aaaaa.com';
 client_bd.query('USE '+TEST_DATABASE);
 
 function replaceAll(string, token, newtoken) {
@@ -33,7 +33,7 @@ io.sockets.on('connection', function (socket) {
 	
     socket.on('start', function (data) {
     	client_bd.query('USE '+TEST_DATABASE);
-      console.log(data);
+     // console.log(data);
       var algorithm = data.algorithm[0] + ", Parameters: " + data.algorithm[1] + ", Solver Parameters: " + data.algorithm[2];
       var mutation = data.mutation[0] + ", Parameters: " + data.mutation[1];
       var selection =  data.selection[0] + ", Parameters: " + data.selection[1];
@@ -57,22 +57,32 @@ io.sockets.on('connection', function (socket) {
 			if (err) {
 				throw err;
 			}
-			console.log(JSON.stringify(results));
+			//console.log(JSON.stringify(results));
 			clients.forEach(function(c){c.socket.emit('run',results);});
-		});
+		  });
   	});
   	
   	/* query for get best value and string */
 
   	socket.on('end', function (data) {
   	 	client_bd.query('USE '+TEST_DATABASE);
-  	 	client_bd.query('select max(best) as max_best, attribute from tblIterations where idClient= "'+data.idClient+'" AND idProblem="'+data.idProblem+'" AND type = "2"', function selectCb(err, results, fields) {
+  	 	client_bd.query('select finalfim as attribute from tblResults where idClient="'+data.idClient+'" and idProblem="'+data.idProblem+'" order by itera DESC limit 1', function selectCb(err, results, fields) {
   			if (err) {
   				throw err;
   			}
-  			var data2 = { 'idClient' : data.idClient, 'idProblem': data.idProblem, 'dados':results }
-  			console.log(JSON.stringify(data2));
-  			clients.forEach(function(c){c.socket.emit('end',data2);});
+         client_bd.query('SELECT algorithm from tblProblemas where idClient="'+data.idClient+'" and idProblem="'+data.idProblem+'"', function selectCb(err2, results2, fields2) {
+        if (err) {
+          throw err;
+          }
+          var data2 = { 'idClient' : data.idClient, 'idProblem': data.idProblem, 'dados':results, 'type':results2}
+          console.log(JSON.stringify(data2));
+          clients.forEach(function(c){c.socket.emit('end',data2);});
+        }
+      );
+      
+  		//	var data2 = { 'idClient' : data.idClient, 'idProblem': data.idProblem, 'dados':results }
+  			//console.log(JSON.stringify(data2));
+  			
         client_bd.query('SELECT * from tblClientes where idClient="'+data.idClient+'"', function selectCb(err, results, fields) {
               email.send({
                 host : "smtp.gmail.com",              // smtp server hostname
@@ -89,7 +99,7 @@ io.sockets.on('connection', function (socket) {
               },
               function(err, result){
                 if(err){ 
-                  console.log(err); 
+                 // console.log(err); 
                 }
               });
         });
@@ -99,7 +109,7 @@ io.sockets.on('connection', function (socket) {
     /* get info */
 
     socket.on('info', function (data) {
-      console.log('teste');
+      //console.log('teste');
       var teste = base64.decode(data);
       teste = replaceAll(teste,"'","\"");
       console.log(teste);
@@ -111,7 +121,7 @@ io.sockets.on('connection', function (socket) {
     });
 
     socket.on('codeStats', function (data) {
-      console.log(JSON.stringify(data));
+      //console.log(JSON.stringify(data));
       clients.forEach(function(c){c.socket.emit('codeStatsResult','up');});
     });
 
@@ -139,7 +149,9 @@ io.sockets.on('connection', function (socket) {
       		password : "25713423"         // password
     	},
     		function(err, result){
-     		 if(err){ console.log(err); }
+     		 if(err){ 
+          //console.log(err); 
+         }
     	});
   		socket.emit('registResult', 'ok');
   	});
@@ -174,7 +186,9 @@ io.sockets.on('connection', function (socket) {
           password : "25713423"         // password
       },
         function(err, result){
-         if(err){ console.log(err); }
+         if(err){ 
+          //console.log(err);
+          }
       });
     });
 	/* login user */
@@ -203,7 +217,7 @@ io.sockets.on('connection', function (socket) {
 		  if (err) {
 			 throw err;
 		  }
-		  console.log(JSON.stringify(results));
+		  //console.log(JSON.stringify(results));
 		  socket.emit('getUserDataResult',results);
 		});
   });
@@ -237,7 +251,7 @@ io.sockets.on('connection', function (socket) {
       if (err) {
         throw err;
       }
-      console.log(results);
+      //console.log(results);
       socket.emit('loadCharts',results);
     });
   });
@@ -246,7 +260,7 @@ io.sockets.on('connection', function (socket) {
 
    socket.on('getString', function (data) {
     client_bd.query('USE '+TEST_DATABASE);
-    client_bd.query('select max(best) as max_best, attribute from tblIterations where idClient= "'+data.idClient+'" AND idProblem="'+data.idProblem+'" AND type = "2"', function selectCb(err, results, fields) {
+    client_bd.query('select finalfim as attribute from tblResults where idClient="'+data.idClient+'" and idProblem="'+data.idProblem+'" order by itera DESC limit 1', function selectCb(err, results, fields) {
       if (err) {
           throw err;
       }
@@ -254,8 +268,9 @@ io.sockets.on('connection', function (socket) {
         if (err) {
           throw err;
       }
-      var data2 = { 'idClient' : data.idClient, 'idProblem': data.idProblem, 'dados':results, 'type':results2 }
-      console.log(JSON.stringify(data2));
+      console.log(results);
+      var data2 = { 'idClient' : data.idClient, 'idProblem': data.idProblem, 'dados':results, 'type':results2}
+      //console.log(JSON.stringify(data2));
         socket.emit('loadString',data2);
       });
         
@@ -305,7 +320,9 @@ io.sockets.on('connection', function (socket) {
             password : "25713423"         // password
         },
           function(err, result){
-           if(err){ console.log(err); }
+           if(err){ 
+            //console.log(err); 
+          }
         });
         socket.emit('emitRestorePasswordResult','true');
       }
@@ -358,23 +375,18 @@ io.sockets.on('connection', function (socket) {
         socket.emit('RestoreClientPasswordResult','false');
       }
     });
-   
   });
 
  /**** insertFeed***/
-    socket.on('insertFeed', function (data) {
+  socket.on('insertFeed', function (data) {
     client_bd.query('USE '+TEST_DATABASE);
     client_bd.query('INSERT INTO feed SET nome = ?,news = ?',[data.nome, data.news]);
-    
-    
-        
-        socket.emit('respostFeed',data);
-    
+    socket.emit('respostFeed',data);
   });
-       /**** selectFeed***/
+     /**** selectFeed***/
     socket.on('selectFeed', function (results) {
         client_bd.query('USE '+TEST_DATABASE);
-        client_bd.query('select * from feed "', function selectCb(err, results, fields) {
+        client_bd.query('select * from feed ', function selectCb(err, results, fields) {
             if (err) {
                 throw err;
             }
@@ -389,8 +401,16 @@ io.sockets.on('connection', function (socket) {
             if (err) {
                 throw err;
             }
+            console.log(JSON.stringify(results));
             socket.emit('filename',results);
         });
+    });
+  socket.on('pop', function (data) {
+        client_bd.query('USE '+TEST_DATABASE);
+        var teste = base64.decode(data);
+        teste = replaceAll(teste,"'","\"");
+        console.log(teste);
+        clients.forEach(function(c){c.socket.emit('popResult',teste);});
     });
 
 
@@ -402,7 +422,5 @@ io.sockets.on('connection', function (socket) {
 var clients=[];
 function Client(socket) {
   this.socket = socket;
-  console.log('Novo CLIENTE = ');
-  ///console.log(socket);
 }
 
