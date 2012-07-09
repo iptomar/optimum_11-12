@@ -758,7 +758,7 @@
                             $('#ResultEndString').html("");
                             $('#ResultEndStringText').html("");
                             //emit pedido de k50
-                            dataPop = {'client': readCookie('idClient'), 'id':readCookie('id_problem')};
+                            dataPop = {'client': readCookie('idClient'), 'id':selectedProblem};
                             $.ajax({
                                 type: 'GET',
                                            url: "socket.php?"+"teste=pop|"+JSON.stringify(dataPop)
@@ -812,8 +812,8 @@
                             $('#chart_div_points').css("display","inline"); 
                             $('#ResultEndStringText').css("display","none");
                             $('#ResultEndString').css("display","none");
-                            dataPop = {'client': readCookie('idClient'), 'id':readCookie('id_problem')};
-                          
+                            dataPop = {'client': readCookie('idClient'), 'id':selectedProblem};
+                            alert(JSON.stringify(dataPop));
                                     //emit pedido de k50
                                     $.ajax({
                                         type: 'GET',
@@ -1008,6 +1008,8 @@
                 
                  /*** Recebe dados Finais do problema pedido ***/
             socket.on('popfResult', function (Kresult) {
+            
+            alert(Kresult);
             var Kresults = JSON.parse(Kresult);
     
                 if (Kresults.idClient == readCookie('idClient')){
