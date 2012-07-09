@@ -813,7 +813,7 @@
                             $('#ResultEndStringText').css("display","none");
                             $('#ResultEndString').css("display","none");
                             dataPop = {'client': readCookie('idClient'), 'id':selectedProblem};
-                            alert(JSON.stringify(dataPop));
+                            //alert(JSON.stringify(dataPop));
                                     //emit pedido de k50
                                     $.ajax({
                                         type: 'GET',
@@ -1008,8 +1008,6 @@
                 
                  /*** Recebe dados Finais do problema pedido ***/
             socket.on('popfResult', function (Kresult) {
-            
-            alert(Kresult);
             var Kresults = JSON.parse(Kresult);
     
                 if (Kresults.idClient == readCookie('idClient')){
